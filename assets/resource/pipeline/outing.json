@@ -1,0 +1,304 @@
+{
+    "出行赠礼_流程": {
+        "desc": "在课后出行页：先换成选定的角色，再打开赠礼",
+        "timeout": 60000,
+        "next": [
+            "出行赠礼_打开头像栏"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "出行赠礼_打开头像栏": {
+        "desc": "左下角当前角色头像，点开五人头像栏",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "课后出行",
+                "roi": [
+                    95,
+                    10,
+                    200,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    30,
+                    628,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 8000
+        },
+        "next": [
+            "出行赠礼_选择角色"
+        ]
+    },
+    "出行赠礼_选择角色": {
+        "desc": "在头像栏里点选定的角色（按发色模板识别）；由选项「赠礼角色」改写模板",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "outing/艾因.png",
+                "roi": [
+                    30,
+                    610,
+                    520,
+                    90
+                ],
+                "threshold": 0.75
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1500,
+            "timeout": 15000
+        },
+        "timeout": 10000,
+        "next": [
+            "出行赠礼_打开赠礼"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "出行赠礼_打开赠礼": {
+        "desc": "底部「赠礼」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^赠礼$",
+                "roi": [
+                    870,
+                    655,
+                    90,
+                    45
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 8000
+        },
+        "timeout": 15000,
+        "next": [
+            "出行赠礼_选收藏礼物",
+            "出行赠礼_没有收藏"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "出行赠礼_选收藏礼物": {
+        "desc": "礼物列表里左上角是金色爱心的（已收藏），选第一个",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "outing/收藏爱心.png",
+                "roi": [
+                    670,
+                    90,
+                    560,
+                    450
+                ],
+                "threshold": 0.85,
+                "order_by": "Score"
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    80,
+                    60,
+                    0,
+                    0
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 5000
+        },
+        "next": [
+            "出行赠礼_赠送"
+        ]
+    },
+    "出行赠礼_没有收藏": {
+        "desc": "礼物列表已打开但没有金色爱心",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "赠\\s*送",
+                "roi": [
+                    880,
+                    630,
+                    140,
+                    60
+                ]
+            }
+        },
+        "pre_wait_freezes": {
+            "time": 800,
+            "timeout": 5000
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]没有收藏的礼物，跳过赠礼。请先在礼物列表里收藏想送的礼物[/color]"
+        }
+    },
+    "出行赠礼_赠送": {
+        "desc": "「赠送」按钮（数量保持 1）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "赠\\s*送",
+                "roi": [
+                    880,
+                    630,
+                    140,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 8000
+        },
+        "timeout": 10000,
+        "next": [
+            "Flag_出行赠礼完成",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "Flag_出行赠礼完成": {
+        "desc": "出现「好感度+N」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "好感度\\s*\\+\\s*\\d+",
+                "roi": [
+                    180,
+                    430,
+                    360,
+                    110
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]出行赠礼完成[/color]"
+        }
+    },
+    "出行收礼_流程": {
+        "desc": "在课后出行页反复点人物，直到弹出「恭喜获得」",
+        "timeout": 90000,
+        "next": [
+            "出行收礼_关闭奖励",
+            "[JumpBack]出行收礼_点人物"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "出行收礼_点人物": {
+        "desc": "点人物身体（画面中部偏上，避开底部按钮和对话框）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "课后出行",
+                "roi": [
+                    95,
+                    10,
+                    200,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    600,
+                    230,
+                    80,
+                    90
+                ]
+            }
+        },
+        "max_hit": 30,
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 8000
+        }
+    },
+    "出行收礼_关闭奖励": {
+        "desc": "「恭喜获得」弹窗：点下方空白处关闭",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "恭喜获得",
+                "roi": [
+                    480,
+                    170,
+                    340,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    560,
+                    630,
+                    160,
+                    30
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 8000
+        },
+        "next": [
+            "Flag_出行收礼完成"
+        ]
+    },
+    "Flag_出行收礼完成": {
+        "desc": "弹窗关闭后回到课后出行页",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "课后出行",
+                "roi": [
+                    95,
+                    10,
+                    200,
+                    60
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]出行中收到礼物，完成[/color]"
+        }
+    }
+}

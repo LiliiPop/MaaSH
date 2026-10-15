@@ -14,38 +14,84 @@
         ]
     },
     "Flag_在主界面": {
-        "desc": "认主界面「画廊」+「图鉴」",
+        "desc": "认主界面「画廊」+「图鉴」，全景主题和默认主题都支持",
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]已回到主界面[/color]"
         },
         "recognition": {
-            "type": "And",
+            "type": "Or",
             "param": {
-                "all_of": [
+                "any_of": [
                     {
                         "recognition": {
-                            "type": "OCR",
+                            "type": "And",
                             "param": {
-                                "expected": "画廊",
-                                "roi": [
-                                    950,
-                                    290,
-                                    120,
-                                    80
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "画廊",
+                                                "roi": [
+                                                    950,
+                                                    290,
+                                                    120,
+                                                    80
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "图鉴",
+                                                "roi": [
+                                                    700,
+                                                    635,
+                                                    100,
+                                                    60
+                                                ]
+                                            }
+                                        }
+                                    }
                                 ]
                             }
                         }
                     },
                     {
                         "recognition": {
-                            "type": "OCR",
+                            "type": "And",
                             "param": {
-                                "expected": "图鉴",
-                                "roi": [
-                                    700,
-                                    635,
-                                    100,
-                                    60
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "画廊",
+                                                "roi": [
+                                                    180,
+                                                    410,
+                                                    95,
+                                                    60
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "图鉴",
+                                                "roi": [
+                                                    780,
+                                                    655,
+                                                    85,
+                                                    50
+                                                ]
+                                            }
+                                        }
+                                    }
                                 ]
                             }
                         }
@@ -89,9 +135,9 @@
                 "expected": "图鉴",
                 "roi": [
                     700,
-                    635,
-                    100,
-                    60
+                    630,
+                    180,
+                    75
                 ]
             }
         },
@@ -232,6 +278,162 @@
         "max_hit": 10,
         "post_wait_freezes": {
             "time": 500,
+            "timeout": 5000
+        }
+    },
+    "公共_进入日常列表": {
+        "desc": "统一入口：不管现在在哪，进到任务页「日常」列表并滚到顶部，然后回到调用它的任务（[Anchor]任务继续）",
+        "timeout": 60000,
+        "next": [
+            "公共_日常列表就绪",
+            "公共_切到日常页",
+            "公共_打开任务页",
+            "[JumpBack]公共_返回主界面"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "公共_打开任务页": {
+        "desc": "主界面左上角的日历图标（两种主题各一张模板）",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "home/日历_全景.png",
+                    "home/日历_默认.png"
+                ],
+                "roi": [
+                    150,
+                    0,
+                    220,
+                    110
+                ],
+                "threshold": 0.75
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "timeout": 15000,
+        "next": [
+            "公共_日常列表就绪",
+            "公共_切到日常页"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "公共_切到日常页": {
+        "desc": "任务页左侧「日常」页签",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^日\\s*常$",
+                "roi": [
+                    18,
+                    312,
+                    64,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "timeout": 10000,
+        "next": [
+            "公共_日常列表就绪"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "公共_日常列表就绪": {
+        "desc": "已在「今日任务」：把右侧列表滚回顶部，然后交回给调用的任务",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "今日任务",
+                "roi": [
+                    220,
+                    80,
+                    260,
+                    85
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    900,
+                    200,
+                    20,
+                    20
+                ],
+                "end": [
+                    900,
+                    640,
+                    20,
+                    20
+                ],
+                "duration": 300
+            }
+        },
+        "repeat": 3,
+        "repeat_delay": 200,
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 5000
+        },
+        "next": [
+            "[Anchor]任务继续"
+        ]
+    },
+    "公共_任务列表下滚": {
+        "desc": "在「今日任务」页把右侧列表往下滚一段",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "今日任务",
+                "roi": [
+                    220,
+                    80,
+                    260,
+                    85
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    900,
+                    560,
+                    20,
+                    20
+                ],
+                "end": [
+                    900,
+                    300,
+                    20,
+                    20
+                ],
+                "duration": 400
+            }
+        },
+        "max_hit": 10,
+        "post_wait_freezes": {
+            "time": 600,
             "timeout": 5000
         }
     }

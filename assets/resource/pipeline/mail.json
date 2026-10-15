@@ -14,52 +14,25 @@
         }
     },
     "邮件_打开邮箱": {
-        "desc": "主界面左上角第二个图标（信封）",
+        "desc": "主界面左上角信封图标（两种主题）",
         "recognition": {
-            "type": "And",
+            "type": "TemplateMatch",
             "param": {
-                "all_of": [
-                    {
-                        "recognition": {
-                            "type": "OCR",
-                            "param": {
-                                "expected": "画廊",
-                                "roi": [
-                                    950,
-                                    290,
-                                    120,
-                                    80
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "recognition": {
-                            "type": "OCR",
-                            "param": {
-                                "expected": "图鉴",
-                                "roi": [
-                                    700,
-                                    635,
-                                    100,
-                                    60
-                                ]
-                            }
-                        }
-                    }
-                ]
+                "template": [
+                    "home/邮件_全景.png",
+                    "home/邮件_默认.png"
+                ],
+                "roi": [
+                    90,
+                    0,
+                    200,
+                    110
+                ],
+                "threshold": 0.75
             }
         },
         "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    215,
-                    28,
-                    30,
-                    30
-                ]
-            }
+            "type": "Click"
         },
         "post_wait_freezes": {
             "time": 800,

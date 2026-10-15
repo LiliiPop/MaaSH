@@ -14,52 +14,21 @@
         }
     },
     "月卡_打开采购": {
-        "desc": "主界面右侧「采购」",
+        "desc": "主界面上的「采购」文字（两种主题位置不同）",
         "recognition": {
-            "type": "And",
+            "type": "OCR",
             "param": {
-                "all_of": [
-                    {
-                        "recognition": {
-                            "type": "OCR",
-                            "param": {
-                                "expected": "画廊",
-                                "roi": [
-                                    950,
-                                    290,
-                                    120,
-                                    80
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "recognition": {
-                            "type": "OCR",
-                            "param": {
-                                "expected": "图鉴",
-                                "roi": [
-                                    700,
-                                    635,
-                                    100,
-                                    60
-                                ]
-                            }
-                        }
-                    }
+                "expected": "^采购$",
+                "roi": [
+                    300,
+                    480,
+                    960,
+                    130
                 ]
             }
         },
         "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    1110,
-                    505,
-                    90,
-                    55
-                ]
-            }
+            "type": "Click"
         },
         "post_wait_freezes": {
             "time": 800,

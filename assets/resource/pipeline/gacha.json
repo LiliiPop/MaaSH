@@ -14,16 +14,16 @@
         }
     },
     "抽卡_打开画廊": {
-        "desc": "主界面右侧「画廊」",
+        "desc": "主界面上的「画廊」文字（两种主题位置不同）",
         "recognition": {
-            "type": "And",
+            "type": "Or",
             "param": {
-                "all_of": [
+                "any_of": [
                     {
                         "recognition": {
                             "type": "OCR",
                             "param": {
-                                "expected": "画廊",
+                                "expected": "^画廊$",
                                 "roi": [
                                     950,
                                     290,
@@ -37,11 +37,11 @@
                         "recognition": {
                             "type": "OCR",
                             "param": {
-                                "expected": "图鉴",
+                                "expected": "^画廊$",
                                 "roi": [
-                                    700,
-                                    635,
-                                    100,
+                                    180,
+                                    410,
+                                    95,
                                     60
                                 ]
                             }
@@ -51,15 +51,7 @@
             }
         },
         "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    960,
-                    300,
-                    120,
-                    70
-                ]
-            }
+            "type": "Click"
         },
         "post_wait_freezes": {
             "time": 1000,

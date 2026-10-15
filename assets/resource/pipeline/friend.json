@@ -14,22 +14,23 @@
         }
     },
     "好友_打开好友页": {
-        "desc": "主界面左上角第四个图标（两个人）",
+        "desc": "全景主题：左上角第四个图标；默认主题：右下角「好友」",
         "recognition": {
-            "type": "And",
+            "type": "Or",
             "param": {
-                "all_of": [
+                "any_of": [
                     {
                         "recognition": {
-                            "type": "OCR",
+                            "type": "TemplateMatch",
                             "param": {
-                                "expected": "画廊",
+                                "template": "home/好友_全景.png",
                                 "roi": [
-                                    950,
-                                    290,
-                                    120,
-                                    80
-                                ]
+                                    320,
+                                    0,
+                                    90,
+                                    100
+                                ],
+                                "threshold": 0.75
                             }
                         }
                     },
@@ -37,12 +38,12 @@
                         "recognition": {
                             "type": "OCR",
                             "param": {
-                                "expected": "图鉴",
+                                "expected": "^好友$",
                                 "roi": [
-                                    700,
-                                    635,
+                                    1160,
+                                    650,
                                     100,
-                                    60
+                                    55
                                 ]
                             }
                         }
@@ -51,15 +52,7 @@
             }
         },
         "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    348,
-                    28,
-                    30,
-                    30
-                ]
-            }
+            "type": "Click"
         },
         "post_wait_freezes": {
             "time": 800,

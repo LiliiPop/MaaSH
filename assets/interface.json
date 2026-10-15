@@ -32,6 +32,8 @@
         "tasks/MonthCard.json",
         "tasks/Friend.json",
         "tasks/Schedule.json",
+        "tasks/OutingGift.json",
+        "tasks/OutingReceive.json",
         "tasks/Gacha.json",
         "tasks/DailyClaim.json",
         "tasks/AfterRun.json",

@@ -1,0 +1,120 @@
+{
+    "task": [
+        {
+            "name": "🎁出行赠礼",
+            "entry": "出行赠礼",
+            "default_check": true,
+            "description": "从任务页「给任意角色赠送礼物」前往：换成选定角色，送出第一个已收藏的礼物（数量 1）。<br>请先在礼物列表里收藏想送的礼物，没有收藏会跳过。",
+            "option": [
+                "赠礼角色"
+            ]
+        }
+    ],
+    "option": {
+        "赠礼角色": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "出行赠礼_选择角色": {
+                            "recognition": {
+                                "type": "TemplateMatch",
+                                "param": {
+                                    "template": "outing/艾因.png",
+                                    "roi": [
+                                        30,
+                                        610,
+                                        520,
+                                        90
+                                    ],
+                                    "threshold": 0.75
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "出行赠礼_选择角色": {
+                            "recognition": {
+                                "type": "TemplateMatch",
+                                "param": {
+                                    "template": "outing/路辰.png",
+                                    "roi": [
+                                        30,
+                                        610,
+                                        520,
+                                        90
+                                    ],
+                                    "threshold": 0.75
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "出行赠礼_选择角色": {
+                            "recognition": {
+                                "type": "TemplateMatch",
+                                "param": {
+                                    "template": "outing/罗夏.png",
+                                    "roi": [
+                                        30,
+                                        610,
+                                        520,
+                                        90
+                                    ],
+                                    "threshold": 0.75
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "出行赠礼_选择角色": {
+                            "recognition": {
+                                "type": "TemplateMatch",
+                                "param": {
+                                    "template": "outing/司岚.png",
+                                    "roi": [
+                                        30,
+                                        610,
+                                        520,
+                                        90
+                                    ],
+                                    "threshold": 0.75
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "出行赠礼_选择角色": {
+                            "recognition": {
+                                "type": "TemplateMatch",
+                                "param": {
+                                    "template": "outing/叶瑄.png",
+                                    "roi": [
+                                        30,
+                                        610,
+                                        520,
+                                        90
+                                    ],
+                                    "threshold": 0.75
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
