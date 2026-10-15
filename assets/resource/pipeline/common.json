@@ -533,16 +533,54 @@
         }
     },
     "公共_付费防呆": {
-        "desc": "防呆：弹窗里的按钮标着人民币价格（¥/￥）时，不点按钮，点左下角空白处取消。钻石价格的识别待截图（WorkfieldScreenshots/safety）",
+        "desc": "防呆：弹窗的购买按钮标着人民币（¥/￥）或蓝紫钻石价签，或弹出「补充体力」（用钻石买体力）时，不点按钮，点弹窗外下方空白处取消",
         "recognition": {
-            "type": "OCR",
+            "type": "Or",
             "param": {
-                "expected": "[¥￥]\\s*\\d",
-                "roi": [
-                    420,
-                    555,
-                    440,
-                    95
+                "any_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "[¥￥]\\s*\\d",
+                                "roi": [
+                                    420,
+                                    555,
+                                    440,
+                                    95
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "TemplateMatch",
+                            "param": {
+                                "template": "safety/钻石价签.png",
+                                "roi": [
+                                    520,
+                                    520,
+                                    240,
+                                    100
+                                ],
+                                "threshold": 0.75
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "补充体力",
+                                "roi": [
+                                    520,
+                                    160,
+                                    240,
+                                    65
+                                ]
+                            }
+                        }
+                    }
                 ]
             }
         },
@@ -550,10 +588,10 @@
             "type": "Click",
             "param": {
                 "target": [
-                    20,
-                    660,
-                    40,
-                    40
+                    600,
+                    682,
+                    80,
+                    16
                 ]
             }
         },
@@ -563,7 +601,7 @@
             "timeout": 8000
         },
         "focus": {
-            "Node.Action.Succeeded": "[color:Orange]检测到付费弹窗，已点空白处取消[/color]"
+            "Node.Action.Succeeded": "[color:Orange]检测到付费弹窗（人民币/钻石），已点空白处取消[/color]"
         }
     }
 }

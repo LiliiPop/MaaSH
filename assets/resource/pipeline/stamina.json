@@ -1,6 +1,6 @@
 {
     "领体力": {
-        "desc": "任务入口：主界面「体力补给 / 今日体力」→ 领取当前时段的体力。建议由调度在 12:00-15:00、17:30-21:00 各运行一次",
+        "desc": "任务入口：主界面「今日体力」→ 依次检查午间、晚间两个时段，能领就领，不能领不重试",
         "timeout": 60000,
         "next": [
             "体力_打开",
@@ -14,7 +14,7 @@
         }
     },
     "体力_打开": {
-        "desc": "主界面的「体力补给 / 今日体力」入口（待截图确认默认主题位置）",
+        "desc": "主界面「今日体力」（全景主题在左下；默认主题位置待截图确认，按文字找）",
         "recognition": {
             "type": "And",
             "param": {
@@ -106,7 +106,7 @@
                         "recognition": {
                             "type": "OCR",
                             "param": {
-                                "expected": "体力补给|今日体力",
+                                "expected": "今日体力|体力补给",
                                 "roi": [
                                     0,
                                     80,
@@ -121,119 +121,125 @@
             }
         },
         "action": {
-            "type": "Click"
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    0,
+                    -40,
+                    0,
+                    0
+                ]
+            }
         },
         "post_wait_freezes": {
             "time": 1000,
             "timeout": 10000
         },
         "next": [
-            "体力_窗口"
+            "体力_午间"
         ],
         "on_error": [
             "公共_任务失败"
+        ],
+        "timeout": 10000
+    },
+    "体力_午间": {
+        "desc": "大白窗口（标题「来自大白的馈赠」）底部的「午间」罐头，位置固定",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "来自大白的馈赠",
+                "roi": [
+                    760,
+                    145,
+                    270,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    780,
+                    590,
+                    75,
+                    70
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 8000
+        },
+        "timeout": 10000,
+        "next": [
+            "体力_午间文字"
+        ],
+        "on_error": [
+            "体力_晚间"
         ]
     },
-    "体力_窗口": {
-        "desc": "领取窗口：先试中午，再试晚上；都不行就记一条橙色日志结束（不重试）",
+    "体力_午间文字": {
+        "desc": "找到「每天12:00…领取」这行字，再看它正下方的按钮",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "每天\\s*12:00",
+                "roi": [
+                    700,
+                    280,
+                    400,
+                    55
+                ]
+            }
+        },
+        "timeout": 5000,
+        "next": [
+            "体力_领午间",
+            "体力_午间不可领"
+        ],
+        "on_error": [
+            "体力_晚间"
+        ]
+    },
+    "体力_领午间": {
+        "desc": "时间文字正下方的按钮写着「领取」才点",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^领\\s*取$",
+                "roi": "体力_午间文字",
+                "roi_offset": [
+                    15,
+                    45,
+                    -15,
+                    25
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 8000
+        },
+        "next": [
+            "体力_午间领后"
+        ]
+    },
+    "体力_午间领后": {
         "timeout": 8000,
         "next": [
             "[JumpBack]公共_付费防呆",
-            "体力_点中午",
-            "体力_点晚上",
-            "体力_未领取"
-        ]
-    },
-    "体力_点中午": {
-        "desc": "找到「每天12:00-15:00领取」这行字，点它正下方的领取按钮（偏移量待截图确认）",
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": "12:00\\s*[-~－]\\s*15:00",
-                "roi": [
-                    0,
-                    80,
-                    1280,
-                    600
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target_offset": [
-                    0,
-                    55,
-                    0,
-                    0
-                ]
-            }
-        },
-        "max_hit": 1,
-        "post_wait_freezes": {
-            "time": 1000,
-            "timeout": 8000
-        },
-        "next": [
-            "体力_结果_中午"
-        ]
-    },
-    "体力_结果_中午": {
-        "timeout": 6000,
-        "next": [
-            "[JumpBack]公共_付费防呆",
-            "Flag_体力已领取"
+            "体力_午间成功"
         ],
         "on_error": [
-            "体力_点晚上"
+            "体力_晚间"
         ]
     },
-    "体力_点晚上": {
-        "desc": "找到「每天17:30-21:00领取」这行字，点它正下方的领取按钮（偏移量待截图确认）",
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": "17:30\\s*[-~－]\\s*21:00",
-                "roi": [
-                    0,
-                    80,
-                    1280,
-                    600
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target_offset": [
-                    0,
-                    55,
-                    0,
-                    0
-                ]
-            }
-        },
-        "max_hit": 1,
-        "post_wait_freezes": {
-            "time": 1000,
-            "timeout": 8000
-        },
-        "next": [
-            "体力_结果_晚上"
-        ]
-    },
-    "体力_结果_晚上": {
-        "timeout": 6000,
-        "next": [
-            "[JumpBack]公共_付费防呆",
-            "Flag_体力已领取"
-        ],
-        "on_error": [
-            "体力_未领取"
-        ]
-    },
-    "Flag_体力已领取": {
-        "desc": "弹出「恭喜获得 / 获得奖励」即为领取成功，点空白处关闭",
+    "体力_午间成功": {
         "recognition": {
             "type": "OCR",
             "param": {
@@ -261,13 +267,192 @@
             "time": 800,
             "timeout": 8000
         },
+        "next": [
+            "体力_晚间"
+        ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Limegreen]体力已领取[/color]"
+            "Node.Action.Succeeded": "[color:Limegreen]午间体力已领取[/color]"
         }
     },
-    "体力_未领取": {
+    "体力_午间不可领": {
+        "desc": "按钮是「已领取」或「尚未开启」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "已领取|尚未开启|未开启",
+                "roi": "体力_午间文字",
+                "roi_offset": [
+                    15,
+                    45,
+                    -15,
+                    25
+                ]
+            }
+        },
+        "next": [
+            "体力_晚间"
+        ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Orange]现在不在领取时段或已领过，未领取体力（不重试）[/color]"
+            "Node.Action.Succeeded": "[color:Dimgray]午间体力：已领取或未到时间[/color]"
+        }
+    },
+    "体力_晚间": {
+        "desc": "大白窗口（标题「来自大白的馈赠」）底部的「晚间」罐头，位置固定",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "来自大白的馈赠",
+                "roi": [
+                    760,
+                    145,
+                    270,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    970,
+                    590,
+                    75,
+                    70
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 8000
+        },
+        "timeout": 10000,
+        "next": [
+            "体力_晚间文字"
+        ],
+        "on_error": [
+            "Flag_体力检查完成"
+        ]
+    },
+    "体力_晚间文字": {
+        "desc": "找到「每天17:30…领取」这行字，再看它正下方的按钮",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "每天\\s*17:30",
+                "roi": [
+                    700,
+                    280,
+                    400,
+                    55
+                ]
+            }
+        },
+        "timeout": 5000,
+        "next": [
+            "体力_领晚间",
+            "体力_晚间不可领"
+        ],
+        "on_error": [
+            "Flag_体力检查完成"
+        ]
+    },
+    "体力_领晚间": {
+        "desc": "时间文字正下方的按钮写着「领取」才点",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^领\\s*取$",
+                "roi": "体力_晚间文字",
+                "roi_offset": [
+                    15,
+                    45,
+                    -15,
+                    25
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 8000
+        },
+        "next": [
+            "体力_晚间领后"
+        ]
+    },
+    "体力_晚间领后": {
+        "timeout": 8000,
+        "next": [
+            "[JumpBack]公共_付费防呆",
+            "体力_晚间成功"
+        ],
+        "on_error": [
+            "Flag_体力检查完成"
+        ]
+    },
+    "体力_晚间成功": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "恭喜获得|获得奖励",
+                "roi": [
+                    380,
+                    130,
+                    520,
+                    140
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    560,
+                    630,
+                    160,
+                    30
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 8000
+        },
+        "next": [
+            "Flag_体力检查完成"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]晚间体力已领取[/color]"
+        }
+    },
+    "体力_晚间不可领": {
+        "desc": "按钮是「已领取」或「尚未开启」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "已领取|尚未开启|未开启",
+                "roi": "体力_晚间文字",
+                "roi_offset": [
+                    15,
+                    45,
+                    -15,
+                    25
+                ]
+            }
+        },
+        "next": [
+            "Flag_体力检查完成"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]晚间体力：已领取或未到时间[/color]"
+        }
+    },
+    "Flag_体力检查完成": {
+        "desc": "午间、晚间都检查过了（领到与否见上面的日志）",
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]今日体力检查完成[/color]"
         }
     }
 }
