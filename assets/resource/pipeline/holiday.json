@@ -1,0 +1,251 @@
+{
+    "假日一键领取": {
+        "desc": "任务入口：确保在主界面后进入",
+        "timeout": 60000,
+        "next": [
+            "假日_打开",
+            "[JumpBack]公共_返回主界面"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]开始：假日一键领取[/color]"
+        }
+    },
+    "假日_打开": {
+        "desc": "主界面「假日」（全景在左侧，默认主题在底部）（必须先确认在主界面，避免公告未关时误点）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    950,
+                                                                    290,
+                                                                    120,
+                                                                    80
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    700,
+                                                                    635,
+                                                                    100,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    180,
+                                                                    410,
+                                                                    95,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    780,
+                                                                    655,
+                                                                    85,
+                                                                    50
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "^假日$",
+                                                "roi": [
+                                                    5,
+                                                    340,
+                                                    120,
+                                                    75
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "^假日$",
+                                                "roi": [
+                                                    590,
+                                                    655,
+                                                    85,
+                                                    50
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 15000
+        },
+        "next": [
+            "假日_切到清单"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "假日_切到清单": {
+        "desc": "上方「假日清单」页签",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "假日清单",
+                "roi": [
+                    545,
+                    85,
+                    150,
+                    50
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "timeout": 15000,
+        "next": [
+            "假日_一键领取"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "假日_一键领取": {
+        "desc": "右下角「一键领取」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "键领取",
+                "roi": [
+                    1050,
+                    600,
+                    180,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "timeout": 10000,
+        "next": [
+            "假日_等待"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "假日_等待": {
+        "timeout": 20000,
+        "next": [
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "Flag_假日领取完成"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "Flag_假日领取完成": {
+        "desc": "奖励弹窗关闭后回到假日清单",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "假日清单",
+                "roi": [
+                    545,
+                    85,
+                    150,
+                    50
+                ]
+            }
+        },
+        "pre_wait_freezes": {
+            "time": 1000,
+            "timeout": 8000
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]假日奖励已领取[/color]"
+        }
+    }
+}

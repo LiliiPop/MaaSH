@@ -14,41 +14,134 @@
         }
     },
     "好友_打开好友页": {
-        "desc": "全景主题：左上角第四个图标；默认主题：右下角「好友」",
+        "desc": "全景主题：左上角第四个图标；默认主题：右下角「好友」（必须先确认在主界面，避免公告未关时误点）",
         "recognition": {
-            "type": "Or",
+            "type": "And",
             "param": {
-                "any_of": [
+                "all_of": [
                     {
                         "recognition": {
-                            "type": "TemplateMatch",
+                            "type": "Or",
                             "param": {
-                                "template": "home/好友_全景.png",
-                                "roi": [
-                                    320,
-                                    0,
-                                    90,
-                                    100
-                                ],
-                                "threshold": 0.75
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    950,
+                                                                    290,
+                                                                    120,
+                                                                    80
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    700,
+                                                                    635,
+                                                                    100,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    180,
+                                                                    410,
+                                                                    95,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    780,
+                                                                    655,
+                                                                    85,
+                                                                    50
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
                             }
                         }
                     },
                     {
                         "recognition": {
-                            "type": "OCR",
+                            "type": "Or",
                             "param": {
-                                "expected": "^好友$",
-                                "roi": [
-                                    1160,
-                                    650,
-                                    100,
-                                    55
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": "home/好友_全景.png",
+                                                "roi": [
+                                                    320,
+                                                    0,
+                                                    90,
+                                                    100
+                                                ],
+                                                "threshold": 0.75
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "^好友$",
+                                                "roi": [
+                                                    1160,
+                                                    650,
+                                                    100,
+                                                    55
+                                                ]
+                                            }
+                                        }
+                                    }
                                 ]
                             }
                         }
                     }
-                ]
+                ],
+                "box_index": 1
             }
         },
         "action": {

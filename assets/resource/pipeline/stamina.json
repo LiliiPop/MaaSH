@@ -1,0 +1,273 @@
+{
+    "领体力": {
+        "desc": "任务入口：主界面「体力补给 / 今日体力」→ 领取当前时段的体力。建议由调度在 12:00-15:00、17:30-21:00 各运行一次",
+        "timeout": 60000,
+        "next": [
+            "体力_打开",
+            "[JumpBack]公共_返回主界面"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]开始：领体力[/color]"
+        }
+    },
+    "体力_打开": {
+        "desc": "主界面的「体力补给 / 今日体力」入口（待截图确认默认主题位置）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    950,
+                                                                    290,
+                                                                    120,
+                                                                    80
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    700,
+                                                                    635,
+                                                                    100,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    180,
+                                                                    410,
+                                                                    95,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    780,
+                                                                    655,
+                                                                    85,
+                                                                    50
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "体力补给|今日体力",
+                                "roi": [
+                                    0,
+                                    80,
+                                    1280,
+                                    600
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 10000
+        },
+        "next": [
+            "体力_窗口"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "体力_窗口": {
+        "desc": "领取窗口：先试中午，再试晚上；都不行就记一条橙色日志结束（不重试）",
+        "timeout": 8000,
+        "next": [
+            "[JumpBack]公共_付费防呆",
+            "体力_点中午",
+            "体力_点晚上",
+            "体力_未领取"
+        ]
+    },
+    "体力_点中午": {
+        "desc": "找到「每天12:00-15:00领取」这行字，点它正下方的领取按钮（偏移量待截图确认）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "12:00\\s*[-~－]\\s*15:00",
+                "roi": [
+                    0,
+                    80,
+                    1280,
+                    600
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    0,
+                    55,
+                    0,
+                    0
+                ]
+            }
+        },
+        "max_hit": 1,
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 8000
+        },
+        "next": [
+            "体力_结果_中午"
+        ]
+    },
+    "体力_结果_中午": {
+        "timeout": 6000,
+        "next": [
+            "[JumpBack]公共_付费防呆",
+            "Flag_体力已领取"
+        ],
+        "on_error": [
+            "体力_点晚上"
+        ]
+    },
+    "体力_点晚上": {
+        "desc": "找到「每天17:30-21:00领取」这行字，点它正下方的领取按钮（偏移量待截图确认）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "17:30\\s*[-~－]\\s*21:00",
+                "roi": [
+                    0,
+                    80,
+                    1280,
+                    600
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    0,
+                    55,
+                    0,
+                    0
+                ]
+            }
+        },
+        "max_hit": 1,
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 8000
+        },
+        "next": [
+            "体力_结果_晚上"
+        ]
+    },
+    "体力_结果_晚上": {
+        "timeout": 6000,
+        "next": [
+            "[JumpBack]公共_付费防呆",
+            "Flag_体力已领取"
+        ],
+        "on_error": [
+            "体力_未领取"
+        ]
+    },
+    "Flag_体力已领取": {
+        "desc": "弹出「恭喜获得 / 获得奖励」即为领取成功，点空白处关闭",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "恭喜获得|获得奖励",
+                "roi": [
+                    380,
+                    130,
+                    520,
+                    140
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    560,
+                    630,
+                    160,
+                    30
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 8000
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]体力已领取[/color]"
+        }
+    },
+    "体力_未领取": {
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]现在不在领取时段或已领过，未领取体力（不重试）[/color]"
+        }
+    }
+}

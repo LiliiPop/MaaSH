@@ -1,9 +1,10 @@
 {
     "公共_返回主界面": {
-        "desc": "任务开始前调用：反复处理弹窗和返回键，直到认出主界面",
+        "desc": "任务开始前调用：反复处理弹窗和返回键，直到认出主界面。max_hit 防止「已在主界面但入口认不出」时无限循环",
         "timeout": 30000,
         "next": [
             "Flag_在主界面",
+            "[JumpBack]公共_付费防呆",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
             "[JumpBack]公共_关闭公告",
@@ -11,7 +12,8 @@
         ],
         "on_error": [
             "公共_任务失败"
-        ]
+        ],
+        "max_hit": 6
     },
     "Flag_在主界面": {
         "desc": "认主界面「画廊」+「图鉴」，全景主题和默认主题都支持",
@@ -295,21 +297,114 @@
         ]
     },
     "公共_打开任务页": {
-        "desc": "主界面左上角的日历图标（两种主题各一张模板）",
+        "desc": "主界面左上角的日历图标（两种主题各一张模板）（必须先确认在主界面，避免公告未关时误点）",
         "recognition": {
-            "type": "TemplateMatch",
+            "type": "And",
             "param": {
-                "template": [
-                    "home/日历_全景.png",
-                    "home/日历_默认.png"
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    950,
+                                                                    290,
+                                                                    120,
+                                                                    80
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    700,
+                                                                    635,
+                                                                    100,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    180,
+                                                                    410,
+                                                                    95,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    780,
+                                                                    655,
+                                                                    85,
+                                                                    50
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "TemplateMatch",
+                            "param": {
+                                "template": [
+                                    "home/日历_全景.png",
+                                    "home/日历_默认.png"
+                                ],
+                                "roi": [
+                                    150,
+                                    0,
+                                    220,
+                                    110
+                                ],
+                                "threshold": 0.75
+                            }
+                        }
+                    }
                 ],
-                "roi": [
-                    150,
-                    0,
-                    220,
-                    110
-                ],
-                "threshold": 0.75
+                "box_index": 1
             }
         },
         "action": {
@@ -435,6 +530,40 @@
         "post_wait_freezes": {
             "time": 600,
             "timeout": 5000
+        }
+    },
+    "公共_付费防呆": {
+        "desc": "防呆：弹窗里的按钮标着人民币价格（¥/￥）时，不点按钮，点左下角空白处取消。钻石价格的识别待截图（WorkfieldScreenshots/safety）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "[¥￥]\\s*\\d",
+                "roi": [
+                    420,
+                    555,
+                    440,
+                    95
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    20,
+                    660,
+                    40,
+                    40
+                ]
+            }
+        },
+        "max_hit": 5,
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 8000
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]检测到付费弹窗，已点空白处取消[/color]"
         }
     }
 }

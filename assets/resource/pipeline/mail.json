@@ -14,21 +14,114 @@
         }
     },
     "邮件_打开邮箱": {
-        "desc": "主界面左上角信封图标（两种主题）",
+        "desc": "主界面左上角信封图标（两种主题）（必须先确认在主界面，避免公告未关时误点）",
         "recognition": {
-            "type": "TemplateMatch",
+            "type": "And",
             "param": {
-                "template": [
-                    "home/邮件_全景.png",
-                    "home/邮件_默认.png"
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    950,
+                                                                    290,
+                                                                    120,
+                                                                    80
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    700,
+                                                                    635,
+                                                                    100,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    180,
+                                                                    410,
+                                                                    95,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    780,
+                                                                    655,
+                                                                    85,
+                                                                    50
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "TemplateMatch",
+                            "param": {
+                                "template": [
+                                    "home/邮件_全景.png",
+                                    "home/邮件_默认.png"
+                                ],
+                                "roi": [
+                                    90,
+                                    0,
+                                    200,
+                                    110
+                                ],
+                                "threshold": 0.75
+                            }
+                        }
+                    }
                 ],
-                "roi": [
-                    90,
-                    0,
-                    200,
-                    110
-                ],
-                "threshold": 0.75
+                "box_index": 1
             }
         },
         "action": {

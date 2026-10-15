@@ -1,0 +1,10 @@
+{
+    "task": [
+        {
+            "name": "🎀免费礼包",
+            "entry": "免费礼包",
+            "default_check": true,
+            "description": "采购 → 礼包 → 常驻礼包 → 每日惊喜盒子（只点「免费」）。"
+        }
+    ]
+}

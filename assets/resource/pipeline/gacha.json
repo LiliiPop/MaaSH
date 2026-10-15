@@ -14,40 +14,133 @@
         }
     },
     "抽卡_打开画廊": {
-        "desc": "主界面上的「画廊」文字（两种主题位置不同）",
+        "desc": "主界面上的「画廊」文字（两种主题位置不同）（必须先确认在主界面，避免公告未关时误点）",
         "recognition": {
-            "type": "Or",
+            "type": "And",
             "param": {
-                "any_of": [
+                "all_of": [
                     {
                         "recognition": {
-                            "type": "OCR",
+                            "type": "Or",
                             "param": {
-                                "expected": "^画廊$",
-                                "roi": [
-                                    950,
-                                    290,
-                                    120,
-                                    80
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    950,
+                                                                    290,
+                                                                    120,
+                                                                    80
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    700,
+                                                                    635,
+                                                                    100,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    180,
+                                                                    410,
+                                                                    95,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    780,
+                                                                    655,
+                                                                    85,
+                                                                    50
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
                                 ]
                             }
                         }
                     },
                     {
                         "recognition": {
-                            "type": "OCR",
+                            "type": "Or",
                             "param": {
-                                "expected": "^画廊$",
-                                "roi": [
-                                    180,
-                                    410,
-                                    95,
-                                    60
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "^画廊$",
+                                                "roi": [
+                                                    950,
+                                                    290,
+                                                    120,
+                                                    80
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "^画廊$",
+                                                "roi": [
+                                                    180,
+                                                    410,
+                                                    95,
+                                                    60
+                                                ]
+                                            }
+                                        }
+                                    }
                                 ]
                             }
                         }
                     }
-                ]
+                ],
+                "box_index": 1
             }
         },
         "action": {

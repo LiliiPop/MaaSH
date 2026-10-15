@@ -1,0 +1,310 @@
+{
+    "免费礼包": {
+        "desc": "任务入口：确保在主界面后进入",
+        "timeout": 60000,
+        "next": [
+            "礼包_打开采购",
+            "[JumpBack]公共_返回主界面"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]开始：免费礼包[/color]"
+        }
+    },
+    "礼包_打开采购": {
+        "desc": "主界面「采购」（必须先确认在主界面，避免公告未关时误点）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    950,
+                                                                    290,
+                                                                    120,
+                                                                    80
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    700,
+                                                                    635,
+                                                                    100,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    180,
+                                                                    410,
+                                                                    95,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    780,
+                                                                    655,
+                                                                    85,
+                                                                    50
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^采购$",
+                                "roi": [
+                                    300,
+                                    480,
+                                    960,
+                                    130
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "礼包_礼包页"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "礼包_礼包页": {
+        "desc": "左侧「礼包」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^礼包$",
+                "roi": [
+                    25,
+                    210,
+                    100,
+                    65
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "timeout": 15000,
+        "next": [
+            "礼包_常驻礼包"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "礼包_常驻礼包": {
+        "desc": "上方「常驻礼包」页签",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "常驻礼包",
+                "roi": [
+                    400,
+                    70,
+                    230,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "timeout": 15000,
+        "next": [
+            "礼包_点免费盒子",
+            "Flag_免费礼包完成"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "礼包_点免费盒子": {
+        "desc": "「每日惊喜盒子」下方标价「免费」（只点写着免费的，绝不点¥）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "每日惊喜盒子",
+                                "roi": [
+                                    165,
+                                    370,
+                                    1030,
+                                    50
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^免费$",
+                                "roi": [
+                                    165,
+                                    405,
+                                    1030,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 2,
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "礼包_确认免费",
+            "公共_付费防呆"
+        ]
+    },
+    "礼包_确认免费": {
+        "desc": "弹窗里的「免费」按钮",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "免\\s*费",
+                "roi": [
+                    540,
+                    570,
+                    200,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "timeout": 10000,
+        "next": [
+            "礼包_等待"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "礼包_等待": {
+        "timeout": 20000,
+        "next": [
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "Flag_免费礼包完成"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "Flag_免费礼包完成": {
+        "desc": "常驻礼包第一排里已经没有「每日惊喜盒子」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "每日惊喜盒子",
+                "roi": [
+                    165,
+                    370,
+                    1030,
+                    50
+                ]
+            }
+        },
+        "inverse": true,
+        "pre_wait_freezes": {
+            "time": 1000,
+            "timeout": 8000
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]每日惊喜盒子已领取[/color]"
+        }
+    }
+}

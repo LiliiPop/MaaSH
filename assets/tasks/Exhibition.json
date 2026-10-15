@@ -1,0 +1,57 @@
+{
+    "task": [
+        {
+            "name": "🖼️画展宣传",
+            "entry": "画展",
+            "default_check": true,
+            "description": "校园 → 画展：先领已结束场次的奖励，再按 NPC 说的地点开新画展（快速选择 → 申请）。<br>绝不点「取消宣传」「加速宣传」。",
+            "option": [
+                "画展二选一奖励"
+            ]
+        }
+    ],
+    "option": {
+        "画展二选一奖励": {
+            "type": "select",
+            "description": "偶尔出现的二选一奖励",
+            "cases": [
+                {
+                    "name": "左边",
+                    "pipeline_override": {
+                        "画展_选择奖励": {
+                            "action": {
+                                "type": "Click",
+                                "param": {
+                                    "target": [
+                                        500,
+                                        300,
+                                        110,
+                                        140
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "右边",
+                    "pipeline_override": {
+                        "画展_选择奖励": {
+                            "action": {
+                                "type": "Click",
+                                "param": {
+                                    "target": [
+                                        670,
+                                        300,
+                                        110,
+                                        140
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

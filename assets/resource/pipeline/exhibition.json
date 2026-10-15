@@ -1,0 +1,613 @@
+{
+    "画展": {
+        "desc": "任务入口：确保在主界面后进入",
+        "timeout": 60000,
+        "next": [
+            "画展_进入校园",
+            "[JumpBack]公共_返回主界面"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]开始：画展[/color]"
+        }
+    },
+    "画展_进入校园": {
+        "desc": "主界面「校园」（全景在右侧，默认主题在左侧）（必须先确认在主界面，避免公告未关时误点）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    950,
+                                                                    290,
+                                                                    120,
+                                                                    80
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    700,
+                                                                    635,
+                                                                    100,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    180,
+                                                                    410,
+                                                                    95,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    780,
+                                                                    655,
+                                                                    85,
+                                                                    50
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "^校园$",
+                                                "roi": [
+                                                    950,
+                                                    395,
+                                                    110,
+                                                    65
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "^校园$",
+                                                "roi": [
+                                                    10,
+                                                    295,
+                                                    80,
+                                                    50
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 15000
+        },
+        "next": [
+            "画展_点画展按钮"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "画展_点画展按钮": {
+        "desc": "校园右下角「画展」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^画展$",
+                "roi": [
+                    930,
+                    650,
+                    95,
+                    45
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    925,
+                    610,
+                    75,
+                    75
+                ]
+            }
+        },
+        "timeout": 20000,
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 15000
+        },
+        "next": [
+            "画展_流程"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "画展_流程": {
+        "desc": "收菜循环：先领已结束的，再开新的；所有场次都在倒计时就结束",
+        "timeout": 150000,
+        "next": [
+            "画展_选择奖励",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]画展_确认结束",
+            "[JumpBack]画展_选地点_清音楼",
+            "[JumpBack]画展_选地点_天文台",
+            "[JumpBack]画展_选地点_港口",
+            "[JumpBack]画展_选地点_律政楼",
+            "[JumpBack]画展_快速选择",
+            "[JumpBack]画展_下一场",
+            "Flag_画展完成"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "画展_确认结束": {
+        "desc": "宣传已结束（大受欢迎）：点「确定」领奖",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "确\\s*定",
+                                "roi": [
+                                    780,
+                                    540,
+                                    160,
+                                    60
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "等级加成",
+                                "roi": [
+                                    590,
+                                    425,
+                                    150,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    790,
+                    550,
+                    140,
+                    45
+                ]
+            }
+        },
+        "max_hit": 5,
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        }
+    },
+    "画展_选择奖励": {
+        "desc": "偶发：二选一奖励。由选项「画展二选一奖励」决定点左边还是右边，然后点「领取」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "奖励领取",
+                "roi": [
+                    540,
+                    170,
+                    200,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    500,
+                    300,
+                    110,
+                    140
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 5000
+        },
+        "next": [
+            "画展_领取奖励"
+        ]
+    },
+    "画展_领取奖励": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "领\\s*取",
+                "roi": [
+                    560,
+                    510,
+                    160,
+                    55
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "画展_流程"
+        ]
+    },
+    "画展_选地点_清音楼": {
+        "desc": "NPC 说「今天要到清音楼进行宣传」：在地图上点清音楼",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "到清音楼",
+                                "roi": [
+                                    90,
+                                    575,
+                                    480,
+                                    90
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^清音楼$",
+                                "roi": [
+                                    560,
+                                    170,
+                                    620,
+                                    380
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 5,
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        }
+    },
+    "画展_选地点_天文台": {
+        "desc": "NPC 说「今天要到天文台进行宣传」：在地图上点天文台",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "到天文台",
+                                "roi": [
+                                    90,
+                                    575,
+                                    480,
+                                    90
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^天文台$",
+                                "roi": [
+                                    560,
+                                    170,
+                                    620,
+                                    380
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 5,
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        }
+    },
+    "画展_选地点_港口": {
+        "desc": "NPC 说「今天要到港口进行宣传」：在地图上点港口",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "到港口",
+                                "roi": [
+                                    90,
+                                    575,
+                                    480,
+                                    90
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^港口$",
+                                "roi": [
+                                    560,
+                                    170,
+                                    620,
+                                    380
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 5,
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        }
+    },
+    "画展_选地点_律政楼": {
+        "desc": "NPC 说「今天要到律政楼进行宣传」：在地图上点律政楼",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "到律政楼",
+                                "roi": [
+                                    90,
+                                    575,
+                                    480,
+                                    90
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^律政楼$",
+                                "roi": [
+                                    560,
+                                    170,
+                                    620,
+                                    380
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 5,
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        }
+    },
+    "画展_快速选择": {
+        "desc": "申请表：快速选择画灵，然后申请",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "快速选择",
+                "roi": [
+                    860,
+                    510,
+                    145,
+                    50
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 5,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 5000
+        },
+        "next": [
+            "画展_申请"
+        ]
+    },
+    "画展_申请": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^申请$",
+                "roi": [
+                    1020,
+                    500,
+                    100,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "timeout": 5000
+    },
+    "画展_下一场": {
+        "desc": "当前场次在倒计时：点右箭头看下一场（绝不点「取消宣传」「加速宣传」）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "宣传倒计时",
+                "roi": [
+                    950,
+                    405,
+                    200,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1200,
+                    355,
+                    35,
+                    55
+                ]
+            }
+        },
+        "max_hit": 3,
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        }
+    },
+    "Flag_画展完成": {
+        "desc": "所有场次都已在宣传中",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "宣传倒计时",
+                "roi": [
+                    950,
+                    405,
+                    200,
+                    60
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]画展：已领取结束的奖励，所有场次都在宣传中[/color]"
+        }
+    }
+}
