@@ -14,19 +14,72 @@
         ]
     },
     "Flag_在主界面": {
-        "desc": "待截图：主界面",
-        "enabled": false,
+        "desc": "认主界面「画廊」+「图鉴」",
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]已回到主界面[/color]"
+        },
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "画廊",
+                                "roi": [
+                                    950,
+                                    290,
+                                    120,
+                                    80
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "图鉴",
+                                "roi": [
+                                    700,
+                                    635,
+                                    100,
+                                    60
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
         }
     },
     "公共_返回按钮": {
-        "desc": "待截图：子界面左上角的返回键",
-        "enabled": false,
-        "max_hit": 10
+        "desc": "子界面左上角的钢笔尖返回键（目前只采样了快速模式-今日任务界面，其他界面待确认）",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "common/返回按钮.png",
+                "roi": [
+                    20,
+                    10,
+                    100,
+                    80
+                ],
+                "threshold": 0.8
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 10,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 10000
+        }
     },
     "公共_关闭公告": {
-        "desc": "待截图：活动公告的关闭按钮。公告数量不定，会被反复调用",
+        "desc": "待截图：活动公告。关闭方式已确认为点公告外的空白处。公告数量不定，会被反复调用",
         "enabled": false,
         "max_hit": 20
     },
@@ -35,12 +88,58 @@
         "enabled": false
     },
     "公共_获得奖励": {
-        "desc": "待截图：领取后的获得奖励弹窗",
-        "enabled": false
+        "desc": "「恭喜获得」奖励弹窗：点底部「点击空白处继续」的位置关闭",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "恭喜获得",
+                "roi": [
+                    480,
+                    170,
+                    340,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    560,
+                    630,
+                    160,
+                    30
+                ]
+            }
+        },
+        "max_hit": 20,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 5000
+        }
     },
     "公共_点击空白继续": {
-        "desc": "待截图：带「点击空白处继续」提示的画面",
-        "enabled": false
+        "desc": "带「点击空白处继续」提示的画面：直接点提示文字处",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "点击空白处继续",
+                "roi": [
+                    480,
+                    610,
+                    320,
+                    70
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 20,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 5000
+        }
     },
     "公共_断线重连": {
         "desc": "待截图：网络异常 / 断线重连弹窗",

@@ -31,8 +31,7 @@
         ]
     },
     "启动_主界面初判": {
-        "desc": "待截图：主界面（干净状态）。第一次认出主界面后不立即算完成，等画面静止再复核一次，防止公告晚弹",
-        "enabled": false,
+        "desc": "认主界面右侧「画廊」和底部「图鉴」两个固定按钮（看板角色和背景会变，不用整图）。认出后等画面静止再复核一次，防止公告晚弹",
         "post_wait_freezes": {
             "time": 2000,
             "timeout": 15000
@@ -42,19 +41,137 @@
             "[JumpBack]公共_关闭公告",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续"
-        ]
+        ],
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "画廊",
+                                "roi": [
+                                    950,
+                                    290,
+                                    120,
+                                    80
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "图鉴",
+                                "roi": [
+                                    700,
+                                    635,
+                                    100,
+                                    60
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        }
     },
     "Flag_启动完成": {
-        "desc": "待截图：主界面复核通过即算启动成功",
-        "enabled": false,
+        "desc": "画面静止后再次认出主界面，才算启动成功",
         "focus": {
             "Node.Action.Succeeded": "[color:Limegreen]启动完成，已在主界面[/color]"
+        },
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "画廊",
+                                "roi": [
+                                    950,
+                                    290,
+                                    120,
+                                    80
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "图鉴",
+                                "roi": [
+                                    700,
+                                    635,
+                                    100,
+                                    60
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
         }
     },
     "启动_点击登录": {
-        "desc": "待截图：登录界面。游戏会自动登录默认账号，但需要点一下才进入",
-        "enabled": false,
-        "max_hit": 5
+        "desc": "登录界面：开屏图可自定义，所以认底部「点击屏幕开始」文字，或右侧固定的「账号信息」按钮；点击提示文字所在位置进入游戏",
+        "recognition": {
+            "type": "Or",
+            "param": {
+                "any_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "点击屏幕开始",
+                                "roi": [
+                                    540,
+                                    550,
+                                    210,
+                                    55
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "账号信息",
+                                "roi": [
+                                    1160,
+                                    65,
+                                    100,
+                                    45
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    600,
+                    560,
+                    90,
+                    30
+                ]
+            }
+        },
+        "max_hit": 5,
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 20000
+        }
     },
     "启动_切换账号": {
         "desc": "预留：在登录界面切换到指定账号。默认关闭，由「使用指定账号登录」选项打开",
