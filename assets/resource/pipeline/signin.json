@@ -1,0 +1,138 @@
+{
+    "签到": {
+        "desc": "任务入口：确保在主界面后打开任务页",
+        "timeout": 60000,
+        "next": [
+            "签到_打开任务页",
+            "[JumpBack]公共_返回主界面"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]开始：签到[/color]"
+        }
+    },
+    "签到_打开任务页": {
+        "desc": "主界面左上角第三个图标（日历打勾）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "画廊",
+                                "roi": [
+                                    950,
+                                    290,
+                                    120,
+                                    80
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "图鉴",
+                                "roi": [
+                                    700,
+                                    635,
+                                    100,
+                                    60
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    285,
+                    28,
+                    30,
+                    30
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "签到_切到签到页"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "签到_切到签到页": {
+        "desc": "左侧「签到」页签；切过去会自动签到并弹奖励",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "签",
+                "roi": [
+                    15,
+                    155,
+                    65,
+                    95
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1500,
+            "timeout": 10000
+        },
+        "timeout": 15000,
+        "next": [
+            "签到_等待"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "签到_等待": {
+        "desc": "关掉签到奖励弹窗，直到签到页稳定",
+        "timeout": 20000,
+        "next": [
+            "Flag_签到完成",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "Flag_签到完成": {
+        "desc": "签到页稳定显示「本月累计签到」，且没有奖励弹窗",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "本月累计签到",
+                "roi": [
+                    400,
+                    125,
+                    260,
+                    55
+                ]
+            }
+        },
+        "pre_wait_freezes": {
+            "time": 1500,
+            "timeout": 10000
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]签到完成[/color]"
+        }
+    }
+}

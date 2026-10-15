@@ -1,0 +1,205 @@
+{
+    "好友体力": {
+        "desc": "任务入口：确保在主界面后打开好友页",
+        "timeout": 60000,
+        "next": [
+            "好友_打开好友页",
+            "[JumpBack]公共_返回主界面"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]开始：好友体力[/color]"
+        }
+    },
+    "好友_打开好友页": {
+        "desc": "主界面左上角第四个图标（两个人）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "画廊",
+                                "roi": [
+                                    950,
+                                    290,
+                                    120,
+                                    80
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "图鉴",
+                                "roi": [
+                                    700,
+                                    635,
+                                    100,
+                                    60
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    348,
+                    28,
+                    30,
+                    30
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "timeout": 15000,
+        "next": [
+            "好友_一键赠领",
+            "Flag_好友体力完成",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "好友_一键赠领": {
+        "desc": "「一键赠领」按钮为深色（可点）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "赠领",
+                                "roi": [
+                                    985,
+                                    630,
+                                    170,
+                                    65
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    985,
+                                    630,
+                                    170,
+                                    65
+                                ],
+                                "method": 4,
+                                "lower": [
+                                    40,
+                                    30,
+                                    20
+                                ],
+                                "upper": [
+                                    115,
+                                    100,
+                                    90
+                                ],
+                                "count": 2000
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 10000
+        },
+        "next": [
+            "好友_等待"
+        ]
+    },
+    "好友_等待": {
+        "timeout": 20000,
+        "next": [
+            "Flag_好友体力完成",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "Flag_好友体力完成": {
+        "desc": "「一键赠领」按钮变为浅色（已赠领）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "赠领",
+                                "roi": [
+                                    985,
+                                    630,
+                                    170,
+                                    65
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    985,
+                                    630,
+                                    170,
+                                    65
+                                ],
+                                "method": 4,
+                                "lower": [
+                                    195,
+                                    190,
+                                    185
+                                ],
+                                "upper": [
+                                    255,
+                                    255,
+                                    255
+                                ],
+                                "count": 4000
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "pre_wait_freezes": {
+            "time": 800,
+            "timeout": 8000
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]好友体力已赠送并领取[/color]"
+        }
+    }
+}

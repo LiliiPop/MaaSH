@@ -1,0 +1,233 @@
+{
+    "月卡": {
+        "desc": "任务入口：确保在主界面后打开采购",
+        "timeout": 60000,
+        "next": [
+            "月卡_打开采购",
+            "[JumpBack]公共_返回主界面"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]开始：月卡[/color]"
+        }
+    },
+    "月卡_打开采购": {
+        "desc": "主界面右侧「采购」",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "画廊",
+                                "roi": [
+                                    950,
+                                    290,
+                                    120,
+                                    80
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "图鉴",
+                                "roi": [
+                                    700,
+                                    635,
+                                    100,
+                                    60
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1110,
+                    505,
+                    90,
+                    55
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "月卡_切到月卡页"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "月卡_切到月卡页": {
+        "desc": "左侧「月卡」页签",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "月卡",
+                "roi": [
+                    30,
+                    365,
+                    100,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "timeout": 15000,
+        "next": [
+            "月卡_领取",
+            "Flag_月卡完成",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "月卡_领取": {
+        "desc": "今日配送礼包「领取」为深色（可领）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "领取",
+                                "roi": [
+                                    1005,
+                                    630,
+                                    170,
+                                    65
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    1005,
+                                    630,
+                                    170,
+                                    65
+                                ],
+                                "method": 4,
+                                "lower": [
+                                    40,
+                                    30,
+                                    20
+                                ],
+                                "upper": [
+                                    115,
+                                    100,
+                                    90
+                                ],
+                                "count": 2000
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 10000
+        },
+        "next": [
+            "月卡_等待"
+        ]
+    },
+    "月卡_等待": {
+        "timeout": 20000,
+        "next": [
+            "Flag_月卡完成",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "Flag_月卡完成": {
+        "desc": "「领取」变为浅色（今日已领）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "领取",
+                                "roi": [
+                                    1005,
+                                    630,
+                                    170,
+                                    65
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    1005,
+                                    630,
+                                    170,
+                                    65
+                                ],
+                                "method": 4,
+                                "lower": [
+                                    195,
+                                    190,
+                                    185
+                                ],
+                                "upper": [
+                                    255,
+                                    255,
+                                    255
+                                ],
+                                "count": 4000
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "pre_wait_freezes": {
+            "time": 800,
+            "timeout": 8000
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]月卡今日奖励已领取[/color]"
+        }
+    }
+}

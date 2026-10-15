@@ -1,0 +1,328 @@
+{
+    "日程": {
+        "desc": "任务入口：确保在主界面后进入日程页",
+        "timeout": 60000,
+        "next": [
+            "日程_进入日程页",
+            "[JumpBack]公共_返回主界面"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]开始：日程[/color]"
+        }
+    },
+    "日程_进入日程页": {
+        "desc": "待截图：主界面 → 校园 → 右下角「日程」。截图到位前，请手动进入日程页后单独运行「日程_流程」",
+        "enabled": false
+    },
+    "日程_流程": {
+        "desc": "日程主循环：两页安排（校园活动 + 特殊邀约），特殊邀约需要去地图找信封、对话、选回复",
+        "timeout": 180000,
+        "next": [
+            "Flag_日程完成",
+            "[JumpBack]日程_翻页",
+            "[JumpBack]日程_随机选择",
+            "日程_选择回复",
+            "[JumpBack]日程_对话推进",
+            "[JumpBack]日程_点击信封",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "日程_随机选择": {
+        "desc": "日程页左下「随机选择」，随后点「确定」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "随机选择",
+                "roi": [
+                    115,
+                    600,
+                    125,
+                    50
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 6,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 5000
+        },
+        "next": [
+            "日程_确定"
+        ]
+    },
+    "日程_确定": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "确定",
+                "roi": [
+                    925,
+                    595,
+                    110,
+                    55
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 15000
+        },
+        "timeout": 5000
+    },
+    "日程_翻页": {
+        "desc": "第一页活动完成（右下 1/2）：点箭头进入下一页",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^1/2$",
+                "roi": [
+                    1070,
+                    600,
+                    90,
+                    50
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1090,
+                    550,
+                    60,
+                    55
+                ]
+            }
+        },
+        "max_hit": 4,
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        }
+    },
+    "日程_点击信封": {
+        "desc": "校园地图或场景中，人物头上的信封",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "schedule/信封_地图.png",
+                    "schedule/信封_场景.png"
+                ],
+                "threshold": 0.75
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 8,
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 15000
+        }
+    },
+    "日程_对话推进": {
+        "desc": "顶部对话框：点对话框继续",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "schedule/对话框标记.png",
+                "roi": [
+                    200,
+                    30,
+                    150,
+                    90
+                ],
+                "threshold": 0.8
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    300,
+                    95,
+                    450,
+                    60
+                ]
+            }
+        },
+        "max_hit": 20,
+        "pre_wait_freezes": {
+            "time": 800,
+            "timeout": 5000
+        }
+    },
+    "日程_选择回复": {
+        "desc": "出现回复选项时固定选第一个（最上面的）",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "schedule/回复选项.png",
+                "roi": [
+                    880,
+                    420,
+                    180,
+                    280
+                ],
+                "threshold": 0.8,
+                "order_by": "Vertical",
+                "index": 0
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    -420,
+                    -10,
+                    0,
+                    0
+                ]
+            }
+        },
+        "max_hit": 6,
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 8000
+        },
+        "next": [
+            "日程_等待完成"
+        ]
+    },
+    "日程_等待完成": {
+        "desc": "选完回复后：点对话或空白处推进，直到出现「完成 2/2」",
+        "timeout": 90000,
+        "next": [
+            "Flag_日程完成",
+            "[JumpBack]日程_再次回复",
+            "[JumpBack]日程_对话推进",
+            "[JumpBack]日程_空白推进"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "日程_空白推进": {
+        "desc": "剧情中无对话框时点下方空白处推进（只在选完回复后使用）",
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    620,
+                    690,
+                    40,
+                    20
+                ]
+            }
+        },
+        "max_hit": 20,
+        "pre_wait_freezes": {
+            "time": 1500,
+            "timeout": 10000
+        }
+    },
+    "Flag_日程完成": {
+        "desc": "特殊邀约完成页：右下「完成」+「2/2」，点完成收尾",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "完成",
+                                "roi": [
+                                    1075,
+                                    545,
+                                    90,
+                                    65
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^2/2$",
+                                "roi": [
+                                    1070,
+                                    600,
+                                    90,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1090,
+                    550,
+                    60,
+                    55
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]日程已安排完成[/color]"
+        }
+    },
+    "日程_再次回复": {
+        "desc": "对话中再次出现回复选项：同样选第一个",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "schedule/回复选项.png",
+                "roi": [
+                    880,
+                    420,
+                    180,
+                    280
+                ],
+                "threshold": 0.8,
+                "order_by": "Vertical",
+                "index": 0
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    -420,
+                    -10,
+                    0,
+                    0
+                ]
+            }
+        },
+        "max_hit": 6,
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 8000
+        }
+    }
+}

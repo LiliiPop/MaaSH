@@ -1,0 +1,10 @@
+{
+    "task": [
+        {
+            "name": "✉️领邮件",
+            "entry": "邮件",
+            "default_check": true,
+            "description": "邮箱「全部领取并已读」。只领取，不删除邮件。"
+        }
+    ]
+}

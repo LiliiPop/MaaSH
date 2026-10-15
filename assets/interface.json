@@ -27,6 +27,11 @@
     "import": [
         "tasks/SmokeTest.json",
         "tasks/StartUp.json",
+        "tasks/SignIn.json",
+        "tasks/Mail.json",
+        "tasks/MonthCard.json",
+        "tasks/Friend.json",
+        "tasks/Schedule.json",
         "tasks/AfterRun.json",
         "tasks/CloseGame.json"
     ],
