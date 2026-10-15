@@ -1,0 +1,225 @@
+{
+    "周常领取": {
+        "desc": "任务入口：进入任务页后切到「周常」，一键领取到按钮变灰。只领奖励，不做周常任务",
+        "anchor": {
+            "任务继续": "周常_切页"
+        },
+        "next": [
+            "公共_进入日常列表"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]开始：周常领取（只领奖励，周常任务要靠平时累计完成）[/color]"
+        }
+    },
+    "周常_切页": {
+        "desc": "任务页左侧「周常」页签",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^周\\s*常$",
+                "roi": [
+                    18,
+                    450,
+                    64,
+                    130
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 3,
+        "timeout": 10000,
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "周常_页面就绪"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "周常_页面就绪": {
+        "desc": "确认已在「本周任务」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "本周任务",
+                "roi": [
+                    220,
+                    90,
+                    260,
+                    70
+                ]
+            }
+        },
+        "timeout": 10000,
+        "next": [
+            "周常_领后"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "周常_一键领取": {
+        "desc": "右下角「一键领取」是红色（还有奖励）才点",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "领\\s*取",
+                                "roi": [
+                                    1190,
+                                    600,
+                                    80,
+                                    80
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    1200,
+                                    605,
+                                    72,
+                                    65
+                                ],
+                                "lower": [
+                                    150,
+                                    0,
+                                    0
+                                ],
+                                "upper": [
+                                    255,
+                                    110,
+                                    110
+                                ],
+                                "count": 700
+                            }
+                        }
+                    }
+                ],
+                "box_index": 0
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 8,
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 10000
+        },
+        "next": [
+            "周常_领后"
+        ]
+    },
+    "周常_领后": {
+        "desc": "点完后看有没有奖励弹窗",
+        "timeout": 5000,
+        "next": [
+            "[JumpBack]公共_快速模式提示",
+            "周常_有奖励",
+            "Flag_周常领取完成",
+            "周常_一键领取"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "周常_有奖励": {
+        "desc": "奖励弹窗：点空白处关掉",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "恭喜获得|获得奖励|点击空白处继续",
+                "roi": [
+                    380,
+                    130,
+                    520,
+                    560
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    560,
+                    630,
+                    160,
+                    30
+                ]
+            }
+        },
+        "max_hit": 20,
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "周常_领后"
+        ]
+    },
+    "Flag_周常领取完成": {
+        "desc": "「一键领取」已变灰：没有可领的奖励了",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "领\\s*取",
+                                "roi": [
+                                    1190,
+                                    600,
+                                    80,
+                                    80
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    1200,
+                                    605,
+                                    72,
+                                    65
+                                ],
+                                "lower": [
+                                    100,
+                                    100,
+                                    110
+                                ],
+                                "upper": [
+                                    165,
+                                    165,
+                                    175
+                                ],
+                                "count": 1500
+                            }
+                        }
+                    }
+                ],
+                "box_index": 0
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]周常奖励已全部领取（一键领取已变灰）[/color]"
+        }
+    }
+}

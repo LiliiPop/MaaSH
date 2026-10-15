@@ -38,6 +38,7 @@
         "tasks/Exhibition.json",
         "tasks/Gacha.json",
         "tasks/DailyClaim.json",
+        "tasks/WeeklyClaim.json",
         "tasks/Holiday.json",
         "tasks/Cinema.json",
         "tasks/Stamina.json",

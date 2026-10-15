@@ -1,8 +1,8 @@
 {
     "每日任务领取": {
-        "desc": "任务入口：进入任务页「日常」后一键领取",
+        "desc": "任务入口：进入任务页「日常」，一键领取到按钮变灰",
         "anchor": {
-            "任务继续": "每日任务_一键领取"
+            "任务继续": "每日任务_领后"
         },
         "next": [
             "公共_进入日常列表"
@@ -12,52 +12,146 @@
         }
     },
     "每日任务_一键领取": {
-        "desc": "右下角「一键领取」：反复点，直到点了也不再弹奖励（任务奖励、下方钻石进度奖励都领完）",
+        "desc": "右下角「一键领取」是红色（还有奖励）才点",
         "recognition": {
-            "type": "OCR",
+            "type": "And",
             "param": {
-                "expected": "领取",
-                "roi": [
-                    1190,
-                    600,
-                    80,
-                    80
-                ]
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "领\\s*取",
+                                "roi": [
+                                    1190,
+                                    600,
+                                    80,
+                                    80
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    1200,
+                                    605,
+                                    72,
+                                    65
+                                ],
+                                "lower": [
+                                    150,
+                                    0,
+                                    0
+                                ],
+                                "upper": [
+                                    255,
+                                    110,
+                                    110
+                                ],
+                                "count": 700
+                            }
+                        }
+                    }
+                ],
+                "box_index": 0
             }
         },
         "action": {
             "type": "Click"
         },
+        "max_hit": 8,
         "post_wait_freezes": {
             "time": 1000,
             "timeout": 10000
         },
-        "timeout": 10000,
         "next": [
             "每日任务_领后"
-        ],
-        "on_error": [
-            "公共_任务失败"
-        ],
-        "max_hit": 8
+        ]
     },
     "Flag_每日任务领取完成": {
-        "desc": "再点一键领取已经没有新奖励",
+        "desc": "「一键领取」已变灰：没有可领的奖励了",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "今日任务",
+                                "roi": [
+                                    220,
+                                    90,
+                                    260,
+                                    70
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "领\\s*取",
+                                "roi": [
+                                    1190,
+                                    600,
+                                    80,
+                                    80
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    1200,
+                                    605,
+                                    72,
+                                    65
+                                ],
+                                "lower": [
+                                    100,
+                                    100,
+                                    110
+                                ],
+                                "upper": [
+                                    165,
+                                    165,
+                                    175
+                                ],
+                                "count": 1500
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
         "focus": {
-            "Node.Action.Succeeded": "[color:Limegreen]每日任务和钻石进度奖励已全部领取[/color]"
+            "Node.Action.Succeeded": "[color:Limegreen]每日任务和钻石进度奖励已全部领取（一键领取已变灰）[/color]"
         }
     },
     "每日任务_领后": {
-        "timeout": 4000,
+        "desc": "点完后看有没有奖励弹窗",
+        "timeout": 5000,
         "next": [
             "[JumpBack]公共_快速模式提示",
-            "每日任务_有奖励"
+            "每日任务_有奖励",
+            "Flag_每日任务领取完成",
+            "每日任务_一键领取"
         ],
         "on_error": [
-            "Flag_每日任务领取完成"
+            "公共_任务失败"
         ]
     },
     "每日任务_有奖励": {
+        "desc": "奖励弹窗：点空白处关掉",
         "recognition": {
             "type": "OCR",
             "param": {
@@ -81,22 +175,13 @@
                 ]
             }
         },
+        "max_hit": 20,
         "post_wait_freezes": {
             "time": 800,
             "timeout": 10000
         },
         "next": [
-            "每日任务_再看"
-        ]
-    },
-    "每日任务_再看": {
-        "timeout": 5000,
-        "next": [
-            "每日任务_有奖励",
-            "每日任务_一键领取"
-        ],
-        "on_error": [
-            "Flag_每日任务领取完成"
+            "每日任务_领后"
         ]
     }
 }
