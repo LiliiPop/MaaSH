@@ -1,0 +1,3242 @@
+{
+    "电影院": {
+        "desc": "任务入口：主界面「练习」→ 时光电影院，按拼音顺序给 5 个角色各扫荡一次（每周一次）",
+        "timeout": 60000,
+        "next": [
+            "电影院_打开练习",
+            "[JumpBack]公共_返回主界面"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]开始：时光电影院[/color]"
+        }
+    },
+    "电影院_打开练习": {
+        "desc": "主界面「练习」（全景在底部，默认主题在右侧）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    950,
+                                                                    290,
+                                                                    120,
+                                                                    80
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    700,
+                                                                    635,
+                                                                    100,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    180,
+                                                                    410,
+                                                                    95,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    780,
+                                                                    655,
+                                                                    85,
+                                                                    50
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "练习",
+                                                "roi": [
+                                                    950,
+                                                    640,
+                                                    90,
+                                                    55
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "^练习$",
+                                                "roi": [
+                                                    1005,
+                                                    410,
+                                                    110,
+                                                    70
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "电影院_进入"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "电影院_进入": {
+        "desc": "日常练习页「时光电影院」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "时光电影院",
+                "roi": [
+                    180,
+                    420,
+                    240,
+                    70
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 15000
+        },
+        "timeout": 15000,
+        "next": [
+            "电影院_换人_艾因"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "电影院_换人_艾因": {
+        "desc": "左下角当前角色按钮（名字 + ⇆），打开角色列表",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "时光电影院",
+                "roi": [
+                    90,
+                    15,
+                    200,
+                    55
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    25,
+                    553,
+                    120,
+                    42
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "电影院_选_艾因"
+        ]
+    },
+    "电影院_选_艾因": {
+        "desc": "角色列表里点「艾因」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^艾\\s*因$",
+                "roi": [
+                    10,
+                    250,
+                    160,
+                    300
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 10000
+        },
+        "timeout": 10000,
+        "next": [
+            "电影院_艾因"
+        ],
+        "on_error": [
+            "电影院_换人_路辰"
+        ]
+    },
+    "电影院_艾因": {
+        "desc": "艾因：扫荡按钮可点就扫荡，灰色就是本周已扫荡",
+        "timeout": 60000,
+        "next": [
+            "[JumpBack]电影院_扫荡",
+            "电影院_艾因_已完成"
+        ],
+        "on_error": [
+            "电影院_换人_路辰"
+        ]
+    },
+    "电影院_艾因_已完成": {
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "扫\\s*荡",
+                                "roi": [
+                                    690,
+                                    520,
+                                    140,
+                                    55
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    700,
+                                    530,
+                                    170,
+                                    40
+                                ],
+                                "method": 4,
+                                "lower": [
+                                    130,
+                                    130,
+                                    130
+                                ],
+                                "upper": [
+                                    185,
+                                    185,
+                                    190
+                                ],
+                                "count": 2500
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "next": [
+            "电影院_换人_路辰"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]艾因：本周已扫荡[/color]"
+        }
+    },
+    "电影院_换人_路辰": {
+        "desc": "左下角当前角色按钮（名字 + ⇆），打开角色列表",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "时光电影院",
+                "roi": [
+                    90,
+                    15,
+                    200,
+                    55
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    25,
+                    553,
+                    120,
+                    42
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "电影院_选_路辰"
+        ]
+    },
+    "电影院_选_路辰": {
+        "desc": "角色列表里点「路辰」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^路\\s*辰$",
+                "roi": [
+                    10,
+                    250,
+                    160,
+                    300
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 10000
+        },
+        "timeout": 10000,
+        "next": [
+            "电影院_路辰"
+        ],
+        "on_error": [
+            "电影院_换人_罗夏"
+        ]
+    },
+    "电影院_路辰": {
+        "desc": "路辰：扫荡按钮可点就扫荡，灰色就是本周已扫荡",
+        "timeout": 60000,
+        "next": [
+            "[JumpBack]电影院_扫荡",
+            "电影院_路辰_已完成"
+        ],
+        "on_error": [
+            "电影院_换人_罗夏"
+        ]
+    },
+    "电影院_路辰_已完成": {
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "扫\\s*荡",
+                                "roi": [
+                                    690,
+                                    520,
+                                    140,
+                                    55
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    700,
+                                    530,
+                                    170,
+                                    40
+                                ],
+                                "method": 4,
+                                "lower": [
+                                    130,
+                                    130,
+                                    130
+                                ],
+                                "upper": [
+                                    185,
+                                    185,
+                                    190
+                                ],
+                                "count": 2500
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "next": [
+            "电影院_换人_罗夏"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]路辰：本周已扫荡[/color]"
+        }
+    },
+    "电影院_换人_罗夏": {
+        "desc": "左下角当前角色按钮（名字 + ⇆），打开角色列表",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "时光电影院",
+                "roi": [
+                    90,
+                    15,
+                    200,
+                    55
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    25,
+                    553,
+                    120,
+                    42
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "电影院_选_罗夏"
+        ]
+    },
+    "电影院_选_罗夏": {
+        "desc": "角色列表里点「罗夏」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^罗\\s*夏$",
+                "roi": [
+                    10,
+                    250,
+                    160,
+                    300
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 10000
+        },
+        "timeout": 10000,
+        "next": [
+            "电影院_罗夏"
+        ],
+        "on_error": [
+            "电影院_换人_司岚"
+        ]
+    },
+    "电影院_罗夏": {
+        "desc": "罗夏：扫荡按钮可点就扫荡，灰色就是本周已扫荡",
+        "timeout": 60000,
+        "next": [
+            "[JumpBack]电影院_扫荡",
+            "电影院_罗夏_已完成"
+        ],
+        "on_error": [
+            "电影院_换人_司岚"
+        ]
+    },
+    "电影院_罗夏_已完成": {
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "扫\\s*荡",
+                                "roi": [
+                                    690,
+                                    520,
+                                    140,
+                                    55
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    700,
+                                    530,
+                                    170,
+                                    40
+                                ],
+                                "method": 4,
+                                "lower": [
+                                    130,
+                                    130,
+                                    130
+                                ],
+                                "upper": [
+                                    185,
+                                    185,
+                                    190
+                                ],
+                                "count": 2500
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "next": [
+            "电影院_换人_司岚"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]罗夏：本周已扫荡[/color]"
+        }
+    },
+    "电影院_换人_司岚": {
+        "desc": "左下角当前角色按钮（名字 + ⇆），打开角色列表",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "时光电影院",
+                "roi": [
+                    90,
+                    15,
+                    200,
+                    55
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    25,
+                    553,
+                    120,
+                    42
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "电影院_选_司岚"
+        ]
+    },
+    "电影院_选_司岚": {
+        "desc": "角色列表里点「司岚」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^司\\s*岚$",
+                "roi": [
+                    10,
+                    250,
+                    160,
+                    300
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 10000
+        },
+        "timeout": 10000,
+        "next": [
+            "电影院_司岚"
+        ],
+        "on_error": [
+            "电影院_换人_叶瑄"
+        ]
+    },
+    "电影院_司岚": {
+        "desc": "司岚：扫荡按钮可点就扫荡，灰色就是本周已扫荡",
+        "timeout": 60000,
+        "next": [
+            "[JumpBack]电影院_扫荡",
+            "电影院_司岚_已完成"
+        ],
+        "on_error": [
+            "电影院_换人_叶瑄"
+        ]
+    },
+    "电影院_司岚_已完成": {
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "扫\\s*荡",
+                                "roi": [
+                                    690,
+                                    520,
+                                    140,
+                                    55
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    700,
+                                    530,
+                                    170,
+                                    40
+                                ],
+                                "method": 4,
+                                "lower": [
+                                    130,
+                                    130,
+                                    130
+                                ],
+                                "upper": [
+                                    185,
+                                    185,
+                                    190
+                                ],
+                                "count": 2500
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "next": [
+            "电影院_换人_叶瑄"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]司岚：本周已扫荡[/color]"
+        }
+    },
+    "电影院_换人_叶瑄": {
+        "desc": "左下角当前角色按钮（名字 + ⇆），打开角色列表",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "时光电影院",
+                "roi": [
+                    90,
+                    15,
+                    200,
+                    55
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    25,
+                    553,
+                    120,
+                    42
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "电影院_选_叶瑄"
+        ]
+    },
+    "电影院_选_叶瑄": {
+        "desc": "角色列表里点「叶瑄」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^叶\\s*瑄$",
+                "roi": [
+                    10,
+                    250,
+                    160,
+                    300
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 10000
+        },
+        "timeout": 10000,
+        "next": [
+            "电影院_叶瑄"
+        ],
+        "on_error": [
+            "Flag_电影院扫荡完成"
+        ]
+    },
+    "电影院_叶瑄": {
+        "desc": "叶瑄：扫荡按钮可点就扫荡，灰色就是本周已扫荡",
+        "timeout": 60000,
+        "next": [
+            "[JumpBack]电影院_扫荡",
+            "电影院_叶瑄_已完成"
+        ],
+        "on_error": [
+            "Flag_电影院扫荡完成"
+        ]
+    },
+    "电影院_叶瑄_已完成": {
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "扫\\s*荡",
+                                "roi": [
+                                    690,
+                                    520,
+                                    140,
+                                    55
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    700,
+                                    530,
+                                    170,
+                                    40
+                                ],
+                                "method": 4,
+                                "lower": [
+                                    130,
+                                    130,
+                                    130
+                                ],
+                                "upper": [
+                                    185,
+                                    185,
+                                    190
+                                ],
+                                "count": 2500
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "next": [
+            "Flag_电影院扫荡完成"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]叶瑄：本周已扫荡[/color]"
+        }
+    },
+    "电影院_扫荡": {
+        "desc": "扫荡按钮为亮色（可扫荡）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "扫\\s*荡",
+                                "roi": [
+                                    690,
+                                    520,
+                                    140,
+                                    55
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    700,
+                                    530,
+                                    170,
+                                    40
+                                ],
+                                "method": 4,
+                                "lower": [
+                                    222,
+                                    222,
+                                    230
+                                ],
+                                "upper": [
+                                    255,
+                                    255,
+                                    255
+                                ],
+                                "count": 2500
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 6,
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "电影院_确认扫荡"
+        ]
+    },
+    "电影院_确认扫荡": {
+        "desc": "「每周仅可扫荡一次…是否开始扫荡？」→ 确定",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "扫荡",
+                                "roi": [
+                                    560,
+                                    190,
+                                    160,
+                                    70
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "确\\s*定",
+                                "roi": [
+                                    750,
+                                    435,
+                                    130,
+                                    60
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1500,
+            "timeout": 20000
+        },
+        "timeout": 10000,
+        "next": [
+            "电影院_扫荡结果"
+        ]
+    },
+    "电影院_扫荡结果": {
+        "timeout": 30000,
+        "next": [
+            "[JumpBack]电影院_不再处理",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "电影院_扫荡完成"
+        ]
+    },
+    "电影院_不再处理": {
+        "desc": "随机事件一律「不再处理」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "不再处理",
+                "roi": [
+                    380,
+                    530,
+                    200,
+                    55
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "max_hit": 6
+    },
+    "电影院_扫荡完成": {
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "扫\\s*荡",
+                                "roi": [
+                                    690,
+                                    520,
+                                    140,
+                                    55
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    700,
+                                    530,
+                                    170,
+                                    40
+                                ],
+                                "method": 4,
+                                "lower": [
+                                    130,
+                                    130,
+                                    130
+                                ],
+                                "upper": [
+                                    185,
+                                    185,
+                                    190
+                                ],
+                                "count": 2500
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]扫荡完成[/color]"
+        }
+    },
+    "Flag_电影院扫荡完成": {
+        "desc": "5 个角色都已检查；开了兑换就继续去商店",
+        "next": [
+            "兑换",
+            "电影院_结束"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]时光电影院：本周扫荡已完成[/color]"
+        }
+    },
+    "电影院_结束": {
+        "desc": "未开启商店兑换"
+    },
+    "兑换": {
+        "desc": "子功能「自动兑换商店材料」入口；关闭时直接结束",
+        "enabled": false,
+        "timeout": 60000,
+        "next": [
+            "兑换_打开采购",
+            "[JumpBack]公共_返回主界面"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]开始：电影院商店兑换[/color]"
+        }
+    },
+    "兑换_打开采购": {
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    950,
+                                                                    290,
+                                                                    120,
+                                                                    80
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    700,
+                                                                    635,
+                                                                    100,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    180,
+                                                                    410,
+                                                                    95,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    780,
+                                                                    655,
+                                                                    85,
+                                                                    50
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^采购$",
+                                "roi": [
+                                    300,
+                                    480,
+                                    960,
+                                    130
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "兑换_兑换页"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "兑换_兑换页": {
+        "desc": "左侧「兑换」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^兑换$",
+                "roi": [
+                    25,
+                    435,
+                    100,
+                    65
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "timeout": 15000,
+        "next": [
+            "兑换_电影院页"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "兑换_电影院页": {
+        "desc": "上方「电影院」页签",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^电影院$",
+                "roi": [
+                    600,
+                    70,
+                    300,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "timeout": 15000,
+        "next": [
+            "兑换_第1顺位",
+            "兑换_第2顺位",
+            "兑换_第3顺位",
+            "兑换_第4顺位",
+            "兑换_第5顺位",
+            "兑换_第6顺位",
+            "兑换_第7顺位",
+            "兑换_第8顺位",
+            "Flag_兑换完成"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "兑换_下滚": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^电影院$",
+                "roi": [
+                    600,
+                    70,
+                    300,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    700,
+                    560,
+                    20,
+                    20
+                ],
+                "end": [
+                    700,
+                    250,
+                    20,
+                    20
+                ],
+                "duration": 400
+            }
+        },
+        "max_hit": 32,
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 5000
+        }
+    },
+    "兑换_第1顺位": {
+        "desc": "第 1 顺位：回到列表顶部，开始找商品（由选项决定买什么，「不购买」时跳过）",
+        "enabled": false,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^电影院$",
+                "roi": [
+                    600,
+                    70,
+                    300,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    700,
+                    220,
+                    20,
+                    20
+                ],
+                "end": [
+                    700,
+                    640,
+                    20,
+                    20
+                ],
+                "duration": 300
+            }
+        },
+        "repeat": 3,
+        "repeat_delay": 200,
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 5000
+        },
+        "next": [
+            "兑换_第1_找"
+        ]
+    },
+    "兑换_第1_找": {
+        "timeout": 30000,
+        "next": [
+            "兑换_第1_商品",
+            "[JumpBack]兑换_下滚"
+        ],
+        "on_error": [
+            "兑换_第2顺位",
+            "兑换_第3顺位",
+            "兑换_第4顺位",
+            "兑换_第5顺位",
+            "兑换_第6顺位",
+            "兑换_第7顺位",
+            "兑换_第8顺位",
+            "Flag_兑换完成"
+        ]
+    },
+    "兑换_第1_商品": {
+        "desc": "在商品列表里找到商品名并点开（名字由选项改写）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^觉悟$",
+                "roi": [
+                    160,
+                    130,
+                    1040,
+                    580
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "兑换_第1_最大数量",
+            "兑换_第1_点价格"
+        ],
+        "on_error": [
+            "兑换_第2顺位",
+            "兑换_第3顺位",
+            "兑换_第4顺位",
+            "兑换_第5顺位",
+            "兑换_第6顺位",
+            "兑换_第7顺位",
+            "兑换_第8顺位",
+            "Flag_兑换完成"
+        ],
+        "timeout": 5000
+    },
+    "兑换_第1_最大数量": {
+        "desc": "有数量选择时点最右边的 max 按钮",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "商品内容",
+                                "roi": [
+                                    470,
+                                    250,
+                                    140,
+                                    45
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^\\d+$",
+                                "roi": [
+                                    600,
+                                    460,
+                                    150,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    895,
+                    460,
+                    95,
+                    48
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 5000
+        },
+        "next": [
+            "兑换_第1_点价格"
+        ]
+    },
+    "兑换_第1_点价格": {
+        "desc": "点下方的价格按钮（电影票）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "商品内容",
+                                "roi": [
+                                    470,
+                                    250,
+                                    140,
+                                    45
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^\\d+$",
+                                "roi": [
+                                    580,
+                                    540,
+                                    170,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 8000
+        },
+        "next": [
+            "兑换_第1_结果"
+        ]
+    },
+    "兑换_第1_结果": {
+        "timeout": 6000,
+        "next": [
+            "[JumpBack]公共_付费防呆",
+            "兑换_第1_成功"
+        ],
+        "on_error": [
+            "兑换_票不足"
+        ]
+    },
+    "兑换_第1_成功": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "恭喜获得|获得奖励",
+                "roi": [
+                    380,
+                    130,
+                    520,
+                    140
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    560,
+                    630,
+                    160,
+                    30
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "兑换_第2顺位",
+            "兑换_第3顺位",
+            "兑换_第4顺位",
+            "兑换_第5顺位",
+            "兑换_第6顺位",
+            "兑换_第7顺位",
+            "兑换_第8顺位",
+            "Flag_兑换完成"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Deepskyblue]第 1 顺位兑换成功[/color]"
+        }
+    },
+    "兑换_第2顺位": {
+        "desc": "第 2 顺位：回到列表顶部，开始找商品（由选项决定买什么，「不购买」时跳过）",
+        "enabled": false,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^电影院$",
+                "roi": [
+                    600,
+                    70,
+                    300,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    700,
+                    220,
+                    20,
+                    20
+                ],
+                "end": [
+                    700,
+                    640,
+                    20,
+                    20
+                ],
+                "duration": 300
+            }
+        },
+        "repeat": 3,
+        "repeat_delay": 200,
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 5000
+        },
+        "next": [
+            "兑换_第2_找"
+        ]
+    },
+    "兑换_第2_找": {
+        "timeout": 30000,
+        "next": [
+            "兑换_第2_商品",
+            "[JumpBack]兑换_下滚"
+        ],
+        "on_error": [
+            "兑换_第3顺位",
+            "兑换_第4顺位",
+            "兑换_第5顺位",
+            "兑换_第6顺位",
+            "兑换_第7顺位",
+            "兑换_第8顺位",
+            "Flag_兑换完成"
+        ]
+    },
+    "兑换_第2_商品": {
+        "desc": "在商品列表里找到商品名并点开（名字由选项改写）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^觉悟$",
+                "roi": [
+                    160,
+                    130,
+                    1040,
+                    580
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "兑换_第2_最大数量",
+            "兑换_第2_点价格"
+        ],
+        "on_error": [
+            "兑换_第3顺位",
+            "兑换_第4顺位",
+            "兑换_第5顺位",
+            "兑换_第6顺位",
+            "兑换_第7顺位",
+            "兑换_第8顺位",
+            "Flag_兑换完成"
+        ],
+        "timeout": 5000
+    },
+    "兑换_第2_最大数量": {
+        "desc": "有数量选择时点最右边的 max 按钮",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "商品内容",
+                                "roi": [
+                                    470,
+                                    250,
+                                    140,
+                                    45
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^\\d+$",
+                                "roi": [
+                                    600,
+                                    460,
+                                    150,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    895,
+                    460,
+                    95,
+                    48
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 5000
+        },
+        "next": [
+            "兑换_第2_点价格"
+        ]
+    },
+    "兑换_第2_点价格": {
+        "desc": "点下方的价格按钮（电影票）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "商品内容",
+                                "roi": [
+                                    470,
+                                    250,
+                                    140,
+                                    45
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^\\d+$",
+                                "roi": [
+                                    580,
+                                    540,
+                                    170,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 8000
+        },
+        "next": [
+            "兑换_第2_结果"
+        ]
+    },
+    "兑换_第2_结果": {
+        "timeout": 6000,
+        "next": [
+            "[JumpBack]公共_付费防呆",
+            "兑换_第2_成功"
+        ],
+        "on_error": [
+            "兑换_票不足"
+        ]
+    },
+    "兑换_第2_成功": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "恭喜获得|获得奖励",
+                "roi": [
+                    380,
+                    130,
+                    520,
+                    140
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    560,
+                    630,
+                    160,
+                    30
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "兑换_第3顺位",
+            "兑换_第4顺位",
+            "兑换_第5顺位",
+            "兑换_第6顺位",
+            "兑换_第7顺位",
+            "兑换_第8顺位",
+            "Flag_兑换完成"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Deepskyblue]第 2 顺位兑换成功[/color]"
+        }
+    },
+    "兑换_第3顺位": {
+        "desc": "第 3 顺位：回到列表顶部，开始找商品（由选项决定买什么，「不购买」时跳过）",
+        "enabled": false,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^电影院$",
+                "roi": [
+                    600,
+                    70,
+                    300,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    700,
+                    220,
+                    20,
+                    20
+                ],
+                "end": [
+                    700,
+                    640,
+                    20,
+                    20
+                ],
+                "duration": 300
+            }
+        },
+        "repeat": 3,
+        "repeat_delay": 200,
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 5000
+        },
+        "next": [
+            "兑换_第3_找"
+        ]
+    },
+    "兑换_第3_找": {
+        "timeout": 30000,
+        "next": [
+            "兑换_第3_商品",
+            "[JumpBack]兑换_下滚"
+        ],
+        "on_error": [
+            "兑换_第4顺位",
+            "兑换_第5顺位",
+            "兑换_第6顺位",
+            "兑换_第7顺位",
+            "兑换_第8顺位",
+            "Flag_兑换完成"
+        ]
+    },
+    "兑换_第3_商品": {
+        "desc": "在商品列表里找到商品名并点开（名字由选项改写）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^觉悟$",
+                "roi": [
+                    160,
+                    130,
+                    1040,
+                    580
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "兑换_第3_最大数量",
+            "兑换_第3_点价格"
+        ],
+        "on_error": [
+            "兑换_第4顺位",
+            "兑换_第5顺位",
+            "兑换_第6顺位",
+            "兑换_第7顺位",
+            "兑换_第8顺位",
+            "Flag_兑换完成"
+        ],
+        "timeout": 5000
+    },
+    "兑换_第3_最大数量": {
+        "desc": "有数量选择时点最右边的 max 按钮",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "商品内容",
+                                "roi": [
+                                    470,
+                                    250,
+                                    140,
+                                    45
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^\\d+$",
+                                "roi": [
+                                    600,
+                                    460,
+                                    150,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    895,
+                    460,
+                    95,
+                    48
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 5000
+        },
+        "next": [
+            "兑换_第3_点价格"
+        ]
+    },
+    "兑换_第3_点价格": {
+        "desc": "点下方的价格按钮（电影票）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "商品内容",
+                                "roi": [
+                                    470,
+                                    250,
+                                    140,
+                                    45
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^\\d+$",
+                                "roi": [
+                                    580,
+                                    540,
+                                    170,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 8000
+        },
+        "next": [
+            "兑换_第3_结果"
+        ]
+    },
+    "兑换_第3_结果": {
+        "timeout": 6000,
+        "next": [
+            "[JumpBack]公共_付费防呆",
+            "兑换_第3_成功"
+        ],
+        "on_error": [
+            "兑换_票不足"
+        ]
+    },
+    "兑换_第3_成功": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "恭喜获得|获得奖励",
+                "roi": [
+                    380,
+                    130,
+                    520,
+                    140
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    560,
+                    630,
+                    160,
+                    30
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "兑换_第4顺位",
+            "兑换_第5顺位",
+            "兑换_第6顺位",
+            "兑换_第7顺位",
+            "兑换_第8顺位",
+            "Flag_兑换完成"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Deepskyblue]第 3 顺位兑换成功[/color]"
+        }
+    },
+    "兑换_第4顺位": {
+        "desc": "第 4 顺位：回到列表顶部，开始找商品（由选项决定买什么，「不购买」时跳过）",
+        "enabled": false,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^电影院$",
+                "roi": [
+                    600,
+                    70,
+                    300,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    700,
+                    220,
+                    20,
+                    20
+                ],
+                "end": [
+                    700,
+                    640,
+                    20,
+                    20
+                ],
+                "duration": 300
+            }
+        },
+        "repeat": 3,
+        "repeat_delay": 200,
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 5000
+        },
+        "next": [
+            "兑换_第4_找"
+        ]
+    },
+    "兑换_第4_找": {
+        "timeout": 30000,
+        "next": [
+            "兑换_第4_商品",
+            "[JumpBack]兑换_下滚"
+        ],
+        "on_error": [
+            "兑换_第5顺位",
+            "兑换_第6顺位",
+            "兑换_第7顺位",
+            "兑换_第8顺位",
+            "Flag_兑换完成"
+        ]
+    },
+    "兑换_第4_商品": {
+        "desc": "在商品列表里找到商品名并点开（名字由选项改写）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^觉悟$",
+                "roi": [
+                    160,
+                    130,
+                    1040,
+                    580
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "兑换_第4_最大数量",
+            "兑换_第4_点价格"
+        ],
+        "on_error": [
+            "兑换_第5顺位",
+            "兑换_第6顺位",
+            "兑换_第7顺位",
+            "兑换_第8顺位",
+            "Flag_兑换完成"
+        ],
+        "timeout": 5000
+    },
+    "兑换_第4_最大数量": {
+        "desc": "有数量选择时点最右边的 max 按钮",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "商品内容",
+                                "roi": [
+                                    470,
+                                    250,
+                                    140,
+                                    45
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^\\d+$",
+                                "roi": [
+                                    600,
+                                    460,
+                                    150,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    895,
+                    460,
+                    95,
+                    48
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 5000
+        },
+        "next": [
+            "兑换_第4_点价格"
+        ]
+    },
+    "兑换_第4_点价格": {
+        "desc": "点下方的价格按钮（电影票）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "商品内容",
+                                "roi": [
+                                    470,
+                                    250,
+                                    140,
+                                    45
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^\\d+$",
+                                "roi": [
+                                    580,
+                                    540,
+                                    170,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 8000
+        },
+        "next": [
+            "兑换_第4_结果"
+        ]
+    },
+    "兑换_第4_结果": {
+        "timeout": 6000,
+        "next": [
+            "[JumpBack]公共_付费防呆",
+            "兑换_第4_成功"
+        ],
+        "on_error": [
+            "兑换_票不足"
+        ]
+    },
+    "兑换_第4_成功": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "恭喜获得|获得奖励",
+                "roi": [
+                    380,
+                    130,
+                    520,
+                    140
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    560,
+                    630,
+                    160,
+                    30
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "兑换_第5顺位",
+            "兑换_第6顺位",
+            "兑换_第7顺位",
+            "兑换_第8顺位",
+            "Flag_兑换完成"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Deepskyblue]第 4 顺位兑换成功[/color]"
+        }
+    },
+    "兑换_第5顺位": {
+        "desc": "第 5 顺位：回到列表顶部，开始找商品（由选项决定买什么，「不购买」时跳过）",
+        "enabled": false,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^电影院$",
+                "roi": [
+                    600,
+                    70,
+                    300,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    700,
+                    220,
+                    20,
+                    20
+                ],
+                "end": [
+                    700,
+                    640,
+                    20,
+                    20
+                ],
+                "duration": 300
+            }
+        },
+        "repeat": 3,
+        "repeat_delay": 200,
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 5000
+        },
+        "next": [
+            "兑换_第5_找"
+        ]
+    },
+    "兑换_第5_找": {
+        "timeout": 30000,
+        "next": [
+            "兑换_第5_商品",
+            "[JumpBack]兑换_下滚"
+        ],
+        "on_error": [
+            "兑换_第6顺位",
+            "兑换_第7顺位",
+            "兑换_第8顺位",
+            "Flag_兑换完成"
+        ]
+    },
+    "兑换_第5_商品": {
+        "desc": "在商品列表里找到商品名并点开（名字由选项改写）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^觉悟$",
+                "roi": [
+                    160,
+                    130,
+                    1040,
+                    580
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "兑换_第5_最大数量",
+            "兑换_第5_点价格"
+        ],
+        "on_error": [
+            "兑换_第6顺位",
+            "兑换_第7顺位",
+            "兑换_第8顺位",
+            "Flag_兑换完成"
+        ],
+        "timeout": 5000
+    },
+    "兑换_第5_最大数量": {
+        "desc": "有数量选择时点最右边的 max 按钮",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "商品内容",
+                                "roi": [
+                                    470,
+                                    250,
+                                    140,
+                                    45
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^\\d+$",
+                                "roi": [
+                                    600,
+                                    460,
+                                    150,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    895,
+                    460,
+                    95,
+                    48
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 5000
+        },
+        "next": [
+            "兑换_第5_点价格"
+        ]
+    },
+    "兑换_第5_点价格": {
+        "desc": "点下方的价格按钮（电影票）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "商品内容",
+                                "roi": [
+                                    470,
+                                    250,
+                                    140,
+                                    45
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^\\d+$",
+                                "roi": [
+                                    580,
+                                    540,
+                                    170,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 8000
+        },
+        "next": [
+            "兑换_第5_结果"
+        ]
+    },
+    "兑换_第5_结果": {
+        "timeout": 6000,
+        "next": [
+            "[JumpBack]公共_付费防呆",
+            "兑换_第5_成功"
+        ],
+        "on_error": [
+            "兑换_票不足"
+        ]
+    },
+    "兑换_第5_成功": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "恭喜获得|获得奖励",
+                "roi": [
+                    380,
+                    130,
+                    520,
+                    140
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    560,
+                    630,
+                    160,
+                    30
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "兑换_第6顺位",
+            "兑换_第7顺位",
+            "兑换_第8顺位",
+            "Flag_兑换完成"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Deepskyblue]第 5 顺位兑换成功[/color]"
+        }
+    },
+    "兑换_第6顺位": {
+        "desc": "第 6 顺位：回到列表顶部，开始找商品（由选项决定买什么，「不购买」时跳过）",
+        "enabled": false,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^电影院$",
+                "roi": [
+                    600,
+                    70,
+                    300,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    700,
+                    220,
+                    20,
+                    20
+                ],
+                "end": [
+                    700,
+                    640,
+                    20,
+                    20
+                ],
+                "duration": 300
+            }
+        },
+        "repeat": 3,
+        "repeat_delay": 200,
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 5000
+        },
+        "next": [
+            "兑换_第6_找"
+        ]
+    },
+    "兑换_第6_找": {
+        "timeout": 30000,
+        "next": [
+            "兑换_第6_商品",
+            "[JumpBack]兑换_下滚"
+        ],
+        "on_error": [
+            "兑换_第7顺位",
+            "兑换_第8顺位",
+            "Flag_兑换完成"
+        ]
+    },
+    "兑换_第6_商品": {
+        "desc": "在商品列表里找到商品名并点开（名字由选项改写）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^觉悟$",
+                "roi": [
+                    160,
+                    130,
+                    1040,
+                    580
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "兑换_第6_最大数量",
+            "兑换_第6_点价格"
+        ],
+        "on_error": [
+            "兑换_第7顺位",
+            "兑换_第8顺位",
+            "Flag_兑换完成"
+        ],
+        "timeout": 5000
+    },
+    "兑换_第6_最大数量": {
+        "desc": "有数量选择时点最右边的 max 按钮",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "商品内容",
+                                "roi": [
+                                    470,
+                                    250,
+                                    140,
+                                    45
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^\\d+$",
+                                "roi": [
+                                    600,
+                                    460,
+                                    150,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    895,
+                    460,
+                    95,
+                    48
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 5000
+        },
+        "next": [
+            "兑换_第6_点价格"
+        ]
+    },
+    "兑换_第6_点价格": {
+        "desc": "点下方的价格按钮（电影票）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "商品内容",
+                                "roi": [
+                                    470,
+                                    250,
+                                    140,
+                                    45
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^\\d+$",
+                                "roi": [
+                                    580,
+                                    540,
+                                    170,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 8000
+        },
+        "next": [
+            "兑换_第6_结果"
+        ]
+    },
+    "兑换_第6_结果": {
+        "timeout": 6000,
+        "next": [
+            "[JumpBack]公共_付费防呆",
+            "兑换_第6_成功"
+        ],
+        "on_error": [
+            "兑换_票不足"
+        ]
+    },
+    "兑换_第6_成功": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "恭喜获得|获得奖励",
+                "roi": [
+                    380,
+                    130,
+                    520,
+                    140
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    560,
+                    630,
+                    160,
+                    30
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "兑换_第7顺位",
+            "兑换_第8顺位",
+            "Flag_兑换完成"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Deepskyblue]第 6 顺位兑换成功[/color]"
+        }
+    },
+    "兑换_第7顺位": {
+        "desc": "第 7 顺位：回到列表顶部，开始找商品（由选项决定买什么，「不购买」时跳过）",
+        "enabled": false,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^电影院$",
+                "roi": [
+                    600,
+                    70,
+                    300,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    700,
+                    220,
+                    20,
+                    20
+                ],
+                "end": [
+                    700,
+                    640,
+                    20,
+                    20
+                ],
+                "duration": 300
+            }
+        },
+        "repeat": 3,
+        "repeat_delay": 200,
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 5000
+        },
+        "next": [
+            "兑换_第7_找"
+        ]
+    },
+    "兑换_第7_找": {
+        "timeout": 30000,
+        "next": [
+            "兑换_第7_商品",
+            "[JumpBack]兑换_下滚"
+        ],
+        "on_error": [
+            "兑换_第8顺位",
+            "Flag_兑换完成"
+        ]
+    },
+    "兑换_第7_商品": {
+        "desc": "在商品列表里找到商品名并点开（名字由选项改写）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^觉悟$",
+                "roi": [
+                    160,
+                    130,
+                    1040,
+                    580
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "兑换_第7_最大数量",
+            "兑换_第7_点价格"
+        ],
+        "on_error": [
+            "兑换_第8顺位",
+            "Flag_兑换完成"
+        ],
+        "timeout": 5000
+    },
+    "兑换_第7_最大数量": {
+        "desc": "有数量选择时点最右边的 max 按钮",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "商品内容",
+                                "roi": [
+                                    470,
+                                    250,
+                                    140,
+                                    45
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^\\d+$",
+                                "roi": [
+                                    600,
+                                    460,
+                                    150,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    895,
+                    460,
+                    95,
+                    48
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 5000
+        },
+        "next": [
+            "兑换_第7_点价格"
+        ]
+    },
+    "兑换_第7_点价格": {
+        "desc": "点下方的价格按钮（电影票）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "商品内容",
+                                "roi": [
+                                    470,
+                                    250,
+                                    140,
+                                    45
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^\\d+$",
+                                "roi": [
+                                    580,
+                                    540,
+                                    170,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 8000
+        },
+        "next": [
+            "兑换_第7_结果"
+        ]
+    },
+    "兑换_第7_结果": {
+        "timeout": 6000,
+        "next": [
+            "[JumpBack]公共_付费防呆",
+            "兑换_第7_成功"
+        ],
+        "on_error": [
+            "兑换_票不足"
+        ]
+    },
+    "兑换_第7_成功": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "恭喜获得|获得奖励",
+                "roi": [
+                    380,
+                    130,
+                    520,
+                    140
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    560,
+                    630,
+                    160,
+                    30
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "兑换_第8顺位",
+            "Flag_兑换完成"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Deepskyblue]第 7 顺位兑换成功[/color]"
+        }
+    },
+    "兑换_第8顺位": {
+        "desc": "第 8 顺位：回到列表顶部，开始找商品（由选项决定买什么，「不购买」时跳过）",
+        "enabled": false,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^电影院$",
+                "roi": [
+                    600,
+                    70,
+                    300,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    700,
+                    220,
+                    20,
+                    20
+                ],
+                "end": [
+                    700,
+                    640,
+                    20,
+                    20
+                ],
+                "duration": 300
+            }
+        },
+        "repeat": 3,
+        "repeat_delay": 200,
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 5000
+        },
+        "next": [
+            "兑换_第8_找"
+        ]
+    },
+    "兑换_第8_找": {
+        "timeout": 30000,
+        "next": [
+            "兑换_第8_商品",
+            "[JumpBack]兑换_下滚"
+        ],
+        "on_error": [
+            "Flag_兑换完成"
+        ]
+    },
+    "兑换_第8_商品": {
+        "desc": "在商品列表里找到商品名并点开（名字由选项改写）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^觉悟$",
+                "roi": [
+                    160,
+                    130,
+                    1040,
+                    580
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "兑换_第8_最大数量",
+            "兑换_第8_点价格"
+        ],
+        "on_error": [
+            "Flag_兑换完成"
+        ],
+        "timeout": 5000
+    },
+    "兑换_第8_最大数量": {
+        "desc": "有数量选择时点最右边的 max 按钮",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "商品内容",
+                                "roi": [
+                                    470,
+                                    250,
+                                    140,
+                                    45
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^\\d+$",
+                                "roi": [
+                                    600,
+                                    460,
+                                    150,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    895,
+                    460,
+                    95,
+                    48
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 5000
+        },
+        "next": [
+            "兑换_第8_点价格"
+        ]
+    },
+    "兑换_第8_点价格": {
+        "desc": "点下方的价格按钮（电影票）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "商品内容",
+                                "roi": [
+                                    470,
+                                    250,
+                                    140,
+                                    45
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^\\d+$",
+                                "roi": [
+                                    580,
+                                    540,
+                                    170,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 8000
+        },
+        "next": [
+            "兑换_第8_结果"
+        ]
+    },
+    "兑换_第8_结果": {
+        "timeout": 6000,
+        "next": [
+            "[JumpBack]公共_付费防呆",
+            "兑换_第8_成功"
+        ],
+        "on_error": [
+            "兑换_票不足"
+        ]
+    },
+    "兑换_第8_成功": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "恭喜获得|获得奖励",
+                "roi": [
+                    380,
+                    130,
+                    520,
+                    140
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    560,
+                    630,
+                    160,
+                    30
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "Flag_兑换完成"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Deepskyblue]第 8 顺位兑换成功[/color]"
+        }
+    },
+    "兑换_票不足": {
+        "desc": "点了价格但没有获得奖励：视为电影票不足，关掉弹窗并停止兑换",
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    20,
+                    660,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]电影票不足或无法兑换，已停止兑换[/color]"
+        }
+    },
+    "Flag_兑换完成": {
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]电影院商店兑换完成[/color]"
+        }
+    }
+}

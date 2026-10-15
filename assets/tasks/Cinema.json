@@ -1,0 +1,2807 @@
+{
+    "task": [
+        {
+            "name": "🎬时光电影院",
+            "entry": "电影院",
+            "default_check": false,
+            "description": "每周：练习 → 时光电影院，5 个角色各扫荡一次，随机事件一律「不再处理」。<br>可选：扫荡后按顺位兑换电影院商店材料，直到电影票用完。",
+            "option": [
+                "自动兑换商店材料"
+            ]
+        }
+    ],
+    "option": {
+        "自动兑换商店材料": {
+            "type": "switch",
+            "description": "扫荡后去「采购 → 兑换 → 电影院」，按顺位从上到下兑换，直到电影票用完",
+            "cases": [
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "兑换": {
+                            "enabled": false
+                        }
+                    }
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "兑换": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "第1顺位",
+                        "第2顺位",
+                        "第3顺位",
+                        "第4顺位",
+                        "第5顺位",
+                        "第6顺位",
+                        "第7顺位",
+                        "第8顺位"
+                    ]
+                }
+            ]
+        },
+        "第1顺位": {
+            "type": "select",
+            "label": "兑换第 1 顺位",
+            "default_case": "不购买",
+            "cases": [
+                {
+                    "name": "不购买",
+                    "pipeline_override": {
+                        "兑换_第1顺位": {
+                            "enabled": false
+                        }
+                    }
+                },
+                {
+                    "name": "觉悟",
+                    "pipeline_override": {
+                        "兑换_第1顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第1_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "^觉悟$",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "梦境之羽",
+                    "pipeline_override": {
+                        "兑换_第1顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第1_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "梦境之羽",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "高级技能包*5",
+                    "pipeline_override": {
+                        "兑换_第1顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第1_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "高级技能包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "高级突破包*5",
+                    "pipeline_override": {
+                        "兑换_第1顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第1_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "高级突破包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "中级技能包*5",
+                    "pipeline_override": {
+                        "兑换_第1顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第1_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "中级技能包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "中级突破包*5",
+                    "pipeline_override": {
+                        "兑换_第1顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第1_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "中级突破包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "初级技能包*5",
+                    "pipeline_override": {
+                        "兑换_第1顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第1_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "初级技能包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "初级突破包*5",
+                    "pipeline_override": {
+                        "兑换_第1顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第1_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "初级突破包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "星尘之铃·承",
+                    "pipeline_override": {
+                        "兑换_第1顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第1_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "星尘之铃.?承",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "记忆铭刻·影",
+                    "pipeline_override": {
+                        "兑换_第1顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第1_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "记忆铭刻.?影",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·艾因",
+                    "pipeline_override": {
+                        "兑换_第1顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第1_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?艾因",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·路辰",
+                    "pipeline_override": {
+                        "兑换_第1顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第1_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?路辰",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·罗夏",
+                    "pipeline_override": {
+                        "兑换_第1顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第1_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?罗夏",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·司岚",
+                    "pipeline_override": {
+                        "兑换_第1顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第1_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?司岚",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·叶瑄",
+                    "pipeline_override": {
+                        "兑换_第1顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第1_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?叶瑄",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "第2顺位": {
+            "type": "select",
+            "label": "兑换第 2 顺位",
+            "default_case": "不购买",
+            "cases": [
+                {
+                    "name": "不购买",
+                    "pipeline_override": {
+                        "兑换_第2顺位": {
+                            "enabled": false
+                        }
+                    }
+                },
+                {
+                    "name": "觉悟",
+                    "pipeline_override": {
+                        "兑换_第2顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第2_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "^觉悟$",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "梦境之羽",
+                    "pipeline_override": {
+                        "兑换_第2顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第2_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "梦境之羽",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "高级技能包*5",
+                    "pipeline_override": {
+                        "兑换_第2顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第2_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "高级技能包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "高级突破包*5",
+                    "pipeline_override": {
+                        "兑换_第2顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第2_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "高级突破包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "中级技能包*5",
+                    "pipeline_override": {
+                        "兑换_第2顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第2_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "中级技能包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "中级突破包*5",
+                    "pipeline_override": {
+                        "兑换_第2顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第2_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "中级突破包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "初级技能包*5",
+                    "pipeline_override": {
+                        "兑换_第2顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第2_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "初级技能包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "初级突破包*5",
+                    "pipeline_override": {
+                        "兑换_第2顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第2_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "初级突破包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "星尘之铃·承",
+                    "pipeline_override": {
+                        "兑换_第2顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第2_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "星尘之铃.?承",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "记忆铭刻·影",
+                    "pipeline_override": {
+                        "兑换_第2顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第2_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "记忆铭刻.?影",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·艾因",
+                    "pipeline_override": {
+                        "兑换_第2顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第2_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?艾因",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·路辰",
+                    "pipeline_override": {
+                        "兑换_第2顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第2_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?路辰",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·罗夏",
+                    "pipeline_override": {
+                        "兑换_第2顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第2_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?罗夏",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·司岚",
+                    "pipeline_override": {
+                        "兑换_第2顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第2_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?司岚",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·叶瑄",
+                    "pipeline_override": {
+                        "兑换_第2顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第2_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?叶瑄",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "第3顺位": {
+            "type": "select",
+            "label": "兑换第 3 顺位",
+            "default_case": "不购买",
+            "cases": [
+                {
+                    "name": "不购买",
+                    "pipeline_override": {
+                        "兑换_第3顺位": {
+                            "enabled": false
+                        }
+                    }
+                },
+                {
+                    "name": "觉悟",
+                    "pipeline_override": {
+                        "兑换_第3顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第3_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "^觉悟$",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "梦境之羽",
+                    "pipeline_override": {
+                        "兑换_第3顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第3_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "梦境之羽",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "高级技能包*5",
+                    "pipeline_override": {
+                        "兑换_第3顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第3_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "高级技能包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "高级突破包*5",
+                    "pipeline_override": {
+                        "兑换_第3顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第3_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "高级突破包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "中级技能包*5",
+                    "pipeline_override": {
+                        "兑换_第3顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第3_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "中级技能包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "中级突破包*5",
+                    "pipeline_override": {
+                        "兑换_第3顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第3_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "中级突破包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "初级技能包*5",
+                    "pipeline_override": {
+                        "兑换_第3顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第3_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "初级技能包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "初级突破包*5",
+                    "pipeline_override": {
+                        "兑换_第3顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第3_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "初级突破包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "星尘之铃·承",
+                    "pipeline_override": {
+                        "兑换_第3顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第3_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "星尘之铃.?承",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "记忆铭刻·影",
+                    "pipeline_override": {
+                        "兑换_第3顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第3_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "记忆铭刻.?影",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·艾因",
+                    "pipeline_override": {
+                        "兑换_第3顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第3_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?艾因",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·路辰",
+                    "pipeline_override": {
+                        "兑换_第3顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第3_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?路辰",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·罗夏",
+                    "pipeline_override": {
+                        "兑换_第3顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第3_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?罗夏",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·司岚",
+                    "pipeline_override": {
+                        "兑换_第3顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第3_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?司岚",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·叶瑄",
+                    "pipeline_override": {
+                        "兑换_第3顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第3_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?叶瑄",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "第4顺位": {
+            "type": "select",
+            "label": "兑换第 4 顺位",
+            "default_case": "不购买",
+            "cases": [
+                {
+                    "name": "不购买",
+                    "pipeline_override": {
+                        "兑换_第4顺位": {
+                            "enabled": false
+                        }
+                    }
+                },
+                {
+                    "name": "觉悟",
+                    "pipeline_override": {
+                        "兑换_第4顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第4_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "^觉悟$",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "梦境之羽",
+                    "pipeline_override": {
+                        "兑换_第4顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第4_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "梦境之羽",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "高级技能包*5",
+                    "pipeline_override": {
+                        "兑换_第4顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第4_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "高级技能包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "高级突破包*5",
+                    "pipeline_override": {
+                        "兑换_第4顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第4_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "高级突破包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "中级技能包*5",
+                    "pipeline_override": {
+                        "兑换_第4顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第4_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "中级技能包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "中级突破包*5",
+                    "pipeline_override": {
+                        "兑换_第4顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第4_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "中级突破包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "初级技能包*5",
+                    "pipeline_override": {
+                        "兑换_第4顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第4_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "初级技能包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "初级突破包*5",
+                    "pipeline_override": {
+                        "兑换_第4顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第4_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "初级突破包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "星尘之铃·承",
+                    "pipeline_override": {
+                        "兑换_第4顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第4_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "星尘之铃.?承",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "记忆铭刻·影",
+                    "pipeline_override": {
+                        "兑换_第4顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第4_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "记忆铭刻.?影",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·艾因",
+                    "pipeline_override": {
+                        "兑换_第4顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第4_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?艾因",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·路辰",
+                    "pipeline_override": {
+                        "兑换_第4顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第4_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?路辰",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·罗夏",
+                    "pipeline_override": {
+                        "兑换_第4顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第4_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?罗夏",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·司岚",
+                    "pipeline_override": {
+                        "兑换_第4顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第4_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?司岚",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·叶瑄",
+                    "pipeline_override": {
+                        "兑换_第4顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第4_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?叶瑄",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "第5顺位": {
+            "type": "select",
+            "label": "兑换第 5 顺位",
+            "default_case": "不购买",
+            "cases": [
+                {
+                    "name": "不购买",
+                    "pipeline_override": {
+                        "兑换_第5顺位": {
+                            "enabled": false
+                        }
+                    }
+                },
+                {
+                    "name": "觉悟",
+                    "pipeline_override": {
+                        "兑换_第5顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第5_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "^觉悟$",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "梦境之羽",
+                    "pipeline_override": {
+                        "兑换_第5顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第5_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "梦境之羽",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "高级技能包*5",
+                    "pipeline_override": {
+                        "兑换_第5顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第5_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "高级技能包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "高级突破包*5",
+                    "pipeline_override": {
+                        "兑换_第5顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第5_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "高级突破包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "中级技能包*5",
+                    "pipeline_override": {
+                        "兑换_第5顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第5_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "中级技能包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "中级突破包*5",
+                    "pipeline_override": {
+                        "兑换_第5顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第5_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "中级突破包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "初级技能包*5",
+                    "pipeline_override": {
+                        "兑换_第5顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第5_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "初级技能包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "初级突破包*5",
+                    "pipeline_override": {
+                        "兑换_第5顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第5_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "初级突破包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "星尘之铃·承",
+                    "pipeline_override": {
+                        "兑换_第5顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第5_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "星尘之铃.?承",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "记忆铭刻·影",
+                    "pipeline_override": {
+                        "兑换_第5顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第5_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "记忆铭刻.?影",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·艾因",
+                    "pipeline_override": {
+                        "兑换_第5顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第5_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?艾因",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·路辰",
+                    "pipeline_override": {
+                        "兑换_第5顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第5_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?路辰",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·罗夏",
+                    "pipeline_override": {
+                        "兑换_第5顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第5_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?罗夏",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·司岚",
+                    "pipeline_override": {
+                        "兑换_第5顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第5_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?司岚",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·叶瑄",
+                    "pipeline_override": {
+                        "兑换_第5顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第5_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?叶瑄",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "第6顺位": {
+            "type": "select",
+            "label": "兑换第 6 顺位",
+            "default_case": "不购买",
+            "cases": [
+                {
+                    "name": "不购买",
+                    "pipeline_override": {
+                        "兑换_第6顺位": {
+                            "enabled": false
+                        }
+                    }
+                },
+                {
+                    "name": "觉悟",
+                    "pipeline_override": {
+                        "兑换_第6顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第6_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "^觉悟$",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "梦境之羽",
+                    "pipeline_override": {
+                        "兑换_第6顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第6_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "梦境之羽",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "高级技能包*5",
+                    "pipeline_override": {
+                        "兑换_第6顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第6_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "高级技能包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "高级突破包*5",
+                    "pipeline_override": {
+                        "兑换_第6顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第6_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "高级突破包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "中级技能包*5",
+                    "pipeline_override": {
+                        "兑换_第6顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第6_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "中级技能包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "中级突破包*5",
+                    "pipeline_override": {
+                        "兑换_第6顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第6_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "中级突破包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "初级技能包*5",
+                    "pipeline_override": {
+                        "兑换_第6顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第6_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "初级技能包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "初级突破包*5",
+                    "pipeline_override": {
+                        "兑换_第6顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第6_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "初级突破包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "星尘之铃·承",
+                    "pipeline_override": {
+                        "兑换_第6顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第6_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "星尘之铃.?承",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "记忆铭刻·影",
+                    "pipeline_override": {
+                        "兑换_第6顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第6_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "记忆铭刻.?影",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·艾因",
+                    "pipeline_override": {
+                        "兑换_第6顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第6_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?艾因",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·路辰",
+                    "pipeline_override": {
+                        "兑换_第6顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第6_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?路辰",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·罗夏",
+                    "pipeline_override": {
+                        "兑换_第6顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第6_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?罗夏",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·司岚",
+                    "pipeline_override": {
+                        "兑换_第6顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第6_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?司岚",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·叶瑄",
+                    "pipeline_override": {
+                        "兑换_第6顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第6_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?叶瑄",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "第7顺位": {
+            "type": "select",
+            "label": "兑换第 7 顺位",
+            "default_case": "不购买",
+            "cases": [
+                {
+                    "name": "不购买",
+                    "pipeline_override": {
+                        "兑换_第7顺位": {
+                            "enabled": false
+                        }
+                    }
+                },
+                {
+                    "name": "觉悟",
+                    "pipeline_override": {
+                        "兑换_第7顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第7_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "^觉悟$",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "梦境之羽",
+                    "pipeline_override": {
+                        "兑换_第7顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第7_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "梦境之羽",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "高级技能包*5",
+                    "pipeline_override": {
+                        "兑换_第7顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第7_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "高级技能包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "高级突破包*5",
+                    "pipeline_override": {
+                        "兑换_第7顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第7_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "高级突破包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "中级技能包*5",
+                    "pipeline_override": {
+                        "兑换_第7顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第7_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "中级技能包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "中级突破包*5",
+                    "pipeline_override": {
+                        "兑换_第7顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第7_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "中级突破包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "初级技能包*5",
+                    "pipeline_override": {
+                        "兑换_第7顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第7_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "初级技能包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "初级突破包*5",
+                    "pipeline_override": {
+                        "兑换_第7顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第7_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "初级突破包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "星尘之铃·承",
+                    "pipeline_override": {
+                        "兑换_第7顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第7_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "星尘之铃.?承",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "记忆铭刻·影",
+                    "pipeline_override": {
+                        "兑换_第7顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第7_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "记忆铭刻.?影",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·艾因",
+                    "pipeline_override": {
+                        "兑换_第7顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第7_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?艾因",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·路辰",
+                    "pipeline_override": {
+                        "兑换_第7顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第7_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?路辰",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·罗夏",
+                    "pipeline_override": {
+                        "兑换_第7顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第7_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?罗夏",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·司岚",
+                    "pipeline_override": {
+                        "兑换_第7顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第7_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?司岚",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·叶瑄",
+                    "pipeline_override": {
+                        "兑换_第7顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第7_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?叶瑄",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "第8顺位": {
+            "type": "select",
+            "label": "兑换第 8 顺位",
+            "default_case": "不购买",
+            "cases": [
+                {
+                    "name": "不购买",
+                    "pipeline_override": {
+                        "兑换_第8顺位": {
+                            "enabled": false
+                        }
+                    }
+                },
+                {
+                    "name": "觉悟",
+                    "pipeline_override": {
+                        "兑换_第8顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第8_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "^觉悟$",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "梦境之羽",
+                    "pipeline_override": {
+                        "兑换_第8顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第8_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "梦境之羽",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "高级技能包*5",
+                    "pipeline_override": {
+                        "兑换_第8顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第8_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "高级技能包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "高级突破包*5",
+                    "pipeline_override": {
+                        "兑换_第8顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第8_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "高级突破包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "中级技能包*5",
+                    "pipeline_override": {
+                        "兑换_第8顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第8_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "中级技能包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "中级突破包*5",
+                    "pipeline_override": {
+                        "兑换_第8顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第8_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "中级突破包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "初级技能包*5",
+                    "pipeline_override": {
+                        "兑换_第8顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第8_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "初级技能包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "初级突破包*5",
+                    "pipeline_override": {
+                        "兑换_第8顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第8_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "初级突破包",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "星尘之铃·承",
+                    "pipeline_override": {
+                        "兑换_第8顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第8_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "星尘之铃.?承",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "记忆铭刻·影",
+                    "pipeline_override": {
+                        "兑换_第8顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第8_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "记忆铭刻.?影",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·艾因",
+                    "pipeline_override": {
+                        "兑换_第8顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第8_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?艾因",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·路辰",
+                    "pipeline_override": {
+                        "兑换_第8顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第8_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?路辰",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·罗夏",
+                    "pipeline_override": {
+                        "兑换_第8顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第8_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?罗夏",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·司岚",
+                    "pipeline_override": {
+                        "兑换_第8顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第8_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?司岚",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "帝国训练·叶瑄",
+                    "pipeline_override": {
+                        "兑换_第8顺位": {
+                            "enabled": true
+                        },
+                        "兑换_第8_商品": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "帝国训练.?叶瑄",
+                                    "roi": [
+                                        160,
+                                        130,
+                                        1040,
+                                        580
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

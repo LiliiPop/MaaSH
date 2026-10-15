@@ -39,6 +39,7 @@
         "tasks/Gacha.json",
         "tasks/DailyClaim.json",
         "tasks/Holiday.json",
+        "tasks/Cinema.json",
         "tasks/Stamina.json",
         "tasks/AfterRun.json",
         "tasks/CloseGame.json"
