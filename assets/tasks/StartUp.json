@@ -4,8 +4,11 @@
             "name": "✈️启动绘旅人",
             "entry": "启动游戏",
             "default_check": true,
-            "option": ["使用指定账号登录"],
-            "description": "启动游戏，点击登录界面进入默认账号，关闭所有公告，停在主界面。<br>（开发中：等待截图）"
+            "option": [
+                "启动等待上限",
+                "使用指定账号登录"
+            ],
+            "description": "启动游戏，点击登录界面进入默认账号，关闭所有公告，停在主界面。<br>可设置等待上限；认不出的开屏会在画面静止后点底部进入。"
         }
     ],
     "option": {
@@ -26,6 +29,54 @@
                     "pipeline_override": {
                         "启动_切换账号": {
                             "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "启动等待上限": {
+            "type": "select",
+            "label": "启动等待上限",
+            "description": "打开游戏后多久还没进入主界面就停止等待、交给人工（读条、版本更新可能较慢）。选「不限制」则一直等。",
+            "default_case": "10分钟",
+            "cases": [
+                {
+                    "name": "5分钟",
+                    "pipeline_override": {
+                        "启动_等待主界面": {
+                            "timeout": 300000
+                        }
+                    }
+                },
+                {
+                    "name": "10分钟",
+                    "pipeline_override": {
+                        "启动_等待主界面": {
+                            "timeout": 600000
+                        }
+                    }
+                },
+                {
+                    "name": "20分钟",
+                    "pipeline_override": {
+                        "启动_等待主界面": {
+                            "timeout": 1200000
+                        }
+                    }
+                },
+                {
+                    "name": "30分钟",
+                    "pipeline_override": {
+                        "启动_等待主界面": {
+                            "timeout": 1800000
+                        }
+                    }
+                },
+                {
+                    "name": "不限制",
+                    "pipeline_override": {
+                        "启动_等待主界面": {
+                            "timeout": 86400000
                         }
                     }
                 }

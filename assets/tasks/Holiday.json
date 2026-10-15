@@ -1,10 +1,60 @@
 {
     "task": [
         {
-            "name": "🏖️假日一键领取",
+            "name": "🏖️假日领取",
             "entry": "假日一键领取",
             "default_check": true,
-            "description": "主界面「假日」→ 假日清单 → 一键领取。<br>建议放在其他日常之后。"
+            "description": "主界面「假日」：先领假日清单，再领假日计划（可分别开关）。<br>建议放在其他日常之后。",
+            "option": [
+                "领假日清单",
+                "领假日计划"
+            ]
         }
-    ]
+    ],
+    "option": {
+        "领假日清单": {
+            "type": "switch",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "假日_切到清单": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "假日_切到清单": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "领假日计划": {
+            "type": "switch",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "假日_切到计划": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "假日_切到计划": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        }
+    }
 }

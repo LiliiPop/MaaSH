@@ -151,14 +151,16 @@
             "timeout": 15000
         },
         "next": [
-            "假日_切到清单"
+            "假日_切到清单",
+            "假日_切到计划",
+            "Flag_假日领取完成"
         ],
         "on_error": [
             "公共_任务失败"
         ]
     },
     "假日_切到清单": {
-        "desc": "上方「假日清单」页签",
+        "desc": "子选项「领假日清单」：切到上方「假日清单」页签",
         "recognition": {
             "type": "OCR",
             "param": {
@@ -180,23 +182,117 @@
         },
         "timeout": 15000,
         "next": [
-            "假日_一键领取"
+            "假日_清单领取",
+            "假日_切到计划",
+            "Flag_假日领取完成"
         ],
         "on_error": [
-            "公共_任务失败"
+            "假日_切到计划",
+            "Flag_假日领取完成"
         ]
     },
-    "假日_一键领取": {
-        "desc": "右下角「一键领取」",
+    "Flag_假日领取完成": {
+        "desc": "清单、计划都检查过",
         "recognition": {
             "type": "OCR",
             "param": {
-                "expected": "键领取",
+                "expected": "假日清单|假日计划",
                 "roi": [
-                    1050,
-                    600,
-                    180,
-                    60
+                    395,
+                    85,
+                    310,
+                    50
+                ]
+            }
+        },
+        "pre_wait_freezes": {
+            "time": 800,
+            "timeout": 8000
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]假日奖励已领取[/color]"
+        }
+    },
+    "假日_清单领取": {
+        "desc": "假日清单右下「一键领取」为深色（有可领）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "键领取",
+                                "roi": [
+                                    1040,
+                                    595,
+                                    200,
+                                    70
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    1050,
+                                    605,
+                                    180,
+                                    50
+                                ],
+                                "method": 4,
+                                "lower": [
+                                    40,
+                                    30,
+                                    20
+                                ],
+                                "upper": [
+                                    115,
+                                    100,
+                                    90
+                                ],
+                                "count": 1500
+                            }
+                        }
+                    }
+                ],
+                "box_index": 0
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "假日_清单领后"
+        ]
+    },
+    "假日_清单领后": {
+        "timeout": 15000,
+        "next": [
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "假日_切到计划",
+            "Flag_假日领取完成"
+        ]
+    },
+    "假日_切到计划": {
+        "desc": "子选项「领假日计划」：切到上方「假日计划」页签",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "假日计划",
+                "roi": [
+                    395,
+                    85,
+                    150,
+                    50
                 ]
             }
         },
@@ -209,43 +305,79 @@
         },
         "timeout": 10000,
         "next": [
-            "假日_等待"
+            "假日_计划领取",
+            "Flag_假日领取完成"
         ],
         "on_error": [
-            "公共_任务失败"
+            "Flag_假日领取完成"
         ]
     },
-    "假日_等待": {
-        "timeout": 20000,
+    "假日_计划领取": {
+        "desc": "假日计划右侧「一键领取」为深色（有可领）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "键领取",
+                                "roi": [
+                                    1040,
+                                    540,
+                                    200,
+                                    70
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    1055,
+                                    548,
+                                    160,
+                                    40
+                                ],
+                                "method": 4,
+                                "lower": [
+                                    40,
+                                    30,
+                                    20
+                                ],
+                                "upper": [
+                                    115,
+                                    100,
+                                    90
+                                ],
+                                "count": 1500
+                            }
+                        }
+                    }
+                ],
+                "box_index": 0
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "假日_计划领后"
+        ]
+    },
+    "假日_计划领后": {
+        "timeout": 15000,
         "next": [
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
             "Flag_假日领取完成"
-        ],
-        "on_error": [
-            "公共_任务失败"
         ]
-    },
-    "Flag_假日领取完成": {
-        "desc": "奖励弹窗关闭后回到假日清单",
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": "假日清单",
-                "roi": [
-                    545,
-                    85,
-                    150,
-                    50
-                ]
-            }
-        },
-        "pre_wait_freezes": {
-            "time": 1000,
-            "timeout": 8000
-        },
-        "focus": {
-            "Node.Action.Succeeded": "[color:Limegreen]假日奖励已领取[/color]"
-        }
     }
 }

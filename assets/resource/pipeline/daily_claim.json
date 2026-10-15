@@ -12,7 +12,7 @@
         }
     },
     "每日任务_一键领取": {
-        "desc": "右下角「一键领取」",
+        "desc": "右下角「一键领取」：反复点，直到点了也不再弹奖励（任务奖励、下方钻石进度奖励都领完）",
         "recognition": {
             "type": "OCR",
             "param": {
@@ -34,35 +34,39 @@
         },
         "timeout": 10000,
         "next": [
-            "每日任务_等待"
+            "每日任务_领后"
         ],
         "on_error": [
             "公共_任务失败"
-        ]
+        ],
+        "max_hit": 8
     },
-    "每日任务_等待": {
-        "timeout": 30000,
+    "Flag_每日任务领取完成": {
+        "desc": "再点一键领取已经没有新奖励",
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]每日任务和钻石进度奖励已全部领取[/color]"
+        }
+    },
+    "每日任务_领后": {
+        "timeout": 4000,
         "next": [
-            "[JumpBack]公共_获得奖励",
-            "[JumpBack]公共_点击空白继续",
             "[JumpBack]公共_快速模式提示",
-            "每日任务_在日常页"
+            "每日任务_有奖励"
         ],
         "on_error": [
-            "公共_任务失败"
+            "Flag_每日任务领取完成"
         ]
     },
-    "每日任务_一键领取_再次": {
-        "desc": "弹窗关完后列表里仍有「领取」：再点一次一键领取（例如领完任务奖励后进度宝箱也可领）",
+    "每日任务_有奖励": {
         "recognition": {
             "type": "OCR",
             "param": {
-                "expected": "^领\\s*取$",
+                "expected": "恭喜获得|获得奖励|点击空白处继续",
                 "roi": [
-                    1040,
+                    380,
                     130,
-                    140,
-                    550
+                    520,
+                    560
                 ]
             }
         },
@@ -70,67 +74,29 @@
             "type": "Click",
             "param": {
                 "target": [
-                    1205,
-                    615,
-                    50,
-                    50
+                    560,
+                    630,
+                    160,
+                    30
                 ]
             }
-        },
-        "max_hit": 3,
-        "pre_wait_freezes": {
-            "time": 1000,
-            "timeout": 8000
         },
         "post_wait_freezes": {
-            "time": 1000,
+            "time": 800,
             "timeout": 10000
         },
         "next": [
-            "每日任务_等待"
+            "每日任务_再看"
         ]
     },
-    "Flag_每日任务领取完成": {
-        "desc": "日常列表当前可见范围内没有「领取」按钮（「已领取」印章不算）",
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": "^领\\s*取$",
-                "roi": [
-                    1040,
-                    130,
-                    140,
-                    550
-                ]
-            }
-        },
-        "inverse": true,
-        "pre_wait_freezes": 0,
-        "focus": {
-            "Node.Action.Succeeded": "[color:Limegreen]每日任务奖励已全部领取[/color]"
-        }
-    },
-    "每日任务_在日常页": {
-        "desc": "弹窗关完后回到「今日任务」页，再检查是否还有可领取项",
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": "今日任务",
-                "roi": [
-                    220,
-                    80,
-                    260,
-                    85
-                ]
-            }
-        },
-        "pre_wait_freezes": {
-            "time": 1200,
-            "timeout": 10000
-        },
+    "每日任务_再看": {
+        "timeout": 5000,
         "next": [
-            "Flag_每日任务领取完成",
-            "每日任务_一键领取_再次"
+            "每日任务_有奖励",
+            "每日任务_一键领取"
+        ],
+        "on_error": [
+            "Flag_每日任务领取完成"
         ]
     }
 }
