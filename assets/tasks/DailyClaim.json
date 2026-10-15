@@ -1,0 +1,10 @@
+{
+    "task": [
+        {
+            "name": "📋每日任务领取",
+            "entry": "每日任务领取",
+            "default_check": true,
+            "description": "任务页「日常」→ 一键领取。<br>请放在其他日常之后。"
+        }
+    ]
+}

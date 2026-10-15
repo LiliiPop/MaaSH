@@ -1,0 +1,226 @@
+{
+    "每日任务领取": {
+        "desc": "任务入口：确保在主界面后打开任务页。建议放在其他日常之后",
+        "timeout": 60000,
+        "next": [
+            "每日任务_打开任务页",
+            "[JumpBack]公共_返回主界面"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]开始：每日任务领取[/color]"
+        }
+    },
+    "每日任务_打开任务页": {
+        "desc": "主界面左上角第三个图标（日历打勾）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "画廊",
+                                "roi": [
+                                    950,
+                                    290,
+                                    120,
+                                    80
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "图鉴",
+                                "roi": [
+                                    700,
+                                    635,
+                                    100,
+                                    60
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    285,
+                    28,
+                    30,
+                    30
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "next": [
+            "每日任务_切到日常页"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "每日任务_切到日常页": {
+        "desc": "左侧「日常」页签",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^日\\s*常$",
+                "roi": [
+                    18,
+                    312,
+                    64,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 10000
+        },
+        "timeout": 15000,
+        "next": [
+            "每日任务_一键领取"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "每日任务_一键领取": {
+        "desc": "右下角「一键领取」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "领取",
+                "roi": [
+                    1190,
+                    600,
+                    80,
+                    80
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 10000
+        },
+        "timeout": 10000,
+        "next": [
+            "每日任务_等待"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "每日任务_等待": {
+        "timeout": 30000,
+        "next": [
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_快速模式提示",
+            "每日任务_在日常页"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "每日任务_一键领取_再次": {
+        "desc": "弹窗关完后列表里仍有「领取」：再点一次一键领取（例如领完任务奖励后进度宝箱也可领）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^领\\s*取$",
+                "roi": [
+                    1040,
+                    130,
+                    140,
+                    550
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1205,
+                    615,
+                    50,
+                    50
+                ]
+            }
+        },
+        "max_hit": 3,
+        "pre_wait_freezes": {
+            "time": 1000,
+            "timeout": 8000
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 10000
+        },
+        "next": [
+            "每日任务_等待"
+        ]
+    },
+    "Flag_每日任务领取完成": {
+        "desc": "日常列表当前可见范围内没有「领取」按钮（「已领取」印章不算）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^领\\s*取$",
+                "roi": [
+                    1040,
+                    130,
+                    140,
+                    550
+                ]
+            }
+        },
+        "inverse": true,
+        "pre_wait_freezes": 0,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]每日任务奖励已全部领取[/color]"
+        }
+    },
+    "每日任务_在日常页": {
+        "desc": "弹窗关完后回到「今日任务」页，再检查是否还有可领取项",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "今日任务",
+                "roi": [
+                    220,
+                    80,
+                    260,
+                    85
+                ]
+            }
+        },
+        "pre_wait_freezes": {
+            "time": 1200,
+            "timeout": 10000
+        },
+        "next": [
+            "Flag_每日任务领取完成",
+            "每日任务_一键领取_再次"
+        ]
+    }
+}

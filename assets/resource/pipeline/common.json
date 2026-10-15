@@ -180,5 +180,59 @@
         "focus": {
             "Node.Action.Succeeded": "[color:Red]当前任务超时或卡住，已跳过[/color]"
         }
+    },
+    "公共_快速模式提示": {
+        "desc": "快速模式开启时右上角的「进行1次xx 跳过/前往」提示：点「跳过」（只是暂时跳过，不影响任务）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "跳过",
+                                "roi": [
+                                    1085,
+                                    115,
+                                    80,
+                                    50
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "进行",
+                                "roi": [
+                                    900,
+                                    120,
+                                    150,
+                                    45
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1100,
+                    125,
+                    45,
+                    40
+                ]
+            }
+        },
+        "max_hit": 10,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 5000
+        }
     }
 }

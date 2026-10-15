@@ -1,0 +1,323 @@
+{
+    "免费抽卡": {
+        "desc": "任务入口：确保在主界面后打开画廊",
+        "timeout": 60000,
+        "next": [
+            "抽卡_打开画廊",
+            "[JumpBack]公共_返回主界面"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]开始：免费抽卡[/color]"
+        }
+    },
+    "抽卡_打开画廊": {
+        "desc": "主界面右侧「画廊」",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "画廊",
+                                "roi": [
+                                    950,
+                                    290,
+                                    120,
+                                    80
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "图鉴",
+                                "roi": [
+                                    700,
+                                    635,
+                                    100,
+                                    60
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    960,
+                    300,
+                    120,
+                    70
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 15000
+        },
+        "next": [
+            "抽卡_找卡池"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "抽卡_找卡池": {
+        "desc": "点右侧箭头切换卡池，直到出现「每日写生素材箱」（通常在最右边）",
+        "timeout": 40000,
+        "next": [
+            "抽卡_卡池页",
+            "[JumpBack]抽卡_下一个卡池"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "抽卡_下一个卡池": {
+        "desc": "画廊页右侧的切换箭头",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "画廊",
+                "roi": [
+                    115,
+                    10,
+                    140,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1220,
+                    340,
+                    35,
+                    40
+                ]
+            }
+        },
+        "max_hit": 10,
+        "pre_wait_freezes": {
+            "time": 800,
+            "timeout": 8000
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 8000
+        }
+    },
+    "抽卡_卡池页": {
+        "desc": "已在「每日写生素材箱」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "每日写生素材箱",
+                "roi": [
+                    180,
+                    500,
+                    480,
+                    100
+                ]
+            }
+        },
+        "timeout": 15000,
+        "next": [
+            "抽卡_免费十连",
+            "Flag_免费抽卡完成"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "抽卡_免费十连": {
+        "desc": "「绘制十次」下方写着「本次免费」才点。只抽免费的，绝不花画箱券或钻石",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "本次免费",
+                "roi": [
+                    1060,
+                    620,
+                    140,
+                    40
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1060,
+                    585,
+                    140,
+                    40
+                ]
+            }
+        },
+        "max_hit": 1,
+        "post_wait_freezes": {
+            "time": 1500,
+            "timeout": 20000
+        },
+        "next": [
+            "抽卡_等待结果"
+        ]
+    },
+    "抽卡_等待结果": {
+        "desc": "十连动画和结果页：点「确认」，绝不点「再次绘制」；若弹出消耗确认，一律取消",
+        "timeout": 60000,
+        "next": [
+            "抽卡_取消消耗",
+            "抽卡_确认结果",
+            "[JumpBack]抽卡_跳过动画"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "抽卡_取消消耗": {
+        "desc": "安全保护：出现「是否消耗…」确认框时点「取消」，然后结束",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "是否消耗",
+                "roi": [
+                    380,
+                    380,
+                    500,
+                    70
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    420,
+                    490,
+                    95,
+                    45
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]今日免费次数已用完，已取消付费抽卡[/color]"
+        }
+    },
+    "抽卡_确认结果": {
+        "desc": "结果页左侧「确认」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^确\\s*认$",
+                "roi": [
+                    380,
+                    570,
+                    190,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 10000
+        },
+        "next": [
+            "抽卡_回到卡池"
+        ]
+    },
+    "抽卡_跳过动画": {
+        "desc": "抽卡动画中点屏幕中部推进（不在结果页、不在确认框时）",
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    620,
+                    330,
+                    40,
+                    40
+                ]
+            }
+        },
+        "max_hit": 15,
+        "pre_wait_freezes": {
+            "time": 1500,
+            "timeout": 10000
+        }
+    },
+    "抽卡_回到卡池": {
+        "timeout": 20000,
+        "next": [
+            "Flag_免费抽卡完成",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "Flag_免费抽卡完成": {
+        "desc": "在「每日写生素材箱」页，「绘制十次」下方不再是「本次免费」",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "每日写生素材箱",
+                                "roi": [
+                                    180,
+                                    500,
+                                    480,
+                                    100
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "X10|x10|×10",
+                                "roi": [
+                                    1100,
+                                    620,
+                                    90,
+                                    30
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "pre_wait_freezes": {
+            "time": 1000,
+            "timeout": 10000
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]今日免费十连已完成[/color]"
+        }
+    }
+}
