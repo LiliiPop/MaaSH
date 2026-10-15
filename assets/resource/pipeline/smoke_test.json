@@ -1,0 +1,25 @@
+{
+    "冒烟测试": {
+        "desc": "开发用：启动游戏并等待画面稳定，不做任何点击",
+        "action": {
+            "type": "StartApp",
+            "param": {
+                "package": "com.netease.skzdhlr"
+            }
+        },
+        "post_wait_freezes": {
+            "time": 3000,
+            "timeout": 120000
+        },
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]冒烟测试：已连接模拟器，正在启动游戏[/color]"
+        },
+        "next": ["Flag_冒烟测试通过"]
+    },
+    "Flag_冒烟测试通过": {
+        "desc": "能截图、能等到画面静止，说明连接和截图都正常",
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]冒烟测试通过：连接、截图、启动游戏均正常[/color]"
+        }
+    }
+}

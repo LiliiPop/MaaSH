@@ -1,0 +1,35 @@
+{
+    "task": [
+        {
+            "name": "✈️启动绘旅人",
+            "entry": "启动游戏",
+            "default_check": true,
+            "option": ["使用指定账号登录"],
+            "description": "启动游戏，点击登录界面进入默认账号，关闭所有公告，停在主界面。<br>（开发中：等待截图）"
+        }
+    ],
+    "option": {
+        "使用指定账号登录": {
+            "type": "switch",
+            "description": "预留功能，暂未实现。",
+            "cases": [
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "启动_切换账号": {
+                            "enabled": false
+                        }
+                    }
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "启动_切换账号": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

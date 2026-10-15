@@ -1,0 +1,32 @@
+{
+    "interface_version": 2,
+    "name": "MaaSH",
+    "title": "MaaSH | 时空中的绘旅人日常小助手",
+    "description": "基于 MaaFramework 的「时空中的绘旅人」日常小助手。只截图 + 模拟点击，不修改游戏。",
+    "contact": "Github：https://github.com/LiliiPop/MaaSH",
+    "license": "MIT",
+    "welcome": "欢迎使用 MaaSH！首次使用请先看 README 里的「连接模拟器」一节。",
+    "github": "https://github.com/LiliiPop/MaaSH",
+    "version": "v0.0.1",
+    "controller": [
+        {
+            "name": "ADB模拟器",
+            "type": "Adb",
+            "display_short_side": 720
+        }
+    ],
+    "resource": [
+        {
+            "name": "官服",
+            "path": ["./resource"]
+        }
+    ],
+    "import": [
+        "tasks/SmokeTest.json",
+        "tasks/StartUp.json",
+        "tasks/AfterRun.json",
+        "tasks/CloseGame.json"
+    ],
+    "task": [],
+    "option": {}
+}

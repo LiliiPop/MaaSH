@@ -1,0 +1,9 @@
+{
+    "task": [
+        {
+            "name": "💤关闭绘旅人",
+            "entry": "关闭游戏",
+            "default_check": false
+        }
+    ]
+}

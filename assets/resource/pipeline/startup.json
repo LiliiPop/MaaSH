@@ -1,0 +1,63 @@
+{
+    "启动游戏": {
+        "desc": "任务入口：启动游戏后进入等待循环",
+        "action": {
+            "type": "StartApp",
+            "param": {
+                "package": "com.netease.skzdhlr"
+            }
+        },
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]正在启动时空中的绘旅人[/color]"
+        },
+        "next": [
+            "启动_等待主界面"
+        ]
+    },
+    "启动_等待主界面": {
+        "desc": "循环判断：到主界面就确认，否则逐个处理登录、公告、断线、加载",
+        "timeout": 180000,
+        "next": [
+            "启动_主界面初判",
+            "[JumpBack]启动_切换账号",
+            "[JumpBack]启动_点击登录",
+            "[JumpBack]公共_关闭公告",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_断线重连"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "启动_主界面初判": {
+        "desc": "待截图：主界面（干净状态）。第一次认出主界面后不立即算完成，等画面静止再复核一次，防止公告晚弹",
+        "enabled": false,
+        "post_wait_freezes": {
+            "time": 2000,
+            "timeout": 15000
+        },
+        "next": [
+            "Flag_启动完成",
+            "[JumpBack]公共_关闭公告",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续"
+        ]
+    },
+    "Flag_启动完成": {
+        "desc": "待截图：主界面复核通过即算启动成功",
+        "enabled": false,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]启动完成，已在主界面[/color]"
+        }
+    },
+    "启动_点击登录": {
+        "desc": "待截图：登录界面。游戏会自动登录默认账号，但需要点一下才进入",
+        "enabled": false,
+        "max_hit": 5
+    },
+    "启动_切换账号": {
+        "desc": "预留：在登录界面切换到指定账号。默认关闭，由「使用指定账号登录」选项打开",
+        "enabled": false
+    }
+}

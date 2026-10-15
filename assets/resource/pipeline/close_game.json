@@ -1,0 +1,25 @@
+{
+    "结束后操作": {
+        "desc": "由「结束后」选项改写 next：关闭游戏 / 返回主界面 / 不动",
+        "next": ["关闭游戏"]
+    },
+    "关闭游戏": {
+        "action": {
+            "type": "StopApp",
+            "param": {
+                "package": "com.netease.skzdhlr"
+            }
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 10000
+        },
+        "next": ["Flag_游戏已关闭"]
+    },
+    "Flag_游戏已关闭": {
+        "desc": "关闭指令已执行。待截图：模拟器桌面，届时改为识别桌面确认",
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]已关闭时空中的绘旅人[/color]"
+        }
+    }
+}
