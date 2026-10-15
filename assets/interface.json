@@ -8,6 +8,9 @@
     "welcome": "欢迎使用 MaaSH！首次使用请先看 README 里的「连接模拟器」一节。",
     "github": "https://github.com/LiliiPop/MaaSH",
     "version": "v0.0.1",
+    // Mirror酱（国内下载加速）预留：申请到资源 ID 后取消下面两行的注释，并在 install.yml 里打开 MirrorChyanUploading 步骤
+    // "mirrorchyan_rid": "MaaSH",
+    // "mirrorchyan_multiplatform": true,
     "controller": [
         {
             "name": "ADB模拟器",
