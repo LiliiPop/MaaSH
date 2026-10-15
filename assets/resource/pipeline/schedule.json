@@ -11,7 +11,8 @@
             "[JumpBack]日程_对话推进",
             "[JumpBack]日程_点击信封",
             "[JumpBack]公共_获得奖励",
-            "[JumpBack]公共_点击空白继续"
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]日程_场景右走"
         ],
         "on_error": [
             "公共_任务失败"
@@ -347,6 +348,45 @@
         },
         "focus": {
             "Node.Action.Succeeded": "[color:Limegreen]日程今天已安排完成[/color]"
+        }
+    },
+    "日程_场景右走": {
+        "desc": "特殊邀约场景里画面中没有信封：点右半边地面，主角向右走、场景右移，然后再找信封（先认左上角返回键确认在场景里；画面静止后才点，避免对话过场中误点）",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "common/返回按钮.png",
+                "roi": [
+                    0,
+                    0,
+                    140,
+                    110
+                ],
+                "threshold": 0.8
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1100,
+                    655,
+                    150,
+                    40
+                ]
+            }
+        },
+        "max_hit": 8,
+        "pre_wait_freezes": {
+            "time": 1000,
+            "timeout": 8000
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]画面里没找到信封，向右走一段再找[/color]"
         }
     }
 }
