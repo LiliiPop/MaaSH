@@ -2,7 +2,7 @@
 
 「时空中的绘旅人」日常小助手，基于 [MaaFramework](https://github.com/MaaXYZ/MaaFramework)，图形界面使用 [MFAAvalonia](https://github.com/SweetSmellFox/MFAAvalonia)。
 
-> 开发中，目前只有项目骨架，日常任务还不能使用。
+> 开发中：下方标「可用」的任务已在模拟器上实测或用截图测试过，正式版发布前仍可能有识别问题，欢迎用 Issue 反馈。
 
 只截图 + 模拟点击，不修改游戏、不读写内存。
 
