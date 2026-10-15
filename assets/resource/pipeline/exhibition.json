@@ -206,6 +206,8 @@
             "[JumpBack]画展_选地点_天文台",
             "[JumpBack]画展_选地点_港口",
             "[JumpBack]画展_选地点_律政楼",
+            "[JumpBack]画展_地图等待",
+            "[JumpBack]画展_地图兜底_律政楼",
             "[JumpBack]画展_快速选择",
             "[JumpBack]画展_下一场",
             "Flag_画展完成"
@@ -618,6 +620,76 @@
         },
         "focus": {
             "Node.Action.Succeeded": "[color:Limegreen]画展：已领取结束的奖励，所有场次都在宣传中[/color]"
+        }
+    },
+    "画展_地图等待": {
+        "desc": "在选地点的地图上，但没看到 NPC 说去哪里：先等一会儿（最多 3 次），给提示文字出现的时间",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "选择画展举办位置",
+                "roi": [
+                    690,
+                    560,
+                    350,
+                    60
+                ]
+            }
+        },
+        "max_hit": 3,
+        "pre_wait_freezes": {
+            "time": 1500,
+            "timeout": 8000
+        }
+    },
+    "画展_地图兜底_律政楼": {
+        "desc": "防卡死：在地图上等了 3 次仍没有地点提示，直接选律政楼，接着走快速选择",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "选择画展举办位置",
+                                "roi": [
+                                    690,
+                                    560,
+                                    350,
+                                    60
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "律政楼",
+                                "roi": [
+                                    420,
+                                    150,
+                                    800,
+                                    420
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 3,
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "focus": {
+            "Node.Action.Starting": "[color:Orange]画展：没认出 NPC 指定的地点，改选律政楼[/color]"
         }
     }
 }

@@ -3,6 +3,7 @@
         "desc": "任务开始前调用：反复处理弹窗和返回键，直到认出主界面。max_hit 防止「已在主界面但入口认不出」时无限循环",
         "timeout": 30000,
         "next": [
+            "[JumpBack]公共_退出后重开",
             "Flag_在主界面",
             "[JumpBack]公共_付费防呆",
             "[JumpBack]公共_获得奖励",
@@ -602,6 +603,59 @@
         },
         "focus": {
             "Node.Action.Succeeded": "[color:Orange]检测到付费弹窗（人民币/钻石），已点空白处取消[/color]"
+        }
+    },
+    "公共_退出后重开": {
+        "desc": "弹出「确定退出时空中的绘旅人？」（例如卡死后被按了返回键）：按用户要求点红色「退出」，然后重新启动游戏回到主界面，再继续原来的流程",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "确定退出时空中的绘旅人",
+                                "roi": [
+                                    370,
+                                    385,
+                                    540,
+                                    70
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^退\\s*出$",
+                                "roi": [
+                                    660,
+                                    455,
+                                    230,
+                                    75
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 3,
+        "post_wait_freezes": {
+            "time": 2000,
+            "timeout": 20000
+        },
+        "next": [
+            "启动游戏"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Orange]出现退出游戏确认框：已点「退出」，正在重新启动游戏[/color]"
         }
     }
 }
