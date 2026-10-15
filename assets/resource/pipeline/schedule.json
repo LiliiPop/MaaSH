@@ -3,7 +3,7 @@
         "desc": "任务入口：确保在主界面后进入日程页",
         "timeout": 60000,
         "next": [
-            "日程_进入日程页",
+            "日程_进入校园",
             "[JumpBack]公共_返回主界面"
         ],
         "on_error": [
@@ -13,15 +13,12 @@
             "Node.Action.Starting": "[color:Dimgray]开始：日程[/color]"
         }
     },
-    "日程_进入日程页": {
-        "desc": "待截图：主界面 → 校园 → 右下角「日程」。截图到位前，请手动进入日程页后单独运行「日程_流程」",
-        "enabled": false
-    },
     "日程_流程": {
         "desc": "日程主循环：两页安排（校园活动 + 特殊邀约），特殊邀约需要去地图找信封、对话、选回复",
         "timeout": 180000,
         "next": [
             "Flag_日程完成",
+            "Flag_日程今日已完成",
             "[JumpBack]日程_翻页",
             "[JumpBack]日程_随机选择",
             "日程_选择回复",
@@ -323,6 +320,143 @@
         "post_wait_freezes": {
             "time": 800,
             "timeout": 8000
+        }
+    },
+    "日程_进入校园": {
+        "desc": "主界面右侧「校园」",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "画廊",
+                                "roi": [
+                                    950,
+                                    290,
+                                    120,
+                                    80
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "图鉴",
+                                "roi": [
+                                    700,
+                                    635,
+                                    100,
+                                    60
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    960,
+                    405,
+                    90,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 15000
+        },
+        "next": [
+            "日程_点日程按钮"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "日程_点日程按钮": {
+        "desc": "校园右下角「日程」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "日程",
+                "roi": [
+                    1040,
+                    650,
+                    95,
+                    45
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1050,
+                    610,
+                    75,
+                    75
+                ]
+            }
+        },
+        "timeout": 20000,
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 15000
+        },
+        "next": [
+            "日程_流程"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "Flag_日程今日已完成": {
+        "desc": "今天已安排过：日程页显示回顾总结（右上角有日期「x月」）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "日程",
+                                "roi": [
+                                    120,
+                                    15,
+                                    110,
+                                    55
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "\\d+月",
+                                "roi": [
+                                    1070,
+                                    100,
+                                    90,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]日程今天已安排完成[/color]"
         }
     }
 }
