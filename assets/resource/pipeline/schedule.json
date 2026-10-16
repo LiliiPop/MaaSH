@@ -10,6 +10,7 @@
             "日程_选择回复",
             "[JumpBack]日程_对话推进",
             "[JumpBack]日程_点击信封",
+            "[JumpBack]日程_点击信封_场景",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
             "[JumpBack]日程_场景右走"
@@ -95,27 +96,6 @@
         "post_wait_freezes": {
             "time": 800,
             "timeout": 10000
-        }
-    },
-    "日程_点击信封": {
-        "desc": "校园地图或场景中，人物头上的信封",
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "template": [
-                    "schedule/信封_地图.png",
-                    "schedule/信封_场景.png"
-                ],
-                "threshold": 0.75
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "max_hit": 8,
-        "post_wait_freezes": {
-            "time": 1000,
-            "timeout": 15000
         }
     },
     "日程_对话推进": {
@@ -387,6 +367,50 @@
         },
         "focus": {
             "Node.Action.Starting": "[color:Dimgray]画面里没找到信封，向右走一段再找[/color]"
+        }
+    },
+    "日程_点击信封": {
+        "desc": "校园地图上头顶有信封的人物：点信封正下方的头像（点信封本身没有反应）",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "schedule/信封_地图.png",
+                "threshold": 0.75
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    0,
+                    65,
+                    0,
+                    0
+                ]
+            }
+        },
+        "max_hit": 8,
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 5000
+        }
+    },
+    "日程_点击信封_场景": {
+        "desc": "特殊邀约场景里人物旁的信封气泡",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "schedule/信封_场景.png",
+                "threshold": 0.75
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 8,
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 5000
         }
     }
 }
