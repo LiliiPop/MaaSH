@@ -105,26 +105,115 @@
         ]
     },
     "出行赠礼_选收藏礼物": {
-        "desc": "礼物列表里左上角是金色爱心的（已收藏），选第一个",
+        "desc": "礼物卡片左上角的爱心是金色（已收藏）：按颜色认，选第一个。灰色爱心不算",
         "recognition": {
-            "type": "TemplateMatch",
+            "type": "Or",
             "param": {
-                "template": "outing/收藏爱心.png",
-                "roi": [
-                    670,
-                    90,
-                    560,
-                    450
-                ],
-                "threshold": 0.85,
-                "order_by": "Score"
+                "any_of": [
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    692,
+                                    105,
+                                    40,
+                                    38
+                                ],
+                                "lower": [
+                                    200,
+                                    150,
+                                    40
+                                ],
+                                "upper": [
+                                    255,
+                                    215,
+                                    140
+                                ],
+                                "count": 200
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    965,
+                                    105,
+                                    40,
+                                    38
+                                ],
+                                "lower": [
+                                    200,
+                                    150,
+                                    40
+                                ],
+                                "upper": [
+                                    255,
+                                    215,
+                                    140
+                                ],
+                                "count": 200
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    692,
+                                    322,
+                                    40,
+                                    38
+                                ],
+                                "lower": [
+                                    200,
+                                    150,
+                                    40
+                                ],
+                                "upper": [
+                                    255,
+                                    215,
+                                    140
+                                ],
+                                "count": 200
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    965,
+                                    322,
+                                    40,
+                                    38
+                                ],
+                                "lower": [
+                                    200,
+                                    150,
+                                    40
+                                ],
+                                "upper": [
+                                    255,
+                                    215,
+                                    140
+                                ],
+                                "count": 200
+                            }
+                        }
+                    }
+                ]
             }
         },
         "action": {
             "type": "Click",
             "param": {
                 "target_offset": [
-                    80,
+                    100,
                     60,
                     0,
                     0
@@ -137,7 +226,11 @@
         },
         "next": [
             "出行赠礼_赠送"
-        ]
+        ],
+        "pre_wait_freezes": {
+            "time": 800,
+            "timeout": 5000
+        }
     },
     "出行赠礼_没有收藏": {
         "desc": "礼物列表已打开但没有金色爱心（没有收藏）：改送列表里第一个礼物（左上角那张）",
@@ -230,7 +323,7 @@
     },
     "出行收礼_流程": {
         "desc": "在课后出行页反复点人物，直到弹出「恭喜获得」",
-        "timeout": 90000,
+        "timeout": 200000,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]出行_去赴约",
@@ -266,7 +359,7 @@
                 ]
             }
         },
-        "max_hit": 30,
+        "max_hit": 60,
         "post_wait_freezes": {
             "time": 800,
             "timeout": 8000
