@@ -41,7 +41,8 @@ def build():
         }
         d[f"{name}_前往"] = {
             "recognition": {"type": "OCR", "param": {"expected": "前\\s*往", "roi": f"{name}_行", "roi_offset": BTN_OFFSET}},
-            "action": {"type": "Click"},
+            "desc": "点「前往」。只点按钮中间：行在列表最底下时按钮被裁掉一半，点到边缘会没反应",
+            "action": {"type": "Click", "param": {"target_offset": [10, 4, -20, -12]}},
             "post_wait_freezes": {"time": 1000, "timeout": 15000},
             "next": [start],
         }

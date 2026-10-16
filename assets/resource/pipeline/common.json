@@ -4,6 +4,7 @@
         "timeout": 30000,
         "next": [
             "[JumpBack]公共_退出后重开",
+            "[JumpBack]公共_晚点再说",
             "Flag_在主界面",
             "[JumpBack]公共_付费防呆",
             "[JumpBack]公共_获得奖励",
@@ -656,6 +657,56 @@
         ],
         "focus": {
             "Node.Action.Starting": "[color:Orange]出现退出游戏确认框：已点「退出」，正在重新启动游戏[/color]"
+        }
+    },
+    "公共_晚点再说": {
+        "desc": "角色发来出行邀请（「XX发来信息，要和他一起去…吗？」）：一律点「晚点再说」",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "发来信息",
+                                "roi": [
+                                    420,
+                                    535,
+                                    460,
+                                    60
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "晚点再说",
+                                "roi": [
+                                    960,
+                                    380,
+                                    180,
+                                    60
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 5,
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]角色发来出行邀请：选「晚点再说」[/color]"
         }
     }
 }

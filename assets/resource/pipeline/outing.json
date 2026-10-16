@@ -3,6 +3,8 @@
         "desc": "在课后出行页：先换成选定的角色，再打开赠礼",
         "timeout": 60000,
         "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]出行_去赴约",
             "出行赠礼_打开头像栏"
         ],
         "on_error": [
@@ -212,6 +214,8 @@
         "desc": "在课后出行页反复点人物，直到弹出「恭喜获得」",
         "timeout": 90000,
         "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]出行_去赴约",
             "出行收礼_关闭奖励",
             "[JumpBack]出行收礼_点人物"
         ],
@@ -299,6 +303,56 @@
         },
         "focus": {
             "Node.Action.Succeeded": "[color:Limegreen]出行中收到礼物，完成[/color]"
+        }
+    },
+    "出行_去赴约": {
+        "desc": "之前答应过角色的邀约时，点「前往」会先到地点列表（「相约之地」）：点「去赴约」进入出行，再继续原流程（赴约也是出行的一部分）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "相约之地",
+                                "roi": [
+                                    90,
+                                    90,
+                                    140,
+                                    45
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "去赴约",
+                                "roi": [
+                                    950,
+                                    585,
+                                    200,
+                                    65
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 2,
+        "post_wait_freezes": {
+            "time": 1500,
+            "timeout": 15000
+        },
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]有已答应的邀约：先去赴约[/color]"
         }
     }
 }
