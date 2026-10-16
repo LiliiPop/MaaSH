@@ -21,6 +21,7 @@
             "[JumpBack]公共_退出后重开",
             "启动_主界面初判",
             "[JumpBack]启动_切换账号",
+            "[JumpBack]启动_关闭登录公告",
             "[JumpBack]启动_点击登录",
             "[JumpBack]公共_关闭公告",
             "[JumpBack]公共_获得奖励",
@@ -209,6 +210,40 @@
         "desc": "超过设定时间仍未进入主界面（例如版本更新、登录失效）：停止等待，交给人工处理",
         "focus": {
             "Node.Action.Succeeded": "[color:Red]启动超时：长时间没有进入主界面（可能在更新或需要登录），请人工处理[/color]"
+        }
+    },
+    "启动_关闭登录公告": {
+        "desc": "登录界面一打开就弹出的「学院公告」（每天只弹一次）：点公告外左侧空白处关掉；不能直接点「点击开始」，那个位置被公告挡住",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "学院公告|SHELTER",
+                "roi": [
+                    520,
+                    80,
+                    250,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    30,
+                    250,
+                    50,
+                    80
+                ]
+            }
+        },
+        "max_hit": 5,
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]关闭登录界面的学院公告[/color]"
         }
     }
 }
