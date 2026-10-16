@@ -140,7 +140,7 @@
         ]
     },
     "出行赠礼_没有收藏": {
-        "desc": "礼物列表已打开但没有金色爱心",
+        "desc": "礼物列表已打开但没有金色爱心（没有收藏）：改送列表里第一个礼物（左上角那张）",
         "recognition": {
             "type": "OCR",
             "param": {
@@ -158,8 +158,26 @@
             "timeout": 5000
         },
         "focus": {
-            "Node.Action.Succeeded": "[color:Orange]没有收藏的礼物，跳过赠礼。请先在礼物列表里收藏想送的礼物[/color]"
-        }
+            "Node.Action.Starting": "[color:Orange]没有收藏的礼物，改送列表里第一个[/color]"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    720,
+                    140,
+                    170,
+                    110
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 5000
+        },
+        "next": [
+            "出行赠礼_赠送"
+        ]
     },
     "出行赠礼_赠送": {
         "desc": "「赠送」按钮（数量保持 1）",
