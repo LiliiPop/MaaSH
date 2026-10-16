@@ -4,6 +4,7 @@
         "timeout": 30000,
         "next": [
             "[JumpBack]公共_退出后重开",
+            "[JumpBack]公共_退出速写",
             "[JumpBack]公共_晚点再说",
             "Flag_在主界面",
             "[JumpBack]公共_付费防呆",
@@ -707,6 +708,32 @@
         },
         "focus": {
             "Node.Action.Starting": "[color:Dimgray]角色发来出行邀请：选「晚点再说」[/color]"
+        }
+    },
+    "公共_退出速写": {
+        "desc": "误进了速写模式（校园地图右下角是「退出速写」）：点它退出",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "退出速写",
+                "roi": [
+                    1080,
+                    640,
+                    190,
+                    75
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 3,
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 10000
+        },
+        "focus": {
+            "Node.Action.Starting": "[color:Orange]误进了速写模式，点「退出速写」[/color]"
         }
     }
 }
