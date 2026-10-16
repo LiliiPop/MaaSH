@@ -100,183 +100,10 @@
         },
         "timeout": 15000,
         "next": [
-            "出行赠礼_选收藏礼物",
-            "出行赠礼_没有收藏"
+            "出行赠礼_点第一个礼物"
         ],
         "on_error": [
             "公共_任务失败"
-        ]
-    },
-    "出行赠礼_选收藏礼物": {
-        "desc": "礼物卡片左上角的爱心是金色（已收藏）：按颜色认，选第一个。灰色爱心不算",
-        "recognition": {
-            "type": "Or",
-            "param": {
-                "any_of": [
-                    {
-                        "recognition": {
-                            "type": "ColorMatch",
-                            "param": {
-                                "roi": [
-                                    692,
-                                    105,
-                                    40,
-                                    38
-                                ],
-                                "lower": [
-                                    200,
-                                    150,
-                                    40
-                                ],
-                                "upper": [
-                                    255,
-                                    215,
-                                    140
-                                ],
-                                "count": 200
-                            }
-                        }
-                    },
-                    {
-                        "recognition": {
-                            "type": "ColorMatch",
-                            "param": {
-                                "roi": [
-                                    965,
-                                    105,
-                                    40,
-                                    38
-                                ],
-                                "lower": [
-                                    200,
-                                    150,
-                                    40
-                                ],
-                                "upper": [
-                                    255,
-                                    215,
-                                    140
-                                ],
-                                "count": 200
-                            }
-                        }
-                    },
-                    {
-                        "recognition": {
-                            "type": "ColorMatch",
-                            "param": {
-                                "roi": [
-                                    692,
-                                    322,
-                                    40,
-                                    38
-                                ],
-                                "lower": [
-                                    200,
-                                    150,
-                                    40
-                                ],
-                                "upper": [
-                                    255,
-                                    215,
-                                    140
-                                ],
-                                "count": 200
-                            }
-                        }
-                    },
-                    {
-                        "recognition": {
-                            "type": "ColorMatch",
-                            "param": {
-                                "roi": [
-                                    965,
-                                    322,
-                                    40,
-                                    38
-                                ],
-                                "lower": [
-                                    200,
-                                    150,
-                                    40
-                                ],
-                                "upper": [
-                                    255,
-                                    215,
-                                    140
-                                ],
-                                "count": 200
-                            }
-                        }
-                    }
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target_offset": [
-                    100,
-                    60,
-                    0,
-                    0
-                ]
-            }
-        },
-        "post_wait_freezes": {
-            "time": 500,
-            "timeout": 1500,
-            "rate_limit": 200
-        },
-        "next": [
-            "出行赠礼_赠送"
-        ],
-        "pre_wait_freezes": {
-            "time": 500,
-            "timeout": 1500,
-            "rate_limit": 200
-        }
-    },
-    "出行赠礼_没有收藏": {
-        "desc": "礼物列表已打开但没有金色爱心（没有收藏）：改送列表里第一个礼物（左上角那张）",
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": "赠\\s*送",
-                "roi": [
-                    880,
-                    630,
-                    140,
-                    60
-                ]
-            }
-        },
-        "pre_wait_freezes": {
-            "time": 500,
-            "timeout": 1500,
-            "rate_limit": 200
-        },
-        "focus": {
-            "Node.Action.Starting": "[color:Orange]没有收藏的礼物，改送列表里第一个[/color]"
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    720,
-                    140,
-                    170,
-                    110
-                ]
-            }
-        },
-        "post_wait_freezes": {
-            "time": 500,
-            "timeout": 1500,
-            "rate_limit": 200
-        },
-        "next": [
-            "出行赠礼_赠送"
         ]
     },
     "出行赠礼_赠送": {
@@ -477,5 +304,40 @@
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]礼物已送出，回任务页确认[/color]"
         }
+    },
+    "出行赠礼_点第一个礼物": {
+        "desc": "点礼物列表第一个（左上角那张）。点几次就送几个；点够「送礼次数」后 max_hit 跳过本节点，转去「赠送」。点卡片中部，避开左上角的爱心（点爱心会改收藏）。不判断是否收藏：爱心颜色是角色代表色，不只金色",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "赠\\s*送",
+                "roi": [
+                    880,
+                    630,
+                    140,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    760,
+                    150,
+                    150,
+                    110
+                ]
+            }
+        },
+        "post_delay": 600,
+        "max_hit": 1,
+        "next": [
+            "出行赠礼_点第一个礼物",
+            "出行赠礼_赠送"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
     }
 }
