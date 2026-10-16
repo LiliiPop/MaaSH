@@ -38,8 +38,9 @@
     "启动_主界面初判": {
         "desc": "认主界面右侧「画廊」和底部「图鉴」两个固定按钮（看板角色和背景会变，不用整图）。认出后等画面静止再复核一次，防止公告晚弹",
         "post_wait_freezes": {
-            "time": 2000,
-            "timeout": 15000
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
         },
         "next": [
             "[JumpBack]公共_退出后重开",
@@ -177,8 +178,9 @@
         },
         "max_hit": 5,
         "post_wait_freezes": {
-            "time": 1000,
-            "timeout": 20000
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
         }
     },
     "启动_切换账号": {
@@ -200,12 +202,14 @@
         },
         "max_hit": 15,
         "pre_wait_freezes": {
-            "time": 3000,
-            "timeout": 15000
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
         },
         "post_wait_freezes": {
-            "time": 1000,
-            "timeout": 15000
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
         }
     },
     "启动_超时": {
@@ -241,8 +245,9 @@
         },
         "max_hit": 5,
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "focus": {
             "Node.Action.Starting": "[color:Dimgray]关闭登录界面的学院公告[/color]"

@@ -8,13 +8,16 @@
             }
         },
         "post_wait_freezes": {
-            "time": 3000,
-            "timeout": 120000
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
         },
         "focus": {
             "Node.Action.Starting": "[color:Dimgray]冒烟测试：已连接模拟器，正在启动游戏[/color]"
         },
-        "next": ["Flag_冒烟测试通过"]
+        "next": [
+            "Flag_冒烟测试通过"
+        ]
     },
     "Flag_冒烟测试通过": {
         "desc": "能截图、能等到画面静止，说明连接和截图都正常",
@@ -23,4 +26,3 @@
         }
     }
 }
-

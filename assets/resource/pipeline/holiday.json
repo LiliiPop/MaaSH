@@ -147,8 +147,9 @@
             "type": "Click"
         },
         "post_wait_freezes": {
-            "time": 1000,
-            "timeout": 15000
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
         },
         "next": [
             "假日_切到清单",
@@ -177,8 +178,9 @@
             "type": "Click"
         },
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "timeout": 15000,
         "next": [
@@ -206,8 +208,9 @@
             }
         },
         "pre_wait_freezes": {
-            "time": 800,
-            "timeout": 8000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "focus": {
             "Node.Action.Succeeded": "[color:Limegreen]假日奖励已领取[/color]"
@@ -266,8 +269,9 @@
             "type": "Click"
         },
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "next": [
             "假日_清单领后"
@@ -300,8 +304,9 @@
             "type": "Click"
         },
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "timeout": 10000,
         "next": [
@@ -365,8 +370,9 @@
             "type": "Click"
         },
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "next": [
             "假日_计划领后"

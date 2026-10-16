@@ -70,8 +70,9 @@
             }
         },
         "post_wait_freezes": {
-            "time": 1000,
-            "timeout": 15000
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
         },
         "max_hit": 2,
         "next": [
@@ -173,8 +174,9 @@
             }
         },
         "post_wait_freezes": {
-            "time": 1000,
-            "timeout": 15000
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
         },
         "max_hit": 2,
         "next": [
@@ -276,8 +278,9 @@
             }
         },
         "post_wait_freezes": {
-            "time": 1000,
-            "timeout": 15000
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
         },
         "max_hit": 2,
         "next": [

@@ -37,8 +37,9 @@
             }
         },
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 8000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "next": [
             "出行赠礼_选择角色"
@@ -63,8 +64,9 @@
             "type": "Click"
         },
         "post_wait_freezes": {
-            "time": 1500,
-            "timeout": 15000
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
         },
         "timeout": 10000,
         "next": [
@@ -92,8 +94,9 @@
             "type": "Click"
         },
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 8000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "timeout": 15000,
         "next": [
@@ -221,15 +224,17 @@
             }
         },
         "post_wait_freezes": {
-            "time": 600,
-            "timeout": 5000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "next": [
             "出行赠礼_赠送"
         ],
         "pre_wait_freezes": {
-            "time": 800,
-            "timeout": 5000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         }
     },
     "出行赠礼_没有收藏": {
@@ -247,8 +252,9 @@
             }
         },
         "pre_wait_freezes": {
-            "time": 800,
-            "timeout": 5000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "focus": {
             "Node.Action.Starting": "[color:Orange]没有收藏的礼物，改送列表里第一个[/color]"
@@ -265,8 +271,9 @@
             }
         },
         "post_wait_freezes": {
-            "time": 600,
-            "timeout": 5000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "next": [
             "出行赠礼_赠送"
@@ -290,8 +297,9 @@
             "type": "Click"
         },
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 8000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "timeout": 10000,
         "next": [
@@ -343,8 +351,9 @@
         },
         "max_hit": 30,
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 8000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "next": [
             "出行收礼_等奖励"
@@ -376,8 +385,9 @@
             }
         },
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 8000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "next": [
             "公共_进入日常列表"
@@ -429,16 +439,17 @@
         },
         "max_hit": 2,
         "post_wait_freezes": {
-            "time": 1500,
-            "timeout": 15000
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
         },
         "focus": {
             "Node.Action.Starting": "[color:Dimgray]有已答应的邀约：先去赴约[/color]"
         }
     },
     "出行收礼_等奖励": {
-        "desc": "点完人物后最多等 3.5 秒，看有没有弹出「恭喜获得」",
-        "timeout": 3500,
+        "desc": "点完人物后最多等 1.5 秒，看有没有弹出「恭喜获得」",
+        "timeout": 1500,
         "next": [
             "出行收礼_关闭奖励"
         ],

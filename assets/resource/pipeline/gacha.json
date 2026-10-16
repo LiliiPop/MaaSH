@@ -147,8 +147,9 @@
             "type": "Click"
         },
         "post_wait_freezes": {
-            "time": 1000,
-            "timeout": 15000
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
         },
         "next": [
             "抽卡_找卡池"
@@ -195,12 +196,14 @@
         },
         "max_hit": 10,
         "pre_wait_freezes": {
-            "time": 800,
-            "timeout": 8000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 8000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         }
     },
     "抽卡_卡池页": {
@@ -253,8 +256,9 @@
         },
         "max_hit": 1,
         "post_wait_freezes": {
-            "time": 1500,
-            "timeout": 20000
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
         },
         "next": [
             "抽卡_等待结果"
@@ -298,8 +302,9 @@
             }
         },
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "focus": {
             "Node.Action.Succeeded": "[color:Orange]今日免费次数已用完，已取消付费抽卡[/color]"
@@ -323,8 +328,9 @@
             "type": "Click"
         },
         "post_wait_freezes": {
-            "time": 1000,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "next": [
             "抽卡_回到卡池"
@@ -345,8 +351,9 @@
         },
         "max_hit": 15,
         "pre_wait_freezes": {
-            "time": 1500,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         }
     },
     "抽卡_回到卡池": {
@@ -398,8 +405,9 @@
             }
         },
         "pre_wait_freezes": {
-            "time": 1000,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "focus": {
             "Node.Action.Succeeded": "[color:Limegreen]今日免费十连已完成[/color]"

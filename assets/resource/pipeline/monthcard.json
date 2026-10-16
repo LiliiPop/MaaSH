@@ -124,8 +124,9 @@
             "type": "Click"
         },
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "next": [
             "月卡_切到月卡页"
@@ -152,8 +153,9 @@
             "type": "Click"
         },
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "timeout": 15000,
         "next": [
@@ -218,8 +220,9 @@
             "type": "Click"
         },
         "post_wait_freezes": {
-            "time": 1000,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "next": [
             "月卡_等待"
@@ -287,8 +290,9 @@
             }
         },
         "pre_wait_freezes": {
-            "time": 800,
-            "timeout": 8000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "focus": {
             "Node.Action.Succeeded": "[color:Limegreen]月卡今日奖励已领取[/color]"

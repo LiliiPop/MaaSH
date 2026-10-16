@@ -41,7 +41,8 @@
         "max_hit": 6,
         "post_wait_freezes": {
             "time": 500,
-            "timeout": 5000
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "next": [
             "日程_确定"
@@ -64,8 +65,9 @@
             "type": "Click"
         },
         "post_wait_freezes": {
-            "time": 1000,
-            "timeout": 15000
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
         },
         "timeout": 5000
     },
@@ -96,8 +98,9 @@
         },
         "max_hit": 4,
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         }
     },
     "日程_对话推进": {
@@ -128,8 +131,9 @@
         },
         "max_hit": 20,
         "pre_wait_freezes": {
-            "time": 800,
-            "timeout": 5000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         }
     },
     "日程_选择回复": {
@@ -162,8 +166,9 @@
         },
         "max_hit": 6,
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 8000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "next": [
             "日程_等待完成"
@@ -197,8 +202,9 @@
         },
         "max_hit": 20,
         "pre_wait_freezes": {
-            "time": 1500,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         }
     },
     "Flag_日程完成": {
@@ -250,8 +256,9 @@
             }
         },
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "focus": {
             "Node.Action.Succeeded": "[color:Limegreen]日程已安排完成[/color]"
@@ -287,8 +294,9 @@
         },
         "max_hit": 6,
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 8000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         }
     },
     "Flag_日程今日已完成": {
@@ -360,12 +368,14 @@
         },
         "max_hit": 8,
         "pre_wait_freezes": {
-            "time": 1000,
-            "timeout": 8000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "focus": {
             "Node.Action.Starting": "[color:Dimgray]画面里没找到信封，向右走一段再找[/color]"
@@ -393,8 +403,9 @@
         },
         "max_hit": 3,
         "post_wait_freezes": {
-            "time": 1000,
-            "timeout": 5000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         }
     },
     "日程_点击信封_场景": {
@@ -411,8 +422,9 @@
         },
         "max_hit": 8,
         "post_wait_freezes": {
-            "time": 1000,
-            "timeout": 5000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         }
     },
     "日程_点击信封_地点": {
@@ -437,8 +449,9 @@
         },
         "max_hit": 3,
         "post_wait_freezes": {
-            "time": 1000,
-            "timeout": 5000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         }
     }
 }

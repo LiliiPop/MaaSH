@@ -129,7 +129,8 @@
         "max_hit": 10,
         "post_wait_freezes": {
             "time": 500,
-            "timeout": 10000
+            "timeout": 1500,
+            "rate_limit": 200
         }
     },
     "公共_关闭公告": {
@@ -159,8 +160,9 @@
         },
         "max_hit": 20,
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 8000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         }
     },
     "公共_弹窗兜底": {
@@ -195,7 +197,8 @@
         "max_hit": 20,
         "post_wait_freezes": {
             "time": 500,
-            "timeout": 5000
+            "timeout": 1500,
+            "rate_limit": 200
         }
     },
     "公共_点击空白继续": {
@@ -218,7 +221,8 @@
         "max_hit": 20,
         "post_wait_freezes": {
             "time": 500,
-            "timeout": 5000
+            "timeout": 1500,
+            "rate_limit": 200
         }
     },
     "公共_断线重连": {
@@ -283,7 +287,8 @@
         "max_hit": 10,
         "post_wait_freezes": {
             "time": 500,
-            "timeout": 5000
+            "timeout": 1500,
+            "rate_limit": 200
         }
     },
     "公共_进入日常列表": {
@@ -414,8 +419,9 @@
             "type": "Click"
         },
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "timeout": 15000,
         "next": [
@@ -444,8 +450,9 @@
             "type": "Click"
         },
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "timeout": 10000,
         "next": [
@@ -490,8 +497,9 @@
         "repeat": 3,
         "repeat_delay": 200,
         "post_wait_freezes": {
-            "time": 600,
-            "timeout": 5000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "next": [
             "[Anchor]任务继续"
@@ -531,8 +539,9 @@
         },
         "max_hit": 10,
         "post_wait_freezes": {
-            "time": 600,
-            "timeout": 5000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         }
     },
     "公共_付费防呆": {
@@ -600,8 +609,9 @@
         },
         "max_hit": 5,
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 8000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "focus": {
             "Node.Action.Succeeded": "[color:Orange]检测到付费弹窗（人民币/钻石），已点空白处取消[/color]"
@@ -650,8 +660,9 @@
         },
         "max_hit": 3,
         "post_wait_freezes": {
-            "time": 2000,
-            "timeout": 20000
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
         },
         "next": [
             "启动游戏"
@@ -703,8 +714,9 @@
         },
         "max_hit": 5,
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "focus": {
             "Node.Action.Starting": "[color:Dimgray]角色发来出行邀请：选「晚点再说」[/color]"
@@ -729,8 +741,9 @@
         },
         "max_hit": 3,
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "focus": {
             "Node.Action.Starting": "[color:Orange]误进了速写模式，点「退出速写」[/color]"

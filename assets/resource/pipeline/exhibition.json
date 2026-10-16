@@ -147,8 +147,9 @@
             "type": "Click"
         },
         "post_wait_freezes": {
-            "time": 1000,
-            "timeout": 15000
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
         },
         "next": [
             "画展_点画展按钮"
@@ -184,8 +185,9 @@
         },
         "timeout": 20000,
         "post_wait_freezes": {
-            "time": 1000,
-            "timeout": 15000
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
         },
         "next": [
             "画展_流程"
@@ -263,8 +265,9 @@
         },
         "max_hit": 5,
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         }
     },
     "画展_选择奖励": {
@@ -294,7 +297,8 @@
         },
         "post_wait_freezes": {
             "time": 500,
-            "timeout": 5000
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "next": [
             "画展_领取奖励"
@@ -320,8 +324,9 @@
             "type": "Click"
         },
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "next": [
             "画展_流程"
@@ -373,8 +378,9 @@
         },
         "max_hit": 5,
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         }
     },
     "画展_选地点_天文台": {
@@ -420,8 +426,9 @@
         },
         "max_hit": 5,
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         }
     },
     "画展_选地点_港口": {
@@ -467,8 +474,9 @@
         },
         "max_hit": 5,
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         }
     },
     "画展_选地点_律政楼": {
@@ -514,8 +522,9 @@
         },
         "max_hit": 5,
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         }
     },
     "画展_快速选择": {
@@ -538,14 +547,16 @@
         "max_hit": 5,
         "post_wait_freezes": {
             "time": 500,
-            "timeout": 5000
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "next": [
             "画展_申请"
         ],
         "pre_wait_freezes": {
-            "time": 600,
-            "timeout": 5000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "on_error": [
             "画展_流程"
@@ -568,8 +579,9 @@
             "type": "Click"
         },
         "post_wait_freezes": {
-            "time": 1500,
-            "timeout": 15000
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
         },
         "timeout": 5000,
         "desc": "点「申请」开始宣传；之后等申请表完全收起再回循环（失败也回循环重新判断，不直接判任务失败）",
@@ -604,8 +616,9 @@
         },
         "max_hit": 2,
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         }
     },
     "Flag_画展完成": {
@@ -642,8 +655,9 @@
         },
         "max_hit": 3,
         "pre_wait_freezes": {
-            "time": 1500,
-            "timeout": 8000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         }
     },
     "画展_地图兜底_律政楼": {
@@ -689,8 +703,9 @@
         },
         "max_hit": 3,
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "focus": {
             "Node.Action.Starting": "[color:Orange]画展：没认出 NPC 指定的地点，改选律政楼[/color]"

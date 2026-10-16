@@ -132,8 +132,9 @@
             }
         },
         "post_wait_freezes": {
-            "time": 1000,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "next": [
             "体力_午间"
@@ -169,8 +170,9 @@
             }
         },
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 8000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "timeout": 10000,
         "next": [
@@ -222,18 +224,20 @@
             "type": "Click"
         },
         "post_wait_freezes": {
-            "time": 1000,
-            "timeout": 8000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "next": [
             "体力_午间领后"
         ]
     },
     "体力_午间领后": {
-        "timeout": 8000,
+        "timeout": 3000,
         "next": [
             "[JumpBack]公共_付费防呆",
-            "体力_午间成功"
+            "体力_午间成功",
+            "体力_午间已领"
         ],
         "on_error": [
             "体力_晚间"
@@ -264,8 +268,9 @@
             }
         },
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 8000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "next": [
             "体力_晚间"
@@ -322,8 +327,9 @@
             }
         },
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 8000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "timeout": 10000,
         "next": [
@@ -375,18 +381,20 @@
             "type": "Click"
         },
         "post_wait_freezes": {
-            "time": 1000,
-            "timeout": 8000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "next": [
             "体力_晚间领后"
         ]
     },
     "体力_晚间领后": {
-        "timeout": 8000,
+        "timeout": 3000,
         "next": [
             "[JumpBack]公共_付费防呆",
-            "体力_晚间成功"
+            "体力_晚间成功",
+            "体力_晚间已领"
         ],
         "on_error": [
             "Flag_体力检查完成"
@@ -417,8 +425,9 @@
             }
         },
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 8000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "next": [
             "Flag_体力检查完成"
@@ -453,6 +462,50 @@
         "desc": "午间、晚间都检查过了（领到与否见上面的日志）",
         "focus": {
             "Node.Action.Succeeded": "[color:Limegreen]今日体力检查完成[/color]"
+        }
+    },
+    "体力_午间已领": {
+        "desc": "点完领取后游戏不弹奖励窗口，按钮直接变成「已领取」，也算领到",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "已\\s*领\\s*取",
+                "roi": "体力_午间文字",
+                "roi_offset": [
+                    15,
+                    45,
+                    -15,
+                    25
+                ]
+            }
+        },
+        "next": [
+            "体力_晚间"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]午间体力已领取[/color]"
+        }
+    },
+    "体力_晚间已领": {
+        "desc": "点完领取后游戏不弹奖励窗口，按钮直接变成「已领取」，也算领到",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "已\\s*领\\s*取",
+                "roi": "体力_晚间文字",
+                "roi_offset": [
+                    15,
+                    45,
+                    -15,
+                    25
+                ]
+            }
+        },
+        "next": [
+            "Flag_体力检查完成"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]晚间体力已领取[/color]"
         }
     }
 }

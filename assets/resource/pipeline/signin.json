@@ -29,8 +29,9 @@
             "type": "Click"
         },
         "post_wait_freezes": {
-            "time": 1500,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "timeout": 15000,
         "next": [
@@ -67,8 +68,9 @@
             }
         },
         "pre_wait_freezes": {
-            "time": 1500,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "focus": {
             "Node.Action.Succeeded": "[color:Limegreen]签到完成[/color]"

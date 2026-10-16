@@ -31,8 +31,9 @@
         "max_hit": 3,
         "timeout": 10000,
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "next": [
             "周常_页面就绪"
@@ -116,8 +117,9 @@
         },
         "max_hit": 8,
         "post_wait_freezes": {
-            "time": 1000,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "next": [
             "周常_领后"
@@ -163,8 +165,9 @@
         },
         "max_hit": 20,
         "post_wait_freezes": {
-            "time": 800,
-            "timeout": 10000
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         },
         "next": [
             "周常_领后"
