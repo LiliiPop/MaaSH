@@ -273,7 +273,7 @@
         ]
     },
     "出行赠礼_赠送": {
-        "desc": "「赠送」按钮（数量保持 1）",
+        "desc": "「赠送」按钮（数量保持 1）。之后不在本页判断成功，回任务页看「给任意角色赠送礼物」是否已可领取",
         "recognition": {
             "type": "OCR",
             "param": {
@@ -295,47 +295,29 @@
         },
         "timeout": 10000,
         "next": [
-            "Flag_出行赠礼完成",
+            "出行赠礼_已送出",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续"
         ],
         "on_error": [
-            "公共_任务失败"
+            "公共_进入日常列表"
         ]
-    },
-    "Flag_出行赠礼完成": {
-        "desc": "出现「好感度+N」",
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": "好感度\\s*\\+\\s*\\d+",
-                "roi": [
-                    180,
-                    430,
-                    360,
-                    110
-                ]
-            }
-        },
-        "focus": {
-            "Node.Action.Succeeded": "[color:Limegreen]出行赠礼完成[/color]"
-        }
     },
     "出行收礼_流程": {
         "desc": "在课后出行页反复点人物，直到弹出「恭喜获得」",
-        "timeout": 200000,
+        "timeout": 180000,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]出行_去赴约",
             "出行收礼_关闭奖励",
-            "[JumpBack]出行收礼_点人物"
+            "出行收礼_点人物"
         ],
         "on_error": [
             "公共_任务失败"
         ]
     },
     "出行收礼_点人物": {
-        "desc": "点人物身体（画面中部偏上，避开底部按钮和对话框）",
+        "desc": "点人物身体（画面中部偏上，避开底部按钮和对话框）。每点一次都等几秒看有没有弹奖励，避免下一次点击把弹窗点掉",
         "recognition": {
             "type": "OCR",
             "param": {
@@ -359,23 +341,26 @@
                 ]
             }
         },
-        "max_hit": 60,
+        "max_hit": 30,
         "post_wait_freezes": {
             "time": 800,
             "timeout": 8000
-        }
+        },
+        "next": [
+            "出行收礼_等奖励"
+        ]
     },
     "出行收礼_关闭奖励": {
-        "desc": "「恭喜获得」弹窗：点下方空白处关闭",
+        "desc": "「恭喜获得」弹窗：点下方空白处关闭，然后回任务页看「在出行中收到礼物」是否已可领取",
         "recognition": {
             "type": "OCR",
             "param": {
-                "expected": "恭喜获得",
+                "expected": "恭喜获得|点击空白处继续",
                 "roi": [
-                    480,
-                    170,
-                    340,
-                    90
+                    420,
+                    160,
+                    440,
+                    520
                 ]
             }
         },
@@ -395,25 +380,10 @@
             "timeout": 8000
         },
         "next": [
-            "Flag_出行收礼完成"
-        ]
-    },
-    "Flag_出行收礼完成": {
-        "desc": "弹窗关闭后回到课后出行页",
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": "课后出行",
-                "roi": [
-                    95,
-                    10,
-                    200,
-                    60
-                ]
-            }
-        },
+            "公共_进入日常列表"
+        ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Limegreen]出行中收到礼物，完成[/color]"
+            "Node.Action.Starting": "[color:Dimgray]收到礼物，回任务页确认[/color]"
         }
     },
     "出行_去赴约": {
@@ -464,6 +434,37 @@
         },
         "focus": {
             "Node.Action.Starting": "[color:Dimgray]有已答应的邀约：先去赴约[/color]"
+        }
+    },
+    "出行收礼_等奖励": {
+        "desc": "点完人物后最多等 3.5 秒，看有没有弹出「恭喜获得」",
+        "timeout": 3500,
+        "next": [
+            "出行收礼_关闭奖励"
+        ],
+        "on_error": [
+            "出行收礼_流程"
+        ]
+    },
+    "出行赠礼_已送出": {
+        "desc": "出现「好感度+N」：送出去了，回任务页复核",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "好感度\\s*\\+\\s*\\d+",
+                "roi": [
+                    180,
+                    430,
+                    360,
+                    110
+                ]
+            }
+        },
+        "next": [
+            "公共_进入日常列表"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]礼物已送出，回任务页确认[/color]"
         }
     }
 }
