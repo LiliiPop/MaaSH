@@ -1,108 +1,4 @@
 {
-    "日程": {
-        "desc": "任务入口：从任务页「日常」列表找到「成功安排日程」",
-        "anchor": {
-            "任务继续": "日程_找行"
-        },
-        "next": [
-            "公共_进入日常列表"
-        ],
-        "focus": {
-            "Node.Action.Starting": "[color:Dimgray]开始：日程[/color]"
-        }
-    },
-    "日程_找行": {
-        "timeout": 40000,
-        "next": [
-            "日程_行",
-            "[JumpBack]公共_任务列表下滚"
-        ],
-        "on_error": [
-            "日程_未找到"
-        ]
-    },
-    "日程_行": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": "成功安排日程",
-                "roi": [
-                    740,
-                    70,
-                    330,
-                    620
-                ]
-            }
-        },
-        "timeout": 5000,
-        "next": [
-            "日程_前往",
-            "Flag_日程_今日已完成"
-        ],
-        "on_error": [
-            "日程_未找到"
-        ]
-    },
-    "日程_前往": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": "前\\s*往",
-                "roi": "日程_行",
-                "roi_offset": [
-                    280,
-                    -22,
-                    150,
-                    44
-                ]
-            }
-        },
-        "desc": "点「前往」。只点按钮中间：行在列表最底下时按钮被裁掉一半，点到边缘会没反应",
-        "action": {
-            "type": "Click",
-            "param": {
-                "target_offset": [
-                    10,
-                    4,
-                    -20,
-                    -12
-                ]
-            }
-        },
-        "post_wait_freezes": {
-            "time": 500,
-            "timeout": 3000,
-            "rate_limit": 200
-        },
-        "max_hit": 2,
-        "next": [
-            "日程_流程"
-        ]
-    },
-    "Flag_日程_今日已完成": {
-        "desc": "这一行已经是「领取」或「已领取」：今天已完成",
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": "领\\s*取",
-                "roi": "日程_行",
-                "roi_offset": [
-                    280,
-                    -22,
-                    150,
-                    44
-                ]
-            }
-        },
-        "focus": {
-            "Node.Action.Succeeded": "[color:Limegreen]日程今天已完成[/color]"
-        }
-    },
-    "日程_未找到": {
-        "focus": {
-            "Node.Action.Succeeded": "[color:Orange]任务列表里没有找到「成功安排日程」，已跳过[/color]"
-        }
-    },
     "出行赠礼": {
         "desc": "任务入口：从任务页「日常」列表找到「给任意角色赠送礼物」",
         "anchor": {
@@ -174,9 +70,8 @@
             }
         },
         "post_wait_freezes": {
-            "time": 500,
-            "timeout": 3000,
-            "rate_limit": 200
+            "time": 1000,
+            "timeout": 15000
         },
         "max_hit": 2,
         "next": [
@@ -278,9 +173,8 @@
             }
         },
         "post_wait_freezes": {
-            "time": 500,
-            "timeout": 3000,
-            "rate_limit": 200
+            "time": 1000,
+            "timeout": 15000
         },
         "max_hit": 2,
         "next": [
