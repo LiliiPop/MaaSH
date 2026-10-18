@@ -1,0 +1,417 @@
+{
+    "剧场_流程": {
+        "desc": "任务页「前往」后到「社交」：点「作品」进前方剧院",
+        "timeout": 20000,
+        "next": [
+            "剧场_点作品",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "剧场_点作品": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^作品$",
+                "roi": [
+                    770,
+                    560,
+                    95,
+                    45
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    800,
+                    440,
+                    120,
+                    90
+                ]
+            }
+        },
+        "max_hit": 2,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "timeout": 20000,
+        "next": [
+            "剧场_点第一部"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "desc": "社交页右下「作品」。之后会先显示「正在进入前方剧院」"
+    },
+    "剧场_点第一部": {
+        "desc": "「发现 · 热门剧场」：点第一张大图开始播放",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "热门剧场",
+                "roi": [
+                    200,
+                    125,
+                    160,
+                    40
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    210,
+                    190,
+                    260,
+                    140
+                ]
+            }
+        },
+        "max_hit": 2,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "剧场_等播放"
+        ]
+    },
+    "剧场_等播放": {
+        "desc": "等手偶剧播完，出现「点赞 / 重播 / 下一个」（一般不超过 3 分钟）",
+        "timeout": 200000,
+        "next": [
+            "剧场_点赞",
+            "剧场_先取消赞"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "剧场_点赞": {
+        "desc": "爱心是白的：点一下变红",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^点赞$",
+                                "roi": [
+                                    665,
+                                    365,
+                                    95,
+                                    40
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    688,
+                                    318,
+                                    45,
+                                    40
+                                ],
+                                "lower": [
+                                    225,
+                                    225,
+                                    225
+                                ],
+                                "upper": [
+                                    255,
+                                    255,
+                                    255
+                                ],
+                                "count": 400
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    690,
+                    318,
+                    42,
+                    40
+                ]
+            }
+        },
+        "max_hit": 3,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "timeout": 5000,
+        "next": [
+            "剧场_已赞"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "剧场_先取消赞": {
+        "desc": "爱心本来就是红的（以前赞过）：先点成白的，再重新点赞，这样才算今天点赞了一次",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^点赞$",
+                                "roi": [
+                                    665,
+                                    365,
+                                    95,
+                                    40
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    688,
+                                    318,
+                                    45,
+                                    40
+                                ],
+                                "lower": [
+                                    200,
+                                    50,
+                                    40
+                                ],
+                                "upper": [
+                                    255,
+                                    130,
+                                    120
+                                ],
+                                "count": 400
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    690,
+                    318,
+                    42,
+                    40
+                ]
+            }
+        },
+        "max_hit": 2,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "timeout": 5000,
+        "next": [
+            "剧场_点赞"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "剧场_已赞": {
+        "desc": "爱心变红：点左上角返回（第 1 次，回到剧场列表）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^点赞$",
+                                "roi": [
+                                    665,
+                                    365,
+                                    95,
+                                    40
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    688,
+                                    318,
+                                    45,
+                                    40
+                                ],
+                                "lower": [
+                                    200,
+                                    50,
+                                    40
+                                ],
+                                "upper": [
+                                    255,
+                                    130,
+                                    120
+                                ],
+                                "count": 400
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    22,
+                    35,
+                    40,
+                    45
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "timeout": 8000,
+        "next": [
+            "剧场_返回社交"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]已点赞，返回社交确认[/color]"
+        }
+    },
+    "剧场_返回社交": {
+        "desc": "剧场列表：再点左上角返回（第 2 次，回到社交）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "热门剧场|发现|全部",
+                "roi": [
+                    180,
+                    40,
+                    900,
+                    120
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    65,
+                    60,
+                    45,
+                    45
+                ]
+            }
+        },
+        "max_hit": 3,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "timeout": 10000,
+        "next": [
+            "剧场_社交行"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "剧场_社交行": {
+        "desc": "社交页「观影券」里找「点赞一次他人的视频」这一行",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "点赞一次他人的视频",
+                "roi": [
+                    200,
+                    370,
+                    260,
+                    190
+                ]
+            }
+        },
+        "timeout": 8000,
+        "next": [
+            "剧场_社交已完成"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "剧场_社交已完成": {
+        "desc": "这一行左边的圆圈是实心对勾（已完成）。之后回任务页复核",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": "剧场_社交行",
+                "roi_offset": [
+                    -42,
+                    -4,
+                    -177,
+                    8
+                ],
+                "lower": [
+                    170,
+                    90,
+                    80
+                ],
+                "upper": [
+                    230,
+                    160,
+                    150
+                ],
+                "count": 220
+            }
+        },
+        "timeout": 5000,
+        "next": [
+            "公共_进入日常列表"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]社交页显示「点赞一次他人的视频」已完成，回任务页确认[/color]"
+        }
+    }
+}
