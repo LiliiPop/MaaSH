@@ -72,8 +72,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [win, macos, linux, android]
-        arch: [aarch64, x86_64]
+        # 目前只在 Windows + MuMu 上测试过，先只打 Windows x64 包（其他平台需要时再加回来）
+        os: [win]
+        arch: [x86_64]
       fail-fast: false
 
     steps:
@@ -142,6 +143,7 @@ jobs:
         with:
           name: MaaSH-${{ matrix.os }}-${{ matrix.arch }}
           path: "install"
+          retention-days: 3
 
   changelog:
     name: Generate changelog

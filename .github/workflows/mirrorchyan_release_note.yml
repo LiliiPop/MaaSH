@@ -29,7 +29,7 @@ jobs:
           mirrorchyan_rid: MaaSH
           version_name: ${{ inputs.tag }}
 
-          owner: MaaXYZ
+          owner: LiliiPop
           repo: MaaSH
           github_token: ${{ secrets.GITHUB_TOKEN }}
           upload_token: ${{ secrets.MirrorChyanUploadToken }}
