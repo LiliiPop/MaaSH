@@ -160,6 +160,8 @@ jobs:
       - name: Generate a changelog
         uses: orhun/git-cliff-action@v4
         id: git-cliff
+        # 更新日志生成失败不影响打包和发布
+        continue-on-error: true
         with:
           config: .github/cliff.toml
           # 正式版：使用 tag-pattern 只匹配正式版标签，包含所有从上一个正式版以来的提交
