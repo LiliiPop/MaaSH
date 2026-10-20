@@ -29,6 +29,7 @@
             "[JumpBack]公共_点击空白继续",
             "[JumpBack]公共_断线重连",
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_返回按钮",
             "[JumpBack]启动_兜底点击"
         ],
@@ -51,6 +52,7 @@
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_返回按钮"
         ],
         "recognition": {

@@ -8,6 +8,7 @@
             "[JumpBack]公共_跳过卡面",
             "[JumpBack]公共_退出速写",
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
             "Flag_在主界面",
             "[JumpBack]公共_付费防呆",
             "[JumpBack]公共_获得奖励",
@@ -234,10 +235,17 @@
         "max_hit": 5
     },
     "公共_任务失败": {
-        "desc": "超时或卡住时落到这里：记 Red 日志后结束当前任务，交给下一个任务继续",
+        "desc": "超时或卡住时落到这里：记 Red 日志后结束当前任务，交给下一个任务继续；记 Red 日志后，先看画面上有没有「稍后再说」「晚点再说」「恭喜获得」「点击空白处继续」，有就点掉（方便重试或下一个任务），没有就结束",
         "focus": {
             "Node.Action.Succeeded": "[color:Red]当前任务超时或卡住，已跳过[/color]"
-        }
+        },
+        "next": [
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "公共_卡住无弹窗"
+        ]
     },
     "公共_快速模式提示": {
         "desc": "快速模式开启时右上角的「进行1次xx 跳过/前往」提示：点「跳过」（只是暂时跳过，不影响任务）",
@@ -299,6 +307,7 @@
         "timeout": 60000,
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
             "公共_日常列表就绪",
@@ -432,6 +441,7 @@
         "timeout": 15000,
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
             "公共_日常列表就绪",
@@ -466,6 +476,7 @@
         "timeout": 10000,
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
             "公共_日常列表就绪",
@@ -808,5 +819,35 @@
         "focus": {
             "Node.Action.Starting": "[color:Dimgray]跳过卡面展示[/color]"
         }
+    },
+    "公共_稍后再说": {
+        "desc": "带「稍后再说」按钮的弹窗（例如角色生日的「送什么给XX好呢？」回礼弹窗，右边是付费的「回礼 ¥1」）：点「稍后再说」关掉，绝不点右边",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^稍后再说$",
+                "roi": [
+                    300,
+                    560,
+                    380,
+                    110
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 10,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]关闭弹窗：点「稍后再说」[/color]"
+        }
+    },
+    "公共_卡住无弹窗": {
+        "desc": "卡住时画面上没有可关的弹窗：按常规失败处理结束"
     }
 }

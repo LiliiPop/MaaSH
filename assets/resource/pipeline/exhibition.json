@@ -202,6 +202,7 @@
         "timeout": 150000,
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
             "画展_选择奖励",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",

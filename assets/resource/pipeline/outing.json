@@ -4,6 +4,7 @@
         "timeout": 60000,
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
             "[JumpBack]出行_去赴约",
             "出行赠礼_打开头像栏"
         ],
@@ -43,6 +44,7 @@
         },
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
             "出行赠礼_选择角色"
         ],
         "on_error": [
@@ -77,6 +79,7 @@
         "timeout": 5000,
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
             "出行赠礼_打开赠礼"
         ],
         "on_error": [
@@ -109,6 +112,7 @@
         "timeout": 5000,
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
             "出行赠礼_点第一个礼物"
         ],
         "on_error": [
@@ -141,6 +145,7 @@
         "timeout": 10000,
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
             "出行赠礼_已送出",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续"
@@ -154,6 +159,7 @@
         "timeout": 180000,
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
             "[JumpBack]出行_去赴约",
             "出行收礼_关闭奖励",
             "出行收礼_点人物"
@@ -290,6 +296,7 @@
         "timeout": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
             "出行收礼_关闭奖励"
         ],
         "on_error": [
@@ -346,6 +353,7 @@
         "max_hit": 1,
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
             "出行赠礼_点第一个礼物",
             "出行赠礼_赠送"
         ],
@@ -358,6 +366,7 @@
         "timeout": 20000,
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
             "[JumpBack]出行_去赴约",
             "出行收礼_打开头像栏"
         ],
@@ -398,6 +407,7 @@
         },
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
             "出行收礼_选择角色"
         ],
         "on_error": [
@@ -431,6 +441,7 @@
         "timeout": 5000,
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
             "出行收礼_流程"
         ],
         "on_error": [

@@ -202,6 +202,7 @@
         "timeout": 180000,
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
             "Flag_日程完成",
             "Flag_日程今日已完成",
             "[JumpBack]日程_翻页",
@@ -685,6 +686,7 @@
         "timeout": 8000,
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
             "日程_对话推进",
             "日程_回复已出现"
         ],
