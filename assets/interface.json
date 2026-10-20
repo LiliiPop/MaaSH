@@ -7,6 +7,7 @@
     "license": "MIT",
     "welcome": "欢迎使用 MaaSH！首次使用请先看 README 里的「连接模拟器」一节。",
     "github": "https://github.com/LiliiPop/MaaSH",
+    "icon": "logo.png",
     "version": "v0.0.1",
     // Mirror酱（国内下载加速）预留：需先联系 Mirror酱 项目接入（QQ 1751971337）拿到官方 RID，
     // 再按官方说明填写 "mirrorchyan_rid" 和 "mirrorchyan_multiplatform"。RID 不能自己按项目名假设。

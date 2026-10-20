@@ -136,6 +136,11 @@ def install_chores():
         working_dir / "LICENSE",
         install_path,
     )
+    # 应用图标（interface.json 的 "icon"）
+    shutil.copy2(
+        working_dir / "assets" / "logo.png",
+        install_path,
+    )
 
 
 def install_agent():
