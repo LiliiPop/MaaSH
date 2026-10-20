@@ -339,5 +339,83 @@
         "on_error": [
             "公共_任务失败"
         ]
+    },
+    "出行收礼_准备": {
+        "desc": "进入课后出行后：按选项「收礼角色」先换人；选「当前角色」就直接开始点人物",
+        "timeout": 20000,
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]出行_去赴约",
+            "出行收礼_打开头像栏"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "出行收礼_打开头像栏": {
+        "desc": "左下角当前角色头像，点开五人头像栏",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "课后出行",
+                "roi": [
+                    95,
+                    10,
+                    200,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    30,
+                    628,
+                    55,
+                    50
+                ]
+            }
+        },
+        "max_hit": 2,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "出行收礼_选择角色"
+        ]
+    },
+    "出行收礼_选择角色": {
+        "desc": "在头像栏里点选定的角色（按发色模板识别）；由选项「收礼角色」改写模板",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "outing/艾因.png",
+                "roi": [
+                    30,
+                    610,
+                    520,
+                    90
+                ],
+                "threshold": 0.75
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "timeout": 10000,
+        "next": [
+            "出行收礼_流程"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
     }
 }

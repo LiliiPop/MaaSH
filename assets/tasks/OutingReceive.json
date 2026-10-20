@@ -4,7 +4,131 @@
             "name": "🍀出行收礼",
             "entry": "出行收礼",
             "default_check": true,
-            "description": "从任务页「在出行中收到礼物1次」前往：反复点人物直到弹出奖励。"
+            "description": "从任务页「在出行中收到礼物1次」前往：可先换成选定的角色（默认不换），然后反复点人物直到弹出奖励，回任务页确认。",
+            "option": [
+                "收礼角色"
+            ]
         }
-    ]
+    ],
+    "option": {
+        "收礼角色": {
+            "type": "select",
+            "description": "在谁的出行里点人物收礼。选「当前角色」就不换人",
+            "default_case": "当前角色",
+            "cases": [
+                {
+                    "name": "当前角色",
+                    "pipeline_override": {
+                        "出行收礼_准备": {
+                            "next": [
+                                "[JumpBack]公共_晚点再说",
+                                "[JumpBack]出行_去赴约",
+                                "出行收礼_流程"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "出行收礼_选择角色": {
+                            "recognition": {
+                                "type": "TemplateMatch",
+                                "param": {
+                                    "template": "outing/艾因.png",
+                                    "roi": [
+                                        30,
+                                        610,
+                                        520,
+                                        90
+                                    ],
+                                    "threshold": 0.75
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "出行收礼_选择角色": {
+                            "recognition": {
+                                "type": "TemplateMatch",
+                                "param": {
+                                    "template": "outing/路辰.png",
+                                    "roi": [
+                                        30,
+                                        610,
+                                        520,
+                                        90
+                                    ],
+                                    "threshold": 0.75
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "出行收礼_选择角色": {
+                            "recognition": {
+                                "type": "TemplateMatch",
+                                "param": {
+                                    "template": "outing/罗夏.png",
+                                    "roi": [
+                                        30,
+                                        610,
+                                        520,
+                                        90
+                                    ],
+                                    "threshold": 0.75
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "出行收礼_选择角色": {
+                            "recognition": {
+                                "type": "TemplateMatch",
+                                "param": {
+                                    "template": "outing/司岚.png",
+                                    "roi": [
+                                        30,
+                                        610,
+                                        520,
+                                        90
+                                    ],
+                                    "threshold": 0.75
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "出行收礼_选择角色": {
+                            "recognition": {
+                                "type": "TemplateMatch",
+                                "param": {
+                                    "template": "outing/叶瑄.png",
+                                    "roi": [
+                                        30,
+                                        610,
+                                        520,
+                                        90
+                                    ],
+                                    "threshold": 0.75
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
 }
