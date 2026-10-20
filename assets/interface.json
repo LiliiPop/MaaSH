@@ -23,6 +23,302 @@
             "path": ["./resource"]
         }
     ],
+    "preset": [
+        {
+            "name": "daily",
+            "label": "每日日常",
+            "description": "每天跑一次：启动、全部日常、领每日/周常奖励，最后关闭游戏。",
+            "task": [
+                {
+                    "name": "🧪冒烟测试",
+                    "enabled": false
+                },
+                {
+                    "name": "✈️启动绘旅人",
+                    "enabled": true
+                },
+                {
+                    "name": "📅签到",
+                    "enabled": true
+                },
+                {
+                    "name": "✉️领邮件",
+                    "enabled": true
+                },
+                {
+                    "name": "💰月卡领取",
+                    "enabled": true
+                },
+                {
+                    "name": "🎀免费礼包",
+                    "enabled": true
+                },
+                {
+                    "name": "💌好友体力",
+                    "enabled": true
+                },
+                {
+                    "name": "🗓️安排日程",
+                    "enabled": true
+                },
+                {
+                    "name": "🎁出行赠礼",
+                    "enabled": true
+                },
+                {
+                    "name": "🍀出行收礼",
+                    "enabled": true
+                },
+                {
+                    "name": "🖼️画展宣传",
+                    "enabled": true
+                },
+                {
+                    "name": "🎴免费抽卡",
+                    "enabled": true
+                },
+                {
+                    "name": "🌟画灵提升",
+                    "enabled": true
+                },
+                {
+                    "name": "📜绘卷提升",
+                    "enabled": true
+                },
+                {
+                    "name": "🎭手偶剧场点赞",
+                    "enabled": true
+                },
+                {
+                    "name": "📋每日任务领取",
+                    "enabled": true
+                },
+                {
+                    "name": "📆周常领取",
+                    "enabled": true
+                },
+                {
+                    "name": "🏖️假日一键领取",
+                    "enabled": true
+                },
+                {
+                    "name": "🎬时光电影院",
+                    "enabled": false
+                },
+                {
+                    "name": "🍓领体力",
+                    "enabled": false
+                },
+                {
+                    "name": "🏁结束后操作",
+                    "enabled": true,
+                    "option": {
+                        "结束后": "关闭游戏"
+                    }
+                },
+                {
+                    "name": "💤关闭绘旅人",
+                    "enabled": false
+                }
+            ]
+        },
+        {
+            "name": "stamina",
+            "label": "领体力（定时用）",
+            "description": "只启动游戏、领午间/晚间体力、关闭游戏。配合「定时」在每天 12:05 和 17:35 各运行一次，见 README「定时领体力」。",
+            "task": [
+                {
+                    "name": "🧪冒烟测试",
+                    "enabled": false
+                },
+                {
+                    "name": "✈️启动绘旅人",
+                    "enabled": true
+                },
+                {
+                    "name": "📅签到",
+                    "enabled": false
+                },
+                {
+                    "name": "✉️领邮件",
+                    "enabled": false
+                },
+                {
+                    "name": "💰月卡领取",
+                    "enabled": false
+                },
+                {
+                    "name": "🎀免费礼包",
+                    "enabled": false
+                },
+                {
+                    "name": "💌好友体力",
+                    "enabled": false
+                },
+                {
+                    "name": "🗓️安排日程",
+                    "enabled": false
+                },
+                {
+                    "name": "🎁出行赠礼",
+                    "enabled": false
+                },
+                {
+                    "name": "🍀出行收礼",
+                    "enabled": false
+                },
+                {
+                    "name": "🖼️画展宣传",
+                    "enabled": false
+                },
+                {
+                    "name": "🎴免费抽卡",
+                    "enabled": false
+                },
+                {
+                    "name": "🌟画灵提升",
+                    "enabled": false
+                },
+                {
+                    "name": "📜绘卷提升",
+                    "enabled": false
+                },
+                {
+                    "name": "🎭手偶剧场点赞",
+                    "enabled": false
+                },
+                {
+                    "name": "📋每日任务领取",
+                    "enabled": false
+                },
+                {
+                    "name": "📆周常领取",
+                    "enabled": false
+                },
+                {
+                    "name": "🏖️假日一键领取",
+                    "enabled": false
+                },
+                {
+                    "name": "🎬时光电影院",
+                    "enabled": false
+                },
+                {
+                    "name": "🍓领体力",
+                    "enabled": true
+                },
+                {
+                    "name": "🏁结束后操作",
+                    "enabled": true,
+                    "option": {
+                        "结束后": "关闭游戏"
+                    }
+                },
+                {
+                    "name": "💤关闭绘旅人",
+                    "enabled": false
+                }
+            ]
+        },
+        {
+            "name": "weekly",
+            "label": "每周电影院",
+            "description": "每周跑一次：启动、时光电影院扫荡（可在任务选项里开商店兑换），最后关闭游戏。",
+            "task": [
+                {
+                    "name": "🧪冒烟测试",
+                    "enabled": false
+                },
+                {
+                    "name": "✈️启动绘旅人",
+                    "enabled": true
+                },
+                {
+                    "name": "📅签到",
+                    "enabled": false
+                },
+                {
+                    "name": "✉️领邮件",
+                    "enabled": false
+                },
+                {
+                    "name": "💰月卡领取",
+                    "enabled": false
+                },
+                {
+                    "name": "🎀免费礼包",
+                    "enabled": false
+                },
+                {
+                    "name": "💌好友体力",
+                    "enabled": false
+                },
+                {
+                    "name": "🗓️安排日程",
+                    "enabled": false
+                },
+                {
+                    "name": "🎁出行赠礼",
+                    "enabled": false
+                },
+                {
+                    "name": "🍀出行收礼",
+                    "enabled": false
+                },
+                {
+                    "name": "🖼️画展宣传",
+                    "enabled": false
+                },
+                {
+                    "name": "🎴免费抽卡",
+                    "enabled": false
+                },
+                {
+                    "name": "🌟画灵提升",
+                    "enabled": false
+                },
+                {
+                    "name": "📜绘卷提升",
+                    "enabled": false
+                },
+                {
+                    "name": "🎭手偶剧场点赞",
+                    "enabled": false
+                },
+                {
+                    "name": "📋每日任务领取",
+                    "enabled": false
+                },
+                {
+                    "name": "📆周常领取",
+                    "enabled": false
+                },
+                {
+                    "name": "🏖️假日一键领取",
+                    "enabled": false
+                },
+                {
+                    "name": "🎬时光电影院",
+                    "enabled": true
+                },
+                {
+                    "name": "🍓领体力",
+                    "enabled": false
+                },
+                {
+                    "name": "🏁结束后操作",
+                    "enabled": true,
+                    "option": {
+                        "结束后": "关闭游戏"
+                    }
+                },
+                {
+                    "name": "💤关闭绘旅人",
+                    "enabled": false
+                }
+            ]
+        }
+    ],
     "import": [
         "tasks/SmokeTest.json",
         "tasks/StartUp.json",
