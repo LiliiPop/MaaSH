@@ -157,6 +157,17 @@ jobs:
           python ./install.py ${{ needs.meta.outputs.tag }} ${{ matrix.os }} ${{ matrix.arch }}
           cd ..
 
+      - name: MaaSH.exe
+        if: matrix.os == 'win'
+        shell: bash
+        run: |
+          # 复制一份界面程序，命名为 MaaSH.exe（原 MFAAvalonia.exe 保留，供界面自更新使用）
+          cp install/MFAAvalonia.exe install/MaaSH.exe
+          # 有 assets/logo.ico 时，把 MaaSH.exe 的图标换成它
+          if [ -f assets/logo.ico ]; then
+            npx --yes resedit-cli@2 --in install/MaaSH.exe --out install/MaaSH.exe --icon 1,assets/logo.ico
+          fi
+
       - uses: actions/upload-artifact@v4
         with:
           name: MaaSH-${{ matrix.os }}-${{ matrix.arch }}

@@ -10,7 +10,7 @@
 
 1. 在 [Releases](https://github.com/LiliiPop/MaaSH/releases) 下载 `MaaSH-win-x86_64-版本号.zip`，解压到任意文件夹（例如 `D:\MaaSH`）。
 2. 第一次运行先双击 `DependencySetup_依赖库安装_win.bat` 安装运行库（只需一次）。
-3. 打开 MuMu 模拟器，再双击 `MFAAvalonia.exe`。
+3. 打开 MuMu 模拟器，再双击 `MaaSH.exe`（和 `MFAAvalonia.exe` 是同一个程序）。
 4. 在「连接」里选择模拟器（见下一节），资源选「官服」。
 5. 勾选想跑的任务，然后开始运行。任务会按列表顺序执行，「每日任务领取」「周常领取」请放在其他日常之后。
 
