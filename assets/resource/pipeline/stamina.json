@@ -6,6 +6,7 @@
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_关闭月度推荐",
+            "体力_打开_左下",
             "体力_打开",
             "[JumpBack]公共_返回主界面"
         ],
@@ -16,8 +17,8 @@
             "Node.Action.Starting": "[color:Dimgray]开始：领体力[/color]"
         }
     },
-    "体力_打开": {
-        "desc": "主界面「今日体力」（全景主题在左下；默认主题位置待截图确认，按文字找）",
+    "体力_打开_左下": {
+        "desc": "全景主题左下角：文字「今日体力」和右边的活动图标（如「生日返礼」「限时购」）会被 OCR 连成一行，所以只认行首是「今日体力」，并固定点最左边的体力图标，不按整行随机点（10-20 曾点到「生日返礼」）",
         "recognition": {
             "type": "And",
             "param": {
@@ -109,7 +110,145 @@
                         "recognition": {
                             "type": "OCR",
                             "param": {
-                                "expected": "今日体力|体力补给",
+                                "expected": "^今日体力",
+                                "roi": [
+                                    0,
+                                    500,
+                                    300,
+                                    70
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    28,
+                    472,
+                    45,
+                    45
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "体力_午间",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_关闭月度推荐",
+            "[JumpBack]公共_关闭公告",
+            "体力_打开_左下",
+            "体力_打开"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "timeout": 10000,
+        "max_hit": 3
+    },
+    "体力_打开": {
+        "desc": "其他主题：按文字找「今日体力 / 体力补给」，只认整段就是这几个字的（连成一行的交给 体力_打开_左下）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    950,
+                                                                    290,
+                                                                    120,
+                                                                    80
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    700,
+                                                                    635,
+                                                                    100,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    180,
+                                                                    410,
+                                                                    95,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    780,
+                                                                    655,
+                                                                    85,
+                                                                    50
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^(今日体力|体力补给)$",
                                 "roi": [
                                     0,
                                     80,
@@ -145,6 +284,7 @@
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_关闭月度推荐",
             "[JumpBack]公共_关闭公告",
+            "体力_打开_左下",
             "体力_打开"
         ],
         "on_error": [
