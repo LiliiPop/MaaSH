@@ -103,6 +103,10 @@
                     "enabled": false
                 },
                 {
+                    "name": "📼绘卷回忆扫荡",
+                    "enabled": false
+                },
+                {
                     "name": "🏖️假日一键领取",
                     "enabled": true
                 },
@@ -205,6 +209,10 @@
                     "enabled": false
                 },
                 {
+                    "name": "📼绘卷回忆扫荡",
+                    "enabled": false
+                },
+                {
                     "name": "🏖️假日一键领取",
                     "enabled": false
                 },
@@ -232,7 +240,7 @@
         {
             "name": "weekly",
             "label": "每周任务",
-            "description": "每周跑一次：启动、时光电影院扫荡（可在任务选项里开商店兑换）、月卡每周购买（花 1200 钻石），最后关闭游戏。",
+            "description": "每周跑一次：启动、时光电影院扫荡（可在任务选项里开商店兑换）、月卡每周购买（花 1200 钻石）、绘卷回忆扫荡，最后关闭游戏。",
             "task": [
                 {
                     "name": "🧪冒烟测试",
@@ -307,6 +315,10 @@
                     "enabled": true
                 },
                 {
+                    "name": "📼绘卷回忆扫荡",
+                    "enabled": true
+                },
+                {
                     "name": "🏖️假日一键领取",
                     "enabled": false
                 },
@@ -351,6 +363,7 @@
         "tasks/DailyClaim.json",
         "tasks/WeeklyClaim.json",
         "tasks/WeeklyShop.json",
+        "tasks/Memory.json",
         "tasks/Holiday.json",
         "tasks/Cinema.json",
         "tasks/Stamina.json",

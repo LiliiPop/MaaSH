@@ -1,0 +1,334 @@
+{
+    "绘卷回忆扫荡": {
+        "desc": "任务入口：主界面「练习」→ 绘卷回忆 →「扫荡」→「确定」（每周一次，不花体力；绝不点「重置」）",
+        "timeout": 60000,
+        "next": [
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_晚点再说",
+            "回忆_打开练习",
+            "[JumpBack]公共_返回主界面"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]开始：绘卷回忆扫荡[/color]"
+        }
+    },
+    "回忆_打开练习": {
+        "desc": "主界面「练习」（全景在底部，默认主题在右侧）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    950,
+                                                                    290,
+                                                                    120,
+                                                                    80
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    700,
+                                                                    635,
+                                                                    100,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    180,
+                                                                    410,
+                                                                    95,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    780,
+                                                                    655,
+                                                                    85,
+                                                                    50
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "练习",
+                                                "roi": [
+                                                    950,
+                                                    640,
+                                                    90,
+                                                    55
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "^练习$",
+                                                "roi": [
+                                                    1005,
+                                                    410,
+                                                    110,
+                                                    70
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "回忆_进入"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "回忆_进入": {
+        "desc": "日常练习页「绘卷回忆」卡片",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "绘卷回忆",
+                "roi": [
+                    815,
+                    455,
+                    255,
+                    75
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "timeout": 15000,
+        "next": [
+            "回忆_点扫荡"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "回忆_点扫荡": {
+        "desc": "绘卷回忆页左下「扫荡」。扫完后会再点一次做复核：弹出「本周已扫荡」就算完成",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "绘卷回忆",
+                                "roi": [
+                                    640,
+                                    160,
+                                    420,
+                                    70
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^扫\\s*荡$",
+                                "roi": [
+                                    650,
+                                    525,
+                                    200,
+                                    45
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "回忆_本周已扫",
+            "回忆_确认扫荡"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "回忆_确认扫荡": {
+        "desc": "扫荡弹窗（「每周仅可扫荡一次」）点「确定」",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "每周仅可扫荡一次",
+                                "roi": [
+                                    440,
+                                    370,
+                                    400,
+                                    45
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "确\\s*定",
+                                "roi": [
+                                    715,
+                                    440,
+                                    195,
+                                    55
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 2,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "回忆_等奖励"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Deepskyblue]绘卷回忆：确认扫荡[/color]"
+        }
+    },
+    "回忆_等奖励": {
+        "desc": "关「恭喜获得」，回到绘卷回忆页后再点一次扫荡复核",
+        "timeout": 10000,
+        "next": [
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "回忆_点扫荡"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "回忆_本周已扫": {
+        "desc": "点扫荡后弹出系统提示「本周已扫荡，无法多次扫荡」（几秒后消失）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "本周已扫荡",
+                "roi": [
+                    420,
+                    150,
+                    440,
+                    60
+                ]
+            }
+        },
+        "next": [
+            "Flag_绘卷回忆扫荡完成"
+        ]
+    },
+    "Flag_绘卷回忆扫荡完成": {
+        "desc": "游戏提示本周已扫荡（刚扫完或之前已扫）",
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]绘卷回忆：本周已扫荡[/color]"
+        }
+    }
+}
