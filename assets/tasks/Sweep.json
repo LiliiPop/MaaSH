@@ -700,7 +700,6 @@
             "cases": [
                 {
                     "name": "超强助力符",
-                    "description": "消耗不变，额外奖励",
                     "pipeline_override": {
                         "清体力_选符": {
                             "recognition": {
@@ -729,7 +728,6 @@
                 },
                 {
                     "name": "双倍干劲符",
-                    "description": "消耗 ×2",
                     "pipeline_override": {
                         "清体力_选符": {
                             "recognition": {
