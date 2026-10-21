@@ -91,6 +91,10 @@
                     "enabled": true
                 },
                 {
+                    "name": "🍰清体力",
+                    "enabled": false
+                },
+                {
                     "name": "📋每日任务领取",
                     "enabled": true
                 },
@@ -194,6 +198,10 @@
                 },
                 {
                     "name": "🎭手偶剧场点赞",
+                    "enabled": false
+                },
+                {
+                    "name": "🍰清体力",
                     "enabled": false
                 },
                 {
@@ -303,6 +311,10 @@
                     "enabled": false
                 },
                 {
+                    "name": "🍰清体力",
+                    "enabled": false
+                },
+                {
                     "name": "📋每日任务领取",
                     "enabled": false
                 },
@@ -360,6 +372,7 @@
         "tasks/Spirit.json",
         "tasks/Scroll.json",
         "tasks/Theater.json",
+        "tasks/Sweep.json",
         "tasks/DailyClaim.json",
         "tasks/WeeklyClaim.json",
         "tasks/WeeklyShop.json",
