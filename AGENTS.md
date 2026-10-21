@@ -24,7 +24,7 @@ tools/                       # 打包、校验脚本
 7. **`next` 要覆盖所有可能出现的画面。** 弹窗用 `[JumpBack]` 挂在等待节点上，处理完回到原流程继续判断。新增通用弹窗时，同时加进 `启动_等待主界面`、`启动_主界面初判`、`公共_返回主界面` 的 `next`。
 8. **坐标、ROI、模板图一律以 1280×720 为基准。** 游戏是横屏，模拟器可保持竖屏（游戏自己转屏）。
 9. **不写死设备信息。** ADB 地址由用户在 GUI 里选择或填写；包名只写在 `StartApp` / `StopApp` 节点里。
-10. **安全边界**：只截图 + 模拟点击。不注入、不读写内存、不改客户端文件、不走云端 API。不点任何付费或消耗钻石的确认按钮。
+10. **安全边界**：只截图 + 模拟点击。不注入、不读写内存、不改客户端文件、不走云端 API。不点任何付费或消耗钻石的确认按钮。唯一例外：「🛒月卡每周购买」（`weekly_shop.json`）按用户要求花 1200 钻石买「超值颜料礼盒」，默认不勾选，只在标题和价签都核对通过时才点；新增任何花钻石的功能都必须先得到用户明确同意、默认关闭、并核对商品名和价格。
 
 ## 命名
 
@@ -36,6 +36,7 @@ tools/                       # 打包、校验脚本
 
 ```bash
 python tools/validate_schema.py --schema-dir deps/tools --resource-dirs assets/resource --interface-files assets/interface.json --task-dirs assets/tasks
+python tools/lint_pipeline.py   # And/Or 包装、节点引用、模板图
 ```
 
 提交信息遵循 [Conventional Commits](https://www.conventionalcommits.org/)：`feat` / `fix` / `docs` / `ci` / `chore` 等。

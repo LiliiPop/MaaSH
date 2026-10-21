@@ -1,0 +1,522 @@
+{
+    "月卡周购": {
+        "desc": "任务入口：每周一次。采购 → 礼包 → 月卡直购 → 买「超值颜料礼盒」（1200 钻石，需有月卡）",
+        "next": [
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_晚点再说",
+            "周购_打开采购",
+            "[JumpBack]公共_返回主界面"
+        ],
+        "timeout": 30000,
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]开始：月卡每周购买（超值颜料礼盒）[/color]"
+        }
+    },
+    "周购_打开采购": {
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    950,
+                                                                    290,
+                                                                    120,
+                                                                    80
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    700,
+                                                                    635,
+                                                                    100,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    180,
+                                                                    410,
+                                                                    95,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    780,
+                                                                    655,
+                                                                    85,
+                                                                    50
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^采购$",
+                                "roi": [
+                                    300,
+                                    480,
+                                    960,
+                                    130
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "周购_礼包页"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "desc": "主界面「采购」（先确认在主界面）"
+    },
+    "周购_礼包页": {
+        "desc": "左侧「礼包」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "礼包",
+                "roi": [
+                    20,
+                    205,
+                    110,
+                    75
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "timeout": 15000,
+        "next": [
+            "周购_月卡直购"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "周购_月卡直购": {
+        "desc": "上方「月卡直购」页签（页面顶部有横幅时在 y≈370，滚上去后在 y≈100）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "月卡直购",
+                "roi": [
+                    160,
+                    60,
+                    1040,
+                    360
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "timeout": 10000,
+        "next": [
+            "周购_找礼盒",
+            "[JumpBack]周购_下滚"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "周购_下滚": {
+        "desc": "没看到「超值颜料礼盒」时把列表往上推一点（最多 2 次）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "月卡直购",
+                "roi": [
+                    160,
+                    60,
+                    1040,
+                    360
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    680,
+                    620,
+                    20,
+                    20
+                ],
+                "end": [
+                    680,
+                    420,
+                    20,
+                    20
+                ],
+                "duration": 400
+            }
+        },
+        "max_hit": 2,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        }
+    },
+    "周购_找礼盒": {
+        "desc": "找到「超值颜料礼盒」这张卡片的名字（只定位，不点）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "超值颜料礼盒",
+                "roi": [
+                    160,
+                    130,
+                    1040,
+                    580
+                ]
+            }
+        },
+        "timeout": 5000,
+        "next": [
+            "周购_本周已买",
+            "周购_点礼盒"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "周购_本周已买": {
+        "desc": "名字正上方是「每周限购(1/1)」→ 本周已经买过",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "每周限购\\s*[(（]\\s*1\\s*/\\s*1\\s*[)）]",
+                "roi": "周购_找礼盒",
+                "roi_offset": [
+                    -40,
+                    -50,
+                    80,
+                    10
+                ]
+            }
+        },
+        "next": [
+            "Flag_月卡周购完成"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]超值颜料礼盒本周已买过[/color]"
+        }
+    },
+    "周购_点礼盒": {
+        "desc": "名字正上方是「每周限购(0/1)」→ 点卡片名字打开详情（不直接点价签）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "每周限购\\s*[(（]\\s*0\\s*/\\s*1\\s*[)）]",
+                "roi": "周购_找礼盒",
+                "roi_offset": [
+                    -40,
+                    -50,
+                    80,
+                    10
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": "周购_找礼盒"
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "timeout": 8000,
+        "next": [
+            "周购_确认购买",
+            "周购_价格不符"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "周购_确认购买": {
+        "desc": "详情弹窗：标题是「超值颜料礼盒」且价签正好是「1200」（钻石）才点价签购买。这是全项目唯一会花钻石的地方，只认这一个商品、这一个价格",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "超值颜料礼盒",
+                                "roi": [
+                                    430,
+                                    180,
+                                    420,
+                                    70
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "每周限购",
+                                "roi": [
+                                    240,
+                                    495,
+                                    190,
+                                    45
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^\\s*1200\\s*$",
+                                "roi": [
+                                    560,
+                                    575,
+                                    190,
+                                    55
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 2
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 1,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "周购_等奖励"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Deepskyblue]花 1200 钻石购买超值颜料礼盒[/color]"
+        }
+    },
+    "周购_价格不符": {
+        "desc": "详情弹窗是这个礼盒，但价签不是 1200（可能月卡已过期、恢复原价）→ 不买，点弹窗外空白处关闭",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "超值颜料礼盒",
+                "roi": [
+                    430,
+                    180,
+                    420,
+                    70
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    600,
+                    682,
+                    80,
+                    16
+                ]
+            }
+        },
+        "max_hit": 1,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]超值颜料礼盒价格不是 1200 钻石（月卡可能已过期），没有购买[/color]"
+        }
+    },
+    "周购_等奖励": {
+        "desc": "买完：关「恭喜获得」，再回到列表确认变成「每周限购(1/1)」；若弹出付费/充值窗口（如钻石不足）就取消并结束",
+        "timeout": 10000,
+        "next": [
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "周购_钻石不足",
+            "Flag_月卡周购完成"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "周购_钻石不足": {
+        "desc": "买完后弹出付费/充值类窗口（多半是钻石不足）→ 点空白取消，不再继续",
+        "recognition": {
+            "type": "Or",
+            "param": {
+                "any_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "[¥￥]\\s*\\d",
+                                "roi": [
+                                    420,
+                                    555,
+                                    440,
+                                    95
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "TemplateMatch",
+                            "param": {
+                                "template": "safety/钻石价签.png",
+                                "roi": [
+                                    520,
+                                    520,
+                                    240,
+                                    100
+                                ],
+                                "threshold": 0.75
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "补充体力",
+                                "roi": [
+                                    520,
+                                    160,
+                                    240,
+                                    65
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    600,
+                    682,
+                    80,
+                    16
+                ]
+            }
+        },
+        "max_hit": 5,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]弹出了付费/充值窗口（可能钻石不足），已取消，本周没买成[/color]"
+        }
+    },
+    "Flag_月卡周购完成": {
+        "desc": "列表里出现「每周限购(1/1)」（买完后这张卡会挪到最后并盖「已售罄」）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "每周限购\\s*[(（]\\s*1\\s*/\\s*1\\s*[)）]",
+                "roi": [
+                    160,
+                    130,
+                    1040,
+                    580
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]月卡每周购买完成[/color]"
+        }
+    }
+}
