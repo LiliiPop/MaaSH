@@ -9,10 +9,10 @@
   → 选难度（标签会被 OCR 连成一行，所以先把标签栏滑到头再点固定位置，用「N体力」核对）
   → 预检：按单次消耗 c、倍数 m（双倍干劲符 ×2）、体力档 B 算出次数 N=ceil(B/(c·m))，
     读右上角体力是否 ≥ N·c·m（用正则比较大小）
-  → 点「画灵入战」，确保是「连续战斗」版的快速通关弹窗 → 选符
-     · 用符：弹窗里把次数调到 N →「快速过关」→ 恭喜获得
-     · 暂不使用：「连续作战」→ 连续战斗弹窗选「战斗次数」调到 N →「确定」
-       → 编队（助战空位就点盾牌、选列表第一个）→「连续战斗」→ 战斗（手动就改自动）→ 结算
+  → 「连续战斗」没勾就点勾选框（已勾就点「画灵入战」）→ 连续版快速通关弹窗里选符 / 暂不使用
+  → 点弹窗外空白处 → 「连续战斗」弹窗选「战斗次数」，用 +/- 调到 N →「确定」
+     · 不用符：编队（助战空位就点盾牌、选列表第一个）→「连续战斗」→ 战斗（手动就改自动）→ 全部打完才结算
+     · 用符：直接快速过关出奖励
   → 回任务页看「累计消耗60点体力」这一行是否可领 → Flag_清体力_今日已完成
 
 不能做算术的地方都在这里提前算好写进节点；次数用锚点（anchor）带到后面的弹窗。
@@ -176,7 +176,7 @@ def build():
                 d[f"清体力_体力够_{b}_{m}_{c}"] = {
                     "desc": f"右上体力 ≥ {total}",
                     "recognition": ocr(f"^{ge_regex(total)}\\s*/", STAMINA_ROI),
-                    "anchor": {"快次数": f"清体力_快_{n}", "连次数": f"清体力_连_{n}"},
+                    "anchor": {"连次数": f"清体力_连_{n}"},
                     "next": ["清体力_开弹窗"],
                     "focus": {"Node.Action.Succeeded": f"[color:Dimgray]体力够：刷 {n} 次，共消耗 {total}[/color]"},
                 }
@@ -204,7 +204,7 @@ def build():
         "focus": {"Node.Action.Succeeded": "[color:Orange]体力不够，按设置跳过清体力[/color]"},
     }
     d["清体力_不足清完"] = {
-        "anchor": {"快次数": "清体力_快_最大", "连次数": "清体力_连_耗尽"},
+        "anchor": {"连次数": "清体力_连_耗尽"},
         "next": ["清体力_开弹窗"],
         "focus": {"Node.Action.Succeeded": "[color:Dimgray]按设置清完当前体力[/color]"},
     }
@@ -297,47 +297,24 @@ def build():
         "next": ["清体力_选符"],
     }
     d["清体力_选符"] = {
-        "desc": "点所选的符 / 暂不使用（文字由选项改写）",
+        "desc": "点所选的符 / 暂不使用（文字由选项改写）。不管选哪个，后面都统一走「连续战斗」弹窗选次数",
         "recognition": ocr("^超强助力符$", [395, 425, 500, 45]),
         "action": {"type": "Click", "param": {"target": True, "target_offset": [0, -50, 0, 0]}},
         "post_wait_freezes": PW,
-        "next": ["清体力_快速模式", "清体力_符不够"],
+        "next": ["清体力_转连续战斗"],
     }
-    d["清体力_快速模式"] = {
-        "recognition": ocr("快速过关", QUICK_BTN),
-        "next": ["[Anchor]快次数"],
-    }
-    d["清体力_连战模式"] = {
-        "recognition": ocr("连续作战", QUICK_BTN),
-        "action": {"type": "Click"},
-        "post_wait_freezes": PW, "timeout": 5000,
+    d["清体力_转连续战斗"] = {
+        "desc": "选好符后点弹窗外空白处 → 弹出「连续战斗」窗口（至体力耗尽 / 战斗次数）。用户确认：取消也是这样，点空白再在连续战斗窗口点「取消」",
+        "recognition": ocr("快速通关", [540, 175, 200, 60]),
+        "action": {"type": "Click", "param": {"target": BLANK}},
+        "post_wait_freezes": PW, "max_hit": 3, "timeout": 5000,
         "next": ["清体力_连战弹窗"], "on_error": ["公共_任务失败"],
-    }
-    d["清体力_符不够"] = {
-        "desc": "选了符，按钮却不是「快速过关」→ 多半是符用完了。为了不误入实际战斗，直接结束",
-        "recognition": ocr("连续作战|开始作战", QUICK_BTN),
-        "action": {"type": "Click", "param": {"target": BLANK}},
-        "focus": {"Node.Action.Succeeded": "[color:Orange]所选道具符不够了，清体力已跳过[/color]"},
-    }
-    d["清体力_非预期"] = {
-        "desc": "选了暂不使用，按钮却是「快速过关」→ 没切过去，结束",
-        "recognition": ocr("快速过关", QUICK_BTN),
-        "action": {"type": "Click", "param": {"target": BLANK}},
-        "focus": {"Node.Action.Succeeded": "[color:Red]没能切到「暂不使用」，清体力已跳过[/color]"},
     }
     d["清体力_连战弹窗"] = {
         "desc": "连续战斗弹窗：至体力耗尽 / 战斗次数",
         "recognition": ocr("战斗次数", [365, 365, 160, 50]),
-        "next": ["[Anchor]连次数"],
-    }
-
-    # 快速通关弹窗里调次数
-    d["清体力_快_最大"] = {
-        "desc": "清完当前体力：点「⤒」最大次数",
-        "recognition": ocr("快速过关", QUICK_BTN),
-        "action": {"type": "Click", "param": {"target": QUICK_MAX}},
-        "post_wait_freezes": PW,
-        "next": ["清体力_点快速过关"],
+        "timeout": 5000,
+        "next": ["[Anchor]连次数"], "on_error": ["公共_任务失败"],
     }
     d["清体力_连_耗尽"] = {
         "desc": "清完当前体力：勾「至体力耗尽」",
@@ -348,31 +325,6 @@ def build():
     }
     for n in range(1, MAX_N + 1):
         smaller, bigger = list(range(1, n)), list(range(n + 1, 100))
-        # 快速通关弹窗
-        d[f"清体力_快_{n}"] = {"desc": f"把次数调到 {n}", "timeout": 5000, "on_error": ["公共_任务失败"], "next": [f"清体力_快_{n}_好"] + ([f"清体力_快_{n}_加"] if smaller else []) + [f"清体力_快_{n}_减", f"清体力_快_{n}_卡住"]}
-        d[f"清体力_快_{n}_好"] = {
-            "recognition": ocr(f"^{n}$", QUICK_FIELD),
-            "next": ["清体力_点快速过关"],
-        }
-        if smaller:
-            d[f"清体力_快_{n}_加"] = {
-                "recognition": ocr(int_set(smaller), QUICK_FIELD),
-                "action": {"type": "Click", "param": {"target": QUICK_PLUS}},
-                "max_hit": MAX_N + 2, "post_wait_freezes": {"time": 400, "timeout": 2000, "rate_limit": 100},
-                "next": [f"清体力_快_{n}"],
-            }
-        d[f"清体力_快_{n}_减"] = {
-            "recognition": ocr(int_set(bigger), QUICK_FIELD),
-            "action": {"type": "Click", "param": {"target": QUICK_MINUS}},
-            "max_hit": 120, "post_wait_freezes": {"time": 400, "timeout": 2000, "rate_limit": 100},
-            "next": [f"清体力_快_{n}"],
-        }
-        d[f"清体力_快_{n}_卡住"] = {
-            "desc": "读得到次数、但「+」已经点满上限还到不了目标（体力或符不够）→ 结束。只有读得到数字才算，避免动画瞬间读空就误判",
-            "recognition": ocr("^\\d+$", QUICK_FIELD),
-            "action": {"type": "Click", "param": {"target": BLANK}},
-            "focus": {"Node.Action.Succeeded": f"[color:Orange]次数调不到 {n}（体力或道具符不够），清体力已跳过[/color]"},
-        }
         # 连续战斗弹窗
         d[f"清体力_连_{n}"] = {
             "desc": f"勾「战斗次数」，调到 {n}",
@@ -405,26 +357,12 @@ def build():
             "focus": {"Node.Action.Succeeded": f"[color:Orange]战斗次数调不到 {n}，清体力已跳过[/color]"},
         }
 
-    # ---------- 快速过关 ----------
-    d["清体力_点快速过关"] = {
-        "recognition": ocr("快速过关", QUICK_BTN),
-        "action": {"type": "Click"},
-        "post_wait_freezes": PW_SLOW,
-        "next": ["清体力_快速等奖励"],
-        "focus": {"Node.Action.Succeeded": "[color:Deepskyblue]快速过关[/color]"},
-    }
-    d["清体力_快速等奖励"] = {
-        "timeout": 20000,
-        "next": ["[JumpBack]公共_获得奖励", "[JumpBack]公共_点击空白继续", "清体力_意外补充体力", "清体力_回到关卡"],
-        "on_error": ["公共_任务失败"],
-    }
-
     # ---------- 实际战斗 ----------
     d["清体力_连战确定"] = {
         "recognition": ocr("确\\s*定", [760, 485, 120, 55]),
         "action": {"type": "Click"},
         "post_wait_freezes": PW_SLOW, "timeout": 5000,
-        "next": ["清体力_编队"], "on_error": ["公共_任务失败"],
+        "next": ["清体力_确定后"], "on_error": ["公共_任务失败"],
     }
     d["清体力_编队"] = {
         "desc": "编队页",
@@ -468,6 +406,12 @@ def build():
                 "这里用 post_delay 是因为战斗画面一直在动，没法用等待画面静止代替",
         "recognition": ocr("终止连续战斗", [520, 625, 240, 50]),
         "post_delay": 5000,
+    }
+    d["清体力_确定后"] = {
+        "desc": "连续战斗弹窗点「确定」之后：不用符会进编队；用符会直接快速过关出奖励。两种都接住",
+        "timeout": 300000,
+        "next": ["清体力_编队"] + d["清体力_战斗中"]["next"],
+        "on_error": ["公共_任务失败"],
     }
     d["清体力_改自动"] = {
         "desc": "右上角是「手动」→ 点一下改成自动",
@@ -599,13 +543,13 @@ def options():
         "default_case": "超强助力符",
         "cases": [
             {"name": "超强助力符",
-             "pipeline_override": {"清体力_选符": {"recognition": ocr("^超强助力符$", [395, 425, 500, 45]), "next": ["清体力_快速模式", "清体力_符不够"]},
+             "pipeline_override": {"清体力_选符": {"recognition": ocr("^超强助力符$", [395, 425, 500, 45]), "next": ["清体力_转连续战斗"]},
                                    "清体力_倍数": {"next": ["清体力_倍数_1"]}}},
             {"name": "双倍干劲符",
-             "pipeline_override": {"清体力_选符": {"recognition": ocr("^双倍干劲符$", [395, 425, 500, 45]), "next": ["清体力_快速模式", "清体力_符不够"]},
+             "pipeline_override": {"清体力_选符": {"recognition": ocr("^双倍干劲符$", [395, 425, 500, 45]), "next": ["清体力_转连续战斗"]},
                                    "清体力_倍数": {"next": ["清体力_倍数_2"]}}},
             {"name": "暂不使用（实际战斗）",
-             "pipeline_override": {"清体力_选符": {"recognition": ocr("^暂不使用$", [395, 425, 500, 45]), "next": ["清体力_连战模式", "清体力_非预期"]},
+             "pipeline_override": {"清体力_选符": {"recognition": ocr("^暂不使用$", [395, 425, 500, 45]), "next": ["清体力_转连续战斗"]},
                                    "清体力_倍数": {"next": ["清体力_倍数_1"]}}},
         ],
     }
