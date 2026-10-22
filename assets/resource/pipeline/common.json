@@ -10,6 +10,7 @@
             "[JumpBack]公共_退出速写",
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "Flag_在主界面",
             "[JumpBack]公共_付费防呆",
@@ -244,6 +245,7 @@
         },
         "next": [
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_获得奖励",
@@ -313,6 +315,7 @@
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
@@ -448,6 +451,7 @@
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
@@ -484,6 +488,7 @@
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
@@ -962,6 +967,108 @@
             }
         },
         "max_hit": 4,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        }
+    },
+    "公共_不再提醒": {
+        "desc": "认提醒类弹窗：底部有「本次不再提醒」勾选框（例如「画灵心愿单提醒」）。先勾上它（本次登录不再弹），再点「我知道了」；读不到「我知道了」就点屏幕右边缘空白关闭",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "本次不再提醒",
+                "roi": [
+                    560,
+                    540,
+                    640,
+                    120
+                ]
+            }
+        },
+        "next": [
+            "公共_不再提醒_勾选",
+            "公共_我知道了",
+            "公共_提醒点空白"
+        ]
+    },
+    "公共_不再提醒_勾选": {
+        "desc": "文字左边的勾选框里没有红色对勾 → 点一下勾上（有对勾就不点，免得取消掉）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": "公共_不再提醒",
+                "roi_offset": [
+                    -48,
+                    -8,
+                    -100,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    180,
+                    0,
+                    0
+                ],
+                "upper": [
+                    255,
+                    140,
+                    140
+                ],
+                "count": 25
+            }
+        },
+        "inverse": true,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": "公共_不再提醒",
+                "target_offset": [
+                    -36,
+                    0,
+                    -110,
+                    0
+                ]
+            }
+        },
+        "max_hit": 2,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "公共_我知道了",
+            "公共_提醒点空白"
+        ]
+    },
+    "公共_提醒点空白": {
+        "desc": "提醒弹窗上没读到「我知道了」：点屏幕最右边缘的空白（在弹窗外）关闭",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "本次不再提醒",
+                "roi": [
+                    560,
+                    540,
+                    640,
+                    120
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1262,
+                    230,
+                    12,
+                    40
+                ]
+            }
+        },
+        "max_hit": 3,
         "post_wait_freezes": {
             "time": 500,
             "timeout": 1500,

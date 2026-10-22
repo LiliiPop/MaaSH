@@ -5,6 +5,7 @@
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "[JumpBack]出行_去赴约",
             "出行赠礼_打开头像栏"
@@ -46,6 +47,7 @@
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "出行赠礼_选择角色"
         ],
@@ -82,6 +84,7 @@
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "出行赠礼_打开赠礼"
         ],
@@ -116,6 +119,7 @@
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "出行赠礼_点第一个礼物"
         ],
@@ -150,6 +154,7 @@
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "出行赠礼_已送出",
             "[JumpBack]公共_获得奖励",
@@ -165,6 +170,7 @@
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "[JumpBack]出行_去赴约",
             "出行收礼_关闭奖励",
@@ -303,6 +309,7 @@
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "出行收礼_关闭奖励"
         ],
@@ -361,6 +368,7 @@
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "出行赠礼_点第一个礼物",
             "出行赠礼_赠送"
@@ -375,6 +383,7 @@
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "[JumpBack]出行_去赴约",
             "出行收礼_打开头像栏"
@@ -417,6 +426,7 @@
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "出行收礼_选择角色"
         ],
@@ -452,6 +462,7 @@
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "出行收礼_流程"
         ],

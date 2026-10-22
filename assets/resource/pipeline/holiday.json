@@ -4,6 +4,7 @@
         "timeout": 60000,
         "next": [
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "[JumpBack]公共_晚点再说",
             "假日_打开",
