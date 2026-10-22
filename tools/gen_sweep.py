@@ -85,7 +85,7 @@ def build():
     d["清体力"] = {
         "desc": "任务入口：练习 → 关卡 → 选难度 → 按选项刷到 60/120 体力 → 回任务页确认「累计消耗60点体力」",
         "timeout": 60000,
-        "next": ["[JumpBack]公共_稍后再说", "[JumpBack]公共_晚点再说", "清体力_打开练习", "[JumpBack]公共_返回主界面"],
+        "next": ["[JumpBack]公共_稍后再说", "[JumpBack]公共_我知道了", "[JumpBack]公共_晚点再说", "清体力_打开练习", "[JumpBack]公共_返回主界面"],
         "on_error": ["公共_任务失败"],
         "focus": {"Node.Action.Starting": "[color:Dimgray]开始：清体力[/color]"},
     }

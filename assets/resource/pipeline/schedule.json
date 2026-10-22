@@ -4,6 +4,7 @@
         "timeout": 60000,
         "next": [
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_我知道了",
             "[JumpBack]公共_晚点再说",
             "日程_进入校园",
             "[JumpBack]公共_返回主界面"
@@ -205,6 +206,7 @@
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_我知道了",
             "Flag_日程完成",
             "Flag_日程今日已完成",
             "[JumpBack]日程_回日程页",
@@ -691,6 +693,7 @@
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_我知道了",
             "日程_对话推进",
             "日程_回复已出现"
         ],

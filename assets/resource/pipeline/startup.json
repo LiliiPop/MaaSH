@@ -24,12 +24,14 @@
             "[JumpBack]启动_关闭登录公告",
             "[JumpBack]启动_点击登录",
             "[JumpBack]公共_关闭月度推荐",
+            "[JumpBack]公共_关闭公告_边缘",
             "[JumpBack]公共_关闭公告",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
             "[JumpBack]公共_断线重连",
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_我知道了",
             "[JumpBack]公共_返回按钮",
             "[JumpBack]启动_兜底点击"
         ],
@@ -48,11 +50,13 @@
             "[JumpBack]公共_退出后重开",
             "[JumpBack]公共_关闭月度推荐",
             "Flag_启动完成",
+            "[JumpBack]公共_关闭公告_边缘",
             "[JumpBack]公共_关闭公告",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_我知道了",
             "[JumpBack]公共_返回按钮"
         ],
         "recognition": {

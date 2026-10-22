@@ -10,10 +10,12 @@
             "[JumpBack]公共_退出速写",
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_我知道了",
             "Flag_在主界面",
             "[JumpBack]公共_付费防呆",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_关闭公告_边缘",
             "[JumpBack]公共_关闭公告",
             "[JumpBack]公共_返回按钮"
         ],
@@ -242,6 +244,7 @@
         },
         "next": [
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_我知道了",
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
@@ -310,6 +313,7 @@
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_我知道了",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
             "公共_日常列表就绪",
@@ -444,6 +448,7 @@
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_我知道了",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
             "公共_日常列表就绪",
@@ -479,6 +484,7 @@
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_我知道了",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
             "公共_日常列表就绪",
@@ -901,6 +907,65 @@
         },
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]关掉一个「取消 / 确定」弹窗（点取消）[/color]"
+        }
+    },
+    "公共_我知道了": {
+        "desc": "带「我知道了」按钮的提醒弹窗（例如「画灵心愿单提醒」，10-21 实跑盖住了主界面）：点「我知道了」关掉。不点弹窗里的「立即前往」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^(我知道了|知道了|我已知晓)$",
+                "roi": [
+                    150,
+                    420,
+                    980,
+                    260
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 10,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]关闭弹窗：点「我知道了」[/color]"
+        }
+    },
+    "公共_关闭公告_边缘": {
+        "desc": "公告/海报盖住主界面时，先点屏幕最右边缘的空白（大多数弹窗都不会盖到这里，右侧主界面按钮也到不了这么右）。不行再用 公共_关闭公告 点右上方",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "图鉴|故事|练习|社交",
+                "roi": [
+                    680,
+                    625,
+                    560,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1262,
+                    230,
+                    12,
+                    40
+                ]
+            }
+        },
+        "max_hit": 4,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
         }
     }
 }
