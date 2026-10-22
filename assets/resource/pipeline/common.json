@@ -4,6 +4,7 @@
         "timeout": 30000,
         "next": [
             "[JumpBack]公共_退出后重开",
+            "[JumpBack]兑换_关选择弹窗",
             "[JumpBack]公共_取消弹窗",
             "[JumpBack]公共_关闭月度推荐",
             "[JumpBack]公共_跳过卡面",
