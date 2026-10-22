@@ -292,7 +292,10 @@
         },
         "focus": {
             "Node.Action.Succeeded": "[color:Limegreen]每日惊喜盒子已领取[/color]"
-        }
+        },
+        "next": [
+            "活动礼包_入口"
+        ]
     },
     "礼包_下滚": {
         "desc": "常驻礼包里没看到惊喜盒子时把列表往上推一点（最多 2 次）",
@@ -331,6 +334,1151 @@
             "time": 500,
             "timeout": 1500,
             "rate_limit": 200
+        }
+    },
+    "活动礼包_入口": {
+        "desc": "子选项「活动免费礼包」：开启时接着去带红点的页签里找写着「免费」的礼包（由选项改写 next）",
+        "next": [
+            "活动礼包_页签_1"
+        ]
+    },
+    "活动礼包_页签_1": {
+        "desc": "看第 1 个页签右上有没有红点（页签栏在顶部 y≈371，列表滚动后在 y≈100）",
+        "next": [
+            "活动礼包_有红点_1",
+            "活动礼包_页签_2"
+        ]
+    },
+    "活动礼包_有红点_1": {
+        "desc": "有红点 → 点这个页签。同一行必须有页签文字（常驻礼包 / 月卡直购），免得把礼包卡片右上的红点当成页签红点",
+        "recognition": {
+            "type": "Or",
+            "param": {
+                "any_of": [
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "ColorMatch",
+                                            "param": {
+                                                "roi": [
+                                                    362,
+                                                    336,
+                                                    70,
+                                                    32
+                                                ],
+                                                "method": 4,
+                                                "lower": [
+                                                    200,
+                                                    40,
+                                                    30
+                                                ],
+                                                "upper": [
+                                                    255,
+                                                    130,
+                                                    120
+                                                ],
+                                                "count": 25,
+                                                "connected": true
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "常驻礼包|月卡直购",
+                                                "roi": [
+                                                    160,
+                                                    348,
+                                                    1030,
+                                                    46
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ],
+                                "box_index": 0
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "ColorMatch",
+                                            "param": {
+                                                "roi": [
+                                                    362,
+                                                    64,
+                                                    70,
+                                                    32
+                                                ],
+                                                "method": 4,
+                                                "lower": [
+                                                    200,
+                                                    40,
+                                                    30
+                                                ],
+                                                "upper": [
+                                                    255,
+                                                    130,
+                                                    120
+                                                ],
+                                                "count": 25,
+                                                "connected": true
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "常驻礼包|月卡直购",
+                                                "roi": [
+                                                    160,
+                                                    77,
+                                                    1030,
+                                                    46
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ],
+                                "box_index": 0
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": true,
+                "target_offset": [
+                    -100,
+                    8,
+                    60,
+                    12
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "anchor": {
+            "活动礼包扫描": "活动礼包_扫描_1"
+        },
+        "next": [
+            "活动礼包_扫描_1"
+        ]
+    },
+    "活动礼包_扫描_1": {
+        "desc": "在这个页签的列表里找价格写着「免费」的礼包；没有就往下滚（最多 5 次），滚完还没有就去下一个页签",
+        "timeout": 15000,
+        "next": [
+            "[JumpBack]兑换_关选择弹窗",
+            "[JumpBack]公共_获得奖励",
+            "活动礼包_点免费卡",
+            "[JumpBack]活动礼包_下滚_1",
+            "活动礼包_页签_2"
+        ],
+        "on_error": [
+            "活动礼包_页签_2"
+        ]
+    },
+    "活动礼包_下滚_1": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "理\\s*性\\s*消\\s*费",
+                "roi": [
+                    480,
+                    80,
+                    330,
+                    360
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    680,
+                    600,
+                    20,
+                    20
+                ],
+                "end": [
+                    680,
+                    330,
+                    20,
+                    20
+                ],
+                "duration": 400
+            }
+        },
+        "max_hit": 5,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        }
+    },
+    "活动礼包_页签_2": {
+        "desc": "看第 2 个页签右上有没有红点（页签栏在顶部 y≈371，列表滚动后在 y≈100）",
+        "next": [
+            "活动礼包_有红点_2",
+            "活动礼包_页签_3"
+        ]
+    },
+    "活动礼包_有红点_2": {
+        "desc": "有红点 → 点这个页签。同一行必须有页签文字（常驻礼包 / 月卡直购），免得把礼包卡片右上的红点当成页签红点",
+        "recognition": {
+            "type": "Or",
+            "param": {
+                "any_of": [
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "ColorMatch",
+                                            "param": {
+                                                "roi": [
+                                                    542,
+                                                    336,
+                                                    70,
+                                                    32
+                                                ],
+                                                "method": 4,
+                                                "lower": [
+                                                    200,
+                                                    40,
+                                                    30
+                                                ],
+                                                "upper": [
+                                                    255,
+                                                    130,
+                                                    120
+                                                ],
+                                                "count": 25,
+                                                "connected": true
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "常驻礼包|月卡直购",
+                                                "roi": [
+                                                    160,
+                                                    348,
+                                                    1030,
+                                                    46
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ],
+                                "box_index": 0
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "ColorMatch",
+                                            "param": {
+                                                "roi": [
+                                                    542,
+                                                    64,
+                                                    70,
+                                                    32
+                                                ],
+                                                "method": 4,
+                                                "lower": [
+                                                    200,
+                                                    40,
+                                                    30
+                                                ],
+                                                "upper": [
+                                                    255,
+                                                    130,
+                                                    120
+                                                ],
+                                                "count": 25,
+                                                "connected": true
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "常驻礼包|月卡直购",
+                                                "roi": [
+                                                    160,
+                                                    77,
+                                                    1030,
+                                                    46
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ],
+                                "box_index": 0
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": true,
+                "target_offset": [
+                    -100,
+                    8,
+                    60,
+                    12
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "anchor": {
+            "活动礼包扫描": "活动礼包_扫描_2"
+        },
+        "next": [
+            "活动礼包_扫描_2"
+        ]
+    },
+    "活动礼包_扫描_2": {
+        "desc": "在这个页签的列表里找价格写着「免费」的礼包；没有就往下滚（最多 5 次），滚完还没有就去下一个页签",
+        "timeout": 15000,
+        "next": [
+            "[JumpBack]兑换_关选择弹窗",
+            "[JumpBack]公共_获得奖励",
+            "活动礼包_点免费卡",
+            "[JumpBack]活动礼包_下滚_2",
+            "活动礼包_页签_3"
+        ],
+        "on_error": [
+            "活动礼包_页签_3"
+        ]
+    },
+    "活动礼包_下滚_2": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "理\\s*性\\s*消\\s*费",
+                "roi": [
+                    480,
+                    80,
+                    330,
+                    360
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    680,
+                    600,
+                    20,
+                    20
+                ],
+                "end": [
+                    680,
+                    330,
+                    20,
+                    20
+                ],
+                "duration": 400
+            }
+        },
+        "max_hit": 5,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        }
+    },
+    "活动礼包_页签_3": {
+        "desc": "看第 3 个页签右上有没有红点（页签栏在顶部 y≈371，列表滚动后在 y≈100）",
+        "next": [
+            "活动礼包_有红点_3",
+            "活动礼包_页签_4"
+        ]
+    },
+    "活动礼包_有红点_3": {
+        "desc": "有红点 → 点这个页签。同一行必须有页签文字（常驻礼包 / 月卡直购），免得把礼包卡片右上的红点当成页签红点",
+        "recognition": {
+            "type": "Or",
+            "param": {
+                "any_of": [
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "ColorMatch",
+                                            "param": {
+                                                "roi": [
+                                                    722,
+                                                    336,
+                                                    70,
+                                                    32
+                                                ],
+                                                "method": 4,
+                                                "lower": [
+                                                    200,
+                                                    40,
+                                                    30
+                                                ],
+                                                "upper": [
+                                                    255,
+                                                    130,
+                                                    120
+                                                ],
+                                                "count": 25,
+                                                "connected": true
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "常驻礼包|月卡直购",
+                                                "roi": [
+                                                    160,
+                                                    348,
+                                                    1030,
+                                                    46
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ],
+                                "box_index": 0
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "ColorMatch",
+                                            "param": {
+                                                "roi": [
+                                                    722,
+                                                    64,
+                                                    70,
+                                                    32
+                                                ],
+                                                "method": 4,
+                                                "lower": [
+                                                    200,
+                                                    40,
+                                                    30
+                                                ],
+                                                "upper": [
+                                                    255,
+                                                    130,
+                                                    120
+                                                ],
+                                                "count": 25,
+                                                "connected": true
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "常驻礼包|月卡直购",
+                                                "roi": [
+                                                    160,
+                                                    77,
+                                                    1030,
+                                                    46
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ],
+                                "box_index": 0
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": true,
+                "target_offset": [
+                    -100,
+                    8,
+                    60,
+                    12
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "anchor": {
+            "活动礼包扫描": "活动礼包_扫描_3"
+        },
+        "next": [
+            "活动礼包_扫描_3"
+        ]
+    },
+    "活动礼包_扫描_3": {
+        "desc": "在这个页签的列表里找价格写着「免费」的礼包；没有就往下滚（最多 5 次），滚完还没有就去下一个页签",
+        "timeout": 15000,
+        "next": [
+            "[JumpBack]兑换_关选择弹窗",
+            "[JumpBack]公共_获得奖励",
+            "活动礼包_点免费卡",
+            "[JumpBack]活动礼包_下滚_3",
+            "活动礼包_页签_4"
+        ],
+        "on_error": [
+            "活动礼包_页签_4"
+        ]
+    },
+    "活动礼包_下滚_3": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "理\\s*性\\s*消\\s*费",
+                "roi": [
+                    480,
+                    80,
+                    330,
+                    360
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    680,
+                    600,
+                    20,
+                    20
+                ],
+                "end": [
+                    680,
+                    330,
+                    20,
+                    20
+                ],
+                "duration": 400
+            }
+        },
+        "max_hit": 5,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        }
+    },
+    "活动礼包_页签_4": {
+        "desc": "看第 4 个页签右上有没有红点（页签栏在顶部 y≈371，列表滚动后在 y≈100）",
+        "next": [
+            "活动礼包_有红点_4",
+            "活动礼包_页签_5"
+        ]
+    },
+    "活动礼包_有红点_4": {
+        "desc": "有红点 → 点这个页签。同一行必须有页签文字（常驻礼包 / 月卡直购），免得把礼包卡片右上的红点当成页签红点",
+        "recognition": {
+            "type": "Or",
+            "param": {
+                "any_of": [
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "ColorMatch",
+                                            "param": {
+                                                "roi": [
+                                                    902,
+                                                    336,
+                                                    70,
+                                                    32
+                                                ],
+                                                "method": 4,
+                                                "lower": [
+                                                    200,
+                                                    40,
+                                                    30
+                                                ],
+                                                "upper": [
+                                                    255,
+                                                    130,
+                                                    120
+                                                ],
+                                                "count": 25,
+                                                "connected": true
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "常驻礼包|月卡直购",
+                                                "roi": [
+                                                    160,
+                                                    348,
+                                                    1030,
+                                                    46
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ],
+                                "box_index": 0
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "ColorMatch",
+                                            "param": {
+                                                "roi": [
+                                                    902,
+                                                    64,
+                                                    70,
+                                                    32
+                                                ],
+                                                "method": 4,
+                                                "lower": [
+                                                    200,
+                                                    40,
+                                                    30
+                                                ],
+                                                "upper": [
+                                                    255,
+                                                    130,
+                                                    120
+                                                ],
+                                                "count": 25,
+                                                "connected": true
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "常驻礼包|月卡直购",
+                                                "roi": [
+                                                    160,
+                                                    77,
+                                                    1030,
+                                                    46
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ],
+                                "box_index": 0
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": true,
+                "target_offset": [
+                    -100,
+                    8,
+                    60,
+                    12
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "anchor": {
+            "活动礼包扫描": "活动礼包_扫描_4"
+        },
+        "next": [
+            "活动礼包_扫描_4"
+        ]
+    },
+    "活动礼包_扫描_4": {
+        "desc": "在这个页签的列表里找价格写着「免费」的礼包；没有就往下滚（最多 5 次），滚完还没有就去下一个页签",
+        "timeout": 15000,
+        "next": [
+            "[JumpBack]兑换_关选择弹窗",
+            "[JumpBack]公共_获得奖励",
+            "活动礼包_点免费卡",
+            "[JumpBack]活动礼包_下滚_4",
+            "活动礼包_页签_5"
+        ],
+        "on_error": [
+            "活动礼包_页签_5"
+        ]
+    },
+    "活动礼包_下滚_4": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "理\\s*性\\s*消\\s*费",
+                "roi": [
+                    480,
+                    80,
+                    330,
+                    360
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    680,
+                    600,
+                    20,
+                    20
+                ],
+                "end": [
+                    680,
+                    330,
+                    20,
+                    20
+                ],
+                "duration": 400
+            }
+        },
+        "max_hit": 5,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        }
+    },
+    "活动礼包_页签_5": {
+        "desc": "看第 5 个页签右上有没有红点（页签栏在顶部 y≈371，列表滚动后在 y≈100）",
+        "next": [
+            "活动礼包_有红点_5",
+            "活动礼包_结束"
+        ]
+    },
+    "活动礼包_有红点_5": {
+        "desc": "有红点 → 点这个页签。同一行必须有页签文字（常驻礼包 / 月卡直购），免得把礼包卡片右上的红点当成页签红点",
+        "recognition": {
+            "type": "Or",
+            "param": {
+                "any_of": [
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "ColorMatch",
+                                            "param": {
+                                                "roi": [
+                                                    1082,
+                                                    336,
+                                                    70,
+                                                    32
+                                                ],
+                                                "method": 4,
+                                                "lower": [
+                                                    200,
+                                                    40,
+                                                    30
+                                                ],
+                                                "upper": [
+                                                    255,
+                                                    130,
+                                                    120
+                                                ],
+                                                "count": 25,
+                                                "connected": true
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "常驻礼包|月卡直购",
+                                                "roi": [
+                                                    160,
+                                                    348,
+                                                    1030,
+                                                    46
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ],
+                                "box_index": 0
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "ColorMatch",
+                                            "param": {
+                                                "roi": [
+                                                    1082,
+                                                    64,
+                                                    70,
+                                                    32
+                                                ],
+                                                "method": 4,
+                                                "lower": [
+                                                    200,
+                                                    40,
+                                                    30
+                                                ],
+                                                "upper": [
+                                                    255,
+                                                    130,
+                                                    120
+                                                ],
+                                                "count": 25,
+                                                "connected": true
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "常驻礼包|月卡直购",
+                                                "roi": [
+                                                    160,
+                                                    77,
+                                                    1030,
+                                                    46
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ],
+                                "box_index": 0
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": true,
+                "target_offset": [
+                    -100,
+                    8,
+                    60,
+                    12
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "anchor": {
+            "活动礼包扫描": "活动礼包_扫描_5"
+        },
+        "next": [
+            "活动礼包_扫描_5"
+        ]
+    },
+    "活动礼包_扫描_5": {
+        "desc": "在这个页签的列表里找价格写着「免费」的礼包；没有就往下滚（最多 5 次），滚完还没有就去下一个页签",
+        "timeout": 15000,
+        "next": [
+            "[JumpBack]兑换_关选择弹窗",
+            "[JumpBack]公共_获得奖励",
+            "活动礼包_点免费卡",
+            "[JumpBack]活动礼包_下滚_5",
+            "活动礼包_结束"
+        ],
+        "on_error": [
+            "活动礼包_结束"
+        ]
+    },
+    "活动礼包_下滚_5": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "理\\s*性\\s*消\\s*费",
+                "roi": [
+                    480,
+                    80,
+                    330,
+                    360
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    680,
+                    600,
+                    20,
+                    20
+                ],
+                "end": [
+                    680,
+                    330,
+                    20,
+                    20
+                ],
+                "duration": 400
+            }
+        },
+        "max_hit": 5,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        }
+    },
+    "活动礼包_点免费卡": {
+        "desc": "列表里价格按钮写着「免费」的礼包：点它打开详情（每次运行最多领 4 个，防止反复点同一个）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^免\\s*费$",
+                "roi": [
+                    160,
+                    130,
+                    1040,
+                    580
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 4,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "timeout": 5000,
+        "next": [
+            "活动礼包_确认免费",
+            "活动礼包_不是免费"
+        ],
+        "on_error": [
+            "[Anchor]活动礼包扫描"
+        ]
+    },
+    "活动礼包_确认免费": {
+        "desc": "详情弹窗下方按钮是「免费」才点",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "免\\s*费",
+                "roi": [
+                    540,
+                    570,
+                    200,
+                    65
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "活动礼包_领后"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Deepskyblue]领取活动免费礼包[/color]"
+        }
+    },
+    "活动礼包_不是免费": {
+        "desc": "详情弹窗（有「商品内容」）的按钮不是「免费」（¥ / 钻石）→ 点空白取消，绝不买",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "[¥￥]\\s*\\d",
+                                                "roi": [
+                                                    420,
+                                                    555,
+                                                    440,
+                                                    95
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": "safety/钻石价签.png",
+                                                "roi": [
+                                                    520,
+                                                    520,
+                                                    240,
+                                                    100
+                                                ],
+                                                "threshold": 0.75
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "补充体力",
+                                                "roi": [
+                                                    520,
+                                                    160,
+                                                    240,
+                                                    65
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "商品内容",
+                                "roi": [
+                                    470,
+                                    285,
+                                    150,
+                                    45
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 0
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    600,
+                    682,
+                    80,
+                    16
+                ]
+            }
+        },
+        "max_hit": 5,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]检测到付费弹窗（人民币/钻石），已点空白处取消[/color]"
+        },
+        "next": [
+            "[Anchor]活动礼包扫描"
+        ]
+    },
+    "活动礼包_领后": {
+        "desc": "关掉「恭喜获得」；送的是自选物品（例如衣服）时还会弹出「请在下列物品中挑选兑换」，点空白关掉，可以多点几次",
+        "timeout": 10000,
+        "next": [
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]兑换_关选择弹窗",
+            "[Anchor]活动礼包扫描"
+        ],
+        "on_error": [
+            "[Anchor]活动礼包扫描"
+        ]
+    },
+    "活动礼包_结束": {
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]活动免费礼包：带红点的页签都看过了[/color]"
         }
     }
 }
