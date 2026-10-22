@@ -30,6 +30,10 @@ on:
         description: "要发布的版本号（如 v0.1.0）。留空则只构建、不发布"
         required: false
         default: ""
+      refresh_tag:
+        description: "只替换已有版本的安装包（如 v0.1.3）：不建新版本、不动标签和发布说明"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -43,6 +47,14 @@ jobs:
           fetch-depth: 0
       - id: set_tag
         run: |
+          # 只替换已有版本的安装包：版本号沿用这个标签，不发布新版本
+          if [[ "${{ github.event.inputs.refresh_tag }}" == v* ]]; then
+            echo tag=${{ github.event.inputs.refresh_tag }} | tee -a $GITHUB_OUTPUT
+            echo is_release=false | tee -a $GITHUB_OUTPUT
+            echo is_prerelease=false | tee -a $GITHUB_OUTPUT
+            echo is_refresh=true | tee -a $GITHUB_OUTPUT
+            exit 0
+          fi
           # 手动运行时填了版本号：直接按这个版本发布（标签由发布步骤创建）
           if [[ "${{ github.event.inputs.release_tag }}" == v* ]]; then
             tag="${{ github.event.inputs.release_tag }}"
@@ -84,6 +96,7 @@ jobs:
       tag: ${{ steps.set_tag.outputs.tag }}
       is_release: ${{ steps.set_tag.outputs.is_release }}
       is_prerelease: ${{ steps.set_tag.outputs.is_prerelease }}
+      is_refresh: ${{ steps.set_tag.outputs.is_refresh }}
 
   install:
     needs: meta
@@ -239,3 +252,25 @@ jobs:
           gh workflow run --repo $GITHUB_REPOSITORY mirrorchyan_release_note.yml -f tag=${{ needs.meta.outputs.tag }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  refresh:
+    # 只替换已有版本的安装包（同名文件覆盖），不建新版本、不改标签和发布说明
+    if: ${{ needs.meta.outputs.is_refresh == 'true' }}
+    needs: [meta, install]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: assets
+
+      - run: |
+          cd assets
+          for f in *; do
+            (cd $f && zip -r ../$f-${{ needs.meta.outputs.tag }}.zip .)
+          done
+
+      - name: Replace release assets
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload "${{ needs.meta.outputs.tag }}" assets/*.zip --clobber --repo "${{ github.repository }}"
