@@ -349,7 +349,7 @@ def build():
     for n in range(1, MAX_N + 1):
         smaller, bigger = list(range(1, n)), list(range(n + 1, 100))
         # 快速通关弹窗
-        d[f"清体力_快_{n}"] = {"desc": f"把次数调到 {n}", "next": [f"清体力_快_{n}_好"] + ([f"清体力_快_{n}_加"] if smaller else []) + [f"清体力_快_{n}_减", f"清体力_快_{n}_卡住"]}
+        d[f"清体力_快_{n}"] = {"desc": f"把次数调到 {n}", "timeout": 5000, "on_error": ["公共_任务失败"], "next": [f"清体力_快_{n}_好"] + ([f"清体力_快_{n}_加"] if smaller else []) + [f"清体力_快_{n}_减", f"清体力_快_{n}_卡住"]}
         d[f"清体力_快_{n}_好"] = {
             "recognition": ocr(f"^{n}$", QUICK_FIELD),
             "next": ["清体力_点快速过关"],
@@ -358,17 +358,18 @@ def build():
             d[f"清体力_快_{n}_加"] = {
                 "recognition": ocr(int_set(smaller), QUICK_FIELD),
                 "action": {"type": "Click", "param": {"target": QUICK_PLUS}},
-                "max_hit": MAX_N + 2, "post_wait_freezes": {"time": 200, "timeout": 1000, "rate_limit": 100},
+                "max_hit": MAX_N + 2, "post_wait_freezes": {"time": 400, "timeout": 2000, "rate_limit": 100},
                 "next": [f"清体力_快_{n}"],
             }
         d[f"清体力_快_{n}_减"] = {
             "recognition": ocr(int_set(bigger), QUICK_FIELD),
             "action": {"type": "Click", "param": {"target": QUICK_MINUS}},
-            "max_hit": 120, "post_wait_freezes": {"time": 200, "timeout": 1000, "rate_limit": 100},
+            "max_hit": 120, "post_wait_freezes": {"time": 400, "timeout": 2000, "rate_limit": 100},
             "next": [f"清体力_快_{n}"],
         }
         d[f"清体力_快_{n}_卡住"] = {
-            "desc": "次数调不到目标（体力或符不够）→ 关弹窗结束",
+            "desc": "读得到次数、但「+」已经点满上限还到不了目标（体力或符不够）→ 结束。只有读得到数字才算，避免动画瞬间读空就误判",
+            "recognition": ocr("^\\d+$", QUICK_FIELD),
             "action": {"type": "Click", "param": {"target": BLANK}},
             "focus": {"Node.Action.Succeeded": f"[color:Orange]次数调不到 {n}（体力或道具符不够），清体力已跳过[/color]"},
         }
@@ -380,7 +381,7 @@ def build():
             "post_wait_freezes": PW,
             "next": [f"清体力_连_{n}_调"],
         }
-        d[f"清体力_连_{n}_调"] = {"next": [f"清体力_连_{n}_好"] + ([f"清体力_连_{n}_加"] if smaller else []) + [f"清体力_连_{n}_减", f"清体力_连_{n}_卡住"]}
+        d[f"清体力_连_{n}_调"] = {"timeout": 5000, "on_error": ["公共_任务失败"], "next": [f"清体力_连_{n}_好"] + ([f"清体力_连_{n}_加"] if smaller else []) + [f"清体力_连_{n}_减", f"清体力_连_{n}_卡住"]}
         d[f"清体力_连_{n}_好"] = {
             "recognition": ocr(f"^{n}$", CONT_FIELD),
             "next": ["清体力_连战确定"],
@@ -389,16 +390,17 @@ def build():
             d[f"清体力_连_{n}_加"] = {
                 "recognition": ocr(int_set(smaller), CONT_FIELD),
                 "action": {"type": "Click", "param": {"target": CONT_PLUS}},
-                "max_hit": MAX_N + 2, "post_wait_freezes": {"time": 200, "timeout": 1000, "rate_limit": 100},
+                "max_hit": MAX_N + 2, "post_wait_freezes": {"time": 400, "timeout": 2000, "rate_limit": 100},
                 "next": [f"清体力_连_{n}_调"],
             }
         d[f"清体力_连_{n}_减"] = {
             "recognition": ocr(int_set(bigger), CONT_FIELD),
             "action": {"type": "Click", "param": {"target": CONT_MINUS}},
-            "max_hit": 120, "post_wait_freezes": {"time": 200, "timeout": 1000, "rate_limit": 100},
+            "max_hit": 120, "post_wait_freezes": {"time": 400, "timeout": 2000, "rate_limit": 100},
             "next": [f"清体力_连_{n}_调"],
         }
         d[f"清体力_连_{n}_卡住"] = {
+            "recognition": ocr("^\\d+$", CONT_FIELD),
             "action": {"type": "Click", "param": {"target": [415, 497, 140, 40]}},
             "focus": {"Node.Action.Succeeded": f"[color:Orange]战斗次数调不到 {n}，清体力已跳过[/color]"},
         }

@@ -2426,6 +2426,10 @@
     },
     "清体力_快_1": {
         "desc": "把次数调到 1",
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_快_1_好",
             "清体力_快_1_减",
@@ -2475,8 +2479,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -2484,7 +2488,19 @@
         ]
     },
     "清体力_快_1_卡住": {
-        "desc": "次数调不到目标（体力或符不够）→ 关弹窗结束",
+        "desc": "读得到次数、但「+」已经点满上限还到不了目标（体力或符不够）→ 结束。只有读得到数字才算，避免动画瞬间读空就误判",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    455,
+                    505,
+                    75,
+                    40
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -2535,6 +2551,10 @@
         ]
     },
     "清体力_连_1_调": {
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_连_1_好",
             "清体力_连_1_减",
@@ -2584,8 +2604,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -2593,6 +2613,18 @@
         ]
     },
     "清体力_连_1_卡住": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    785,
+                    378,
+                    65,
+                    38
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -2610,6 +2642,10 @@
     },
     "清体力_快_2": {
         "desc": "把次数调到 2",
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_快_2_好",
             "清体力_快_2_加",
@@ -2660,8 +2696,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -2694,8 +2730,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -2703,7 +2739,19 @@
         ]
     },
     "清体力_快_2_卡住": {
-        "desc": "次数调不到目标（体力或符不够）→ 关弹窗结束",
+        "desc": "读得到次数、但「+」已经点满上限还到不了目标（体力或符不够）→ 结束。只有读得到数字才算，避免动画瞬间读空就误判",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    455,
+                    505,
+                    75,
+                    40
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -2754,6 +2802,10 @@
         ]
     },
     "清体力_连_2_调": {
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_连_2_好",
             "清体力_连_2_加",
@@ -2804,8 +2856,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -2838,8 +2890,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -2847,6 +2899,18 @@
         ]
     },
     "清体力_连_2_卡住": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    785,
+                    378,
+                    65,
+                    38
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -2864,6 +2928,10 @@
     },
     "清体力_快_3": {
         "desc": "把次数调到 3",
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_快_3_好",
             "清体力_快_3_加",
@@ -2914,8 +2982,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -2948,8 +3016,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -2957,7 +3025,19 @@
         ]
     },
     "清体力_快_3_卡住": {
-        "desc": "次数调不到目标（体力或符不够）→ 关弹窗结束",
+        "desc": "读得到次数、但「+」已经点满上限还到不了目标（体力或符不够）→ 结束。只有读得到数字才算，避免动画瞬间读空就误判",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    455,
+                    505,
+                    75,
+                    40
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -3008,6 +3088,10 @@
         ]
     },
     "清体力_连_3_调": {
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_连_3_好",
             "清体力_连_3_加",
@@ -3058,8 +3142,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -3092,8 +3176,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -3101,6 +3185,18 @@
         ]
     },
     "清体力_连_3_卡住": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    785,
+                    378,
+                    65,
+                    38
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -3118,6 +3214,10 @@
     },
     "清体力_快_4": {
         "desc": "把次数调到 4",
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_快_4_好",
             "清体力_快_4_加",
@@ -3168,8 +3268,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -3202,8 +3302,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -3211,7 +3311,19 @@
         ]
     },
     "清体力_快_4_卡住": {
-        "desc": "次数调不到目标（体力或符不够）→ 关弹窗结束",
+        "desc": "读得到次数、但「+」已经点满上限还到不了目标（体力或符不够）→ 结束。只有读得到数字才算，避免动画瞬间读空就误判",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    455,
+                    505,
+                    75,
+                    40
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -3262,6 +3374,10 @@
         ]
     },
     "清体力_连_4_调": {
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_连_4_好",
             "清体力_连_4_加",
@@ -3312,8 +3428,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -3346,8 +3462,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -3355,6 +3471,18 @@
         ]
     },
     "清体力_连_4_卡住": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    785,
+                    378,
+                    65,
+                    38
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -3372,6 +3500,10 @@
     },
     "清体力_快_5": {
         "desc": "把次数调到 5",
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_快_5_好",
             "清体力_快_5_加",
@@ -3422,8 +3554,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -3456,8 +3588,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -3465,7 +3597,19 @@
         ]
     },
     "清体力_快_5_卡住": {
-        "desc": "次数调不到目标（体力或符不够）→ 关弹窗结束",
+        "desc": "读得到次数、但「+」已经点满上限还到不了目标（体力或符不够）→ 结束。只有读得到数字才算，避免动画瞬间读空就误判",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    455,
+                    505,
+                    75,
+                    40
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -3516,6 +3660,10 @@
         ]
     },
     "清体力_连_5_调": {
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_连_5_好",
             "清体力_连_5_加",
@@ -3566,8 +3714,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -3600,8 +3748,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -3609,6 +3757,18 @@
         ]
     },
     "清体力_连_5_卡住": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    785,
+                    378,
+                    65,
+                    38
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -3626,6 +3786,10 @@
     },
     "清体力_快_6": {
         "desc": "把次数调到 6",
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_快_6_好",
             "清体力_快_6_加",
@@ -3676,8 +3840,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -3710,8 +3874,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -3719,7 +3883,19 @@
         ]
     },
     "清体力_快_6_卡住": {
-        "desc": "次数调不到目标（体力或符不够）→ 关弹窗结束",
+        "desc": "读得到次数、但「+」已经点满上限还到不了目标（体力或符不够）→ 结束。只有读得到数字才算，避免动画瞬间读空就误判",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    455,
+                    505,
+                    75,
+                    40
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -3770,6 +3946,10 @@
         ]
     },
     "清体力_连_6_调": {
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_连_6_好",
             "清体力_连_6_加",
@@ -3820,8 +4000,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -3854,8 +4034,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -3863,6 +4043,18 @@
         ]
     },
     "清体力_连_6_卡住": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    785,
+                    378,
+                    65,
+                    38
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -3880,6 +4072,10 @@
     },
     "清体力_快_7": {
         "desc": "把次数调到 7",
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_快_7_好",
             "清体力_快_7_加",
@@ -3930,8 +4126,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -3964,8 +4160,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -3973,7 +4169,19 @@
         ]
     },
     "清体力_快_7_卡住": {
-        "desc": "次数调不到目标（体力或符不够）→ 关弹窗结束",
+        "desc": "读得到次数、但「+」已经点满上限还到不了目标（体力或符不够）→ 结束。只有读得到数字才算，避免动画瞬间读空就误判",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    455,
+                    505,
+                    75,
+                    40
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -4024,6 +4232,10 @@
         ]
     },
     "清体力_连_7_调": {
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_连_7_好",
             "清体力_连_7_加",
@@ -4074,8 +4286,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -4108,8 +4320,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -4117,6 +4329,18 @@
         ]
     },
     "清体力_连_7_卡住": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    785,
+                    378,
+                    65,
+                    38
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -4134,6 +4358,10 @@
     },
     "清体力_快_8": {
         "desc": "把次数调到 8",
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_快_8_好",
             "清体力_快_8_加",
@@ -4184,8 +4412,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -4218,8 +4446,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -4227,7 +4455,19 @@
         ]
     },
     "清体力_快_8_卡住": {
-        "desc": "次数调不到目标（体力或符不够）→ 关弹窗结束",
+        "desc": "读得到次数、但「+」已经点满上限还到不了目标（体力或符不够）→ 结束。只有读得到数字才算，避免动画瞬间读空就误判",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    455,
+                    505,
+                    75,
+                    40
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -4278,6 +4518,10 @@
         ]
     },
     "清体力_连_8_调": {
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_连_8_好",
             "清体力_连_8_加",
@@ -4328,8 +4572,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -4362,8 +4606,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -4371,6 +4615,18 @@
         ]
     },
     "清体力_连_8_卡住": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    785,
+                    378,
+                    65,
+                    38
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -4388,6 +4644,10 @@
     },
     "清体力_快_9": {
         "desc": "把次数调到 9",
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_快_9_好",
             "清体力_快_9_加",
@@ -4438,8 +4698,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -4472,8 +4732,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -4481,7 +4741,19 @@
         ]
     },
     "清体力_快_9_卡住": {
-        "desc": "次数调不到目标（体力或符不够）→ 关弹窗结束",
+        "desc": "读得到次数、但「+」已经点满上限还到不了目标（体力或符不够）→ 结束。只有读得到数字才算，避免动画瞬间读空就误判",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    455,
+                    505,
+                    75,
+                    40
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -4532,6 +4804,10 @@
         ]
     },
     "清体力_连_9_调": {
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_连_9_好",
             "清体力_连_9_加",
@@ -4582,8 +4858,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -4616,8 +4892,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -4625,6 +4901,18 @@
         ]
     },
     "清体力_连_9_卡住": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    785,
+                    378,
+                    65,
+                    38
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -4642,6 +4930,10 @@
     },
     "清体力_快_10": {
         "desc": "把次数调到 10",
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_快_10_好",
             "清体力_快_10_加",
@@ -4692,8 +4984,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -4726,8 +5018,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -4735,7 +5027,19 @@
         ]
     },
     "清体力_快_10_卡住": {
-        "desc": "次数调不到目标（体力或符不够）→ 关弹窗结束",
+        "desc": "读得到次数、但「+」已经点满上限还到不了目标（体力或符不够）→ 结束。只有读得到数字才算，避免动画瞬间读空就误判",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    455,
+                    505,
+                    75,
+                    40
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -4786,6 +5090,10 @@
         ]
     },
     "清体力_连_10_调": {
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_连_10_好",
             "清体力_连_10_加",
@@ -4836,8 +5144,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -4870,8 +5178,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -4879,6 +5187,18 @@
         ]
     },
     "清体力_连_10_卡住": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    785,
+                    378,
+                    65,
+                    38
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -4896,6 +5216,10 @@
     },
     "清体力_快_11": {
         "desc": "把次数调到 11",
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_快_11_好",
             "清体力_快_11_加",
@@ -4946,8 +5270,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -4980,8 +5304,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -4989,7 +5313,19 @@
         ]
     },
     "清体力_快_11_卡住": {
-        "desc": "次数调不到目标（体力或符不够）→ 关弹窗结束",
+        "desc": "读得到次数、但「+」已经点满上限还到不了目标（体力或符不够）→ 结束。只有读得到数字才算，避免动画瞬间读空就误判",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    455,
+                    505,
+                    75,
+                    40
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -5040,6 +5376,10 @@
         ]
     },
     "清体力_连_11_调": {
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_连_11_好",
             "清体力_连_11_加",
@@ -5090,8 +5430,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -5124,8 +5464,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -5133,6 +5473,18 @@
         ]
     },
     "清体力_连_11_卡住": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    785,
+                    378,
+                    65,
+                    38
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -5150,6 +5502,10 @@
     },
     "清体力_快_12": {
         "desc": "把次数调到 12",
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_快_12_好",
             "清体力_快_12_加",
@@ -5200,8 +5556,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -5234,8 +5590,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -5243,7 +5599,19 @@
         ]
     },
     "清体力_快_12_卡住": {
-        "desc": "次数调不到目标（体力或符不够）→ 关弹窗结束",
+        "desc": "读得到次数、但「+」已经点满上限还到不了目标（体力或符不够）→ 结束。只有读得到数字才算，避免动画瞬间读空就误判",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    455,
+                    505,
+                    75,
+                    40
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -5294,6 +5662,10 @@
         ]
     },
     "清体力_连_12_调": {
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_连_12_好",
             "清体力_连_12_加",
@@ -5344,8 +5716,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -5378,8 +5750,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -5387,6 +5759,18 @@
         ]
     },
     "清体力_连_12_卡住": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    785,
+                    378,
+                    65,
+                    38
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -5404,6 +5788,10 @@
     },
     "清体力_快_13": {
         "desc": "把次数调到 13",
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_快_13_好",
             "清体力_快_13_加",
@@ -5454,8 +5842,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -5488,8 +5876,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -5497,7 +5885,19 @@
         ]
     },
     "清体力_快_13_卡住": {
-        "desc": "次数调不到目标（体力或符不够）→ 关弹窗结束",
+        "desc": "读得到次数、但「+」已经点满上限还到不了目标（体力或符不够）→ 结束。只有读得到数字才算，避免动画瞬间读空就误判",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    455,
+                    505,
+                    75,
+                    40
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -5548,6 +5948,10 @@
         ]
     },
     "清体力_连_13_调": {
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_连_13_好",
             "清体力_连_13_加",
@@ -5598,8 +6002,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -5632,8 +6036,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -5641,6 +6045,18 @@
         ]
     },
     "清体力_连_13_卡住": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    785,
+                    378,
+                    65,
+                    38
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -5658,6 +6074,10 @@
     },
     "清体力_快_14": {
         "desc": "把次数调到 14",
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_快_14_好",
             "清体力_快_14_加",
@@ -5708,8 +6128,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -5742,8 +6162,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -5751,7 +6171,19 @@
         ]
     },
     "清体力_快_14_卡住": {
-        "desc": "次数调不到目标（体力或符不够）→ 关弹窗结束",
+        "desc": "读得到次数、但「+」已经点满上限还到不了目标（体力或符不够）→ 结束。只有读得到数字才算，避免动画瞬间读空就误判",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    455,
+                    505,
+                    75,
+                    40
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -5802,6 +6234,10 @@
         ]
     },
     "清体力_连_14_调": {
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_连_14_好",
             "清体力_连_14_加",
@@ -5852,8 +6288,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -5886,8 +6322,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -5895,6 +6331,18 @@
         ]
     },
     "清体力_连_14_卡住": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    785,
+                    378,
+                    65,
+                    38
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -5912,6 +6360,10 @@
     },
     "清体力_快_15": {
         "desc": "把次数调到 15",
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_快_15_好",
             "清体力_快_15_加",
@@ -5962,8 +6414,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -5996,8 +6448,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -6005,7 +6457,19 @@
         ]
     },
     "清体力_快_15_卡住": {
-        "desc": "次数调不到目标（体力或符不够）→ 关弹窗结束",
+        "desc": "读得到次数、但「+」已经点满上限还到不了目标（体力或符不够）→ 结束。只有读得到数字才算，避免动画瞬间读空就误判",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    455,
+                    505,
+                    75,
+                    40
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {
@@ -6056,6 +6520,10 @@
         ]
     },
     "清体力_连_15_调": {
+        "timeout": 5000,
+        "on_error": [
+            "公共_任务失败"
+        ],
         "next": [
             "清体力_连_15_好",
             "清体力_连_15_加",
@@ -6106,8 +6574,8 @@
         },
         "max_hit": 17,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -6140,8 +6608,8 @@
         },
         "max_hit": 120,
         "post_wait_freezes": {
-            "time": 200,
-            "timeout": 1000,
+            "time": 400,
+            "timeout": 2000,
             "rate_limit": 100
         },
         "next": [
@@ -6149,6 +6617,18 @@
         ]
     },
     "清体力_连_15_卡住": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^\\d+$",
+                "roi": [
+                    785,
+                    378,
+                    65,
+                    38
+                ]
+            }
+        },
         "action": {
             "type": "Click",
             "param": {

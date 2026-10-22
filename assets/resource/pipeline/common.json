@@ -4,6 +4,7 @@
         "timeout": 30000,
         "next": [
             "[JumpBack]公共_退出后重开",
+            "[JumpBack]公共_取消弹窗",
             "[JumpBack]公共_关闭月度推荐",
             "[JumpBack]公共_跳过卡面",
             "[JumpBack]公共_退出速写",
@@ -244,6 +245,7 @@
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_取消弹窗",
             "公共_卡住无弹窗"
         ]
     },
@@ -849,5 +851,56 @@
     },
     "公共_卡住无弹窗": {
         "desc": "卡住时画面上没有可关的弹窗：按常规失败处理结束"
+    },
+    "公共_取消弹窗": {
+        "desc": "通用兜底：卡在「取消 / 确定」两个按钮的弹窗上（例如清体力留下的「连续战斗」弹窗、扫荡确认框）→ 点「取消」。取消永远是安全的",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^\\+?\\s*取\\s*消\\s*\\+?$",
+                                "roi": [
+                                    370,
+                                    440,
+                                    230,
+                                    110
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^\\+?\\s*确\\s*定\\s*\\+?$",
+                                "roi": [
+                                    690,
+                                    440,
+                                    250,
+                                    110
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 0
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 5,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]关掉一个「取消 / 确定」弹窗（点取消）[/color]"
+        }
     }
 }
