@@ -257,61 +257,39 @@
         ]
     },
     "电影院_艾因": {
-        "desc": "艾因：扫荡按钮可点就扫荡，灰色就是本周已扫荡",
+        "desc": "艾因：右侧整列找最下面的「扫荡」按钮（本周扫过后列表会停在下一场，按钮位置会变），亮色就扫荡，灰色就是本周已扫荡",
         "timeout": 60000,
         "next": [
-            "[JumpBack]电影院_扫荡",
-            "电影院_艾因_已完成"
+            "电影院_艾因_找扫荡"
         ],
         "on_error": [
             "电影院_换人_路辰"
         ]
     },
     "电影院_艾因_已完成": {
+        "desc": "按钮是灰色 → 本周已扫荡",
         "recognition": {
-            "type": "And",
+            "type": "ColorMatch",
             "param": {
-                "all_of": [
-                    {
-                        "recognition": {
-                            "type": "OCR",
-                            "param": {
-                                "expected": "扫\\s*荡",
-                                "roi": [
-                                    690,
-                                    520,
-                                    140,
-                                    55
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "recognition": {
-                            "type": "ColorMatch",
-                            "param": {
-                                "roi": [
-                                    700,
-                                    530,
-                                    170,
-                                    40
-                                ],
-                                "method": 4,
-                                "lower": [
-                                    130,
-                                    130,
-                                    130
-                                ],
-                                "upper": [
-                                    185,
-                                    185,
-                                    190
-                                ],
-                                "count": 2500
-                            }
-                        }
-                    }
-                ]
+                "roi": "电影院_艾因_找扫荡",
+                "roi_offset": [
+                    -55,
+                    -8,
+                    110,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    130,
+                    130,
+                    130
+                ],
+                "upper": [
+                    185,
+                    185,
+                    190
+                ],
+                "count": 2000
             }
         },
         "next": [
@@ -386,61 +364,39 @@
         ]
     },
     "电影院_路辰": {
-        "desc": "路辰：扫荡按钮可点就扫荡，灰色就是本周已扫荡",
+        "desc": "路辰：右侧整列找最下面的「扫荡」按钮（本周扫过后列表会停在下一场，按钮位置会变），亮色就扫荡，灰色就是本周已扫荡",
         "timeout": 60000,
         "next": [
-            "[JumpBack]电影院_扫荡",
-            "电影院_路辰_已完成"
+            "电影院_路辰_找扫荡"
         ],
         "on_error": [
             "电影院_换人_罗夏"
         ]
     },
     "电影院_路辰_已完成": {
+        "desc": "按钮是灰色 → 本周已扫荡",
         "recognition": {
-            "type": "And",
+            "type": "ColorMatch",
             "param": {
-                "all_of": [
-                    {
-                        "recognition": {
-                            "type": "OCR",
-                            "param": {
-                                "expected": "扫\\s*荡",
-                                "roi": [
-                                    690,
-                                    520,
-                                    140,
-                                    55
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "recognition": {
-                            "type": "ColorMatch",
-                            "param": {
-                                "roi": [
-                                    700,
-                                    530,
-                                    170,
-                                    40
-                                ],
-                                "method": 4,
-                                "lower": [
-                                    130,
-                                    130,
-                                    130
-                                ],
-                                "upper": [
-                                    185,
-                                    185,
-                                    190
-                                ],
-                                "count": 2500
-                            }
-                        }
-                    }
-                ]
+                "roi": "电影院_路辰_找扫荡",
+                "roi_offset": [
+                    -55,
+                    -8,
+                    110,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    130,
+                    130,
+                    130
+                ],
+                "upper": [
+                    185,
+                    185,
+                    190
+                ],
+                "count": 2000
             }
         },
         "next": [
@@ -515,61 +471,39 @@
         ]
     },
     "电影院_罗夏": {
-        "desc": "罗夏：扫荡按钮可点就扫荡，灰色就是本周已扫荡",
+        "desc": "罗夏：右侧整列找最下面的「扫荡」按钮（本周扫过后列表会停在下一场，按钮位置会变），亮色就扫荡，灰色就是本周已扫荡",
         "timeout": 60000,
         "next": [
-            "[JumpBack]电影院_扫荡",
-            "电影院_罗夏_已完成"
+            "电影院_罗夏_找扫荡"
         ],
         "on_error": [
             "电影院_换人_司岚"
         ]
     },
     "电影院_罗夏_已完成": {
+        "desc": "按钮是灰色 → 本周已扫荡",
         "recognition": {
-            "type": "And",
+            "type": "ColorMatch",
             "param": {
-                "all_of": [
-                    {
-                        "recognition": {
-                            "type": "OCR",
-                            "param": {
-                                "expected": "扫\\s*荡",
-                                "roi": [
-                                    690,
-                                    520,
-                                    140,
-                                    55
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "recognition": {
-                            "type": "ColorMatch",
-                            "param": {
-                                "roi": [
-                                    700,
-                                    530,
-                                    170,
-                                    40
-                                ],
-                                "method": 4,
-                                "lower": [
-                                    130,
-                                    130,
-                                    130
-                                ],
-                                "upper": [
-                                    185,
-                                    185,
-                                    190
-                                ],
-                                "count": 2500
-                            }
-                        }
-                    }
-                ]
+                "roi": "电影院_罗夏_找扫荡",
+                "roi_offset": [
+                    -55,
+                    -8,
+                    110,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    130,
+                    130,
+                    130
+                ],
+                "upper": [
+                    185,
+                    185,
+                    190
+                ],
+                "count": 2000
             }
         },
         "next": [
@@ -644,61 +578,39 @@
         ]
     },
     "电影院_司岚": {
-        "desc": "司岚：扫荡按钮可点就扫荡，灰色就是本周已扫荡",
+        "desc": "司岚：右侧整列找最下面的「扫荡」按钮（本周扫过后列表会停在下一场，按钮位置会变），亮色就扫荡，灰色就是本周已扫荡",
         "timeout": 60000,
         "next": [
-            "[JumpBack]电影院_扫荡",
-            "电影院_司岚_已完成"
+            "电影院_司岚_找扫荡"
         ],
         "on_error": [
             "电影院_换人_叶瑄"
         ]
     },
     "电影院_司岚_已完成": {
+        "desc": "按钮是灰色 → 本周已扫荡",
         "recognition": {
-            "type": "And",
+            "type": "ColorMatch",
             "param": {
-                "all_of": [
-                    {
-                        "recognition": {
-                            "type": "OCR",
-                            "param": {
-                                "expected": "扫\\s*荡",
-                                "roi": [
-                                    690,
-                                    520,
-                                    140,
-                                    55
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "recognition": {
-                            "type": "ColorMatch",
-                            "param": {
-                                "roi": [
-                                    700,
-                                    530,
-                                    170,
-                                    40
-                                ],
-                                "method": 4,
-                                "lower": [
-                                    130,
-                                    130,
-                                    130
-                                ],
-                                "upper": [
-                                    185,
-                                    185,
-                                    190
-                                ],
-                                "count": 2500
-                            }
-                        }
-                    }
-                ]
+                "roi": "电影院_司岚_找扫荡",
+                "roi_offset": [
+                    -55,
+                    -8,
+                    110,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    130,
+                    130,
+                    130
+                ],
+                "upper": [
+                    185,
+                    185,
+                    190
+                ],
+                "count": 2000
             }
         },
         "next": [
@@ -773,61 +685,39 @@
         ]
     },
     "电影院_叶瑄": {
-        "desc": "叶瑄：扫荡按钮可点就扫荡，灰色就是本周已扫荡",
+        "desc": "叶瑄：右侧整列找最下面的「扫荡」按钮（本周扫过后列表会停在下一场，按钮位置会变），亮色就扫荡，灰色就是本周已扫荡",
         "timeout": 60000,
         "next": [
-            "[JumpBack]电影院_扫荡",
-            "电影院_叶瑄_已完成"
+            "电影院_叶瑄_找扫荡"
         ],
         "on_error": [
             "Flag_电影院扫荡完成"
         ]
     },
     "电影院_叶瑄_已完成": {
+        "desc": "按钮是灰色 → 本周已扫荡",
         "recognition": {
-            "type": "And",
+            "type": "ColorMatch",
             "param": {
-                "all_of": [
-                    {
-                        "recognition": {
-                            "type": "OCR",
-                            "param": {
-                                "expected": "扫\\s*荡",
-                                "roi": [
-                                    690,
-                                    520,
-                                    140,
-                                    55
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "recognition": {
-                            "type": "ColorMatch",
-                            "param": {
-                                "roi": [
-                                    700,
-                                    530,
-                                    170,
-                                    40
-                                ],
-                                "method": 4,
-                                "lower": [
-                                    130,
-                                    130,
-                                    130
-                                ],
-                                "upper": [
-                                    185,
-                                    185,
-                                    190
-                                ],
-                                "count": 2500
-                            }
-                        }
-                    }
-                ]
+                "roi": "电影院_叶瑄_找扫荡",
+                "roi_offset": [
+                    -55,
+                    -8,
+                    110,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    130,
+                    130,
+                    130
+                ],
+                "upper": [
+                    185,
+                    185,
+                    190
+                ],
+                "count": 2000
             }
         },
         "next": [
@@ -836,67 +726,6 @@
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]叶瑄：本周已扫荡[/color]"
         }
-    },
-    "电影院_扫荡": {
-        "desc": "扫荡按钮为亮色（可扫荡）",
-        "recognition": {
-            "type": "And",
-            "param": {
-                "all_of": [
-                    {
-                        "recognition": {
-                            "type": "OCR",
-                            "param": {
-                                "expected": "扫\\s*荡",
-                                "roi": [
-                                    690,
-                                    520,
-                                    140,
-                                    55
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "recognition": {
-                            "type": "ColorMatch",
-                            "param": {
-                                "roi": [
-                                    700,
-                                    530,
-                                    170,
-                                    40
-                                ],
-                                "method": 4,
-                                "lower": [
-                                    222,
-                                    222,
-                                    230
-                                ],
-                                "upper": [
-                                    255,
-                                    255,
-                                    255
-                                ],
-                                "count": 2500
-                            }
-                        }
-                    }
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "max_hit": 6,
-        "post_wait_freezes": {
-            "time": 500,
-            "timeout": 1500,
-            "rate_limit": 200
-        },
-        "next": [
-            "电影院_确认扫荡"
-        ]
     },
     "电影院_确认扫荡": {
         "desc": "「每周仅可扫荡一次…是否开始扫荡？」→ 确定",
@@ -3300,5 +3129,335 @@
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]扫荡完成[/color]"
         }
+    },
+    "电影院_艾因_找扫荡": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^扫\\s*荡$",
+                "roi": [
+                    620,
+                    60,
+                    280,
+                    640
+                ],
+                "order_by": "Vertical",
+                "index": -1
+            }
+        },
+        "timeout": 10000,
+        "next": [
+            "[JumpBack]电影院_艾因_可扫荡",
+            "电影院_艾因_已完成"
+        ],
+        "on_error": [
+            "电影院_换人_路辰"
+        ]
+    },
+    "电影院_艾因_可扫荡": {
+        "desc": "按钮是亮色 → 点它扫荡",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": "电影院_艾因_找扫荡",
+                "roi_offset": [
+                    -55,
+                    -8,
+                    110,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    222,
+                    222,
+                    230
+                ],
+                "upper": [
+                    255,
+                    255,
+                    255
+                ],
+                "count": 2000
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": "电影院_艾因_找扫荡"
+            }
+        },
+        "max_hit": 3,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "电影院_确认扫荡"
+        ]
+    },
+    "电影院_路辰_找扫荡": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^扫\\s*荡$",
+                "roi": [
+                    620,
+                    60,
+                    280,
+                    640
+                ],
+                "order_by": "Vertical",
+                "index": -1
+            }
+        },
+        "timeout": 10000,
+        "next": [
+            "[JumpBack]电影院_路辰_可扫荡",
+            "电影院_路辰_已完成"
+        ],
+        "on_error": [
+            "电影院_换人_罗夏"
+        ]
+    },
+    "电影院_路辰_可扫荡": {
+        "desc": "按钮是亮色 → 点它扫荡",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": "电影院_路辰_找扫荡",
+                "roi_offset": [
+                    -55,
+                    -8,
+                    110,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    222,
+                    222,
+                    230
+                ],
+                "upper": [
+                    255,
+                    255,
+                    255
+                ],
+                "count": 2000
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": "电影院_路辰_找扫荡"
+            }
+        },
+        "max_hit": 3,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "电影院_确认扫荡"
+        ]
+    },
+    "电影院_罗夏_找扫荡": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^扫\\s*荡$",
+                "roi": [
+                    620,
+                    60,
+                    280,
+                    640
+                ],
+                "order_by": "Vertical",
+                "index": -1
+            }
+        },
+        "timeout": 10000,
+        "next": [
+            "[JumpBack]电影院_罗夏_可扫荡",
+            "电影院_罗夏_已完成"
+        ],
+        "on_error": [
+            "电影院_换人_司岚"
+        ]
+    },
+    "电影院_罗夏_可扫荡": {
+        "desc": "按钮是亮色 → 点它扫荡",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": "电影院_罗夏_找扫荡",
+                "roi_offset": [
+                    -55,
+                    -8,
+                    110,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    222,
+                    222,
+                    230
+                ],
+                "upper": [
+                    255,
+                    255,
+                    255
+                ],
+                "count": 2000
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": "电影院_罗夏_找扫荡"
+            }
+        },
+        "max_hit": 3,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "电影院_确认扫荡"
+        ]
+    },
+    "电影院_司岚_找扫荡": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^扫\\s*荡$",
+                "roi": [
+                    620,
+                    60,
+                    280,
+                    640
+                ],
+                "order_by": "Vertical",
+                "index": -1
+            }
+        },
+        "timeout": 10000,
+        "next": [
+            "[JumpBack]电影院_司岚_可扫荡",
+            "电影院_司岚_已完成"
+        ],
+        "on_error": [
+            "电影院_换人_叶瑄"
+        ]
+    },
+    "电影院_司岚_可扫荡": {
+        "desc": "按钮是亮色 → 点它扫荡",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": "电影院_司岚_找扫荡",
+                "roi_offset": [
+                    -55,
+                    -8,
+                    110,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    222,
+                    222,
+                    230
+                ],
+                "upper": [
+                    255,
+                    255,
+                    255
+                ],
+                "count": 2000
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": "电影院_司岚_找扫荡"
+            }
+        },
+        "max_hit": 3,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "电影院_确认扫荡"
+        ]
+    },
+    "电影院_叶瑄_找扫荡": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^扫\\s*荡$",
+                "roi": [
+                    620,
+                    60,
+                    280,
+                    640
+                ],
+                "order_by": "Vertical",
+                "index": -1
+            }
+        },
+        "timeout": 10000,
+        "next": [
+            "[JumpBack]电影院_叶瑄_可扫荡",
+            "电影院_叶瑄_已完成"
+        ],
+        "on_error": [
+            "Flag_电影院扫荡完成"
+        ]
+    },
+    "电影院_叶瑄_可扫荡": {
+        "desc": "按钮是亮色 → 点它扫荡",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": "电影院_叶瑄_找扫荡",
+                "roi_offset": [
+                    -55,
+                    -8,
+                    110,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    222,
+                    222,
+                    230
+                ],
+                "upper": [
+                    255,
+                    255,
+                    255
+                ],
+                "count": 2000
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": "电影院_叶瑄_找扫荡"
+            }
+        },
+        "max_hit": 3,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "电影院_确认扫荡"
+        ]
     }
 }
