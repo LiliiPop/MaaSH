@@ -207,6 +207,7 @@
             "[JumpBack]公共_稍后再说",
             "Flag_日程完成",
             "Flag_日程今日已完成",
+            "[JumpBack]日程_回日程页",
             "[JumpBack]日程_翻页",
             "[JumpBack]日程_随机选择",
             "日程_选择回复",
@@ -392,7 +393,8 @@
             "Flag_日程完成",
             "[JumpBack]日程_再次回复",
             "[JumpBack]日程_对话推进",
-            "[JumpBack]日程_空白推进"
+            "[JumpBack]日程_空白推进",
+            "日程_回校园转流程"
         ],
         "on_error": [
             "公共_任务失败"
@@ -713,5 +715,81 @@
                 "index": 0
             }
         }
+    },
+    "日程_回日程页": {
+        "desc": "特殊邀约对话结束后会回到校园主页：再点右下「日程」回日程页，看两页是否都完成（避免在校园页干等 3 分钟）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^日程$",
+                                "roi": [
+                                    1040,
+                                    655,
+                                    90,
+                                    45
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "校园",
+                                "roi": [
+                                    100,
+                                    20,
+                                    160,
+                                    60
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1055,
+                    612,
+                    55,
+                    50
+                ]
+            }
+        },
+        "max_hit": 4,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]回到校园了，重新进日程页检查[/color]"
+        }
+    },
+    "日程_回校园转流程": {
+        "desc": "对话结束回到校园 → 交给日程主循环（它会点「日程」回日程页）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^日程$",
+                "roi": [
+                    1040,
+                    655,
+                    90,
+                    45
+                ]
+            }
+        },
+        "next": [
+            "日程_流程"
+        ]
     }
 }

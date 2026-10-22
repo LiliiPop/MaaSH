@@ -1,4 +1,7 @@
-"""生成「时光电影院扫荡 + 电影院商店兑换」节点和任务定义。
+"""
+⚠️ 已过时：cinema.json 生成后又手工修过很多处（弹窗处理、扫荡完成判断等），
+直接重新生成会把这些修复冲掉。现在请直接改 assets/resource/pipeline/cinema.json。
+生成「时光电影院扫荡 + 电影院商店兑换」节点和任务定义。
   python tools/gen_cinema.py
 输出：assets/resource/pipeline/cinema.json、assets/tasks/Cinema.json
 """
@@ -78,7 +81,14 @@ def build(home):
                        "next": ["[JumpBack]电影院_不再处理"] + POP + ["电影院_扫荡完成"]}
     d["电影院_不再处理"] = {"desc": "随机事件一律「不再处理」", "recognition": O("不再处理", [380, 530, 200, 55]),
                        "action": {"type": "Click"}, "post_wait_freezes": W, "max_hit": 6}
-    d["电影院_扫荡完成"] = {"recognition": grey, "focus": lg("Dimgray", "扫荡完成")}
+    # 扫完后列表会滚到下一场，扫荡按钮位置会变：在右侧整列找最下面的「扫荡」，再看它是不是灰的
+    d["电影院_扫荡完成"] = {"desc": "扫完后列表会滚到下一场，扫荡按钮位置会变：在右侧整列找最下面的「扫荡」",
+                       "recognition": {"type": "OCR", "param": {"expected": "^扫\\s*荡$", "roi": [620, 60, 280, 640],
+                                                                "order_by": "Vertical", "index": -1}},
+                       "next": ["电影院_扫荡已灰"]}
+    d["电影院_扫荡已灰"] = {"recognition": {"type": "ColorMatch", "param": {"roi": "电影院_扫荡完成", "roi_offset": [-55, -8, 110, 16],
+                                                                      "method": 4, "lower": [130, 130, 130], "upper": [185, 185, 190], "count": 2000}},
+                       "focus": lg("Dimgray", "扫荡完成")}
     d["Flag_电影院扫荡完成"] = {"desc": "5 个角色都已检查；开了兑换就继续去商店", "next": ["兑换", "电影院_结束"],
                            "focus": lg("Limegreen", "时光电影院：本周扫荡已完成")}
 

@@ -43,7 +43,8 @@
         },
         "timeout": 20000,
         "next": [
-            "剧场_点第一部"
+            "剧场_点第一部",
+            "剧场_切发现"
         ],
         "on_error": [
             "公共_任务失败"
@@ -413,5 +414,36 @@
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]社交页显示「点赞一次他人的视频」已完成，回任务页确认[/color]"
         }
+    },
+    "剧场_切发现": {
+        "desc": "作品页默认可能停在「全部」（自己的作品）：点上方「发现」切到热门剧场",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^发现$",
+                "roi": [
+                    400,
+                    40,
+                    120,
+                    55
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 2,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "timeout": 10000,
+        "next": [
+            "剧场_点第一部"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
     }
 }

@@ -981,55 +981,24 @@
         "max_hit": 6
     },
     "电影院_扫荡完成": {
+        "desc": "扫完后列表会滚到下一场，扫荡按钮位置会变：在右侧整列找最下面的「扫荡」，再看它是不是灰的",
         "recognition": {
-            "type": "And",
+            "type": "OCR",
             "param": {
-                "all_of": [
-                    {
-                        "recognition": {
-                            "type": "OCR",
-                            "param": {
-                                "expected": "扫\\s*荡",
-                                "roi": [
-                                    690,
-                                    520,
-                                    140,
-                                    55
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "recognition": {
-                            "type": "ColorMatch",
-                            "param": {
-                                "roi": [
-                                    700,
-                                    530,
-                                    170,
-                                    40
-                                ],
-                                "method": 4,
-                                "lower": [
-                                    130,
-                                    130,
-                                    130
-                                ],
-                                "upper": [
-                                    185,
-                                    185,
-                                    190
-                                ],
-                                "count": 2500
-                            }
-                        }
-                    }
-                ]
+                "expected": "^扫\\s*荡$",
+                "roi": [
+                    620,
+                    60,
+                    280,
+                    640
+                ],
+                "order_by": "Vertical",
+                "index": -1
             }
         },
-        "focus": {
-            "Node.Action.Succeeded": "[color:Dimgray]扫荡完成[/color]"
-        }
+        "next": [
+            "电影院_扫荡已灰"
+        ]
     },
     "Flag_电影院扫荡完成": {
         "desc": "5 个角色都已检查；开了兑换就继续去商店",
@@ -3299,6 +3268,35 @@
     "Flag_兑换完成": {
         "focus": {
             "Node.Action.Succeeded": "[color:Limegreen]电影院商店兑换完成[/color]"
+        }
+    },
+    "电影院_扫荡已灰": {
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": "电影院_扫荡完成",
+                "roi_offset": [
+                    -55,
+                    -8,
+                    110,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    130,
+                    130,
+                    130
+                ],
+                "upper": [
+                    185,
+                    185,
+                    190
+                ],
+                "count": 2000
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]扫荡完成[/color]"
         }
     }
 }
