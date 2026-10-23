@@ -231,7 +231,8 @@
             "[JumpBack]日程_点击信封_场景_4",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
-            "[JumpBack]日程_场景右走"
+            "[JumpBack]日程_场景右走",
+            "[JumpBack]日程_场景左走"
         ],
         "on_error": [
             "公共_任务失败"
@@ -618,6 +619,47 @@
         },
         "focus": {
             "Node.Action.Starting": "[color:Dimgray]画面里没有可点的信封（或点了没反应），向右走一段再找[/color]"
+        }
+    },
+    "日程_场景左走": {
+        "desc": "向右走了 8 次还没找到信封（多半已经走到最右边）：改点左半边地面往回走，一路找到最左边。16 次 = 先走回出发点 8 次 + 再往左 8 次。10-24 用户建议",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "common/返回按钮.png",
+                "roi": [
+                    0,
+                    0,
+                    140,
+                    110
+                ],
+                "threshold": 0.8
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    30,
+                    655,
+                    150,
+                    40
+                ]
+            }
+        },
+        "max_hit": 16,
+        "pre_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]右边找不到信封，往左走回去继续找[/color]"
         }
     },
     "日程_点击信封": {
