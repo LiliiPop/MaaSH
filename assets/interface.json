@@ -5,7 +5,7 @@
     "description": "基于 MaaFramework 的「时空中的绘旅人」日常小助手。只截图 + 模拟点击，不修改游戏。",
     "contact": "Github：https://github.com/LiliiPop/MaaSH",
     "license": "MIT",
-    "welcome": "欢迎使用 MaaSH！首次使用请先看 README 里的「连接模拟器」一节。",
+    "welcome": "欢迎使用 MaaSH！第一次使用请先看公告里的「第一次使用：设置 MuMu 和 MaaSH」（之后可在 设置 → 关于 → 显示公告 里再打开）。",
     "github": "https://github.com/LiliiPop/MaaSH",
     "icon": "logo.png",
     "version": "v0.0.1",
