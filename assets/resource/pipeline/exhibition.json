@@ -207,6 +207,38 @@
         ],
         "max_hit": 3
     },
+    "画展_回画展页": {
+        "desc": "画展场次之间偶尔退回校园页：再点一次底栏「画展」回到画展页。只点不接 next（JumpBack 用），避免嵌套出第二层画展循环——10-24 新号实测：嵌套后完成时外层循环还在等，任务不会自己结束",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^画展$",
+                "roi": [
+                    640,
+                    650,
+                    640,
+                    55
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    0,
+                    -55,
+                    0,
+                    10
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "max_hit": 3
+    },
     "画展_流程": {
         "desc": "收菜循环：先领已结束的，再开新的；所有场次都在倒计时就结束",
         "timeout": 150000,
@@ -226,9 +258,10 @@
             "[JumpBack]画展_地图等待",
             "[JumpBack]画展_地图兜底_律政楼",
             "[JumpBack]画展_快速选择",
+            "[JumpBack]画展_空申请表",
             "[JumpBack]画展_下一场",
             "[JumpBack]公共_退出速写",
-            "[JumpBack]画展_点画展按钮",
+            "[JumpBack]画展_回画展页",
             "Flag_画展完成"
         ],
         "on_error": [
@@ -573,6 +606,333 @@
             "画展_流程"
         ]
     },
+    "画展_空申请表": {
+        "desc": "新号的申请表没有「快速选择」，5 个画灵格子都是空的「+」：点第一个格子打开「画灵选择」，手动选列表最上面一排的 5 个（10-24 新号实测）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "画展宣传申请表",
+                                "roi": [
+                                    620,
+                                    170,
+                                    280,
+                                    50
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^宣传时间$",
+                                "roi": [
+                                    490,
+                                    430,
+                                    140,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    505,
+                    335,
+                    60,
+                    60
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 400,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "max_hit": 3,
+        "next": [
+            "画展_画灵选择页"
+        ],
+        "on_error": [
+            "画展_流程"
+        ]
+    },
+    "画展_画灵选择页": {
+        "desc": "「画灵选择」弹窗出现了",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "画灵选择",
+                "roi": [
+                    140,
+                    80,
+                    200,
+                    60
+                ]
+            }
+        },
+        "timeout": 5000,
+        "next": [
+            "画展_画灵_1"
+        ],
+        "on_error": [
+            "画展_流程"
+        ]
+    },
+    "画展_画灵_1": {
+        "desc": "选第一排第 1 个画灵（还没选满 5 个时才点）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "选择[:：]\\s*[0-4]\\s*/\\s*5",
+                "roi": [
+                    160,
+                    560,
+                    170,
+                    50
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    200,
+                    280,
+                    80,
+                    70
+                ]
+            }
+        },
+        "post_delay": 300,
+        "timeout": 3000,
+        "next": [
+            "画展_画灵_2",
+            "画展_画灵确定"
+        ],
+        "on_error": [
+            "画展_画灵确定"
+        ]
+    },
+    "画展_画灵_2": {
+        "desc": "选第一排第 2 个画灵（还没选满 5 个时才点）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "选择[:：]\\s*[0-4]\\s*/\\s*5",
+                "roi": [
+                    160,
+                    560,
+                    170,
+                    50
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    393,
+                    280,
+                    80,
+                    70
+                ]
+            }
+        },
+        "post_delay": 300,
+        "timeout": 3000,
+        "next": [
+            "画展_画灵_3",
+            "画展_画灵确定"
+        ],
+        "on_error": [
+            "画展_画灵确定"
+        ]
+    },
+    "画展_画灵_3": {
+        "desc": "选第一排第 3 个画灵（还没选满 5 个时才点）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "选择[:：]\\s*[0-4]\\s*/\\s*5",
+                "roi": [
+                    160,
+                    560,
+                    170,
+                    50
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    586,
+                    280,
+                    80,
+                    70
+                ]
+            }
+        },
+        "post_delay": 300,
+        "timeout": 3000,
+        "next": [
+            "画展_画灵_4",
+            "画展_画灵确定"
+        ],
+        "on_error": [
+            "画展_画灵确定"
+        ]
+    },
+    "画展_画灵_4": {
+        "desc": "选第一排第 4 个画灵（还没选满 5 个时才点）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "选择[:：]\\s*[0-4]\\s*/\\s*5",
+                "roi": [
+                    160,
+                    560,
+                    170,
+                    50
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    779,
+                    280,
+                    80,
+                    70
+                ]
+            }
+        },
+        "post_delay": 300,
+        "timeout": 3000,
+        "next": [
+            "画展_画灵_5",
+            "画展_画灵确定"
+        ],
+        "on_error": [
+            "画展_画灵确定"
+        ]
+    },
+    "画展_画灵_5": {
+        "desc": "选第一排第 5 个画灵（还没选满 5 个时才点）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "选择[:：]\\s*[0-4]\\s*/\\s*5",
+                "roi": [
+                    160,
+                    560,
+                    170,
+                    50
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    972,
+                    280,
+                    80,
+                    70
+                ]
+            }
+        },
+        "post_delay": 300,
+        "timeout": 3000,
+        "next": [
+            "画展_画灵确定",
+            "画展_画灵确定"
+        ],
+        "on_error": [
+            "画展_画灵确定"
+        ]
+    },
+    "画展_画灵确定": {
+        "desc": "已选 5/5：点「确定」回申请表，接着选宣传时间、申请",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "选择[:：]\\s*5\\s*/\\s*5",
+                "roi": [
+                    160,
+                    560,
+                    170,
+                    50
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    760,
+                    565,
+                    90,
+                    45
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 400,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "timeout": 3000,
+        "next": [
+            "画展_选宣传时间",
+            "画展_申请"
+        ],
+        "on_error": [
+            "画展_画灵取消"
+        ]
+    },
+    "画展_画灵取消": {
+        "desc": "没凑够 5 个（有的格子本来就选中了，被点掉了）：取消回申请表，交给循环重试",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^取\\s*消$",
+                "roi": [
+                    420,
+                    560,
+                    120,
+                    50
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 400,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "timeout": 3000,
+        "next": [
+            "画展_流程"
+        ],
+        "on_error": [
+            "画展_流程"
+        ]
+    },
     "画展_选宣传时间": {
         "desc": "申请表「宣传时间」：2/4/8 小时选一个再点申请。老号会记住上次的选择，新号没选过时直接点申请没反应（10-24 新号实测）",
         "recognition": {
@@ -663,16 +1023,39 @@
         }
     },
     "Flag_画展完成": {
-        "desc": "所有场次都已在宣传中",
+        "desc": "所有场次都已在宣传中；或者下一场还没解锁（新号：「校园声望达到Lv.5 可同时举办2场画展宣传」）",
         "recognition": {
-            "type": "OCR",
+            "type": "Or",
             "param": {
-                "expected": "宣传倒计时",
-                "roi": [
-                    780,
-                    390,
-                    450,
-                    90
+                "any_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "宣传倒计时",
+                                "roi": [
+                                    780,
+                                    390,
+                                    450,
+                                    90
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "可同时举办\\d场",
+                                "roi": [
+                                    600,
+                                    330,
+                                    520,
+                                    100
+                                ]
+                            }
+                        }
+                    }
                 ]
             }
         },
