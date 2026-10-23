@@ -226,6 +226,8 @@
             "[JumpBack]日程_点击信封",
             "[JumpBack]日程_点击信封_地点",
             "[JumpBack]日程_点击信封_场景",
+            "[JumpBack]日程_点击信封_场景_头",
+            "[JumpBack]日程_点击信封_场景_身",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
             "[JumpBack]日程_场景右走"
@@ -267,7 +269,7 @@
             "rate_limit": 200
         },
         "on_error": [
-            "日程_流程"
+            "日程_回循环"
         ],
         "timeout": 5000
     },
@@ -645,7 +647,7 @@
         }
     },
     "日程_点击信封_场景": {
-        "desc": "个人活动场景里人物旁的信封气泡：点一下后主角要先走过去，所以点完要等对话出现，不能马上再点（连续点会打断走路）",
+        "desc": "个人活动场景里人物旁的信封气泡：点信封正中（box 是 88×68，随机点到透明的角上会没反应）。点完要等主角走过去出现对话，不能马上再点。10-24 老号：点了信封正中也没反应 → 点 2 次不行就依次换点信封下面的人物头部、身体（日程_点击信封_场景_头 / _身）",
         "recognition": {
             "type": "TemplateMatch",
             "param": {
@@ -654,9 +656,77 @@
             }
         },
         "action": {
-            "type": "Click"
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    22,
+                    14,
+                    -44,
+                    -28
+                ]
+            }
         },
-        "max_hit": 4,
+        "max_hit": 2,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_等对话"
+        ]
+    },
+    "日程_点击信封_场景_头": {
+        "desc": "点信封气泡没反应时，改点信封正下方人物的头（信封属于下面那个人）",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "schedule/信封_场景.png",
+                "threshold": 0.75
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    -10,
+                    95,
+                    20,
+                    10
+                ]
+            }
+        },
+        "max_hit": 2,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_等对话"
+        ]
+    },
+    "日程_点击信封_场景_身": {
+        "desc": "点信封气泡没反应时，改点信封正下方人物的身体（信封属于下面那个人）",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "schedule/信封_场景.png",
+                "threshold": 0.75
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    -5,
+                    165,
+                    10,
+                    20
+                ]
+            }
+        },
+        "max_hit": 2,
         "post_wait_freezes": {
             "time": 500,
             "timeout": 1500,
@@ -720,7 +790,7 @@
             "日程_回复已出现"
         ],
         "on_error": [
-            "日程_流程"
+            "日程_回循环"
         ]
     },
     "日程_回复已出现": {
@@ -863,5 +933,8 @@
         "focus": {
             "Node.Action.Succeeded": "[color:Orange]日程：第一页已完成，但点箭头翻不到第二页，先跳过，稍后在任务页确认[/color]"
         }
+    },
+    "日程_回循环": {
+        "desc": "结束这一小段，回到调用它的 日程_流程（它是用 JumpBack 进来的，做完会自动回去）。不能直接写 日程_流程，否则会嵌套出第二层循环，做完后外层还在干等"
     }
 }
