@@ -35,31 +35,109 @@
                                                 "all_of": [
                                                     {
                                                         "recognition": {
-                                                            "type": "OCR",
+                                                            "type": "Or",
                                                             "param": {
-                                                                "expected": "画廊",
-                                                                "roi": [
-                                                                    950,
-                                                                    290,
-                                                                    120,
-                                                                    80
-                                                                ],
-                                                                "only_rec": true
+                                                                "any_of": [
+                                                                    {
+                                                                        "recognition": {
+                                                                            "type": "OCR",
+                                                                            "param": {
+                                                                                "expected": "画廊",
+                                                                                "roi": [
+                                                                                    950,
+                                                                                    290,
+                                                                                    120,
+                                                                                    80
+                                                                                ],
+                                                                                "only_rec": true
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "recognition": {
+                                                                            "type": "OCR",
+                                                                            "param": {
+                                                                                "expected": "画廊",
+                                                                                "roi": [
+                                                                                    930,
+                                                                                    275,
+                                                                                    160,
+                                                                                    110
+                                                                                ],
+                                                                                "only_rec": false
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                ]
                                                             }
                                                         }
                                                     },
                                                     {
                                                         "recognition": {
-                                                            "type": "OCR",
+                                                            "type": "Or",
                                                             "param": {
-                                                                "expected": "图鉴",
-                                                                "roi": [
-                                                                    700,
-                                                                    635,
-                                                                    100,
-                                                                    60
-                                                                ],
-                                                                "only_rec": true
+                                                                "any_of": [
+                                                                    {
+                                                                        "recognition": {
+                                                                            "type": "OCR",
+                                                                            "param": {
+                                                                                "expected": "图鉴",
+                                                                                "roi": [
+                                                                                    700,
+                                                                                    635,
+                                                                                    100,
+                                                                                    60
+                                                                                ],
+                                                                                "only_rec": true
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "recognition": {
+                                                                            "type": "OCR",
+                                                                            "param": {
+                                                                                "expected": "图鉴",
+                                                                                "roi": [
+                                                                                    680,
+                                                                                    620,
+                                                                                    140,
+                                                                                    90
+                                                                                ],
+                                                                                "only_rec": false
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "recognition": {
+                                                                            "type": "OCR",
+                                                                            "param": {
+                                                                                "expected": "^校园$",
+                                                                                "roi": [
+                                                                                    950,
+                                                                                    395,
+                                                                                    110,
+                                                                                    65
+                                                                                ],
+                                                                                "only_rec": true
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "recognition": {
+                                                                            "type": "OCR",
+                                                                            "param": {
+                                                                                "expected": "出行",
+                                                                                "roi": [
+                                                                                    1060,
+                                                                                    390,
+                                                                                    140,
+                                                                                    75
+                                                                                ],
+                                                                                "only_rec": false
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                ]
                                                             }
                                                         }
                                                     }
@@ -74,31 +152,124 @@
                                                 "all_of": [
                                                     {
                                                         "recognition": {
-                                                            "type": "OCR",
+                                                            "type": "Or",
                                                             "param": {
-                                                                "expected": "画廊",
-                                                                "roi": [
-                                                                    180,
-                                                                    410,
-                                                                    95,
-                                                                    60
-                                                                ],
-                                                                "only_rec": true
+                                                                "any_of": [
+                                                                    {
+                                                                        "recognition": {
+                                                                            "type": "OCR",
+                                                                            "param": {
+                                                                                "expected": "画廊",
+                                                                                "roi": [
+                                                                                    180,
+                                                                                    410,
+                                                                                    95,
+                                                                                    60
+                                                                                ],
+                                                                                "only_rec": true
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "recognition": {
+                                                                            "type": "OCR",
+                                                                            "param": {
+                                                                                "expected": "画廊",
+                                                                                "roi": [
+                                                                                    160,
+                                                                                    395,
+                                                                                    135,
+                                                                                    90
+                                                                                ],
+                                                                                "only_rec": false
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                ]
                                                             }
                                                         }
                                                     },
                                                     {
                                                         "recognition": {
-                                                            "type": "OCR",
+                                                            "type": "Or",
                                                             "param": {
-                                                                "expected": "图鉴",
-                                                                "roi": [
-                                                                    780,
-                                                                    655,
-                                                                    85,
-                                                                    50
-                                                                ],
-                                                                "only_rec": true
+                                                                "any_of": [
+                                                                    {
+                                                                        "recognition": {
+                                                                            "type": "OCR",
+                                                                            "param": {
+                                                                                "expected": "图鉴",
+                                                                                "roi": [
+                                                                                    780,
+                                                                                    655,
+                                                                                    85,
+                                                                                    50
+                                                                                ],
+                                                                                "only_rec": true
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "recognition": {
+                                                                            "type": "OCR",
+                                                                            "param": {
+                                                                                "expected": "图鉴",
+                                                                                "roi": [
+                                                                                    760,
+                                                                                    640,
+                                                                                    125,
+                                                                                    80
+                                                                                ],
+                                                                                "only_rec": false
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "recognition": {
+                                                                            "type": "OCR",
+                                                                            "param": {
+                                                                                "expected": "出行|^行$",
+                                                                                "roi": [
+                                                                                    10,
+                                                                                    395,
+                                                                                    100,
+                                                                                    65
+                                                                                ],
+                                                                                "only_rec": false
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "recognition": {
+                                                                            "type": "OCR",
+                                                                            "param": {
+                                                                                "expected": "出行|^行$",
+                                                                                "roi": [
+                                                                                    15,
+                                                                                    400,
+                                                                                    90,
+                                                                                    55
+                                                                                ],
+                                                                                "only_rec": true
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "recognition": {
+                                                                            "type": "OCR",
+                                                                            "param": {
+                                                                                "expected": "^.?园$",
+                                                                                "roi": [
+                                                                                    10,
+                                                                                    295,
+                                                                                    80,
+                                                                                    50
+                                                                                ],
+                                                                                "only_rec": true
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                ]
                                                             }
                                                         }
                                                     }
@@ -169,16 +340,40 @@
         ]
     },
     "画展_点画展按钮": {
-        "desc": "校园右下角「画展」。只点图标中间：左边紧挨着「速写」，点到边缘会误进速写模式。10-24：不同账号的校园底栏按钮位置不一样（新号没有「私人空间」，整排右移），改成在整条底栏里找字、点字正上方的图标",
+        "desc": "校园右下角「画展」。只点图标中间：左边紧挨着「速写」，点到边缘会误进速写模式。10-24：不同账号的校园底栏按钮位置不一样（新号没有「私人空间」，整排右移），改成在整条底栏里找字、点字正上方的图标。10-24：先认「画展」两个字的图样（不受批量 OCR 漏字影响，在 4 张校园截图上 0.97~1.0，别的按钮 ≤0.35），认不到再用 OCR；两种认法框的位置一样，点击偏移不变",
         "recognition": {
-            "type": "OCR",
+            "type": "Or",
             "param": {
-                "expected": "^画展$",
-                "roi": [
-                    640,
-                    650,
-                    640,
-                    55
+                "any_of": [
+                    {
+                        "recognition": {
+                            "type": "TemplateMatch",
+                            "param": {
+                                "template": "campus/画展_字.png",
+                                "roi": [
+                                    600,
+                                    600,
+                                    680,
+                                    120
+                                ],
+                                "threshold": 0.8
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^画展$",
+                                "roi": [
+                                    640,
+                                    650,
+                                    640,
+                                    55
+                                ]
+                            }
+                        }
+                    }
                 ]
             }
         },
@@ -208,16 +403,40 @@
         "max_hit": 3
     },
     "画展_回画展页": {
-        "desc": "画展场次之间偶尔退回校园页：再点一次底栏「画展」回到画展页。只点不接 next（JumpBack 用），避免嵌套出第二层画展循环——10-24 新号实测：嵌套后完成时外层循环还在等，任务不会自己结束",
+        "desc": "画展场次之间偶尔退回校园页：再点一次底栏「画展」回到画展页。只点不接 next（JumpBack 用），避免嵌套出第二层画展循环——10-24 新号实测：嵌套后完成时外层循环还在等，任务不会自己结束。10-24：先认「画展」两个字的图样（不受批量 OCR 漏字影响，在 4 张校园截图上 0.97~1.0，别的按钮 ≤0.35），认不到再用 OCR；两种认法框的位置一样，点击偏移不变",
         "recognition": {
-            "type": "OCR",
+            "type": "Or",
             "param": {
-                "expected": "^画展$",
-                "roi": [
-                    640,
-                    650,
-                    640,
-                    55
+                "any_of": [
+                    {
+                        "recognition": {
+                            "type": "TemplateMatch",
+                            "param": {
+                                "template": "campus/画展_字.png",
+                                "roi": [
+                                    600,
+                                    600,
+                                    680,
+                                    120
+                                ],
+                                "threshold": 0.8
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^画展$",
+                                "roi": [
+                                    640,
+                                    650,
+                                    640,
+                                    55
+                                ]
+                            }
+                        }
+                    }
                 ]
             }
         },
