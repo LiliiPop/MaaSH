@@ -128,6 +128,9 @@ def install_resource():
 
 
 def install_chores():
+    # 放在 MaaSH 根目录的小工具（打开 / 清理质检截图）
+    for bat in (working_dir / "assets" / "scripts").glob("*.bat"):
+        shutil.copy2(bat, install_path)
     shutil.copy2(
         working_dir / "README.md",
         install_path,

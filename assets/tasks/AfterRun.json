@@ -4,7 +4,9 @@
             "name": "🏁结束后操作",
             "entry": "结束后操作",
             "default_check": true,
-            "option": ["结束后"],
+            "option": [
+                "结束后"
+            ],
             "description": "放在任务列表最后。关闭模拟器、关机等请用 MFAAvalonia 自带的「完成后」设置。"
         }
     ],
@@ -16,7 +18,9 @@
                     "name": "关闭游戏",
                     "pipeline_override": {
                         "结束后操作": {
-                            "next": ["关闭游戏"]
+                            "next": [
+                                "关闭游戏"
+                            ]
                         }
                     }
                 },
@@ -24,7 +28,9 @@
                     "name": "返回主界面",
                     "pipeline_override": {
                         "结束后操作": {
-                            "next": ["公共_返回主界面"]
+                            "next": [
+                                "公共_返回主界面"
+                            ]
                         }
                     }
                 },

@@ -4,7 +4,10 @@
             "name": "💰月卡领取",
             "entry": "月卡",
             "default_check": true,
-            "description": "采购 → 月卡 → 领取今日配送礼包。没有月卡时会跳过。"
+            "description": "采购 → 月卡 → 领取今日配送礼包。没有月卡时会跳过。",
+            "option": [
+                "质检截图"
+            ]
         }
     ]
 }

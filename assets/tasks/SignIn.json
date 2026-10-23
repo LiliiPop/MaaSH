@@ -4,7 +4,10 @@
             "name": "📅签到",
             "entry": "签到",
             "default_check": true,
-            "description": "打开任务页的「签到」页，自动签到并领取奖励。"
+            "description": "打开任务页的「签到」页，自动签到并领取奖励。",
+            "option": [
+                "质检截图"
+            ]
         }
     ]
 }
