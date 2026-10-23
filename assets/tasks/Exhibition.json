@@ -4,9 +4,10 @@
             "name": "🖼️画展宣传",
             "entry": "画展",
             "default_check": true,
-            "description": "校园 → 画展：先领已结束场次的奖励，再按 NPC 说的地点开新画展（快速选择 → 申请）。<br>绝不点「取消宣传」「加速宣传」。",
+            "description": "校园 → 画展：先领已结束场次的奖励，再按 NPC 说的地点开新画展（快速选择 → 选宣传时间 → 申请）。<br>绝不点「取消宣传」「加速宣传」。",
             "option": [
                 "画展二选一奖励",
+                "画展宣传时间",
                 "质检截图"
             ]
         }
@@ -54,6 +55,70 @@
                 }
             ],
             "default_case": "右边"
+        },
+        "画展宣传时间": {
+            "type": "select",
+            "description": "新开画展的宣传时间（新号必须选，否则点申请没反应）",
+            "cases": [
+                {
+                    "name": "2小时",
+                    "pipeline_override": {
+                        "画展_选宣传时间": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "^2\\s*小时$",
+                                    "roi": [
+                                        700,
+                                        420,
+                                        420,
+                                        80
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "4小时",
+                    "pipeline_override": {
+                        "画展_选宣传时间": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "^4\\s*小时$",
+                                    "roi": [
+                                        700,
+                                        420,
+                                        420,
+                                        80
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "8小时",
+                    "pipeline_override": {
+                        "画展_选宣传时间": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "^8\\s*小时$",
+                                    "roi": [
+                                        700,
+                                        420,
+                                        420,
+                                        80
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            ],
+            "default_case": "8小时"
         }
     }
 }
