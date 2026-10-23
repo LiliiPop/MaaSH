@@ -1,8 +1,10 @@
 {
     "校园合一": {
-        "desc": "任务入口：进一次校园，依次做日程 → 画展，每做完一项按返回回到校园直接点下一项，全部做完才回主界面",
+        "desc": "任务入口：进一次校园，依次做 出行（赠礼 + 收礼）→ 日程 → 画展，每做完一项按返回回到校园直接点下一项；最后去任务页确认赠礼、收礼、画展三行",
         "anchor": {
-            "校园下一步": "日程_点日程按钮"
+            "校园下一步": "校园_点出行",
+            "赠礼之后": "校园_去收礼",
+            "收礼之后": "校园_收礼完"
         },
         "timeout": 60000,
         "next": [
@@ -17,7 +19,7 @@
             "公共_任务失败"
         ],
         "focus": {
-            "Node.Action.Starting": "[color:Dimgray]开始：校园合一（日程 → 画展）[/color]"
+            "Node.Action.Starting": "[color:Dimgray]开始：校园合一（出行赠礼 + 收礼 → 日程 → 画展 → 任务页确认）[/color]"
         }
     },
     "校园_主界面进校园": {
@@ -46,7 +48,8 @@
                                                                     290,
                                                                     120,
                                                                     80
-                                                                ]
+                                                                ],
+                                                                "only_rec": true
                                                             }
                                                         }
                                                     },
@@ -60,7 +63,8 @@
                                                                     635,
                                                                     100,
                                                                     60
-                                                                ]
+                                                                ],
+                                                                "only_rec": true
                                                             }
                                                         }
                                                     }
@@ -83,7 +87,8 @@
                                                                     410,
                                                                     95,
                                                                     60
-                                                                ]
+                                                                ],
+                                                                "only_rec": true
                                                             }
                                                         }
                                                     },
@@ -97,7 +102,8 @@
                                                                     655,
                                                                     85,
                                                                     50
-                                                                ]
+                                                                ],
+                                                                "only_rec": true
                                                             }
                                                         }
                                                     }
@@ -124,7 +130,8 @@
                                                     395,
                                                     110,
                                                     65
-                                                ]
+                                                ],
+                                                "only_rec": true
                                             }
                                         }
                                     },
@@ -138,7 +145,8 @@
                                                     295,
                                                     80,
                                                     50
-                                                ]
+                                                ],
+                                                "only_rec": true
                                             }
                                         }
                                     }
@@ -180,6 +188,67 @@
             "公共_任务失败"
         ]
     },
+    "校园_点出行": {
+        "desc": "校园右下角「出行」：直接进课后出行页（当前角色）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^出行$",
+                "roi": [
+                    1135,
+                    655,
+                    95,
+                    45
+                ],
+                "only_rec": true
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1150,
+                    600,
+                    60,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "max_hit": 3,
+        "timeout": 15000,
+        "next": [
+            "出行赠礼_流程"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "校园_去收礼": {
+        "desc": "赠礼送出后，在同一个课后出行页接着收礼",
+        "next": [
+            "出行收礼_准备"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]赠礼完成，接着收礼[/color]"
+        }
+    },
+    "校园_收礼完": {
+        "desc": "收礼做完 → 回校园做日程",
+        "anchor": {
+            "校园下一步": "日程_点日程按钮"
+        },
+        "next": [
+            "校园_回校园"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]出行做完，回校园做日程[/color]"
+        }
+    },
     "校园_日程做完": {
         "desc": "日程做完（或今天已安排）→ 回校园做画展",
         "anchor": {
@@ -193,9 +262,9 @@
         }
     },
     "Flag_校园合一完成": {
-        "desc": "日程、画展都做完",
+        "desc": "出行赠礼、出行收礼、日程、画展都做完并在任务页确认过",
         "focus": {
-            "Node.Action.Succeeded": "[color:Limegreen]校园合一完成：日程、画展都做好了[/color]"
+            "Node.Action.Succeeded": "[color:Limegreen]校园合一完成：出行赠礼、收礼、日程、画展都做好了[/color]"
         },
         "next": [
             "公共_返回主界面"
@@ -243,10 +312,124 @@
             "Node.Action.Succeeded": "[color:Dimgray]绘卷回忆做完，接着做时光电影院[/color]"
         }
     },
-    "Flag_任务页合一完成": {
-        "desc": "任务页合一：出行赠礼、出行收礼、画灵、绘卷、手偶剧场都看过一遍",
+    "校园_去任务页": {
+        "desc": "校园的事做完 → 去任务页确认：先看「给任意角色赠送礼物」。还没完成的会点「前往」补做（这时赠礼 / 收礼做完回任务页，不再回校园）",
+        "anchor": {
+            "任务继续": "出行赠礼_找行",
+            "赠礼之后": "公共_进入日常列表",
+            "收礼之后": "公共_进入日常列表"
+        },
+        "next": [
+            "公共_进入日常列表"
+        ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Limegreen]任务页合一完成[/color]"
+            "Node.Action.Succeeded": "[color:Dimgray]校园做完，去任务页确认[/color]"
+        }
+    },
+    "校园_查收礼": {
+        "desc": "任务页确认第二行「在出行中收到礼物」",
+        "anchor": {
+            "任务继续": "出行收礼_找行"
+        },
+        "next": [
+            "公共_进入日常列表"
+        ]
+    },
+    "校园_查画展": {
+        "desc": "任务页确认第三行「举行1次画展」",
+        "anchor": {
+            "任务继续": "校园_画展_找行"
+        },
+        "next": [
+            "公共_进入日常列表"
+        ]
+    },
+    "校园_画展_找行": {
+        "timeout": 40000,
+        "next": [
+            "校园_画展_行",
+            "[JumpBack]公共_任务列表下滚"
+        ],
+        "on_error": [
+            "校园_画展_没找到"
+        ]
+    },
+    "校园_画展_行": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "举行\\s*1?\\s*次?\\s*画展",
+                "roi": [
+                    740,
+                    70,
+                    330,
+                    620
+                ]
+            }
+        },
+        "timeout": 5000,
+        "next": [
+            "校园_画展_已完成",
+            "校园_画展_未完成"
+        ],
+        "on_error": [
+            "校园_画展_没找到"
+        ]
+    },
+    "校园_画展_已完成": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "领\\s*取",
+                "roi": "校园_画展_行",
+                "roi_offset": [
+                    280,
+                    -22,
+                    150,
+                    44
+                ]
+            }
+        },
+        "next": [
+            "Flag_校园合一完成"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]任务页：画展已完成[/color]"
+        }
+    },
+    "校园_画展_未完成": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "前\\s*往",
+                "roi": "校园_画展_行",
+                "roi_offset": [
+                    280,
+                    -22,
+                    150,
+                    44
+                ]
+            }
+        },
+        "next": [
+            "Flag_校园合一完成"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]任务页显示画展这一行还没完成（可能所有场次都在宣传中、今天没能开新画展）[/color]"
+        }
+    },
+    "校园_画展_没找到": {
+        "next": [
+            "Flag_校园合一完成"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]任务页里没找到「举行1次画展」这一行[/color]"
+        }
+    },
+    "Flag_画灵绘卷合一完成": {
+        "desc": "画灵、绘卷都看过一遍",
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]画灵绘卷合一完成[/color]"
         }
     }
 }

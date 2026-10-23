@@ -101,7 +101,10 @@
         "recognition": {
             "type": "TemplateMatch",
             "param": {
-                "template": "outing/艾因.png",
+                "template": [
+                    "outing/艾因.png",
+                    "outing/艾因_2.png"
+                ],
                 "roi": [
                     30,
                     610,
@@ -133,15 +136,15 @@
         "max_hit": 4
     },
     "出行赠礼_没认出角色": {
-        "desc": "头像栏已展开但没认出选定的角色（没解锁、换了头像框等）：收起头像栏，送给当前角色，不再卡住",
+        "desc": "头像栏已展开但没认出选定的角色（没解锁、换了装扮头像等）：点头像栏第一个角色（点头像会自动收起头像栏），送给这个角色，不再卡住。10-24：点「<」收不起来，改成点第一个头像",
         "action": {
             "type": "Click",
             "param": {
                 "target": [
-                    520,
-                    637,
-                    35,
-                    32
+                    55,
+                    630,
+                    50,
+                    50
                 ]
             }
         },
@@ -151,7 +154,7 @@
             "rate_limit": 200
         },
         "focus": {
-            "Node.Action.Succeeded": "[color:Orange]头像栏里没认出选定的角色，改为送给当前角色[/color]"
+            "Node.Action.Succeeded": "[color:Orange]头像栏里没认出选定的角色，改为送给头像栏第一个角色[/color]"
         },
         "next": [
             "[JumpBack]公共_晚点再说",
@@ -515,7 +518,10 @@
         "recognition": {
             "type": "TemplateMatch",
             "param": {
-                "template": "outing/艾因.png",
+                "template": [
+                    "outing/艾因.png",
+                    "outing/艾因_2.png"
+                ],
                 "roi": [
                     30,
                     610,

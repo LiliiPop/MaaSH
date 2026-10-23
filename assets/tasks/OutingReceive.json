@@ -39,7 +39,10 @@
                             "recognition": {
                                 "type": "TemplateMatch",
                                 "param": {
-                                    "template": "outing/艾因.png",
+                                    "template": [
+                                        "outing/艾因.png",
+                                        "outing/艾因_2.png"
+                                    ],
                                     "roi": [
                                         30,
                                         610,
