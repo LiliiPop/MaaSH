@@ -1,0 +1,3252 @@
+{
+    "赠礼找人_艾因_1": {
+        "desc": "赠礼：看头像栏第 1 格是不是艾因",
+        "next": [
+            "赠礼找人_艾因_1_点",
+            "赠礼找人_艾因_2"
+        ]
+    },
+    "赠礼找人_艾因_1_点": {
+        "desc": "第 1 格头发颜色是艾因：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    66,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    0,
+                    0,
+                    0
+                ],
+                "upper": [
+                    100,
+                    100,
+                    105
+                ],
+                "count": 30
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    58,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_打开赠礼"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 1 格是艾因，已选中[/color]"
+        }
+    },
+    "赠礼找人_艾因_2": {
+        "desc": "赠礼：看头像栏第 2 格是不是艾因",
+        "next": [
+            "赠礼找人_艾因_2_点",
+            "赠礼找人_艾因_3"
+        ]
+    },
+    "赠礼找人_艾因_2_点": {
+        "desc": "第 2 格头发颜色是艾因：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    163,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    0,
+                    0,
+                    0
+                ],
+                "upper": [
+                    100,
+                    100,
+                    105
+                ],
+                "count": 30
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    155,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_打开赠礼"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 2 格是艾因，已选中[/color]"
+        }
+    },
+    "赠礼找人_艾因_3": {
+        "desc": "赠礼：看头像栏第 3 格是不是艾因",
+        "next": [
+            "赠礼找人_艾因_3_点",
+            "赠礼找人_艾因_4"
+        ]
+    },
+    "赠礼找人_艾因_3_点": {
+        "desc": "第 3 格头发颜色是艾因：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    260,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    0,
+                    0,
+                    0
+                ],
+                "upper": [
+                    100,
+                    100,
+                    105
+                ],
+                "count": 30
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    252,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_打开赠礼"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 3 格是艾因，已选中[/color]"
+        }
+    },
+    "赠礼找人_艾因_4": {
+        "desc": "赠礼：看头像栏第 4 格是不是艾因",
+        "next": [
+            "赠礼找人_艾因_4_点",
+            "赠礼找人_艾因_5"
+        ]
+    },
+    "赠礼找人_艾因_4_点": {
+        "desc": "第 4 格头发颜色是艾因：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    356,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    0,
+                    0,
+                    0
+                ],
+                "upper": [
+                    100,
+                    100,
+                    105
+                ],
+                "count": 30
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    348,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_打开赠礼"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 4 格是艾因，已选中[/color]"
+        }
+    },
+    "赠礼找人_艾因_5": {
+        "desc": "赠礼：看头像栏第 5 格是不是艾因",
+        "next": [
+            "赠礼找人_艾因_5_点",
+            "出行赠礼_没认出角色"
+        ]
+    },
+    "赠礼找人_艾因_5_点": {
+        "desc": "第 5 格头发颜色是艾因：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    453,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    0,
+                    0,
+                    0
+                ],
+                "upper": [
+                    100,
+                    100,
+                    105
+                ],
+                "count": 30
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    445,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_打开赠礼"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 5 格是艾因，已选中[/color]"
+        }
+    },
+    "赠礼找人_司岚_1": {
+        "desc": "赠礼：看头像栏第 1 格是不是司岚",
+        "next": [
+            "赠礼找人_司岚_1_点",
+            "赠礼找人_司岚_2"
+        ]
+    },
+    "赠礼找人_司岚_1_点": {
+        "desc": "第 1 格头发颜色是司岚：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    66,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    60,
+                    60,
+                    125
+                ],
+                "upper": [
+                    170,
+                    170,
+                    245
+                ],
+                "count": 200
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    58,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_打开赠礼"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 1 格是司岚，已选中[/color]"
+        }
+    },
+    "赠礼找人_司岚_2": {
+        "desc": "赠礼：看头像栏第 2 格是不是司岚",
+        "next": [
+            "赠礼找人_司岚_2_点",
+            "赠礼找人_司岚_3"
+        ]
+    },
+    "赠礼找人_司岚_2_点": {
+        "desc": "第 2 格头发颜色是司岚：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    163,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    60,
+                    60,
+                    125
+                ],
+                "upper": [
+                    170,
+                    170,
+                    245
+                ],
+                "count": 200
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    155,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_打开赠礼"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 2 格是司岚，已选中[/color]"
+        }
+    },
+    "赠礼找人_司岚_3": {
+        "desc": "赠礼：看头像栏第 3 格是不是司岚",
+        "next": [
+            "赠礼找人_司岚_3_点",
+            "赠礼找人_司岚_4"
+        ]
+    },
+    "赠礼找人_司岚_3_点": {
+        "desc": "第 3 格头发颜色是司岚：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    260,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    60,
+                    60,
+                    125
+                ],
+                "upper": [
+                    170,
+                    170,
+                    245
+                ],
+                "count": 200
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    252,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_打开赠礼"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 3 格是司岚，已选中[/color]"
+        }
+    },
+    "赠礼找人_司岚_4": {
+        "desc": "赠礼：看头像栏第 4 格是不是司岚",
+        "next": [
+            "赠礼找人_司岚_4_点",
+            "赠礼找人_司岚_5"
+        ]
+    },
+    "赠礼找人_司岚_4_点": {
+        "desc": "第 4 格头发颜色是司岚：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    356,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    60,
+                    60,
+                    125
+                ],
+                "upper": [
+                    170,
+                    170,
+                    245
+                ],
+                "count": 200
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    348,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_打开赠礼"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 4 格是司岚，已选中[/color]"
+        }
+    },
+    "赠礼找人_司岚_5": {
+        "desc": "赠礼：看头像栏第 5 格是不是司岚",
+        "next": [
+            "赠礼找人_司岚_5_点",
+            "出行赠礼_没认出角色"
+        ]
+    },
+    "赠礼找人_司岚_5_点": {
+        "desc": "第 5 格头发颜色是司岚：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    453,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    60,
+                    60,
+                    125
+                ],
+                "upper": [
+                    170,
+                    170,
+                    245
+                ],
+                "count": 200
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    445,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_打开赠礼"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 5 格是司岚，已选中[/color]"
+        }
+    },
+    "赠礼找人_罗夏_1": {
+        "desc": "赠礼：看头像栏第 1 格是不是罗夏",
+        "next": [
+            "赠礼找人_罗夏_1_点",
+            "赠礼找人_罗夏_2"
+        ]
+    },
+    "赠礼找人_罗夏_1_点": {
+        "desc": "第 1 格头发颜色是罗夏：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    66,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    140,
+                    0
+                ],
+                "upper": [
+                    255,
+                    212,
+                    150
+                ],
+                "count": 25
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    58,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_打开赠礼"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 1 格是罗夏，已选中[/color]"
+        }
+    },
+    "赠礼找人_罗夏_2": {
+        "desc": "赠礼：看头像栏第 2 格是不是罗夏",
+        "next": [
+            "赠礼找人_罗夏_2_点",
+            "赠礼找人_罗夏_3"
+        ]
+    },
+    "赠礼找人_罗夏_2_点": {
+        "desc": "第 2 格头发颜色是罗夏：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    163,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    140,
+                    0
+                ],
+                "upper": [
+                    255,
+                    212,
+                    150
+                ],
+                "count": 25
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    155,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_打开赠礼"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 2 格是罗夏，已选中[/color]"
+        }
+    },
+    "赠礼找人_罗夏_3": {
+        "desc": "赠礼：看头像栏第 3 格是不是罗夏",
+        "next": [
+            "赠礼找人_罗夏_3_点",
+            "赠礼找人_罗夏_4"
+        ]
+    },
+    "赠礼找人_罗夏_3_点": {
+        "desc": "第 3 格头发颜色是罗夏：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    260,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    140,
+                    0
+                ],
+                "upper": [
+                    255,
+                    212,
+                    150
+                ],
+                "count": 25
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    252,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_打开赠礼"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 3 格是罗夏，已选中[/color]"
+        }
+    },
+    "赠礼找人_罗夏_4": {
+        "desc": "赠礼：看头像栏第 4 格是不是罗夏",
+        "next": [
+            "赠礼找人_罗夏_4_点",
+            "赠礼找人_罗夏_5"
+        ]
+    },
+    "赠礼找人_罗夏_4_点": {
+        "desc": "第 4 格头发颜色是罗夏：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    356,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    140,
+                    0
+                ],
+                "upper": [
+                    255,
+                    212,
+                    150
+                ],
+                "count": 25
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    348,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_打开赠礼"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 4 格是罗夏，已选中[/color]"
+        }
+    },
+    "赠礼找人_罗夏_5": {
+        "desc": "赠礼：看头像栏第 5 格是不是罗夏",
+        "next": [
+            "赠礼找人_罗夏_5_点",
+            "出行赠礼_没认出角色"
+        ]
+    },
+    "赠礼找人_罗夏_5_点": {
+        "desc": "第 5 格头发颜色是罗夏：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    453,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    140,
+                    0
+                ],
+                "upper": [
+                    255,
+                    212,
+                    150
+                ],
+                "count": 25
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    445,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_打开赠礼"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 5 格是罗夏，已选中[/color]"
+        }
+    },
+    "赠礼找人_路辰_1": {
+        "desc": "赠礼：看头像栏第 1 格是不是路辰",
+        "next": [
+            "赠礼找人_路辰_1_不是罗夏",
+            "赠礼找人_路辰_1_点",
+            "赠礼找人_路辰_2"
+        ]
+    },
+    "赠礼找人_路辰_1_不是罗夏": {
+        "desc": "这一格其实是罗夏（发色相近），跳过",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    66,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    140,
+                    0
+                ],
+                "upper": [
+                    255,
+                    212,
+                    150
+                ],
+                "count": 25
+            }
+        },
+        "next": [
+            "赠礼找人_路辰_2"
+        ]
+    },
+    "赠礼找人_路辰_1_点": {
+        "desc": "第 1 格头发颜色是路辰：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    66,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    222,
+                    150
+                ],
+                "upper": [
+                    255,
+                    248,
+                    222
+                ],
+                "count": 80
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    58,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_打开赠礼"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 1 格是路辰，已选中[/color]"
+        }
+    },
+    "赠礼找人_路辰_2": {
+        "desc": "赠礼：看头像栏第 2 格是不是路辰",
+        "next": [
+            "赠礼找人_路辰_2_不是罗夏",
+            "赠礼找人_路辰_2_点",
+            "赠礼找人_路辰_3"
+        ]
+    },
+    "赠礼找人_路辰_2_不是罗夏": {
+        "desc": "这一格其实是罗夏（发色相近），跳过",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    163,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    140,
+                    0
+                ],
+                "upper": [
+                    255,
+                    212,
+                    150
+                ],
+                "count": 25
+            }
+        },
+        "next": [
+            "赠礼找人_路辰_3"
+        ]
+    },
+    "赠礼找人_路辰_2_点": {
+        "desc": "第 2 格头发颜色是路辰：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    163,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    222,
+                    150
+                ],
+                "upper": [
+                    255,
+                    248,
+                    222
+                ],
+                "count": 80
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    155,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_打开赠礼"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 2 格是路辰，已选中[/color]"
+        }
+    },
+    "赠礼找人_路辰_3": {
+        "desc": "赠礼：看头像栏第 3 格是不是路辰",
+        "next": [
+            "赠礼找人_路辰_3_不是罗夏",
+            "赠礼找人_路辰_3_点",
+            "赠礼找人_路辰_4"
+        ]
+    },
+    "赠礼找人_路辰_3_不是罗夏": {
+        "desc": "这一格其实是罗夏（发色相近），跳过",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    260,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    140,
+                    0
+                ],
+                "upper": [
+                    255,
+                    212,
+                    150
+                ],
+                "count": 25
+            }
+        },
+        "next": [
+            "赠礼找人_路辰_4"
+        ]
+    },
+    "赠礼找人_路辰_3_点": {
+        "desc": "第 3 格头发颜色是路辰：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    260,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    222,
+                    150
+                ],
+                "upper": [
+                    255,
+                    248,
+                    222
+                ],
+                "count": 80
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    252,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_打开赠礼"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 3 格是路辰，已选中[/color]"
+        }
+    },
+    "赠礼找人_路辰_4": {
+        "desc": "赠礼：看头像栏第 4 格是不是路辰",
+        "next": [
+            "赠礼找人_路辰_4_不是罗夏",
+            "赠礼找人_路辰_4_点",
+            "赠礼找人_路辰_5"
+        ]
+    },
+    "赠礼找人_路辰_4_不是罗夏": {
+        "desc": "这一格其实是罗夏（发色相近），跳过",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    356,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    140,
+                    0
+                ],
+                "upper": [
+                    255,
+                    212,
+                    150
+                ],
+                "count": 25
+            }
+        },
+        "next": [
+            "赠礼找人_路辰_5"
+        ]
+    },
+    "赠礼找人_路辰_4_点": {
+        "desc": "第 4 格头发颜色是路辰：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    356,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    222,
+                    150
+                ],
+                "upper": [
+                    255,
+                    248,
+                    222
+                ],
+                "count": 80
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    348,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_打开赠礼"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 4 格是路辰，已选中[/color]"
+        }
+    },
+    "赠礼找人_路辰_5": {
+        "desc": "赠礼：看头像栏第 5 格是不是路辰",
+        "next": [
+            "赠礼找人_路辰_5_不是罗夏",
+            "赠礼找人_路辰_5_点",
+            "出行赠礼_没认出角色"
+        ]
+    },
+    "赠礼找人_路辰_5_不是罗夏": {
+        "desc": "这一格其实是罗夏（发色相近），跳过",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    453,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    140,
+                    0
+                ],
+                "upper": [
+                    255,
+                    212,
+                    150
+                ],
+                "count": 25
+            }
+        },
+        "next": [
+            "出行赠礼_没认出角色"
+        ]
+    },
+    "赠礼找人_路辰_5_点": {
+        "desc": "第 5 格头发颜色是路辰：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    453,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    222,
+                    150
+                ],
+                "upper": [
+                    255,
+                    248,
+                    222
+                ],
+                "count": 80
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    445,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_打开赠礼"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 5 格是路辰，已选中[/color]"
+        }
+    },
+    "赠礼找人_叶瑄_1": {
+        "desc": "赠礼：看头像栏第 1 格是不是叶瑄",
+        "next": [
+            "赠礼找人_叶瑄_1_点",
+            "赠礼找人_叶瑄_2"
+        ]
+    },
+    "赠礼找人_叶瑄_1_点": {
+        "desc": "第 1 格头发颜色是叶瑄：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    66,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    180,
+                    195,
+                    232
+                ],
+                "upper": [
+                    240,
+                    250,
+                    255
+                ],
+                "count": 150
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    58,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_打开赠礼"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 1 格是叶瑄，已选中[/color]"
+        }
+    },
+    "赠礼找人_叶瑄_2": {
+        "desc": "赠礼：看头像栏第 2 格是不是叶瑄",
+        "next": [
+            "赠礼找人_叶瑄_2_点",
+            "赠礼找人_叶瑄_3"
+        ]
+    },
+    "赠礼找人_叶瑄_2_点": {
+        "desc": "第 2 格头发颜色是叶瑄：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    163,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    180,
+                    195,
+                    232
+                ],
+                "upper": [
+                    240,
+                    250,
+                    255
+                ],
+                "count": 150
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    155,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_打开赠礼"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 2 格是叶瑄，已选中[/color]"
+        }
+    },
+    "赠礼找人_叶瑄_3": {
+        "desc": "赠礼：看头像栏第 3 格是不是叶瑄",
+        "next": [
+            "赠礼找人_叶瑄_3_点",
+            "赠礼找人_叶瑄_4"
+        ]
+    },
+    "赠礼找人_叶瑄_3_点": {
+        "desc": "第 3 格头发颜色是叶瑄：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    260,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    180,
+                    195,
+                    232
+                ],
+                "upper": [
+                    240,
+                    250,
+                    255
+                ],
+                "count": 150
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    252,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_打开赠礼"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 3 格是叶瑄，已选中[/color]"
+        }
+    },
+    "赠礼找人_叶瑄_4": {
+        "desc": "赠礼：看头像栏第 4 格是不是叶瑄",
+        "next": [
+            "赠礼找人_叶瑄_4_点",
+            "赠礼找人_叶瑄_5"
+        ]
+    },
+    "赠礼找人_叶瑄_4_点": {
+        "desc": "第 4 格头发颜色是叶瑄：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    356,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    180,
+                    195,
+                    232
+                ],
+                "upper": [
+                    240,
+                    250,
+                    255
+                ],
+                "count": 150
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    348,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_打开赠礼"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 4 格是叶瑄，已选中[/color]"
+        }
+    },
+    "赠礼找人_叶瑄_5": {
+        "desc": "赠礼：看头像栏第 5 格是不是叶瑄",
+        "next": [
+            "赠礼找人_叶瑄_5_点",
+            "出行赠礼_没认出角色"
+        ]
+    },
+    "赠礼找人_叶瑄_5_点": {
+        "desc": "第 5 格头发颜色是叶瑄：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    453,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    180,
+                    195,
+                    232
+                ],
+                "upper": [
+                    240,
+                    250,
+                    255
+                ],
+                "count": 150
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    445,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_打开赠礼"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 5 格是叶瑄，已选中[/color]"
+        }
+    },
+    "收礼找人_艾因_1": {
+        "desc": "收礼：看头像栏第 1 格是不是艾因",
+        "next": [
+            "收礼找人_艾因_1_点",
+            "收礼找人_艾因_2"
+        ]
+    },
+    "收礼找人_艾因_1_点": {
+        "desc": "第 1 格头发颜色是艾因：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    66,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    0,
+                    0,
+                    0
+                ],
+                "upper": [
+                    100,
+                    100,
+                    105
+                ],
+                "count": 30
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    58,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 1 格是艾因，已选中[/color]"
+        }
+    },
+    "收礼找人_艾因_2": {
+        "desc": "收礼：看头像栏第 2 格是不是艾因",
+        "next": [
+            "收礼找人_艾因_2_点",
+            "收礼找人_艾因_3"
+        ]
+    },
+    "收礼找人_艾因_2_点": {
+        "desc": "第 2 格头发颜色是艾因：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    163,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    0,
+                    0,
+                    0
+                ],
+                "upper": [
+                    100,
+                    100,
+                    105
+                ],
+                "count": 30
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    155,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 2 格是艾因，已选中[/color]"
+        }
+    },
+    "收礼找人_艾因_3": {
+        "desc": "收礼：看头像栏第 3 格是不是艾因",
+        "next": [
+            "收礼找人_艾因_3_点",
+            "收礼找人_艾因_4"
+        ]
+    },
+    "收礼找人_艾因_3_点": {
+        "desc": "第 3 格头发颜色是艾因：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    260,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    0,
+                    0,
+                    0
+                ],
+                "upper": [
+                    100,
+                    100,
+                    105
+                ],
+                "count": 30
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    252,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 3 格是艾因，已选中[/color]"
+        }
+    },
+    "收礼找人_艾因_4": {
+        "desc": "收礼：看头像栏第 4 格是不是艾因",
+        "next": [
+            "收礼找人_艾因_4_点",
+            "收礼找人_艾因_5"
+        ]
+    },
+    "收礼找人_艾因_4_点": {
+        "desc": "第 4 格头发颜色是艾因：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    356,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    0,
+                    0,
+                    0
+                ],
+                "upper": [
+                    100,
+                    100,
+                    105
+                ],
+                "count": 30
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    348,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 4 格是艾因，已选中[/color]"
+        }
+    },
+    "收礼找人_艾因_5": {
+        "desc": "收礼：看头像栏第 5 格是不是艾因",
+        "next": [
+            "收礼找人_艾因_5_点",
+            "出行收礼_没认出角色"
+        ]
+    },
+    "收礼找人_艾因_5_点": {
+        "desc": "第 5 格头发颜色是艾因：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    453,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    0,
+                    0,
+                    0
+                ],
+                "upper": [
+                    100,
+                    100,
+                    105
+                ],
+                "count": 30
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    445,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 5 格是艾因，已选中[/color]"
+        }
+    },
+    "收礼找人_司岚_1": {
+        "desc": "收礼：看头像栏第 1 格是不是司岚",
+        "next": [
+            "收礼找人_司岚_1_点",
+            "收礼找人_司岚_2"
+        ]
+    },
+    "收礼找人_司岚_1_点": {
+        "desc": "第 1 格头发颜色是司岚：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    66,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    60,
+                    60,
+                    125
+                ],
+                "upper": [
+                    170,
+                    170,
+                    245
+                ],
+                "count": 200
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    58,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 1 格是司岚，已选中[/color]"
+        }
+    },
+    "收礼找人_司岚_2": {
+        "desc": "收礼：看头像栏第 2 格是不是司岚",
+        "next": [
+            "收礼找人_司岚_2_点",
+            "收礼找人_司岚_3"
+        ]
+    },
+    "收礼找人_司岚_2_点": {
+        "desc": "第 2 格头发颜色是司岚：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    163,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    60,
+                    60,
+                    125
+                ],
+                "upper": [
+                    170,
+                    170,
+                    245
+                ],
+                "count": 200
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    155,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 2 格是司岚，已选中[/color]"
+        }
+    },
+    "收礼找人_司岚_3": {
+        "desc": "收礼：看头像栏第 3 格是不是司岚",
+        "next": [
+            "收礼找人_司岚_3_点",
+            "收礼找人_司岚_4"
+        ]
+    },
+    "收礼找人_司岚_3_点": {
+        "desc": "第 3 格头发颜色是司岚：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    260,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    60,
+                    60,
+                    125
+                ],
+                "upper": [
+                    170,
+                    170,
+                    245
+                ],
+                "count": 200
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    252,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 3 格是司岚，已选中[/color]"
+        }
+    },
+    "收礼找人_司岚_4": {
+        "desc": "收礼：看头像栏第 4 格是不是司岚",
+        "next": [
+            "收礼找人_司岚_4_点",
+            "收礼找人_司岚_5"
+        ]
+    },
+    "收礼找人_司岚_4_点": {
+        "desc": "第 4 格头发颜色是司岚：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    356,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    60,
+                    60,
+                    125
+                ],
+                "upper": [
+                    170,
+                    170,
+                    245
+                ],
+                "count": 200
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    348,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 4 格是司岚，已选中[/color]"
+        }
+    },
+    "收礼找人_司岚_5": {
+        "desc": "收礼：看头像栏第 5 格是不是司岚",
+        "next": [
+            "收礼找人_司岚_5_点",
+            "出行收礼_没认出角色"
+        ]
+    },
+    "收礼找人_司岚_5_点": {
+        "desc": "第 5 格头发颜色是司岚：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    453,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    60,
+                    60,
+                    125
+                ],
+                "upper": [
+                    170,
+                    170,
+                    245
+                ],
+                "count": 200
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    445,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 5 格是司岚，已选中[/color]"
+        }
+    },
+    "收礼找人_罗夏_1": {
+        "desc": "收礼：看头像栏第 1 格是不是罗夏",
+        "next": [
+            "收礼找人_罗夏_1_点",
+            "收礼找人_罗夏_2"
+        ]
+    },
+    "收礼找人_罗夏_1_点": {
+        "desc": "第 1 格头发颜色是罗夏：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    66,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    140,
+                    0
+                ],
+                "upper": [
+                    255,
+                    212,
+                    150
+                ],
+                "count": 25
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    58,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 1 格是罗夏，已选中[/color]"
+        }
+    },
+    "收礼找人_罗夏_2": {
+        "desc": "收礼：看头像栏第 2 格是不是罗夏",
+        "next": [
+            "收礼找人_罗夏_2_点",
+            "收礼找人_罗夏_3"
+        ]
+    },
+    "收礼找人_罗夏_2_点": {
+        "desc": "第 2 格头发颜色是罗夏：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    163,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    140,
+                    0
+                ],
+                "upper": [
+                    255,
+                    212,
+                    150
+                ],
+                "count": 25
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    155,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 2 格是罗夏，已选中[/color]"
+        }
+    },
+    "收礼找人_罗夏_3": {
+        "desc": "收礼：看头像栏第 3 格是不是罗夏",
+        "next": [
+            "收礼找人_罗夏_3_点",
+            "收礼找人_罗夏_4"
+        ]
+    },
+    "收礼找人_罗夏_3_点": {
+        "desc": "第 3 格头发颜色是罗夏：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    260,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    140,
+                    0
+                ],
+                "upper": [
+                    255,
+                    212,
+                    150
+                ],
+                "count": 25
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    252,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 3 格是罗夏，已选中[/color]"
+        }
+    },
+    "收礼找人_罗夏_4": {
+        "desc": "收礼：看头像栏第 4 格是不是罗夏",
+        "next": [
+            "收礼找人_罗夏_4_点",
+            "收礼找人_罗夏_5"
+        ]
+    },
+    "收礼找人_罗夏_4_点": {
+        "desc": "第 4 格头发颜色是罗夏：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    356,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    140,
+                    0
+                ],
+                "upper": [
+                    255,
+                    212,
+                    150
+                ],
+                "count": 25
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    348,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 4 格是罗夏，已选中[/color]"
+        }
+    },
+    "收礼找人_罗夏_5": {
+        "desc": "收礼：看头像栏第 5 格是不是罗夏",
+        "next": [
+            "收礼找人_罗夏_5_点",
+            "出行收礼_没认出角色"
+        ]
+    },
+    "收礼找人_罗夏_5_点": {
+        "desc": "第 5 格头发颜色是罗夏：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    453,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    140,
+                    0
+                ],
+                "upper": [
+                    255,
+                    212,
+                    150
+                ],
+                "count": 25
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    445,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 5 格是罗夏，已选中[/color]"
+        }
+    },
+    "收礼找人_路辰_1": {
+        "desc": "收礼：看头像栏第 1 格是不是路辰",
+        "next": [
+            "收礼找人_路辰_1_不是罗夏",
+            "收礼找人_路辰_1_点",
+            "收礼找人_路辰_2"
+        ]
+    },
+    "收礼找人_路辰_1_不是罗夏": {
+        "desc": "这一格其实是罗夏（发色相近），跳过",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    66,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    140,
+                    0
+                ],
+                "upper": [
+                    255,
+                    212,
+                    150
+                ],
+                "count": 25
+            }
+        },
+        "next": [
+            "收礼找人_路辰_2"
+        ]
+    },
+    "收礼找人_路辰_1_点": {
+        "desc": "第 1 格头发颜色是路辰：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    66,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    222,
+                    150
+                ],
+                "upper": [
+                    255,
+                    248,
+                    222
+                ],
+                "count": 80
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    58,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 1 格是路辰，已选中[/color]"
+        }
+    },
+    "收礼找人_路辰_2": {
+        "desc": "收礼：看头像栏第 2 格是不是路辰",
+        "next": [
+            "收礼找人_路辰_2_不是罗夏",
+            "收礼找人_路辰_2_点",
+            "收礼找人_路辰_3"
+        ]
+    },
+    "收礼找人_路辰_2_不是罗夏": {
+        "desc": "这一格其实是罗夏（发色相近），跳过",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    163,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    140,
+                    0
+                ],
+                "upper": [
+                    255,
+                    212,
+                    150
+                ],
+                "count": 25
+            }
+        },
+        "next": [
+            "收礼找人_路辰_3"
+        ]
+    },
+    "收礼找人_路辰_2_点": {
+        "desc": "第 2 格头发颜色是路辰：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    163,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    222,
+                    150
+                ],
+                "upper": [
+                    255,
+                    248,
+                    222
+                ],
+                "count": 80
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    155,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 2 格是路辰，已选中[/color]"
+        }
+    },
+    "收礼找人_路辰_3": {
+        "desc": "收礼：看头像栏第 3 格是不是路辰",
+        "next": [
+            "收礼找人_路辰_3_不是罗夏",
+            "收礼找人_路辰_3_点",
+            "收礼找人_路辰_4"
+        ]
+    },
+    "收礼找人_路辰_3_不是罗夏": {
+        "desc": "这一格其实是罗夏（发色相近），跳过",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    260,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    140,
+                    0
+                ],
+                "upper": [
+                    255,
+                    212,
+                    150
+                ],
+                "count": 25
+            }
+        },
+        "next": [
+            "收礼找人_路辰_4"
+        ]
+    },
+    "收礼找人_路辰_3_点": {
+        "desc": "第 3 格头发颜色是路辰：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    260,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    222,
+                    150
+                ],
+                "upper": [
+                    255,
+                    248,
+                    222
+                ],
+                "count": 80
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    252,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 3 格是路辰，已选中[/color]"
+        }
+    },
+    "收礼找人_路辰_4": {
+        "desc": "收礼：看头像栏第 4 格是不是路辰",
+        "next": [
+            "收礼找人_路辰_4_不是罗夏",
+            "收礼找人_路辰_4_点",
+            "收礼找人_路辰_5"
+        ]
+    },
+    "收礼找人_路辰_4_不是罗夏": {
+        "desc": "这一格其实是罗夏（发色相近），跳过",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    356,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    140,
+                    0
+                ],
+                "upper": [
+                    255,
+                    212,
+                    150
+                ],
+                "count": 25
+            }
+        },
+        "next": [
+            "收礼找人_路辰_5"
+        ]
+    },
+    "收礼找人_路辰_4_点": {
+        "desc": "第 4 格头发颜色是路辰：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    356,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    222,
+                    150
+                ],
+                "upper": [
+                    255,
+                    248,
+                    222
+                ],
+                "count": 80
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    348,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 4 格是路辰，已选中[/color]"
+        }
+    },
+    "收礼找人_路辰_5": {
+        "desc": "收礼：看头像栏第 5 格是不是路辰",
+        "next": [
+            "收礼找人_路辰_5_不是罗夏",
+            "收礼找人_路辰_5_点",
+            "出行收礼_没认出角色"
+        ]
+    },
+    "收礼找人_路辰_5_不是罗夏": {
+        "desc": "这一格其实是罗夏（发色相近），跳过",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    453,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    140,
+                    0
+                ],
+                "upper": [
+                    255,
+                    212,
+                    150
+                ],
+                "count": 25
+            }
+        },
+        "next": [
+            "出行收礼_没认出角色"
+        ]
+    },
+    "收礼找人_路辰_5_点": {
+        "desc": "第 5 格头发颜色是路辰：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    453,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    228,
+                    222,
+                    150
+                ],
+                "upper": [
+                    255,
+                    248,
+                    222
+                ],
+                "count": 80
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    445,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 5 格是路辰，已选中[/color]"
+        }
+    },
+    "收礼找人_叶瑄_1": {
+        "desc": "收礼：看头像栏第 1 格是不是叶瑄",
+        "next": [
+            "收礼找人_叶瑄_1_点",
+            "收礼找人_叶瑄_2"
+        ]
+    },
+    "收礼找人_叶瑄_1_点": {
+        "desc": "第 1 格头发颜色是叶瑄：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    66,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    180,
+                    195,
+                    232
+                ],
+                "upper": [
+                    240,
+                    250,
+                    255
+                ],
+                "count": 150
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    58,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 1 格是叶瑄，已选中[/color]"
+        }
+    },
+    "收礼找人_叶瑄_2": {
+        "desc": "收礼：看头像栏第 2 格是不是叶瑄",
+        "next": [
+            "收礼找人_叶瑄_2_点",
+            "收礼找人_叶瑄_3"
+        ]
+    },
+    "收礼找人_叶瑄_2_点": {
+        "desc": "第 2 格头发颜色是叶瑄：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    163,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    180,
+                    195,
+                    232
+                ],
+                "upper": [
+                    240,
+                    250,
+                    255
+                ],
+                "count": 150
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    155,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 2 格是叶瑄，已选中[/color]"
+        }
+    },
+    "收礼找人_叶瑄_3": {
+        "desc": "收礼：看头像栏第 3 格是不是叶瑄",
+        "next": [
+            "收礼找人_叶瑄_3_点",
+            "收礼找人_叶瑄_4"
+        ]
+    },
+    "收礼找人_叶瑄_3_点": {
+        "desc": "第 3 格头发颜色是叶瑄：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    260,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    180,
+                    195,
+                    232
+                ],
+                "upper": [
+                    240,
+                    250,
+                    255
+                ],
+                "count": 150
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    252,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 3 格是叶瑄，已选中[/color]"
+        }
+    },
+    "收礼找人_叶瑄_4": {
+        "desc": "收礼：看头像栏第 4 格是不是叶瑄",
+        "next": [
+            "收礼找人_叶瑄_4_点",
+            "收礼找人_叶瑄_5"
+        ]
+    },
+    "收礼找人_叶瑄_4_点": {
+        "desc": "第 4 格头发颜色是叶瑄：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    356,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    180,
+                    195,
+                    232
+                ],
+                "upper": [
+                    240,
+                    250,
+                    255
+                ],
+                "count": 150
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    348,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 4 格是叶瑄，已选中[/color]"
+        }
+    },
+    "收礼找人_叶瑄_5": {
+        "desc": "收礼：看头像栏第 5 格是不是叶瑄",
+        "next": [
+            "收礼找人_叶瑄_5_点",
+            "出行收礼_没认出角色"
+        ]
+    },
+    "收礼找人_叶瑄_5_点": {
+        "desc": "第 5 格头发颜色是叶瑄：点这个头像（选中后头像栏会自动收起）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    453,
+                    620,
+                    18,
+                    16
+                ],
+                "method": 4,
+                "lower": [
+                    180,
+                    195,
+                    232
+                ],
+                "upper": [
+                    240,
+                    250,
+                    255
+                ],
+                "count": 150
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    445,
+                    630,
+                    40,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 5 格是叶瑄，已选中[/color]"
+        }
+    }
+}

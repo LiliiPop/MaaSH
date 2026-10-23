@@ -20,22 +20,9 @@
                     "name": "艾因",
                     "pipeline_override": {
                         "出行赠礼_选择角色": {
-                            "recognition": {
-                                "type": "TemplateMatch",
-                                "param": {
-                                    "template": [
-                                        "outing/艾因.png",
-                                        "outing/艾因_2.png"
-                                    ],
-                                    "roi": [
-                                        30,
-                                        610,
-                                        520,
-                                        90
-                                    ],
-                                    "threshold": 0.75
-                                }
-                            }
+                            "next": [
+                                "赠礼找人_艾因_1"
+                            ]
                         }
                     }
                 },
@@ -43,19 +30,9 @@
                     "name": "路辰",
                     "pipeline_override": {
                         "出行赠礼_选择角色": {
-                            "recognition": {
-                                "type": "TemplateMatch",
-                                "param": {
-                                    "template": "outing/路辰.png",
-                                    "roi": [
-                                        30,
-                                        610,
-                                        520,
-                                        90
-                                    ],
-                                    "threshold": 0.75
-                                }
-                            }
+                            "next": [
+                                "赠礼找人_路辰_1"
+                            ]
                         }
                     }
                 },
@@ -63,19 +40,9 @@
                     "name": "罗夏",
                     "pipeline_override": {
                         "出行赠礼_选择角色": {
-                            "recognition": {
-                                "type": "TemplateMatch",
-                                "param": {
-                                    "template": "outing/罗夏.png",
-                                    "roi": [
-                                        30,
-                                        610,
-                                        520,
-                                        90
-                                    ],
-                                    "threshold": 0.75
-                                }
-                            }
+                            "next": [
+                                "赠礼找人_罗夏_1"
+                            ]
                         }
                     }
                 },
@@ -83,19 +50,9 @@
                     "name": "司岚",
                     "pipeline_override": {
                         "出行赠礼_选择角色": {
-                            "recognition": {
-                                "type": "TemplateMatch",
-                                "param": {
-                                    "template": "outing/司岚.png",
-                                    "roi": [
-                                        30,
-                                        610,
-                                        520,
-                                        90
-                                    ],
-                                    "threshold": 0.75
-                                }
-                            }
+                            "next": [
+                                "赠礼找人_司岚_1"
+                            ]
                         }
                     }
                 },
@@ -103,23 +60,14 @@
                     "name": "叶瑄",
                     "pipeline_override": {
                         "出行赠礼_选择角色": {
-                            "recognition": {
-                                "type": "TemplateMatch",
-                                "param": {
-                                    "template": "outing/叶瑄.png",
-                                    "roi": [
-                                        30,
-                                        610,
-                                        520,
-                                        90
-                                    ],
-                                    "threshold": 0.75
-                                }
-                            }
+                            "next": [
+                                "赠礼找人_叶瑄_1"
+                            ]
                         }
                     }
                 }
-            ]
+            ],
+            "description": "<br>按头像头顶的<b>发色</b>认人（黑 艾因 / 深蓝 司岚 / 橙 罗夏 / 金 路辰 / 银 叶瑄），换装扮也认得出；头像栏顺序随好感度变也没关系。认不出时改用头像栏第一个角色。"
         },
         "送礼次数": {
             "type": "input",
