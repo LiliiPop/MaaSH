@@ -824,5 +824,78 @@
         "focus": {
             "Node.Action.Succeeded": "[color:Orange]出行赠礼：打不开赠礼面板，先跳过，最后在任务页确认[/color]"
         }
+    },
+    "出行赠礼_先互动": {
+        "desc": "选中角色后右上角还提示「与他互动，增进好感度」时，角色会一直说话（10-24 老号：生日台词连说 30 秒），这时点底栏「赠礼」没反应。按用户建议：只要提示还在就点人物（推进对话、拿互动好感），提示消失后再点赠礼。最多点 8 次",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "课后出行",
+                                "roi": [
+                                    95,
+                                    10,
+                                    200,
+                                    60
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "与他互动",
+                                "roi": [
+                                    900,
+                                    30,
+                                    380,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 0
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    600,
+                    230,
+                    80,
+                    90
+                ]
+            }
+        },
+        "post_delay": 2000,
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 6000,
+            "rate_limit": 300
+        },
+        "max_hit": 8,
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "出行赠礼_先互动",
+            "出行赠礼_打开赠礼"
+        ],
+        "on_error": [
+            "出行赠礼_跳过"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]出行赠礼：右上角提示「与他互动」，先点人物把对话走完[/color]"
+        }
     }
 }
