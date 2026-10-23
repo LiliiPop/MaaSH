@@ -219,6 +219,7 @@
             "Flag_日程今日已完成",
             "[JumpBack]日程_回日程页",
             "[JumpBack]日程_翻页",
+            "Flag_日程_今日已完成",
             "[JumpBack]日程_随机选择",
             "日程_选择回复",
             "[JumpBack]日程_对话推进",
@@ -318,7 +319,7 @@
                 ]
             }
         },
-        "max_hit": 4,
+        "max_hit": 3,
         "post_wait_freezes": {
             "time": 500,
             "timeout": 1500,
@@ -804,5 +805,51 @@
         "next": [
             "日程_流程"
         ]
+    },
+    "Flag_日程_今日已完成": {
+        "desc": "10-24：第一页已盖「已完成」章，点了 3 次箭头还是 1/2、翻不到第二页（新号的特殊邀约可能还没解锁）→ 日程算完成，不再干等 3 分钟",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^1/2$",
+                                "roi": [
+                                    1070,
+                                    600,
+                                    90,
+                                    50
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "已?完成",
+                                "roi": [
+                                    740,
+                                    290,
+                                    230,
+                                    170
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "pre_wait_freezes": {
+            "time": 800,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]日程第一段已完成，但翻不到第二段（特殊邀约可能还没解锁），日程算完成[/color]"
+        }
     }
 }

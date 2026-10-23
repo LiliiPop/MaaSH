@@ -50,6 +50,7 @@ def build():
                     "recognition": color(c, cx),
                     "action": {"type": "Click", "param": {"target": CLICK(cx)}},
                     "post_wait_freezes": PW,
+                    "post_delay": 1500,  # 换人后角色有台词 / 动画，马上点「赠礼」常常没反应（10-24 实跑连续 3 次没打开）
                     "next": after,
                     "focus": {"Node.Action.Succeeded": f"[color:Dimgray]{p}：头像栏第 {k} 格是{c}，已选中[/color]"},
                 }

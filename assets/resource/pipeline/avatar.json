@@ -47,6 +47,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -106,6 +107,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -165,6 +167,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -224,6 +227,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -283,6 +287,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -342,6 +347,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -401,6 +407,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -460,6 +467,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -519,6 +527,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -578,6 +587,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -637,6 +647,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -696,6 +707,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -755,6 +767,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -814,6 +827,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -873,6 +887,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -962,6 +977,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -1051,6 +1067,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -1140,6 +1157,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -1229,6 +1247,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -1318,6 +1337,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -1377,6 +1397,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -1436,6 +1457,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -1495,6 +1517,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -1554,6 +1577,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -1613,6 +1637,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -1672,6 +1697,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -1731,6 +1757,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -1790,6 +1817,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -1849,6 +1877,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -1908,6 +1937,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -1967,6 +1997,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -2026,6 +2057,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -2085,6 +2117,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -2144,6 +2177,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -2203,6 +2237,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -2262,6 +2297,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -2321,6 +2357,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -2380,6 +2417,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -2439,6 +2477,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -2498,6 +2537,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -2587,6 +2627,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -2676,6 +2717,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -2765,6 +2807,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -2854,6 +2897,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -2943,6 +2987,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -3002,6 +3047,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -3061,6 +3107,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -3120,6 +3167,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -3179,6 +3227,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
@@ -3238,6 +3287,7 @@
             "timeout": 3000,
             "rate_limit": 200
         },
+        "post_delay": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
