@@ -13,6 +13,7 @@
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "校园_主界面进校园",
+            "校园_主界面进校园_默认",
             "[JumpBack]公共_返回主界面"
         ],
         "on_error": [
@@ -23,134 +24,38 @@
         }
     },
     "校园_主界面进校园": {
-        "desc": "校园合一：主界面「校园」（全景 / 出行主题在右侧，默认主题在左侧），中途掉回主界面时也用它回到校园",
+        "desc": "校园合一：全景 / 出行主题主界面右侧的「校园」（画廊在它正上方）。中途掉回主界面时也用它回到校园",
         "recognition": {
             "type": "And",
             "param": {
                 "all_of": [
                     {
                         "recognition": {
-                            "type": "Or",
+                            "type": "OCR",
                             "param": {
-                                "any_of": [
-                                    {
-                                        "recognition": {
-                                            "type": "And",
-                                            "param": {
-                                                "all_of": [
-                                                    {
-                                                        "recognition": {
-                                                            "type": "OCR",
-                                                            "param": {
-                                                                "expected": "画廊",
-                                                                "roi": [
-                                                                    950,
-                                                                    290,
-                                                                    120,
-                                                                    80
-                                                                ],
-                                                                "only_rec": true
-                                                            }
-                                                        }
-                                                    },
-                                                    {
-                                                        "recognition": {
-                                                            "type": "OCR",
-                                                            "param": {
-                                                                "expected": "图鉴",
-                                                                "roi": [
-                                                                    700,
-                                                                    635,
-                                                                    100,
-                                                                    60
-                                                                ],
-                                                                "only_rec": true
-                                                            }
-                                                        }
-                                                    }
-                                                ]
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "recognition": {
-                                            "type": "And",
-                                            "param": {
-                                                "all_of": [
-                                                    {
-                                                        "recognition": {
-                                                            "type": "OCR",
-                                                            "param": {
-                                                                "expected": "画廊",
-                                                                "roi": [
-                                                                    180,
-                                                                    410,
-                                                                    95,
-                                                                    60
-                                                                ],
-                                                                "only_rec": true
-                                                            }
-                                                        }
-                                                    },
-                                                    {
-                                                        "recognition": {
-                                                            "type": "OCR",
-                                                            "param": {
-                                                                "expected": "图鉴",
-                                                                "roi": [
-                                                                    780,
-                                                                    655,
-                                                                    85,
-                                                                    50
-                                                                ],
-                                                                "only_rec": true
-                                                            }
-                                                        }
-                                                    }
-                                                ]
-                                            }
-                                        }
-                                    }
-                                ]
+                                "expected": "画廊",
+                                "roi": [
+                                    950,
+                                    290,
+                                    120,
+                                    80
+                                ],
+                                "only_rec": true
                             }
                         }
                     },
                     {
                         "recognition": {
-                            "type": "Or",
+                            "type": "OCR",
                             "param": {
-                                "any_of": [
-                                    {
-                                        "recognition": {
-                                            "type": "OCR",
-                                            "param": {
-                                                "expected": "^校园$",
-                                                "roi": [
-                                                    950,
-                                                    395,
-                                                    110,
-                                                    65
-                                                ],
-                                                "only_rec": true
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "recognition": {
-                                            "type": "OCR",
-                                            "param": {
-                                                "expected": "^校园$",
-                                                "roi": [
-                                                    10,
-                                                    295,
-                                                    80,
-                                                    50
-                                                ],
-                                                "only_rec": true
-                                            }
-                                        }
-                                    }
-                                ]
+                                "expected": "^校园$",
+                                "roi": [
+                                    950,
+                                    395,
+                                    110,
+                                    65
+                                ],
+                                "only_rec": true
                             }
                         }
                     }
@@ -159,7 +64,74 @@
             }
         },
         "action": {
-            "type": "Click"
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    18,
+                    12,
+                    -36,
+                    -24
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 1200,
+            "timeout": 6000,
+            "rate_limit": 200
+        },
+        "next": [
+            "校园_回校园"
+        ]
+    },
+    "校园_主界面进校园_默认": {
+        "desc": "默认主题主界面：画廊在 (225,440) 时，「校园」挂牌固定在左侧 (48,315)。直接点固定位置，不再认「校园」两个字（房间背景下常被认成「海园/健园」）。10-24：①原来在 80×50 框里随机点，点到 (83,334) 碰到正下方的「出行」地球仪，进了课后出行；②角色说话时对话框挡住「图鉴」，原来要求画廊+图鉴都在才算主界面，认不到就去按左上角「返回」——默认主题左上角其实是设置齿轮。现在只认画廊",
+        "recognition": {
+            "type": "Or",
+            "param": {
+                "any_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "画廊",
+                                "roi": [
+                                    180,
+                                    410,
+                                    95,
+                                    60
+                                ],
+                                "only_rec": true
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "画廊",
+                                "roi": [
+                                    175,
+                                    405,
+                                    105,
+                                    70
+                                ],
+                                "only_rec": false
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    30,
+                    300,
+                    38,
+                    30
+                ]
+            }
         },
         "post_wait_freezes": {
             "time": 1200,
@@ -182,6 +154,7 @@
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
             "校园_主界面进校园",
+            "校园_主界面进校园_默认",
             "[JumpBack]公共_返回按钮"
         ],
         "on_error": [
