@@ -135,7 +135,7 @@
         ]
     },
     "出行赠礼_打开赠礼": {
-        "desc": "底部「赠礼」（被弹窗挡住没点到时，回到开头重新来，最多 4 次）",
+        "desc": "底部「赠礼」（被弹窗挡住没点到时，回到开头重新来，最多 4 次）。10-24：点字正上方的图标（只点字有时没反应）",
         "recognition": {
             "type": "OCR",
             "param": {
@@ -149,7 +149,15 @@
             }
         },
         "action": {
-            "type": "Click"
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    0,
+                    -40,
+                    0,
+                    10
+                ]
+            }
         },
         "post_wait_freezes": {
             "time": 500,
@@ -162,6 +170,7 @@
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
+            "出行赠礼_跳过倾心",
             "出行赠礼_点第一个礼物"
         ],
         "on_error": [
@@ -193,6 +202,7 @@
         },
         "timeout": 10000,
         "next": [
+            "出行赠礼_取消特殊赠送",
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
@@ -203,6 +213,90 @@
         ],
         "on_error": [
             "公共_进入日常列表"
+        ]
+    },
+    "出行赠礼_取消特殊赠送": {
+        "desc": "「赠送确认」弹窗（特殊礼物才会弹）：点「取消」，改送第二个礼物",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "赠送确认",
+                                "roi": [
+                                    480,
+                                    205,
+                                    320,
+                                    55
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "取\\s*消",
+                                "roi": [
+                                    380,
+                                    445,
+                                    180,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 2,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "next": [
+            "出行赠礼_改送第二个"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]弹出「赠送确认」（特殊礼物），已取消，改送第二个礼物[/color]"
+        }
+    },
+    "出行赠礼_改送第二个": {
+        "desc": "改点第二个礼物，再点「赠送」",
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1010,
+                    130,
+                    150,
+                    110
+                ]
+            }
+        },
+        "max_hit": 2,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_赠送"
+        ],
+        "on_error": [
+            "公共_任务失败"
         ]
     },
     "出行收礼_流程": {
@@ -383,6 +477,75 @@
             "Node.Action.Succeeded": "[color:Dimgray]礼物已送出，回任务页确认[/color]"
         }
     },
+    "出行赠礼_跳过倾心": {
+        "desc": "10-24：第一个礼物是「倾心」（特殊礼物：送了 7 天内好感翻 3 倍，会弹「赠送确认」）→ 不送它，改点第二个礼物",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "赠\\s*送",
+                                "roi": [
+                                    880,
+                                    630,
+                                    140,
+                                    60
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "倾心",
+                                "roi": [
+                                    690,
+                                    255,
+                                    240,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1010,
+                    130,
+                    150,
+                    110
+                ]
+            }
+        },
+        "max_hit": 1,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_跳过倾心",
+            "出行赠礼_赠送"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]第一个礼物是「倾心」，改送第二个[/color]"
+        }
+    },
     "出行赠礼_点第一个礼物": {
         "desc": "点礼物列表第一个（左上角那张）。点几次就送几个；点够「送礼次数」后 max_hit 跳过本节点，转去「赠送」。点卡片中部，避开左上角的爱心（点爱心会改收藏）。不判断是否收藏：爱心颜色是角色代表色，不只金色",
         "recognition": {
@@ -415,12 +578,14 @@
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
+            "出行赠礼_跳过倾心",
             "出行赠礼_点第一个礼物",
             "出行赠礼_赠送"
         ],
         "on_error": [
             "公共_任务失败"
-        ]
+        ],
+        "timeout": 8000
     },
     "出行收礼_准备": {
         "desc": "进入课后出行后：按选项「收礼角色」先换人；选「当前角色」就直接开始点人物",
