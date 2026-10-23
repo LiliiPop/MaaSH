@@ -29,7 +29,7 @@ def build():
             "on_error": ["公共_任务失败"],
         }
         d[f"{k}_点第一张"] = {
-            "recognition": {"type": "OCR", "param": {"expected": "图鉴", "roi": [120, 25, 140, 50]}},
+            "recognition": {"type": "OCR", "param": {"expected": "图鉴", "roi": [114, 17, 152, 66]}},
             "action": {"type": "Click", "param": {"target": [150, 175, 115, 110]}},
             "max_hit": 2,
             "post_wait_freezes": FREEZE,
@@ -71,7 +71,7 @@ def build():
         }
         d[f"{k}_已提升"] = {
             "desc": "弹出「等级提升」：点空白关掉，回任务页复核",
-            "recognition": ocr("等级提升", [460, 195, 380, 110])["recognition"],
+            "recognition": ocr("等级提升", [454, 187, 392, 126])["recognition"],
             "action": {"type": "Click", "param": {"target": [560, 650, 160, 40]}},
             "post_wait_freezes": FREEZE,
             "next": ["公共_进入日常列表"],

@@ -120,7 +120,7 @@ def build():
     }
     d["清体力_今天开放"] = {
         "desc": "开放的关卡右下有「连续战斗」勾选框；没开放的没有",
-        "recognition": ocr("连续战斗", [650, 520, 130, 40]),
+        "recognition": ocr("连续战斗", [644, 512, 142, 56]),
         "next": ["清体力_选难度"],
     }
     d["清体力_今天未开放"] = {
@@ -274,14 +274,14 @@ def build():
     }
     d["清体力_非连续弹窗"] = {
         "desc": "没勾连续战斗时的弹窗（按钮是「开始作战」）：关掉，去勾「连续战斗」",
-        "recognition": ocr("每次作战消耗一张", [380, 245, 520, 40]),
+        "recognition": ocr("每次作战消耗一张", [374, 237, 532, 56]),
         "action": {"type": "Click", "param": {"target": BLANK}},
         "post_wait_freezes": PW, "max_hit": 2,
         "next": ["清体力_勾连续"],
     }
     d["清体力_勾连续"] = {
         "desc": "「连续战斗」没勾：点勾选框，会直接弹出连续版的快速通关弹窗",
-        "recognition": ocr("连续战斗", [650, 520, 130, 40]),
+        "recognition": ocr("连续战斗", [644, 512, 142, 56]),
         "action": {"type": "Click", "param": {"target": [652, 532, 22, 26]}},
         "post_wait_freezes": PW, "timeout": 5000,
         "next": ["清体力_连续弹窗", "清体力_意外补充体力"], "on_error": ["公共_任务失败"],
@@ -294,7 +294,7 @@ def build():
     }
     d["清体力_连续弹窗"] = {
         "desc": "连续版的快速通关弹窗（「使用道具可进行快速过关，或依然可选择连续战斗」）",
-        "recognition": ocr("依然可选择连续战斗", [380, 245, 520, 40]),
+        "recognition": ocr("依然可选择连续战斗", [374, 237, 532, 56]),
         "next": ["清体力_选符"],
     }
     d["清体力_选符"] = {
@@ -431,7 +431,7 @@ def build():
 
     # ---------- 实际战斗 ----------
     d["清体力_连战确定"] = {
-        "recognition": ocr("确\\s*定", [760, 485, 120, 55]),
+        "recognition": ocr("确\\s*定", [754, 477, 132, 71]),
         "action": {"type": "Click"},
         "post_wait_freezes": PW_SLOW, "timeout": 5000,
         "next": ["清体力_编队"], "on_error": ["公共_任务失败"],
@@ -452,7 +452,7 @@ def build():
     }
     d["清体力_选助战"] = {
         "desc": "助战选择：点列表第一个",
-        "recognition": ocr("助战选择", [140, 75, 190, 55]),
+        "recognition": ocr("助战选择", [134, 67, 202, 71]),
         "action": {"type": "Click", "param": {"target": [100, 140, 70, 75]}},
         "post_wait_freezes": PW, "timeout": 8000,
         "next": ["清体力_编队"], "on_error": ["公共_任务失败"],

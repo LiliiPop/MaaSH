@@ -51,7 +51,7 @@ def build(home):
                        "recognition": {"type": "And", "param": {"all_of": [R(home), R({"type": "Or", "param": {"any_of": [
                            R(O("练习", [950, 640, 90, 55])), R(O("^练习$", [1005, 410, 110, 70]))]}})], "box_index": 1}},
                        "action": {"type": "Click"}, "post_wait_freezes": W, "next": ["电影院_进入"], "on_error": FAIL}
-    d["电影院_进入"] = {"desc": "日常练习页「时光电影院」", "recognition": O("时光电影院", [180, 420, 240, 70]),
+    d["电影院_进入"] = {"desc": "日常练习页「时光电影院」", "recognition": O("时光电影院", [174, 412, 252, 86]),
                     "action": {"type": "Click"}, "post_wait_freezes": {"time": 1000, "timeout": 15000}, "timeout": 15000,
                     "next": [f"电影院_换人_{CHARS[0]}"], "on_error": FAIL}
     active = {"type": "And", "param": {"all_of": [R(O("扫\\s*荡", [690, 520, 140, 55])), R({"type": "ColorMatch", "param": {
@@ -61,7 +61,7 @@ def build(home):
     for i, c in enumerate(CHARS):
         nxt = f"电影院_换人_{CHARS[i + 1]}" if i + 1 < len(CHARS) else "Flag_电影院扫荡完成"
         d[f"电影院_换人_{c}"] = {"desc": f"左下角当前角色按钮（名字 + ⇆），打开角色列表",
-                              "recognition": O("时光电影院", [90, 15, 200, 55]),
+                              "recognition": O("时光电影院", [84, 7, 212, 71]),
                               "action": {"type": "Click", "param": {"target": [25, 553, 120, 42]}},
                               "post_wait_freezes": W, "next": [f"电影院_选_{c}"]}
         d[f"电影院_选_{c}"] = {"desc": f"角色列表里点「{c}」", "recognition": O(f"^{c[0]}\\s*{c[1]}$", [10, 250, 160, 300]),

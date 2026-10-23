@@ -42,7 +42,7 @@ def build():
         "on_error": ["公共_任务失败"], "timeout": 10000,
     }
     d["红点_活动中心"] = {
-        "recognition": {"type": "OCR", "param": {"expected": "活动中心", "roi": [100, 20, 220, 60]}},
+        "recognition": {"type": "OCR", "param": {"expected": "活动中心", "roi": [94, 12, 232, 76]}},
         "timeout": 15000, "next": ["红点_槽_1"], "on_error": ["公共_任务失败"],
     }
     for k, y in enumerate(ROW_Y, 1):
