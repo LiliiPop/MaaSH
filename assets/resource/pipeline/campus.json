@@ -189,28 +189,27 @@
         ]
     },
     "校园_点出行": {
-        "desc": "校园右下角「出行」：直接进课后出行页（当前角色）",
+        "desc": "校园右下角「出行」：直接进课后出行页（当前角色）。10-24：不同账号的校园底栏按钮位置不一样（新号没有「私人空间」，整排右移），改成在整条底栏里找字、点字正上方的图标",
         "recognition": {
             "type": "OCR",
             "param": {
                 "expected": "^出行$",
                 "roi": [
-                    1135,
-                    655,
-                    95,
-                    45
-                ],
-                "only_rec": true
+                    640,
+                    650,
+                    640,
+                    55
+                ]
             }
         },
         "action": {
             "type": "Click",
             "param": {
-                "target": [
-                    1150,
-                    600,
-                    60,
-                    50
+                "target_offset": [
+                    0,
+                    -55,
+                    0,
+                    10
                 ]
             }
         },
@@ -259,6 +258,97 @@
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]日程完成，回校园做画展[/color]"
+        }
+    },
+    "校园_查日程": {
+        "desc": "任务页确认第四行「成功安排日程1次」",
+        "anchor": {
+            "任务继续": "校园_日程_找行"
+        },
+        "next": [
+            "公共_进入日常列表"
+        ]
+    },
+    "校园_日程_找行": {
+        "timeout": 40000,
+        "next": [
+            "校园_日程_行",
+            "[JumpBack]公共_任务列表下滚"
+        ],
+        "on_error": [
+            "校园_日程_没找到"
+        ]
+    },
+    "校园_日程_行": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "安排日程",
+                "roi": [
+                    740,
+                    70,
+                    330,
+                    620
+                ]
+            }
+        },
+        "timeout": 5000,
+        "next": [
+            "校园_日程_已完成",
+            "校园_日程_未完成"
+        ],
+        "on_error": [
+            "校园_日程_没找到"
+        ]
+    },
+    "校园_日程_已完成": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "领\\s*取",
+                "roi": "校园_日程_行",
+                "roi_offset": [
+                    280,
+                    -22,
+                    150,
+                    44
+                ]
+            }
+        },
+        "next": [
+            "Flag_校园合一完成"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]任务页：日程已完成[/color]"
+        }
+    },
+    "校园_日程_未完成": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "前\\s*往",
+                "roi": "校园_日程_行",
+                "roi_offset": [
+                    280,
+                    -22,
+                    150,
+                    44
+                ]
+            }
+        },
+        "next": [
+            "Flag_校园合一完成"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]任务页显示日程这一行还没完成[/color]"
+        }
+    },
+    "校园_日程_没找到": {
+        "next": [
+            "Flag_校园合一完成"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]任务页里没找到「成功安排日程1次」这一行[/color]"
         }
     },
     "Flag_校园合一完成": {
@@ -391,7 +481,7 @@
             }
         },
         "next": [
-            "Flag_校园合一完成"
+            "校园_查日程"
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]任务页：画展已完成[/color]"
@@ -412,7 +502,7 @@
             }
         },
         "next": [
-            "Flag_校园合一完成"
+            "校园_查日程"
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Orange]任务页显示画展这一行还没完成（可能所有场次都在宣传中、今天没能开新画展）[/color]"
@@ -420,7 +510,7 @@
     },
     "校园_画展_没找到": {
         "next": [
-            "Flag_校园合一完成"
+            "校园_查日程"
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Orange]任务页里没找到「举行1次画展」这一行[/color]"
