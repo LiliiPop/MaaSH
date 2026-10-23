@@ -55,6 +55,9 @@
             "[JumpBack]公共_我知道了",
             "出行赠礼_打开赠礼"
         ],
+        "on_error": [
+            "出行赠礼_跳过"
+        ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 1 格是艾因，已选中[/color]"
         }
@@ -114,6 +117,9 @@
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "出行赠礼_打开赠礼"
+        ],
+        "on_error": [
+            "出行赠礼_跳过"
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 2 格是艾因，已选中[/color]"
@@ -175,6 +181,9 @@
             "[JumpBack]公共_我知道了",
             "出行赠礼_打开赠礼"
         ],
+        "on_error": [
+            "出行赠礼_跳过"
+        ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 3 格是艾因，已选中[/color]"
         }
@@ -234,6 +243,9 @@
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "出行赠礼_打开赠礼"
+        ],
+        "on_error": [
+            "出行赠礼_跳过"
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 4 格是艾因，已选中[/color]"
@@ -295,6 +307,9 @@
             "[JumpBack]公共_我知道了",
             "出行赠礼_打开赠礼"
         ],
+        "on_error": [
+            "出行赠礼_跳过"
+        ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 5 格是艾因，已选中[/color]"
         }
@@ -354,6 +369,9 @@
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "出行赠礼_打开赠礼"
+        ],
+        "on_error": [
+            "出行赠礼_跳过"
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 1 格是司岚，已选中[/color]"
@@ -415,6 +433,9 @@
             "[JumpBack]公共_我知道了",
             "出行赠礼_打开赠礼"
         ],
+        "on_error": [
+            "出行赠礼_跳过"
+        ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 2 格是司岚，已选中[/color]"
         }
@@ -474,6 +495,9 @@
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "出行赠礼_打开赠礼"
+        ],
+        "on_error": [
+            "出行赠礼_跳过"
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 3 格是司岚，已选中[/color]"
@@ -535,6 +559,9 @@
             "[JumpBack]公共_我知道了",
             "出行赠礼_打开赠礼"
         ],
+        "on_error": [
+            "出行赠礼_跳过"
+        ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 4 格是司岚，已选中[/color]"
         }
@@ -594,6 +621,9 @@
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "出行赠礼_打开赠礼"
+        ],
+        "on_error": [
+            "出行赠礼_跳过"
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 5 格是司岚，已选中[/color]"
@@ -655,6 +685,9 @@
             "[JumpBack]公共_我知道了",
             "出行赠礼_打开赠礼"
         ],
+        "on_error": [
+            "出行赠礼_跳过"
+        ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 1 格是罗夏，已选中[/color]"
         }
@@ -714,6 +747,9 @@
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "出行赠礼_打开赠礼"
+        ],
+        "on_error": [
+            "出行赠礼_跳过"
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 2 格是罗夏，已选中[/color]"
@@ -775,6 +811,9 @@
             "[JumpBack]公共_我知道了",
             "出行赠礼_打开赠礼"
         ],
+        "on_error": [
+            "出行赠礼_跳过"
+        ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 3 格是罗夏，已选中[/color]"
         }
@@ -835,6 +874,9 @@
             "[JumpBack]公共_我知道了",
             "出行赠礼_打开赠礼"
         ],
+        "on_error": [
+            "出行赠礼_跳过"
+        ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 4 格是罗夏，已选中[/color]"
         }
@@ -894,6 +936,9 @@
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "出行赠礼_打开赠礼"
+        ],
+        "on_error": [
+            "出行赠礼_跳过"
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 5 格是罗夏，已选中[/color]"
@@ -985,6 +1030,9 @@
             "[JumpBack]公共_我知道了",
             "出行赠礼_打开赠礼"
         ],
+        "on_error": [
+            "出行赠礼_跳过"
+        ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 1 格是路辰，已选中[/color]"
         }
@@ -1074,6 +1122,9 @@
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "出行赠礼_打开赠礼"
+        ],
+        "on_error": [
+            "出行赠礼_跳过"
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 2 格是路辰，已选中[/color]"
@@ -1165,6 +1216,9 @@
             "[JumpBack]公共_我知道了",
             "出行赠礼_打开赠礼"
         ],
+        "on_error": [
+            "出行赠礼_跳过"
+        ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 3 格是路辰，已选中[/color]"
         }
@@ -1254,6 +1308,9 @@
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "出行赠礼_打开赠礼"
+        ],
+        "on_error": [
+            "出行赠礼_跳过"
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 4 格是路辰，已选中[/color]"
@@ -1345,6 +1402,9 @@
             "[JumpBack]公共_我知道了",
             "出行赠礼_打开赠礼"
         ],
+        "on_error": [
+            "出行赠礼_跳过"
+        ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 5 格是路辰，已选中[/color]"
         }
@@ -1404,6 +1464,9 @@
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "出行赠礼_打开赠礼"
+        ],
+        "on_error": [
+            "出行赠礼_跳过"
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 1 格是叶瑄，已选中[/color]"
@@ -1465,6 +1528,9 @@
             "[JumpBack]公共_我知道了",
             "出行赠礼_打开赠礼"
         ],
+        "on_error": [
+            "出行赠礼_跳过"
+        ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 2 格是叶瑄，已选中[/color]"
         }
@@ -1524,6 +1590,9 @@
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "出行赠礼_打开赠礼"
+        ],
+        "on_error": [
+            "出行赠礼_跳过"
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 3 格是叶瑄，已选中[/color]"
@@ -1585,6 +1654,9 @@
             "[JumpBack]公共_我知道了",
             "出行赠礼_打开赠礼"
         ],
+        "on_error": [
+            "出行赠礼_跳过"
+        ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 4 格是叶瑄，已选中[/color]"
         }
@@ -1645,6 +1717,9 @@
             "[JumpBack]公共_我知道了",
             "出行赠礼_打开赠礼"
         ],
+        "on_error": [
+            "出行赠礼_跳过"
+        ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]赠礼：头像栏第 5 格是叶瑄，已选中[/color]"
         }
@@ -1703,6 +1778,9 @@
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "on_error": [
             "出行收礼_流程"
         ],
         "focus": {
@@ -1765,6 +1843,9 @@
             "[JumpBack]公共_我知道了",
             "出行收礼_流程"
         ],
+        "on_error": [
+            "出行收礼_流程"
+        ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 2 格是艾因，已选中[/color]"
         }
@@ -1823,6 +1904,9 @@
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "on_error": [
             "出行收礼_流程"
         ],
         "focus": {
@@ -1885,6 +1969,9 @@
             "[JumpBack]公共_我知道了",
             "出行收礼_流程"
         ],
+        "on_error": [
+            "出行收礼_流程"
+        ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 4 格是艾因，已选中[/color]"
         }
@@ -1943,6 +2030,9 @@
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "on_error": [
             "出行收礼_流程"
         ],
         "focus": {
@@ -2005,6 +2095,9 @@
             "[JumpBack]公共_我知道了",
             "出行收礼_流程"
         ],
+        "on_error": [
+            "出行收礼_流程"
+        ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 1 格是司岚，已选中[/color]"
         }
@@ -2063,6 +2156,9 @@
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "on_error": [
             "出行收礼_流程"
         ],
         "focus": {
@@ -2125,6 +2221,9 @@
             "[JumpBack]公共_我知道了",
             "出行收礼_流程"
         ],
+        "on_error": [
+            "出行收礼_流程"
+        ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 3 格是司岚，已选中[/color]"
         }
@@ -2183,6 +2282,9 @@
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "on_error": [
             "出行收礼_流程"
         ],
         "focus": {
@@ -2245,6 +2347,9 @@
             "[JumpBack]公共_我知道了",
             "出行收礼_流程"
         ],
+        "on_error": [
+            "出行收礼_流程"
+        ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 5 格是司岚，已选中[/color]"
         }
@@ -2303,6 +2408,9 @@
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "on_error": [
             "出行收礼_流程"
         ],
         "focus": {
@@ -2365,6 +2473,9 @@
             "[JumpBack]公共_我知道了",
             "出行收礼_流程"
         ],
+        "on_error": [
+            "出行收礼_流程"
+        ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 2 格是罗夏，已选中[/color]"
         }
@@ -2423,6 +2534,9 @@
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "on_error": [
             "出行收礼_流程"
         ],
         "focus": {
@@ -2485,6 +2599,9 @@
             "[JumpBack]公共_我知道了",
             "出行收礼_流程"
         ],
+        "on_error": [
+            "出行收礼_流程"
+        ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 4 格是罗夏，已选中[/color]"
         }
@@ -2543,6 +2660,9 @@
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "on_error": [
             "出行收礼_流程"
         ],
         "focus": {
@@ -2635,6 +2755,9 @@
             "[JumpBack]公共_我知道了",
             "出行收礼_流程"
         ],
+        "on_error": [
+            "出行收礼_流程"
+        ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 1 格是路辰，已选中[/color]"
         }
@@ -2723,6 +2846,9 @@
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "on_error": [
             "出行收礼_流程"
         ],
         "focus": {
@@ -2815,6 +2941,9 @@
             "[JumpBack]公共_我知道了",
             "出行收礼_流程"
         ],
+        "on_error": [
+            "出行收礼_流程"
+        ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 3 格是路辰，已选中[/color]"
         }
@@ -2903,6 +3032,9 @@
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "on_error": [
             "出行收礼_流程"
         ],
         "focus": {
@@ -2995,6 +3127,9 @@
             "[JumpBack]公共_我知道了",
             "出行收礼_流程"
         ],
+        "on_error": [
+            "出行收礼_流程"
+        ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 5 格是路辰，已选中[/color]"
         }
@@ -3053,6 +3188,9 @@
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "on_error": [
             "出行收礼_流程"
         ],
         "focus": {
@@ -3115,6 +3253,9 @@
             "[JumpBack]公共_我知道了",
             "出行收礼_流程"
         ],
+        "on_error": [
+            "出行收礼_流程"
+        ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 2 格是叶瑄，已选中[/color]"
         }
@@ -3173,6 +3314,9 @@
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "on_error": [
             "出行收礼_流程"
         ],
         "focus": {
@@ -3235,6 +3379,9 @@
             "[JumpBack]公共_我知道了",
             "出行收礼_流程"
         ],
+        "on_error": [
+            "出行收礼_流程"
+        ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]收礼：头像栏第 4 格是叶瑄，已选中[/color]"
         }
@@ -3293,6 +3440,9 @@
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
+            "出行收礼_流程"
+        ],
+        "on_error": [
             "出行收礼_流程"
         ],
         "focus": {

@@ -22,9 +22,9 @@ COLOR = {   # 角色: (lower, upper, count)
 EXCLUDE = {"路辰": ["罗夏"]}
 POPS = ["[JumpBack]公共_晚点再说", "[JumpBack]公共_稍后再说", "[JumpBack]公共_不再提醒", "[JumpBack]公共_我知道了"]
 PW = {"time": 500, "timeout": 3000, "rate_limit": 200}
-USES = {  # 前缀: (点中之后去哪, 一个都没认出时去哪)
-    "赠礼": (POPS + ["出行赠礼_打开赠礼"], "出行赠礼_没认出角色"),
-    "收礼": (POPS + ["出行收礼_流程"], "出行收礼_没认出角色"),
+USES = {  # 前缀: (点中之后去哪, 一个都没认出时去哪, 点中之后一直卡住时去哪)
+    "赠礼": (POPS + ["出行赠礼_打开赠礼"], "出行赠礼_没认出角色", "出行赠礼_跳过"),
+    "收礼": (POPS + ["出行收礼_流程"], "出行收礼_没认出角色", "出行收礼_流程"),
 }
 
 
@@ -35,7 +35,7 @@ def color(name, cx):
 
 def build():
     d = {}
-    for p, (after, fail) in USES.items():
+    for p, (after, fail, stuck) in USES.items():
         for c in COLOR:
             for k, cx in enumerate(SLOT_X, 1):
                 nxt = f"{p}找人_{c}_{k + 1}" if k < len(SLOT_X) else fail
@@ -52,6 +52,7 @@ def build():
                     "post_wait_freezes": PW,
                     "post_delay": 1500,  # 换人后角色有台词 / 动画，马上点「赠礼」常常没反应（10-24 实跑连续 3 次没打开）
                     "next": after,
+                    "on_error": [stuck],  # 10-24：选中人后底栏「赠礼」一直认不出时整个任务失败了，改成跳过、最后在任务页确认
                     "focus": {"Node.Action.Succeeded": f"[color:Dimgray]{p}：头像栏第 {k} 格是{c}，已选中[/color]"},
                 }
     return d
