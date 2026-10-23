@@ -7,6 +7,7 @@
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_生日弹窗等待",
             "画展_进入校园",
             "[JumpBack]公共_返回主界面"
         ],
@@ -463,6 +464,7 @@
         "timeout": 150000,
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_生日弹窗等待",
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",

@@ -4,6 +4,7 @@
         "timeout": 20000,
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_生日弹窗等待",
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
@@ -46,6 +47,7 @@
         },
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_生日弹窗等待",
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
@@ -125,6 +127,7 @@
         },
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_生日弹窗等待",
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
@@ -160,6 +163,7 @@
         "timeout": 5000,
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_生日弹窗等待",
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
@@ -197,6 +201,7 @@
         "next": [
             "出行赠礼_取消特殊赠送",
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_生日弹窗等待",
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
@@ -283,6 +288,7 @@
         },
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_生日弹窗等待",
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
@@ -297,6 +303,7 @@
         "timeout": 180000,
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_生日弹窗等待",
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
@@ -468,6 +475,7 @@
         "timeout": 1500,
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_生日弹窗等待",
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
@@ -556,6 +564,7 @@
         },
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_生日弹窗等待",
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
@@ -598,6 +607,7 @@
         "max_hit": 1,
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_生日弹窗等待",
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
@@ -615,6 +625,7 @@
         "timeout": 20000,
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_生日弹窗等待",
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
@@ -658,6 +669,7 @@
         },
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_生日弹窗等待",
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
@@ -774,6 +786,7 @@
         },
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_生日弹窗等待",
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
@@ -876,6 +889,7 @@
         "max_hit": 8,
         "next": [
             "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_生日弹窗等待",
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
