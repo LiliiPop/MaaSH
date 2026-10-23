@@ -1,0 +1,485 @@
+{
+    "账号_开始": {
+        "desc": "启动完成后切换到指定账号（选项「使用指定账号登录」）。只做一次：切完回到主界面再次到达这里时走 账号_已切换",
+        "max_hit": 1,
+        "next": [
+            "账号_打开设置_全景",
+            "账号_打开设置_默认",
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "[JumpBack]公共_返回主界面"
+        ],
+        "timeout": 30000,
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]切换账号：设置 → 退出账号 → 从历史账号里选[/color]"
+        }
+    },
+    "账号_打开设置_全景": {
+        "desc": "全景 / 出行主题：左上角头像右边第一个齿轮",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "画廊",
+                                "roi": [
+                                    950,
+                                    290,
+                                    120,
+                                    80
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "图鉴",
+                                "roi": [
+                                    700,
+                                    635,
+                                    100,
+                                    60
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    140,
+                    20,
+                    45,
+                    45
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "max_hit": 3,
+        "next": [
+            "账号_设置页"
+        ]
+    },
+    "账号_打开设置_默认": {
+        "desc": "默认主题：左上角第一个齿轮",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "画廊",
+                                "roi": [
+                                    180,
+                                    410,
+                                    95,
+                                    60
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "图鉴",
+                                "roi": [
+                                    780,
+                                    655,
+                                    85,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    30,
+                    30,
+                    45,
+                    45
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "max_hit": 3,
+        "next": [
+            "账号_设置页"
+        ]
+    },
+    "账号_设置页": {
+        "desc": "系统设置：底部按钮栏往左拖，露出最右边的「退出游戏」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "系统设置",
+                "roi": [
+                    150,
+                    85,
+                    170,
+                    55
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1000,
+                    575,
+                    40,
+                    30
+                ],
+                "end": [
+                    330,
+                    575,
+                    40,
+                    30
+                ],
+                "duration": 500
+            }
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "账号_点退出"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "账号_点退出": {
+        "desc": "底部「退出游戏」：会弹出「退出账号 / 是否退出该账号？」（OCR 容易把「用户中心退出游戏」连成一段，所以只读最右边一小块）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "退出游戏",
+                "roi": [
+                    1010,
+                    580,
+                    165,
+                    45
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    0,
+                    -30,
+                    0,
+                    0
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "timeout": 5000,
+        "next": [
+            "账号_确认退出"
+        ],
+        "on_error": [
+            "账号_设置页"
+        ]
+    },
+    "账号_确认退出": {
+        "desc": "「退出账号」弹窗点「确定」",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "退出账号",
+                                "roi": [
+                                    480,
+                                    200,
+                                    320,
+                                    60
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^确\\s*定$",
+                                "roi": [
+                                    700,
+                                    440,
+                                    220,
+                                    60
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "timeout": 8000,
+        "next": [
+            "账号_登录框"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "账号_登录框": {
+        "desc": "回到登录页，网易登录框出现（下方有「其他账号登录」）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "其他账号登录",
+                "roi": [
+                    480,
+                    505,
+                    320,
+                    65
+                ]
+            }
+        },
+        "timeout": 40000,
+        "next": [
+            "账号_已选中",
+            "账号_展开"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "账号_已选中": {
+        "desc": "登录框里显示的就是要切的账号：直接登录",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^未设置登录账号$",
+                "roi": [
+                    440,
+                    280,
+                    440,
+                    55
+                ]
+            }
+        },
+        "next": [
+            "账号_点登录"
+        ]
+    },
+    "账号_展开": {
+        "desc": "点账号右边的下拉箭头，展开历史账号列表",
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    865,
+                    305,
+                    50,
+                    45
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "max_hit": 2,
+        "next": [
+            "账号_选账号"
+        ]
+    },
+    "账号_选账号": {
+        "desc": "在历史账号列表里点要切的账号（只从这个模拟器登录过的账号里选，不输入密码）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^未设置登录账号$",
+                "roi": [
+                    440,
+                    270,
+                    480,
+                    330
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "timeout": 5000,
+        "next": [
+            "账号_点登录"
+        ],
+        "on_error": [
+            "账号_找不到"
+        ]
+    },
+    "账号_找不到": {
+        "desc": "历史账号里没有：点列表第一个（最近登录的账号）照常登录，任务算失败",
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    440,
+                    285,
+                    440,
+                    60
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "账号_回退登录"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Red]历史账号里没找到要切的账号，已用最近登录的账号进游戏。请先在这个模拟器上手动登录一次那个账号[/color]"
+        }
+    },
+    "账号_回退登录": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^登\\s*录$",
+                "roi": [
+                    560,
+                    425,
+                    160,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "timeout": 8000,
+        "next": [
+            "公共_任务失败"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "账号_点登录": {
+        "desc": "点红色「登录」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^登\\s*录$",
+                "roi": [
+                    560,
+                    425,
+                    160,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "timeout": 8000,
+        "next": [
+            "账号_安全验证",
+            "启动_等待主界面"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]切换账号：已选好账号，正在登录[/color]"
+        }
+    },
+    "账号_安全验证": {
+        "desc": "弹出「登录安全验证」（要发短信）：脚本处理不了，停下来交给人",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "登录安全验证|安全验证",
+                "roi": [
+                    300,
+                    0,
+                    700,
+                    80
+                ]
+            }
+        },
+        "pre_wait_freezes": {
+            "time": 600,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Red]这个账号登录时要短信安全验证，脚本没法处理，请手动登录一次[/color]"
+        }
+    },
+    "账号_已切换": {
+        "desc": "切换账号后重新进到了主界面",
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]已切换到指定账号并进入主界面[/color]"
+        }
+    }
+}

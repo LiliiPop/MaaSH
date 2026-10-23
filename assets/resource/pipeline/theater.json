@@ -445,5 +445,165 @@
         "on_error": [
             "公共_任务失败"
         ]
+    },
+    "剧场_评论_唤出": {
+        "desc": "10-23 剧场评论：视频开始播放后点一下画面，底部才会出现「在这里留下你想说的话吧」输入框",
+        "pre_delay": 2500,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    590,
+                    230,
+                    100,
+                    80
+                ]
+            }
+        },
+        "post_delay": 800,
+        "max_hit": 3,
+        "next": [
+            "剧场_评论_点底框"
+        ],
+        "on_error": [
+            "剧场_评论_放弃"
+        ]
+    },
+    "剧场_评论_点底框": {
+        "desc": "点底部输入框，视频会暂停，屏幕上方出现输入栏",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "留下你想说的话",
+                "roi": [
+                    480,
+                    650,
+                    720,
+                    80
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "timeout": 4000,
+        "next": [
+            "剧场_评论_点顶框"
+        ],
+        "on_error": [
+            "剧场_评论_重试"
+        ]
+    },
+    "剧场_评论_重试": {
+        "desc": "底部输入框没出来：视频已经播完就点「重播」，否则再点一下画面",
+        "timeout": 3000,
+        "next": [
+            "剧场_评论_重播",
+            "剧场_评论_唤出"
+        ],
+        "on_error": [
+            "剧场_评论_放弃"
+        ]
+    },
+    "剧场_评论_重播": {
+        "desc": "打开评论框之前视频就播完了：点结束页的「重播」，再重新评论",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^重播$",
+                "roi": [
+                    785,
+                    365,
+                    95,
+                    40
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 1,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "剧场_评论_唤出"
+        ]
+    },
+    "剧场_评论_点顶框": {
+        "desc": "再点一下上方输入栏，才能输入文字",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "留下你想说的话",
+                "roi": [
+                    90,
+                    20,
+                    820,
+                    70
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 800,
+        "timeout": 4000,
+        "next": [
+            "剧场_评论_输入"
+        ],
+        "on_error": [
+            "剧场_评论_放弃"
+        ]
+    },
+    "剧场_评论_输入": {
+        "desc": "输入评论内容（任务选项「评论内容」，默认 1111）",
+        "action": {
+            "type": "InputText",
+            "param": {
+                "input_text": "1111"
+            }
+        },
+        "post_delay": 800,
+        "next": [
+            "剧场_评论_发送"
+        ]
+    },
+    "剧场_评论_发送": {
+        "desc": "点输入栏右端的纸飞机发送，视频继续播放",
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1205,
+                    38,
+                    40,
+                    36
+                ]
+            }
+        },
+        "post_delay": 1000,
+        "next": [
+            "剧场_等播放"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]剧场评论已发送[/color]"
+        }
+    },
+    "剧场_评论_放弃": {
+        "desc": "评论没发出去：不影响点赞，继续等播完",
+        "next": [
+            "剧场_等播放"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]剧场评论没发出去（没找到输入框），继续点赞[/color]"
+        }
     }
 }

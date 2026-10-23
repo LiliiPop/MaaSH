@@ -1,0 +1,1514 @@
+{
+    "清红点": {
+        "desc": "任务入口：主界面「活动」→ 活动中心，把带红点的活动看一遍，能领的领掉",
+        "timeout": 60000,
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "红点_打开活动",
+            "[JumpBack]公共_返回主界面"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]开始：清红点（活动中心）[/color]"
+        }
+    },
+    "红点_打开活动": {
+        "desc": "主界面上的「活动」（全景 / 出行主题在左侧竖排，默认主题在底栏）。必须先确认在主界面",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    950,
+                                                                    290,
+                                                                    120,
+                                                                    80
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    700,
+                                                                    635,
+                                                                    100,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    180,
+                                                                    410,
+                                                                    95,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    780,
+                                                                    655,
+                                                                    85,
+                                                                    50
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^活动$",
+                                "roi": [
+                                    0,
+                                    100,
+                                    1280,
+                                    620
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    0,
+                    -15,
+                    0,
+                    0
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "max_hit": 3,
+        "next": [
+            "红点_活动中心",
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "timeout": 10000
+    },
+    "红点_活动中心": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "活动中心",
+                "roi": [
+                    100,
+                    20,
+                    220,
+                    60
+                ]
+            }
+        },
+        "timeout": 15000,
+        "next": [
+            "红点_槽_1"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "红点_槽_1": {
+        "desc": "活动列表第 1 个位置",
+        "next": [
+            "红点_有红点_1",
+            "红点_槽_2"
+        ]
+    },
+    "红点_有红点_1": {
+        "desc": "活动名右上角有红点 → 点开这个活动",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    222,
+                    99,
+                    32,
+                    30
+                ],
+                "method": 4,
+                "lower": [
+                    200,
+                    60,
+                    45
+                ],
+                "upper": [
+                    255,
+                    135,
+                    125
+                ],
+                "count": 40
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    50,
+                    117,
+                    170,
+                    36
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "next": [
+            "红点_扫描_1"
+        ]
+    },
+    "红点_扫描_1": {
+        "desc": "在这个活动页里找能领的东西；什么都没有就看下一个活动",
+        "pre_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_放弃付款",
+            "[JumpBack]公共_关闭支付",
+            "[JumpBack]公共_付费防呆",
+            "[JumpBack]公共_取消弹窗",
+            "[JumpBack]兑换_关选择弹窗",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "[JumpBack]红点_领取_1",
+            "[JumpBack]红点_发光_1",
+            "红点_槽_2"
+        ]
+    },
+    "红点_领取_1": {
+        "desc": "只点写着「领取」的按钮（「前往」「充值」「未达成」都不点）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^领\\s*取$",
+                "roi": [
+                    640,
+                    170,
+                    630,
+                    470
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "max_hit": 6,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]活动中心：点了「领取」[/color]"
+        }
+    },
+    "红点_发光_1": {
+        "desc": "「第 N 天」签到格里发光（金色外框）的那一格：点它领当天的奖励",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^第.天$",
+                                "roi": [
+                                    460,
+                                    360,
+                                    760,
+                                    50
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    460,
+                                    400,
+                                    760,
+                                    120
+                                ],
+                                "method": 4,
+                                "lower": [
+                                    230,
+                                    190,
+                                    0
+                                ],
+                                "upper": [
+                                    255,
+                                    255,
+                                    120
+                                ],
+                                "count": 600,
+                                "connected": true
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "max_hit": 2,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]活动中心：点了发光的签到格[/color]"
+        }
+    },
+    "红点_槽_2": {
+        "desc": "活动列表第 2 个位置",
+        "next": [
+            "红点_有红点_2",
+            "红点_槽_3"
+        ]
+    },
+    "红点_有红点_2": {
+        "desc": "活动名右上角有红点 → 点开这个活动",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    222,
+                    167,
+                    32,
+                    30
+                ],
+                "method": 4,
+                "lower": [
+                    200,
+                    60,
+                    45
+                ],
+                "upper": [
+                    255,
+                    135,
+                    125
+                ],
+                "count": 40
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    50,
+                    185,
+                    170,
+                    36
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "next": [
+            "红点_扫描_2"
+        ]
+    },
+    "红点_扫描_2": {
+        "desc": "在这个活动页里找能领的东西；什么都没有就看下一个活动",
+        "pre_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_放弃付款",
+            "[JumpBack]公共_关闭支付",
+            "[JumpBack]公共_付费防呆",
+            "[JumpBack]公共_取消弹窗",
+            "[JumpBack]兑换_关选择弹窗",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "[JumpBack]红点_领取_2",
+            "[JumpBack]红点_发光_2",
+            "红点_槽_3"
+        ]
+    },
+    "红点_领取_2": {
+        "desc": "只点写着「领取」的按钮（「前往」「充值」「未达成」都不点）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^领\\s*取$",
+                "roi": [
+                    640,
+                    170,
+                    630,
+                    470
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "max_hit": 6,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]活动中心：点了「领取」[/color]"
+        }
+    },
+    "红点_发光_2": {
+        "desc": "「第 N 天」签到格里发光（金色外框）的那一格：点它领当天的奖励",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^第.天$",
+                                "roi": [
+                                    460,
+                                    360,
+                                    760,
+                                    50
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    460,
+                                    400,
+                                    760,
+                                    120
+                                ],
+                                "method": 4,
+                                "lower": [
+                                    230,
+                                    190,
+                                    0
+                                ],
+                                "upper": [
+                                    255,
+                                    255,
+                                    120
+                                ],
+                                "count": 600,
+                                "connected": true
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "max_hit": 2,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]活动中心：点了发光的签到格[/color]"
+        }
+    },
+    "红点_槽_3": {
+        "desc": "活动列表第 3 个位置",
+        "next": [
+            "红点_有红点_3",
+            "红点_槽_4"
+        ]
+    },
+    "红点_有红点_3": {
+        "desc": "活动名右上角有红点 → 点开这个活动",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    222,
+                    234,
+                    32,
+                    30
+                ],
+                "method": 4,
+                "lower": [
+                    200,
+                    60,
+                    45
+                ],
+                "upper": [
+                    255,
+                    135,
+                    125
+                ],
+                "count": 40
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    50,
+                    252,
+                    170,
+                    36
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "next": [
+            "红点_扫描_3"
+        ]
+    },
+    "红点_扫描_3": {
+        "desc": "在这个活动页里找能领的东西；什么都没有就看下一个活动",
+        "pre_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_放弃付款",
+            "[JumpBack]公共_关闭支付",
+            "[JumpBack]公共_付费防呆",
+            "[JumpBack]公共_取消弹窗",
+            "[JumpBack]兑换_关选择弹窗",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "[JumpBack]红点_领取_3",
+            "[JumpBack]红点_发光_3",
+            "红点_槽_4"
+        ]
+    },
+    "红点_领取_3": {
+        "desc": "只点写着「领取」的按钮（「前往」「充值」「未达成」都不点）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^领\\s*取$",
+                "roi": [
+                    640,
+                    170,
+                    630,
+                    470
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "max_hit": 6,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]活动中心：点了「领取」[/color]"
+        }
+    },
+    "红点_发光_3": {
+        "desc": "「第 N 天」签到格里发光（金色外框）的那一格：点它领当天的奖励",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^第.天$",
+                                "roi": [
+                                    460,
+                                    360,
+                                    760,
+                                    50
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    460,
+                                    400,
+                                    760,
+                                    120
+                                ],
+                                "method": 4,
+                                "lower": [
+                                    230,
+                                    190,
+                                    0
+                                ],
+                                "upper": [
+                                    255,
+                                    255,
+                                    120
+                                ],
+                                "count": 600,
+                                "connected": true
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "max_hit": 2,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]活动中心：点了发光的签到格[/color]"
+        }
+    },
+    "红点_槽_4": {
+        "desc": "活动列表第 4 个位置",
+        "next": [
+            "红点_有红点_4",
+            "红点_槽_5"
+        ]
+    },
+    "红点_有红点_4": {
+        "desc": "活动名右上角有红点 → 点开这个活动",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    222,
+                    301,
+                    32,
+                    30
+                ],
+                "method": 4,
+                "lower": [
+                    200,
+                    60,
+                    45
+                ],
+                "upper": [
+                    255,
+                    135,
+                    125
+                ],
+                "count": 40
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    50,
+                    319,
+                    170,
+                    36
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "next": [
+            "红点_扫描_4"
+        ]
+    },
+    "红点_扫描_4": {
+        "desc": "在这个活动页里找能领的东西；什么都没有就看下一个活动",
+        "pre_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_放弃付款",
+            "[JumpBack]公共_关闭支付",
+            "[JumpBack]公共_付费防呆",
+            "[JumpBack]公共_取消弹窗",
+            "[JumpBack]兑换_关选择弹窗",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "[JumpBack]红点_领取_4",
+            "[JumpBack]红点_发光_4",
+            "红点_槽_5"
+        ]
+    },
+    "红点_领取_4": {
+        "desc": "只点写着「领取」的按钮（「前往」「充值」「未达成」都不点）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^领\\s*取$",
+                "roi": [
+                    640,
+                    170,
+                    630,
+                    470
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "max_hit": 6,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]活动中心：点了「领取」[/color]"
+        }
+    },
+    "红点_发光_4": {
+        "desc": "「第 N 天」签到格里发光（金色外框）的那一格：点它领当天的奖励",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^第.天$",
+                                "roi": [
+                                    460,
+                                    360,
+                                    760,
+                                    50
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    460,
+                                    400,
+                                    760,
+                                    120
+                                ],
+                                "method": 4,
+                                "lower": [
+                                    230,
+                                    190,
+                                    0
+                                ],
+                                "upper": [
+                                    255,
+                                    255,
+                                    120
+                                ],
+                                "count": 600,
+                                "connected": true
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "max_hit": 2,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]活动中心：点了发光的签到格[/color]"
+        }
+    },
+    "红点_槽_5": {
+        "desc": "活动列表第 5 个位置",
+        "next": [
+            "红点_有红点_5",
+            "红点_槽_6"
+        ]
+    },
+    "红点_有红点_5": {
+        "desc": "活动名右上角有红点 → 点开这个活动",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    222,
+                    369,
+                    32,
+                    30
+                ],
+                "method": 4,
+                "lower": [
+                    200,
+                    60,
+                    45
+                ],
+                "upper": [
+                    255,
+                    135,
+                    125
+                ],
+                "count": 40
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    50,
+                    387,
+                    170,
+                    36
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "next": [
+            "红点_扫描_5"
+        ]
+    },
+    "红点_扫描_5": {
+        "desc": "在这个活动页里找能领的东西；什么都没有就看下一个活动",
+        "pre_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_放弃付款",
+            "[JumpBack]公共_关闭支付",
+            "[JumpBack]公共_付费防呆",
+            "[JumpBack]公共_取消弹窗",
+            "[JumpBack]兑换_关选择弹窗",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "[JumpBack]红点_领取_5",
+            "[JumpBack]红点_发光_5",
+            "红点_槽_6"
+        ]
+    },
+    "红点_领取_5": {
+        "desc": "只点写着「领取」的按钮（「前往」「充值」「未达成」都不点）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^领\\s*取$",
+                "roi": [
+                    640,
+                    170,
+                    630,
+                    470
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "max_hit": 6,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]活动中心：点了「领取」[/color]"
+        }
+    },
+    "红点_发光_5": {
+        "desc": "「第 N 天」签到格里发光（金色外框）的那一格：点它领当天的奖励",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^第.天$",
+                                "roi": [
+                                    460,
+                                    360,
+                                    760,
+                                    50
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    460,
+                                    400,
+                                    760,
+                                    120
+                                ],
+                                "method": 4,
+                                "lower": [
+                                    230,
+                                    190,
+                                    0
+                                ],
+                                "upper": [
+                                    255,
+                                    255,
+                                    120
+                                ],
+                                "count": 600,
+                                "connected": true
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "max_hit": 2,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]活动中心：点了发光的签到格[/color]"
+        }
+    },
+    "红点_槽_6": {
+        "desc": "活动列表第 6 个位置",
+        "next": [
+            "红点_有红点_6",
+            "红点_槽_7"
+        ]
+    },
+    "红点_有红点_6": {
+        "desc": "活动名右上角有红点 → 点开这个活动",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    222,
+                    437,
+                    32,
+                    30
+                ],
+                "method": 4,
+                "lower": [
+                    200,
+                    60,
+                    45
+                ],
+                "upper": [
+                    255,
+                    135,
+                    125
+                ],
+                "count": 40
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    50,
+                    455,
+                    170,
+                    36
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "next": [
+            "红点_扫描_6"
+        ]
+    },
+    "红点_扫描_6": {
+        "desc": "在这个活动页里找能领的东西；什么都没有就看下一个活动",
+        "pre_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_放弃付款",
+            "[JumpBack]公共_关闭支付",
+            "[JumpBack]公共_付费防呆",
+            "[JumpBack]公共_取消弹窗",
+            "[JumpBack]兑换_关选择弹窗",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "[JumpBack]红点_领取_6",
+            "[JumpBack]红点_发光_6",
+            "红点_槽_7"
+        ]
+    },
+    "红点_领取_6": {
+        "desc": "只点写着「领取」的按钮（「前往」「充值」「未达成」都不点）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^领\\s*取$",
+                "roi": [
+                    640,
+                    170,
+                    630,
+                    470
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "max_hit": 6,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]活动中心：点了「领取」[/color]"
+        }
+    },
+    "红点_发光_6": {
+        "desc": "「第 N 天」签到格里发光（金色外框）的那一格：点它领当天的奖励",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^第.天$",
+                                "roi": [
+                                    460,
+                                    360,
+                                    760,
+                                    50
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    460,
+                                    400,
+                                    760,
+                                    120
+                                ],
+                                "method": 4,
+                                "lower": [
+                                    230,
+                                    190,
+                                    0
+                                ],
+                                "upper": [
+                                    255,
+                                    255,
+                                    120
+                                ],
+                                "count": 600,
+                                "connected": true
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "max_hit": 2,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]活动中心：点了发光的签到格[/color]"
+        }
+    },
+    "红点_槽_7": {
+        "desc": "活动列表第 7 个位置",
+        "next": [
+            "红点_有红点_7",
+            "红点_槽_8"
+        ]
+    },
+    "红点_有红点_7": {
+        "desc": "活动名右上角有红点 → 点开这个活动",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    222,
+                    504,
+                    32,
+                    30
+                ],
+                "method": 4,
+                "lower": [
+                    200,
+                    60,
+                    45
+                ],
+                "upper": [
+                    255,
+                    135,
+                    125
+                ],
+                "count": 40
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    50,
+                    522,
+                    170,
+                    36
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "next": [
+            "红点_扫描_7"
+        ]
+    },
+    "红点_扫描_7": {
+        "desc": "在这个活动页里找能领的东西；什么都没有就看下一个活动",
+        "pre_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_放弃付款",
+            "[JumpBack]公共_关闭支付",
+            "[JumpBack]公共_付费防呆",
+            "[JumpBack]公共_取消弹窗",
+            "[JumpBack]兑换_关选择弹窗",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "[JumpBack]红点_领取_7",
+            "[JumpBack]红点_发光_7",
+            "红点_槽_8"
+        ]
+    },
+    "红点_领取_7": {
+        "desc": "只点写着「领取」的按钮（「前往」「充值」「未达成」都不点）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^领\\s*取$",
+                "roi": [
+                    640,
+                    170,
+                    630,
+                    470
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "max_hit": 6,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]活动中心：点了「领取」[/color]"
+        }
+    },
+    "红点_发光_7": {
+        "desc": "「第 N 天」签到格里发光（金色外框）的那一格：点它领当天的奖励",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^第.天$",
+                                "roi": [
+                                    460,
+                                    360,
+                                    760,
+                                    50
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    460,
+                                    400,
+                                    760,
+                                    120
+                                ],
+                                "method": 4,
+                                "lower": [
+                                    230,
+                                    190,
+                                    0
+                                ],
+                                "upper": [
+                                    255,
+                                    255,
+                                    120
+                                ],
+                                "count": 600,
+                                "connected": true
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "max_hit": 2,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]活动中心：点了发光的签到格[/color]"
+        }
+    },
+    "红点_槽_8": {
+        "desc": "活动列表第 8 个位置",
+        "next": [
+            "红点_有红点_8",
+            "Flag_清红点完成"
+        ]
+    },
+    "红点_有红点_8": {
+        "desc": "活动名右上角有红点 → 点开这个活动",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    222,
+                    571,
+                    32,
+                    30
+                ],
+                "method": 4,
+                "lower": [
+                    200,
+                    60,
+                    45
+                ],
+                "upper": [
+                    255,
+                    135,
+                    125
+                ],
+                "count": 40
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    50,
+                    589,
+                    170,
+                    36
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "next": [
+            "红点_扫描_8"
+        ]
+    },
+    "红点_扫描_8": {
+        "desc": "在这个活动页里找能领的东西；什么都没有就看下一个活动",
+        "pre_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_放弃付款",
+            "[JumpBack]公共_关闭支付",
+            "[JumpBack]公共_付费防呆",
+            "[JumpBack]公共_取消弹窗",
+            "[JumpBack]兑换_关选择弹窗",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "[JumpBack]红点_领取_8",
+            "[JumpBack]红点_发光_8",
+            "Flag_清红点完成"
+        ]
+    },
+    "红点_领取_8": {
+        "desc": "只点写着「领取」的按钮（「前往」「充值」「未达成」都不点）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^领\\s*取$",
+                "roi": [
+                    640,
+                    170,
+                    630,
+                    470
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "max_hit": 6,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]活动中心：点了「领取」[/color]"
+        }
+    },
+    "红点_发光_8": {
+        "desc": "「第 N 天」签到格里发光（金色外框）的那一格：点它领当天的奖励",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^第.天$",
+                                "roi": [
+                                    460,
+                                    360,
+                                    760,
+                                    50
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    460,
+                                    400,
+                                    760,
+                                    120
+                                ],
+                                "method": 4,
+                                "lower": [
+                                    230,
+                                    190,
+                                    0
+                                ],
+                                "upper": [
+                                    255,
+                                    255,
+                                    120
+                                ],
+                                "count": 600,
+                                "connected": true
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "max_hit": 2,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]活动中心：点了发光的签到格[/color]"
+        }
+    },
+    "Flag_清红点完成": {
+        "desc": "活动列表都看过了",
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]清红点完成：活动中心带红点的活动都看过了[/color]"
+        },
+        "next": [
+            "公共_返回主界面"
+        ]
+    }
+}

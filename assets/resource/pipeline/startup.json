@@ -18,6 +18,13 @@
         "desc": "循环判断：到主界面就确认，否则逐个处理登录、公告、断线、加载",
         "timeout": 300000,
         "next": [
+            "[JumpBack]公共_回归信件",
+            "[JumpBack]公共_回归信",
+            "[JumpBack]公共_回归选人",
+            "[JumpBack]公共_回归确定",
+            "[JumpBack]公共_剧情快进",
+            "[JumpBack]公共_关闭支付",
+            "[JumpBack]公共_放弃付款",
             "[JumpBack]公共_退出后重开",
             "启动_主界面初判",
             "[JumpBack]启动_切换账号",
@@ -41,7 +48,7 @@
         ]
     },
     "启动_主界面初判": {
-        "desc": "认主界面右侧「画廊」和底部「图鉴」两个固定按钮（看板角色和背景会变，不用整图）。认出后等画面静止再复核一次，防止公告晚弹",
+        "desc": "认主界面「画廊」+「图鉴」两个固定文字：全景 / 出行主题在右侧和底部，默认主题在左侧和底部（10-23：之前只认全景，默认主题启动不会完成）。认出后等画面静止再复核一次，防止公告晚弹",
         "post_wait_freezes": {
             "time": 500,
             "timeout": 3000,
@@ -50,6 +57,13 @@
         "next": [
             "[JumpBack]公共_退出后重开",
             "[JumpBack]公共_关闭月度推荐",
+            "[JumpBack]公共_放弃付款",
+            "[JumpBack]公共_关闭支付",
+            "[JumpBack]公共_回归信件",
+            "[JumpBack]公共_回归信",
+            "[JumpBack]公共_回归选人",
+            "[JumpBack]公共_回归确定",
+            "[JumpBack]公共_剧情快进",
             "Flag_启动完成",
             "[JumpBack]公共_关闭公告_边缘",
             "[JumpBack]公共_关闭公告",
@@ -62,33 +76,79 @@
             "[JumpBack]公共_返回按钮"
         ],
         "recognition": {
-            "type": "And",
+            "type": "Or",
             "param": {
-                "all_of": [
+                "any_of": [
                     {
                         "recognition": {
-                            "type": "OCR",
+                            "type": "And",
                             "param": {
-                                "expected": "画廊",
-                                "roi": [
-                                    950,
-                                    290,
-                                    120,
-                                    80
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "画廊",
+                                                "roi": [
+                                                    950,
+                                                    290,
+                                                    120,
+                                                    80
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "图鉴",
+                                                "roi": [
+                                                    700,
+                                                    635,
+                                                    100,
+                                                    60
+                                                ]
+                                            }
+                                        }
+                                    }
                                 ]
                             }
                         }
                     },
                     {
                         "recognition": {
-                            "type": "OCR",
+                            "type": "And",
                             "param": {
-                                "expected": "图鉴",
-                                "roi": [
-                                    700,
-                                    635,
-                                    100,
-                                    60
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "画廊",
+                                                "roi": [
+                                                    180,
+                                                    410,
+                                                    95,
+                                                    60
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "图鉴",
+                                                "roi": [
+                                                    780,
+                                                    655,
+                                                    85,
+                                                    50
+                                                ]
+                                            }
+                                        }
+                                    }
                                 ]
                             }
                         }
@@ -103,33 +163,79 @@
             "Node.Action.Succeeded": "[color:Limegreen]启动完成，已在主界面[/color]"
         },
         "recognition": {
-            "type": "And",
+            "type": "Or",
             "param": {
-                "all_of": [
+                "any_of": [
                     {
                         "recognition": {
-                            "type": "OCR",
+                            "type": "And",
                             "param": {
-                                "expected": "画廊",
-                                "roi": [
-                                    950,
-                                    290,
-                                    120,
-                                    80
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "画廊",
+                                                "roi": [
+                                                    950,
+                                                    290,
+                                                    120,
+                                                    80
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "图鉴",
+                                                "roi": [
+                                                    700,
+                                                    635,
+                                                    100,
+                                                    60
+                                                ]
+                                            }
+                                        }
+                                    }
                                 ]
                             }
                         }
                     },
                     {
                         "recognition": {
-                            "type": "OCR",
+                            "type": "And",
                             "param": {
-                                "expected": "图鉴",
-                                "roi": [
-                                    700,
-                                    635,
-                                    100,
-                                    60
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "画廊",
+                                                "roi": [
+                                                    180,
+                                                    410,
+                                                    95,
+                                                    60
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "图鉴",
+                                                "roi": [
+                                                    780,
+                                                    655,
+                                                    85,
+                                                    50
+                                                ]
+                                            }
+                                        }
+                                    }
                                 ]
                             }
                         }
@@ -194,7 +300,7 @@
         }
     },
     "启动_切换账号": {
-        "desc": "预留：在登录界面切换到指定账号。默认关闭，由「使用指定账号登录」选项打开",
+        "desc": "（旧的预留节点，不再使用；切换账号见 account.json，由选项「使用指定账号登录」打开）",
         "enabled": false
     },
     "启动_兜底点击": {

@@ -3,6 +3,8 @@
         "desc": "任务开始前调用：反复处理弹窗和返回键，直到认出主界面。max_hit 防止「已在主界面但入口认不出」时无限循环",
         "timeout": 30000,
         "next": [
+            "[JumpBack]公共_放弃付款",
+            "[JumpBack]公共_关闭支付",
             "[JumpBack]公共_退出后重开",
             "[JumpBack]兑换_关选择弹窗",
             "[JumpBack]公共_取消弹窗",
@@ -13,6 +15,11 @@
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
+            "[JumpBack]公共_回归信件",
+            "[JumpBack]公共_回归信",
+            "[JumpBack]公共_回归选人",
+            "[JumpBack]公共_回归确定",
+            "[JumpBack]公共_剧情快进",
             "Flag_在主界面",
             "[JumpBack]公共_付费防呆",
             "[JumpBack]公共_获得奖励",
@@ -245,6 +252,8 @@
             "Node.Action.Succeeded": "[color:Red]当前任务超时或卡住，已跳过[/color]"
         },
         "next": [
+            "[JumpBack]公共_放弃付款",
+            "[JumpBack]公共_关闭支付",
             "[JumpBack]公共_稍后再说",
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
@@ -311,7 +320,7 @@
         }
     },
     "公共_进入日常列表": {
-        "desc": "统一入口：不管现在在哪，进到任务页「日常」列表并滚到顶部，然后回到调用它的任务（[Anchor]任务继续）",
+        "desc": "统一入口：不管现在在哪，进到任务页「日常」列表并滚到顶部，然后回到调用它的任务（[Anchor]任务继续）。10-23：从「前往」进去的页面按一次返回就回到任务页，所以先按返回键，回不去再回主界面重新打开任务页",
         "timeout": 60000,
         "next": [
             "[JumpBack]公共_晚点再说",
@@ -323,6 +332,7 @@
             "公共_日常列表就绪",
             "公共_切到日常页",
             "公共_打开任务页",
+            "[JumpBack]公共_返回按钮",
             "[JumpBack]公共_返回主界面"
         ],
         "on_error": [
@@ -1073,6 +1083,290 @@
         "post_wait_freezes": {
             "time": 500,
             "timeout": 1500,
+            "rate_limit": 200
+        }
+    },
+    "公共_放弃付款": {
+        "desc": "10-23：游戏外的支付窗口关闭时会问「确认放弃本次付款？」——点「确认放弃」，绝不点「继续付款」",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "确认放弃本次付款",
+                                "roi": [
+                                    400,
+                                    280,
+                                    480,
+                                    80
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^确认放弃$",
+                                "roi": [
+                                    390,
+                                    400,
+                                    240,
+                                    80
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 5,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]出现了支付窗口，已点「确认放弃」，没有付款[/color]"
+        }
+    },
+    "公共_关闭支付": {
+        "desc": "10-23：出现「支付」窗口（支付宝 / 微信扫码、花呗、网易支付）：点右上角 × 关闭，绝不选支付方式。关闭后会接着问「确认放弃本次付款？」由 公共_放弃付款 处理",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^支付$",
+                                "roi": [
+                                    560,
+                                    50,
+                                    160,
+                                    60
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "扫码支付|网易支付|花呗",
+                                "roi": [
+                                    240,
+                                    200,
+                                    800,
+                                    190
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1010,
+                    60,
+                    40,
+                    40
+                ]
+            }
+        },
+        "max_hit": 5,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]出现了支付窗口，已关闭，没有付款[/color]"
+        }
+    },
+    "公共_回归信件": {
+        "desc": "10-23 长期未登录的账号回归时，主界面中间弹出「日常点滴」信件：点开（录屏 151224）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "日常点滴",
+                "roi": [
+                    560,
+                    585,
+                    240,
+                    50
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    560,
+                    230,
+                    160,
+                    180
+                ]
+            }
+        },
+        "max_hit": 3,
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]回归信件：打开[/color]"
+        }
+    },
+    "公共_回归信": {
+        "desc": "回归信件正文「亲爱的XX：」：点一下翻过去",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^亲爱的",
+                "roi": [
+                    530,
+                    165,
+                    420,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    650,
+                    330,
+                    250,
+                    150
+                ]
+            }
+        },
+        "max_hit": 6,
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        }
+    },
+    "公共_回归选人": {
+        "desc": "「想念的人，回来就去见他吧」：选第一张角色卡（只点一次），再由 公共_回归确定 点确定",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "回来就去见他",
+                "roi": [
+                    470,
+                    155,
+                    360,
+                    55
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    300,
+                    240,
+                    105,
+                    200
+                ]
+            }
+        },
+        "max_hit": 1,
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        }
+    },
+    "公共_回归确定": {
+        "desc": "选好角色后点「确定」，之后会播一段剧情",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "回来就去见他",
+                                "roi": [
+                                    470,
+                                    155,
+                                    360,
+                                    55
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^确\\s*定$",
+                                "roi": [
+                                    550,
+                                    470,
+                                    180,
+                                    60
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 3,
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
+            "rate_limit": 200
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]回归剧情：已选角色，跳过剧情[/color]"
+        }
+    },
+    "公共_剧情快进": {
+        "desc": "剧情页右上角的快进按钮（录屏 151241 截的模板）：点它把剧情快速放完",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "common/剧情_快进.png",
+                "roi": [
+                    1150,
+                    0,
+                    130,
+                    90
+                ],
+                "threshold": 0.7
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 15,
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 2500,
             "rate_limit": 200
         }
     }

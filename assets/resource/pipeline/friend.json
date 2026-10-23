@@ -231,6 +231,7 @@
         "timeout": 20000,
         "next": [
             "Flag_好友体力完成",
+            "好友_领取上限",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
             "好友_再点一次"
@@ -366,6 +367,7 @@
         "timeout": 10000,
         "next": [
             "Flag_好友体力完成",
+            "好友_领取上限",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
             "好友_仍可点"
@@ -438,6 +440,43 @@
         "desc": "好友体力的另一个完成标志（按钮仍深色但已点过两次）",
         "focus": {
             "Node.Action.Succeeded": "[color:Limegreen]好友体力已赠送（按钮仍可点）[/color]"
+        }
+    },
+    "好友_领取上限": {
+        "desc": "10-23：点一键赠领后弹出「今日领取数已达XX次上限」→ 赠送已做、领取到顶，算完成",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "领取数已达|已达.{0,4}上限",
+                "roi": [
+                    380,
+                    160,
+                    520,
+                    45
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    560,
+                    630,
+                    160,
+                    30
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "Flag_好友体力_已赠领"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]今日好友体力领取已达上限[/color]"
         }
     }
 }

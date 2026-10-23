@@ -163,8 +163,11 @@
         },
         "timeout": 15000,
         "next": [
+            "[JumpBack]公共_放弃付款",
+            "[JumpBack]公共_关闭支付",
             "月卡_领取",
             "Flag_月卡完成",
+            "月卡_无月卡",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续"
         ],
@@ -236,7 +239,10 @@
     "月卡_等待": {
         "timeout": 20000,
         "next": [
+            "[JumpBack]公共_放弃付款",
+            "[JumpBack]公共_关闭支付",
             "Flag_月卡完成",
+            "月卡_无月卡",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
             "月卡_领取"
@@ -301,5 +307,34 @@
         "focus": {
             "Node.Action.Succeeded": "[color:Limegreen]月卡今日奖励已领取[/color]"
         }
+    },
+    "月卡_无月卡": {
+        "desc": "10-23：月卡页右下是「¥30订购」、没有「领取」→ 这个账号没有月卡，跳过（绝不点订购，点了会弹出支付窗口）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "订\\s*购",
+                "roi": [
+                    980,
+                    625,
+                    240,
+                    75
+                ]
+            }
+        },
+        "pre_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "Flag_月卡_无月卡"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]这个账号没有月卡，跳过月卡领取[/color]"
+        }
+    },
+    "Flag_月卡_无月卡": {
+        "desc": "没有月卡时的完成标志（任务算正常结束）"
     }
 }

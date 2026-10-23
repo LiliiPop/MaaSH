@@ -1,0 +1,252 @@
+{
+    "校园合一": {
+        "desc": "任务入口：进一次校园，依次做日程 → 画展，每做完一项按返回回到校园直接点下一项，全部做完才回主界面",
+        "anchor": {
+            "校园下一步": "日程_点日程按钮"
+        },
+        "timeout": 60000,
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "校园_主界面进校园",
+            "[JumpBack]公共_返回主界面"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]开始：校园合一（日程 → 画展）[/color]"
+        }
+    },
+    "校园_主界面进校园": {
+        "desc": "校园合一：主界面「校园」（全景 / 出行主题在右侧，默认主题在左侧），中途掉回主界面时也用它回到校园",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    950,
+                                                                    290,
+                                                                    120,
+                                                                    80
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    700,
+                                                                    635,
+                                                                    100,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "And",
+                                            "param": {
+                                                "all_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    180,
+                                                                    410,
+                                                                    95,
+                                                                    60
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    780,
+                                                                    655,
+                                                                    85,
+                                                                    50
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "^校园$",
+                                                "roi": [
+                                                    950,
+                                                    395,
+                                                    110,
+                                                    65
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "^校园$",
+                                                "roi": [
+                                                    10,
+                                                    295,
+                                                    80,
+                                                    50
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "校园_回校园"
+        ]
+    },
+    "校园_回校园": {
+        "desc": "回到校园页面后点下一项（由锚点「校园下一步」决定）；还在别的页面就按返回，掉回主界面就重新进校园",
+        "timeout": 30000,
+        "next": [
+            "[Anchor]校园下一步",
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "校园_主界面进校园",
+            "[JumpBack]公共_返回按钮"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "校园_日程做完": {
+        "desc": "日程做完（或今天已安排）→ 回校园做画展",
+        "anchor": {
+            "校园下一步": "画展_点画展按钮"
+        },
+        "next": [
+            "校园_回校园"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]日程完成，回校园做画展[/color]"
+        }
+    },
+    "Flag_校园合一完成": {
+        "desc": "日程、画展都做完",
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]校园合一完成：日程、画展都做好了[/color]"
+        },
+        "next": [
+            "公共_返回主界面"
+        ]
+    },
+    "采购_去礼包页": {
+        "desc": "采购合一：月卡做完（或没有月卡）→ 不回主界面，直接点左侧「礼包」做免费礼包",
+        "next": [
+            "礼包_礼包页",
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "[JumpBack]公共_放弃付款",
+            "[JumpBack]公共_关闭支付",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续"
+        ],
+        "timeout": 15000,
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]月卡做完，接着做免费礼包[/color]"
+        }
+    },
+    "练习_回练习页": {
+        "desc": "练习合一：绘卷回忆做完 → 按返回回到「日常练习」页，直接点「时光电影院」；掉回主界面就从主界面重新进练习",
+        "timeout": 30000,
+        "next": [
+            "电影院_进入",
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "电影院_打开练习",
+            "[JumpBack]公共_返回按钮"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]绘卷回忆做完，接着做时光电影院[/color]"
+        }
+    },
+    "Flag_任务页合一完成": {
+        "desc": "任务页合一：出行赠礼、出行收礼、画灵、绘卷、手偶剧场都看过一遍",
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]任务页合一完成[/color]"
+        }
+    }
+}

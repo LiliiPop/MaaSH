@@ -15,21 +15,22 @@
     "option": {
         "使用指定账号登录": {
             "type": "switch",
-            "description": "预留功能，暂未实现。",
+            "description": "进主界面后切换到指定账号：设置 → 退出账号 → 在网易登录框的<b>历史账号列表</b>里选「登录账号」里填的账号 → 登录。<br><b>不保存、不输入密码</b>：要切的账号必须先在这个模拟器上手动登录过一次。登录时如果弹出短信安全验证，脚本会停下来。",
             "cases": [
                 {
-                    "name": "No",
-                    "pipeline_override": {
-                        "启动_切换账号": {
-                            "enabled": false
-                        }
-                    }
+                    "name": "No"
                 },
                 {
                     "name": "Yes",
+                    "option": [
+                        "登录账号"
+                    ],
                     "pipeline_override": {
-                        "启动_切换账号": {
-                            "enabled": true
+                        "Flag_启动完成": {
+                            "next": [
+                                "账号_开始",
+                                "账号_已切换"
+                            ]
                         }
                     }
                 }
@@ -322,6 +323,49 @@
                     }
                 }
             ]
+        },
+        "登录账号": {
+            "type": "input",
+            "description": "历史账号列表里显示的账号文字（邮箱 / 手机号的一部分即可，例如邮箱 @ 前面那段）",
+            "inputs": [
+                {
+                    "name": "账号",
+                    "default": "",
+                    "pipeline_type": "string",
+                    "verify": "^.{2,40}$",
+                    "pattern_msg": "填 2 个字以上"
+                }
+            ],
+            "pipeline_override": {
+                "账号_已选中": {
+                    "recognition": {
+                        "type": "OCR",
+                        "param": {
+                            "expected": "{账号}",
+                            "roi": [
+                                440,
+                                280,
+                                440,
+                                55
+                            ]
+                        }
+                    }
+                },
+                "账号_选账号": {
+                    "recognition": {
+                        "type": "OCR",
+                        "param": {
+                            "expected": "{账号}",
+                            "roi": [
+                                440,
+                                270,
+                                480,
+                                330
+                            ]
+                        }
+                    }
+                }
+            }
         }
     }
 }
