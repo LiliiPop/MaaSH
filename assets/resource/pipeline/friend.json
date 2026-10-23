@@ -232,7 +232,8 @@
         "next": [
             "Flag_好友体力完成",
             "[JumpBack]公共_获得奖励",
-            "[JumpBack]公共_点击空白继续"
+            "[JumpBack]公共_点击空白继续",
+            "好友_再点一次"
         ],
         "on_error": [
             "公共_任务失败"
@@ -293,6 +294,150 @@
         },
         "focus": {
             "Node.Action.Succeeded": "[color:Limegreen]好友体力已赠送并领取[/color]"
+        }
+    },
+    "好友_再点一次": {
+        "desc": "10-23：点过一键赠领后按钮仍是深色（可能好友刚又送了体力，或领取已达上限），再点一次",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "赠领",
+                                "roi": [
+                                    985,
+                                    630,
+                                    170,
+                                    65
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    985,
+                                    630,
+                                    170,
+                                    65
+                                ],
+                                "method": 4,
+                                "lower": [
+                                    40,
+                                    30,
+                                    20
+                                ],
+                                "upper": [
+                                    115,
+                                    100,
+                                    90
+                                ],
+                                "count": 2000
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "pre_wait_freezes": {
+            "time": 1000,
+            "timeout": 4000,
+            "rate_limit": 200
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "max_hit": 1,
+        "next": [
+            "好友_再等"
+        ]
+    },
+    "好友_再等": {
+        "timeout": 10000,
+        "next": [
+            "Flag_好友体力完成",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "好友_仍可点"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "好友_仍可点": {
+        "desc": "点了两次一键赠领，按钮还是深色：赠送已做，剩下的多半是领取达到上限，算完成",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "赠领",
+                                "roi": [
+                                    985,
+                                    630,
+                                    170,
+                                    65
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    985,
+                                    630,
+                                    170,
+                                    65
+                                ],
+                                "method": 4,
+                                "lower": [
+                                    40,
+                                    30,
+                                    20
+                                ],
+                                "upper": [
+                                    115,
+                                    100,
+                                    90
+                                ],
+                                "count": 2000
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "pre_wait_freezes": {
+            "time": 1000,
+            "timeout": 4000,
+            "rate_limit": 200
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]已点过两次「一键赠领」，按钮仍可点（可能领取已达上限或好友刚送了体力），算完成[/color]"
+        },
+        "next": [
+            "Flag_好友体力_已赠领"
+        ]
+    },
+    "Flag_好友体力_已赠领": {
+        "desc": "好友体力的另一个完成标志（按钮仍深色但已点过两次）",
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]好友体力已赠送（按钮仍可点）[/color]"
         }
     }
 }

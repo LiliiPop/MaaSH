@@ -7149,7 +7149,7 @@
         "recognition": {
             "type": "OCR",
             "param": {
-                "expected": "累计消耗60点体力",
+                "expected": "累计消耗(60点体力)?$",
                 "roi": [
                     740,
                     70,

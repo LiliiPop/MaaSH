@@ -510,7 +510,7 @@ def build():
         "on_error": ["清体力_未找到行"],
     }
     d["清体力_行"] = {
-        "recognition": ocr("累计消耗60点体力", LIST_ROI),
+        "recognition": ocr("累计消耗(60点体力)?$", LIST_ROI),  # 10-23：OCR 常把「累计消耗」「60点体力」拆成两段
         "timeout": 5000,
         "next": ["Flag_清体力_今日已完成", "清体力_未达成"],
         "on_error": ["清体力_未找到行"],
