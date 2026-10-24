@@ -52,7 +52,7 @@ def build():
                     "post_wait_freezes": PW,
                     "post_delay": 1500,  # 换人后角色有台词 / 动画，马上点「赠礼」常常没反应（10-24 实跑连续 3 次没打开）
                     "next": after,
-                    "on_error": [stuck],  # 10-24：选中人后底栏「赠礼」一直认不出时整个任务失败了，改成跳过、最后在任务页确认
+                    **({} if stuck in after else {"on_error": [stuck]}),  # 收礼的 after 里已含直达节点，on_error 永远走不到（maa-checker 报重复路由）； 10-24：选中人后底栏「赠礼」一直认不出时整个任务失败了，改成跳过、最后在任务页确认
                     "focus": {"Node.Action.Succeeded": f"[color:Dimgray]{p}：头像栏第 {k} 格是{c}，已选中[/color]"},
                 }
     return d
