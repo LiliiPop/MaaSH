@@ -598,6 +598,7 @@
         "timeout": 10000,
         "next": [
             "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_跳过卡面",
             "[JumpBack]公共_点击空白继续",
             "周购_钻石不足",
             "Flag_月卡周购完成"

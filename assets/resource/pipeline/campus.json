@@ -154,6 +154,7 @@
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_跳过卡面",
             "[JumpBack]公共_点击空白继续",
             "校园_主界面进校园",
             "校园_主界面进校园_默认",
@@ -376,6 +377,7 @@
             "[JumpBack]公共_放弃付款",
             "[JumpBack]公共_关闭支付",
             "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_跳过卡面",
             "[JumpBack]公共_点击空白继续"
         ],
         "timeout": 15000,
@@ -397,6 +399,7 @@
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_跳过卡面",
             "[JumpBack]公共_点击空白继续",
             "电影院_打开练习",
             "[JumpBack]公共_返回按钮"

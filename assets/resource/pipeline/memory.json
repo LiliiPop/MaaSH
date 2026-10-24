@@ -478,6 +478,7 @@
         "timeout": 10000,
         "next": [
             "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_跳过卡面",
             "[JumpBack]公共_点击空白继续",
             "回忆_点扫荡"
         ],

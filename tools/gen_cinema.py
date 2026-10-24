@@ -20,7 +20,7 @@ ITEMS = [
 ] + [(f"帝国训练·{c}", f"帝国训练.?{c}") for c in CHARS]
 SLOTS = 8
 FAIL = ["公共_任务失败"]
-POP = ["[JumpBack]公共_获得奖励", "[JumpBack]公共_点击空白继续"]
+POP = ["[JumpBack]公共_获得奖励", "[JumpBack]公共_跳过卡面", "[JumpBack]公共_点击空白继续"]
 W = {"time": 800, "timeout": 10000}
 
 

@@ -25,7 +25,7 @@ def build():
         d[f"{k}_流程"] = {
             "desc": f"在图鉴「{k}」列表：点第一张（从上到下、从左到右），进详情页后找等级未满的",
             "timeout": 20000,
-            "next": [f"{k}_点第一张", "[JumpBack]公共_获得奖励", "[JumpBack]公共_点击空白继续"],
+            "next": [f"{k}_点第一张", "[JumpBack]公共_获得奖励", "[JumpBack]公共_跳过卡面", "[JumpBack]公共_点击空白继续"],
             "on_error": ["公共_任务失败"],
         }
         d[f"{k}_点第一张"] = {
@@ -66,7 +66,7 @@ def build():
             "action": {"type": "Click"},
             "post_wait_freezes": FREEZE,
             "timeout": 5000,
-            "next": [f"{k}_已提升", "[JumpBack]公共_获得奖励", "[JumpBack]公共_点击空白继续"],
+            "next": [f"{k}_已提升", "[JumpBack]公共_获得奖励", "[JumpBack]公共_跳过卡面", "[JumpBack]公共_点击空白继续"],
             "on_error": ["公共_进入日常列表"],
         }
         d[f"{k}_已提升"] = {

@@ -13,7 +13,7 @@ ROW_Y = [135 + round(67.5 * i) for i in range(SLOTS)]   # 左侧活动名文字�
 PW = {"time": 600, "timeout": 2500, "rate_limit": 200}
 POPS = ["[JumpBack]公共_晚点再说", "[JumpBack]公共_生日弹窗等待", "[JumpBack]公共_稍后再说", "[JumpBack]公共_不再提醒", "[JumpBack]公共_我知道了"]
 SAFE = ["[JumpBack]公共_放弃付款", "[JumpBack]公共_关闭支付", "[JumpBack]公共_付费防呆", "[JumpBack]公共_取消弹窗",
-        "[JumpBack]兑换_关选择弹窗", "[JumpBack]公共_获得奖励", "[JumpBack]公共_点击空白继续"]
+        "[JumpBack]兑换_关选择弹窗", "[JumpBack]公共_获得奖励", "[JumpBack]公共_跳过卡面", "[JumpBack]公共_点击空白继续"]
 
 
 def main_guard():
