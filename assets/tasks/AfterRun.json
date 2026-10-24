@@ -3,11 +3,14 @@
         {
             "name": "🏁结束后操作",
             "entry": "结束后操作",
+            "group": [
+                "end"
+            ],
             "default_check": true,
             "option": [
                 "结束后"
             ],
-            "description": "放在任务列表最后。关闭模拟器、关机等请用 MFAAvalonia 自带的「完成后」设置。"
+            "description": "tasks/doc/AfterRun.md"
         }
     ],
     "option": {

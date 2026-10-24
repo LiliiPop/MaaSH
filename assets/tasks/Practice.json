@@ -2,9 +2,13 @@
     "task": [
         {
             "name": "🏋️练习合一（每周）",
+            "label": "🏋️练习打包",
             "entry": "绘卷回忆扫荡",
+            "group": [
+                "weekly"
+            ],
             "default_check": false,
-            "description": "每周一次：进一次「练习」，依次做<b>📼绘卷回忆扫荡</b>和<b>🎬时光电影院</b>，做完绘卷回忆按返回回到日常练习页直接进电影院。<br>勾了这个就不用再勾单独的「绘卷回忆扫荡」「时光电影院」。每天的「🍰清体力」仍然单独勾（它最后要去任务页确认体力任务）。",
+            "description": "tasks/doc/Practice.md",
             "pipeline_override": {
                 "Flag_绘卷回忆扫荡完成": {
                     "next": [

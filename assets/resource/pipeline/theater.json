@@ -521,6 +521,7 @@
         },
         "timeout": 5000,
         "next": [
+            "[JumpBack]质检_剧场结算",
             "剧场_已赞"
         ],
         "on_error": [
@@ -1267,5 +1268,55 @@
         "focus": {
             "Node.Action.Succeeded": "[color:Orange]剧场评论：纸飞机点了几次都没发出去，这次不评论，继续点赞[/color]"
         }
+    },
+    "质检_剧场结算": {
+        "desc": "质检截图点：剧场看完点完赞的结算页。默认什么都不做；在「任务预设配置 → 质检截图」勾上后这里会截一张图（存 debug/screencap）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^点赞$",
+                                "roi": [
+                                    665,
+                                    365,
+                                    95,
+                                    40
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    688,
+                                    318,
+                                    45,
+                                    40
+                                ],
+                                "lower": [
+                                    200,
+                                    50,
+                                    40
+                                ],
+                                "upper": [
+                                    255,
+                                    130,
+                                    120
+                                ],
+                                "count": 400
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "max_hit": 1
     }
 }

@@ -130,6 +130,7 @@
         "timeout": 5000,
         "next": [
             "[JumpBack]公共_快速模式提示",
+            "[JumpBack]质检_周常领取",
             "周常_有奖励",
             "Flag_周常领取完成",
             "周常_一键领取"
@@ -224,5 +225,21 @@
         "focus": {
             "Node.Action.Succeeded": "[color:Limegreen]周常奖励已全部领取（一键领取已变灰）[/color]"
         }
+    },
+    "质检_周常领取": {
+        "desc": "质检截图点：周常一键领取后的奖励。默认什么都不做；在「任务预设配置 → 质检截图」勾上后这里会截一张图（存 debug/screencap）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "恭喜获得|获得奖励|点击空白处继续",
+                "roi": [
+                    380,
+                    130,
+                    520,
+                    560
+                ]
+            }
+        },
+        "max_hit": 1
     }
 }

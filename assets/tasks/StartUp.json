@@ -3,12 +3,15 @@
         {
             "name": "✈️启动绘旅人",
             "entry": "启动游戏",
+            "group": [
+                "start"
+            ],
             "default_check": true,
             "option": [
                 "启动等待上限",
                 "使用指定账号登录"
             ],
-            "description": "启动游戏，点击登录界面进入默认账号，关闭所有公告，停在主界面。<br>可设置等待上限；认不出的开屏会在画面静止后点底部进入。<br><b>第一次使用</b>：MuMu 分辨率设成 1280×720（设置中心 → 显示 → 平板版），先在模拟器里手动登录一次游戏；完整的 MuMu 和 MaaSH 设置步骤见公告（设置 → 关于 → 显示公告）。"
+            "description": "tasks/doc/StartUp.md"
         }
     ],
     "option": {
@@ -86,12 +89,12 @@
         "质检截图": {
             "type": "checkbox",
             "default_case": [],
-            "description": "勾选的环节<b>完成的那一刻</b>自动截一张图，用来检查脚本有没有做对（失败时的截图本来就会自动存在 debug\\on_error）。<br>图片存在 <b>MaaSH 目录\\debug\\screencap</b>，文件名是「时间_节点名」。<br><b>图片不会自动删除</b>（每张约 100–200 KB），请定期手动清理。<br>不勾 = 不截图。",
+            "description": "勾选的环节到了<b>结算 / 奖励页面</b>时自动截一张图，用来检查脚本有没有做对（失败时的截图本来就会自动存在 debug\\on_error）。<br>图片存在 <b>MaaSH 目录\\debug\\screencap</b>，文件名是「时间_节点名」。<br><b>图片不会自动删除</b>（每张约 100–200 KB），请定期手动清理。<br>不勾 = 不截图。",
             "cases": [
                 {
-                    "name": "启动游戏",
+                    "name": "手偶剧场结算",
                     "pipeline_override": {
-                        "Flag_启动完成": {
+                        "质检_剧场结算": {
                             "action": {
                                 "type": "Screencap",
                                 "param": {
@@ -103,103 +106,7 @@
                     }
                 },
                 {
-                    "name": "体力",
-                    "pipeline_override": {
-                        "Flag_体力检查完成": {
-                            "action": {
-                                "type": "Screencap",
-                                "param": {
-                                    "format": "jpg",
-                                    "quality": 85
-                                }
-                            }
-                        },
-                        "Flag_清体力_今日已完成": {
-                            "action": {
-                                "type": "Screencap",
-                                "param": {
-                                    "format": "jpg",
-                                    "quality": 85
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "name": "签到 / 邮件 / 每日每周领取",
-                    "pipeline_override": {
-                        "Flag_签到完成": {
-                            "action": {
-                                "type": "Screencap",
-                                "param": {
-                                    "format": "jpg",
-                                    "quality": 85
-                                }
-                            }
-                        },
-                        "Flag_邮件完成": {
-                            "action": {
-                                "type": "Screencap",
-                                "param": {
-                                    "format": "jpg",
-                                    "quality": 85
-                                }
-                            }
-                        },
-                        "Flag_每日任务领取完成": {
-                            "action": {
-                                "type": "Screencap",
-                                "param": {
-                                    "format": "jpg",
-                                    "quality": 85
-                                }
-                            }
-                        },
-                        "Flag_周常领取完成": {
-                            "action": {
-                                "type": "Screencap",
-                                "param": {
-                                    "format": "jpg",
-                                    "quality": 85
-                                }
-                            }
-                        },
-                        "Flag_假日领取完成": {
-                            "action": {
-                                "type": "Screencap",
-                                "param": {
-                                    "format": "jpg",
-                                    "quality": 85
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "name": "好友体力",
-                    "pipeline_override": {
-                        "Flag_好友体力完成": {
-                            "action": {
-                                "type": "Screencap",
-                                "param": {
-                                    "format": "jpg",
-                                    "quality": 85
-                                }
-                            }
-                        },
-                        "Flag_好友体力_已赠领": {
-                            "action": {
-                                "type": "Screencap",
-                                "param": {
-                                    "format": "jpg",
-                                    "quality": 85
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "name": "月卡 / 礼包 / 兑换",
+                    "name": "月卡领取（已领取页面）",
                     "pipeline_override": {
                         "Flag_月卡完成": {
                             "action": {
@@ -209,8 +116,13 @@
                                     "quality": 85
                                 }
                             }
-                        },
-                        "Flag_月卡_无月卡": {
+                        }
+                    }
+                },
+                {
+                    "name": "领邮件结算",
+                    "pipeline_override": {
+                        "质检_邮件结算": {
                             "action": {
                                 "type": "Screencap",
                                 "param": {
@@ -218,8 +130,13 @@
                                     "quality": 85
                                 }
                             }
-                        },
-                        "Flag_月卡周购完成": {
+                        }
+                    }
+                },
+                {
+                    "name": "每日任务领取",
+                    "pipeline_override": {
+                        "质检_每日领取": {
                             "action": {
                                 "type": "Screencap",
                                 "param": {
@@ -227,8 +144,13 @@
                                     "quality": 85
                                 }
                             }
-                        },
-                        "Flag_免费礼包完成": {
+                        }
+                    }
+                },
+                {
+                    "name": "周常领取",
+                    "pipeline_override": {
+                        "质检_周常领取": {
                             "action": {
                                 "type": "Screencap",
                                 "param": {
@@ -236,7 +158,54 @@
                                     "quality": 85
                                 }
                             }
-                        },
+                        }
+                    }
+                },
+                {
+                    "name": "月卡每周购买",
+                    "pipeline_override": {
+                        "质检_月卡购买": {
+                            "action": {
+                                "type": "Screencap",
+                                "param": {
+                                    "format": "jpg",
+                                    "quality": 85
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "绘卷回忆扫荡",
+                    "pipeline_override": {
+                        "质检_绘卷扫荡": {
+                            "action": {
+                                "type": "Screencap",
+                                "param": {
+                                    "format": "jpg",
+                                    "quality": 85
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "假日领取",
+                    "pipeline_override": {
+                        "质检_假日领取": {
+                            "action": {
+                                "type": "Screencap",
+                                "param": {
+                                    "format": "jpg",
+                                    "quality": 85
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "时光电影院兑换完",
+                    "pipeline_override": {
                         "Flag_兑换完成": {
                             "action": {
                                 "type": "Screencap",
@@ -249,180 +218,9 @@
                     }
                 },
                 {
-                    "name": "出行赠礼",
+                    "name": "日程结算",
                     "pipeline_override": {
-                        "出行赠礼_已送出": {
-                            "action": {
-                                "type": "Screencap",
-                                "param": {
-                                    "format": "jpg",
-                                    "quality": 85
-                                }
-                            }
-                        },
-                        "Flag_出行赠礼_今日已完成": {
-                            "action": {
-                                "type": "Screencap",
-                                "param": {
-                                    "format": "jpg",
-                                    "quality": 85
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "name": "出行收礼",
-                    "pipeline_override": {
-                        "Flag_出行收礼_今日已完成": {
-                            "action": {
-                                "type": "Screencap",
-                                "param": {
-                                    "format": "jpg",
-                                    "quality": 85
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "name": "日程",
-                    "pipeline_override": {
-                        "Flag_日程今日已完成": {
-                            "action": {
-                                "type": "Screencap",
-                                "param": {
-                                    "format": "jpg",
-                                    "quality": 85
-                                }
-                            }
-                        },
-                        "Flag_日程_今日已完成": {
-                            "action": {
-                                "type": "Screencap",
-                                "param": {
-                                    "format": "jpg",
-                                    "quality": 85
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "name": "画展",
-                    "pipeline_override": {
-                        "Flag_画展完成": {
-                            "action": {
-                                "type": "Screencap",
-                                "param": {
-                                    "format": "jpg",
-                                    "quality": 85
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "name": "校园打包收尾（任务页四项都确认后）",
-                    "pipeline_override": {
-                        "Flag_校园合一完成": {
-                            "action": {
-                                "type": "Screencap",
-                                "param": {
-                                    "format": "jpg",
-                                    "quality": 85
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "name": "画灵 / 绘卷提升",
-                    "pipeline_override": {
-                        "Flag_画灵提升_今日已完成": {
-                            "action": {
-                                "type": "Screencap",
-                                "param": {
-                                    "format": "jpg",
-                                    "quality": 85
-                                }
-                            }
-                        },
-                        "Flag_绘卷提升_今日已完成": {
-                            "action": {
-                                "type": "Screencap",
-                                "param": {
-                                    "format": "jpg",
-                                    "quality": 85
-                                }
-                            }
-                        },
-                        "Flag_画灵绘卷合一完成": {
-                            "action": {
-                                "type": "Screencap",
-                                "param": {
-                                    "format": "jpg",
-                                    "quality": 85
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "name": "手偶剧场",
-                    "pipeline_override": {
-                        "Flag_手偶剧场_今日已完成": {
-                            "action": {
-                                "type": "Screencap",
-                                "param": {
-                                    "format": "jpg",
-                                    "quality": 85
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "name": "扫荡（绘卷回忆 / 电影院）",
-                    "pipeline_override": {
-                        "Flag_绘卷回忆扫荡完成": {
-                            "action": {
-                                "type": "Screencap",
-                                "param": {
-                                    "format": "jpg",
-                                    "quality": 85
-                                }
-                            }
-                        },
-                        "Flag_电影院扫荡完成": {
-                            "action": {
-                                "type": "Screencap",
-                                "param": {
-                                    "format": "jpg",
-                                    "quality": 85
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "name": "免费抽卡",
-                    "pipeline_override": {
-                        "Flag_免费抽卡完成": {
-                            "action": {
-                                "type": "Screencap",
-                                "param": {
-                                    "format": "jpg",
-                                    "quality": 85
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "name": "清红点",
-                    "pipeline_override": {
-                        "Flag_清红点完成": {
+                        "质检_日程结算": {
                             "action": {
                                 "type": "Screencap",
                                 "param": {

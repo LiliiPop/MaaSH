@@ -3,7 +3,11 @@
         {
             "name": "💤关闭绘旅人",
             "entry": "关闭游戏",
-            "default_check": false
+            "group": [
+                "end"
+            ],
+            "default_check": false,
+            "description": "tasks/doc/CloseGame.md"
         }
     ]
 }

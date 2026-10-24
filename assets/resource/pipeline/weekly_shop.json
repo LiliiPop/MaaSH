@@ -597,6 +597,7 @@
         "desc": "买完：关「恭喜获得」，再回到列表确认变成「每周限购(1/1)」；若弹出付费/充值窗口（如钻石不足）就取消并结束",
         "timeout": 10000,
         "next": [
+            "[JumpBack]质检_月卡购买",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_跳过卡面",
             "[JumpBack]公共_点击空白继续",
@@ -720,5 +721,21 @@
         "focus": {
             "Node.Action.Succeeded": "[color:Limegreen]月卡每周购买完成[/color]"
         }
+    },
+    "质检_月卡购买": {
+        "desc": "质检截图点：超值颜料礼盒买完的奖励。默认什么都不做；在「任务预设配置 → 质检截图」勾上后这里会截一张图（存 debug/screencap）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "恭喜获得",
+                "roi": [
+                    450,
+                    110,
+                    400,
+                    150
+                ]
+            }
+        },
+        "max_hit": 1
     }
 }

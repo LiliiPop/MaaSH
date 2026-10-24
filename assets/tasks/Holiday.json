@@ -3,8 +3,11 @@
         {
             "name": "🏖️假日一键领取",
             "entry": "假日一键领取",
+            "group": [
+                "claim"
+            ],
             "default_check": true,
-            "description": "主界面「假日」：先领假日清单，再领假日计划（可分别开关）。<br>建议放在其他日常之后。",
+            "description": "tasks/doc/Holiday.md",
             "option": [
                 "领假日清单",
                 "领假日计划"

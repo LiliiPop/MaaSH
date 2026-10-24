@@ -477,6 +477,7 @@
         "desc": "关「恭喜获得」，回到绘卷回忆页后再点一次扫荡复核",
         "timeout": 10000,
         "next": [
+            "[JumpBack]质检_绘卷扫荡",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_跳过卡面",
             "[JumpBack]公共_点击空白继续",
@@ -509,5 +510,21 @@
         "focus": {
             "Node.Action.Succeeded": "[color:Limegreen]绘卷回忆：本周已扫荡[/color]"
         }
+    },
+    "质检_绘卷扫荡": {
+        "desc": "质检截图点：绘卷回忆扫荡的奖励。默认什么都不做；在「任务预设配置 → 质检截图」勾上后这里会截一张图（存 debug/screencap）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "恭喜获得",
+                "roi": [
+                    450,
+                    110,
+                    400,
+                    150
+                ]
+            }
+        },
+        "max_hit": 1
     }
 }

@@ -2,9 +2,13 @@
     "task": [
         {
             "name": "🏫校园合一",
+            "label": "🏫校园打包",
             "entry": "校园合一",
-            "default_check": false,
-            "description": "进一次校园，依次做 <b>🎁出行赠礼 + 🍀出行收礼 → 🗓️安排日程 → 🖼️画展宣传</b>：每做完一项按返回回到校园直接点下一项。最后去任务页确认赠礼、收礼、画展三行；赠礼或收礼还没完成的，会从任务页「前往」补做一次。<br>勾了这个就不用再勾这 4 个单项。<br>注意：从校园进出行时脚本不知道今天送没送过礼，<b>同一天重跑会再送一份第一个礼物</b>（收礼会认右上角提示，不会重复）。",
+            "group": [
+                "daily"
+            ],
+            "default_check": true,
+            "description": "tasks/doc/Campus.md",
             "pipeline_override": {
                 "出行赠礼_已送出": {
                     "next": [

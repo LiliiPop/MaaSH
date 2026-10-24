@@ -353,6 +353,7 @@
         "timeout": 20000,
         "next": [
             "Flag_邮件完成",
+            "[JumpBack]质检_邮件结算",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_跳过卡面",
             "[JumpBack]公共_点击空白继续"
@@ -383,5 +384,21 @@
         "focus": {
             "Node.Action.Succeeded": "[color:Limegreen]邮件已全部领取[/color]"
         }
+    },
+    "质检_邮件结算": {
+        "desc": "质检截图点：邮件全部领取后弹出的奖励。默认什么都不做；在「任务预设配置 → 质检截图」勾上后这里会截一张图（存 debug/screencap）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "恭喜获得",
+                "roi": [
+                    450,
+                    110,
+                    400,
+                    150
+                ]
+            }
+        },
+        "max_hit": 1
     }
 }

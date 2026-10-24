@@ -3,8 +3,11 @@
         {
             "name": "🖼️画展宣传",
             "entry": "画展",
-            "default_check": true,
-            "description": "校园 → 画展：先领已结束场次的奖励，再按 NPC 说的地点开新画展（快速选择 → 选宣传时间 → 申请）。<br>绝不点「取消宣传」「加速宣传」。",
+            "group": [
+                "daily_single"
+            ],
+            "default_check": false,
+            "description": "tasks/doc/Exhibition.md",
             "option": [
                 "画展二选一奖励",
                 "画展宣传时间"

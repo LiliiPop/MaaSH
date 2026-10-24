@@ -2,9 +2,13 @@
     "task": [
         {
             "name": "🛍️采购合一",
+            "label": "🛍️采购打包",
             "entry": "月卡",
-            "default_check": false,
-            "description": "进一次「采购」，依次做<b>💰月卡领取</b>和<b>🎀免费礼包</b>（可选活动免费礼包），中间不回主界面。没有月卡时自动跳过月卡、继续领免费礼包。<br>勾了这个就不用再勾单独的「月卡领取」「免费礼包」。「🛒月卡每周购买」每周才跑一次，仍然单独勾。",
+            "group": [
+                "daily"
+            ],
+            "default_check": true,
+            "description": "tasks/doc/Purchase.md",
             "pipeline_override": {
                 "Flag_月卡完成": {
                     "next": [

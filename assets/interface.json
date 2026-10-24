@@ -57,31 +57,19 @@
                     "enabled": true
                 },
                 {
-                    "name": "💰月卡领取",
-                    "enabled": true
-                },
-                {
-                    "name": "🎀免费礼包",
-                    "enabled": true
-                },
-                {
                     "name": "💌好友体力",
                     "enabled": true
                 },
                 {
-                    "name": "🗓️安排日程",
+                    "name": "🛍️采购合一",
                     "enabled": true
                 },
                 {
-                    "name": "🎁出行赠礼",
+                    "name": "🏫校园合一",
                     "enabled": true
                 },
                 {
-                    "name": "🍀出行收礼",
-                    "enabled": true
-                },
-                {
-                    "name": "🖼️画展宣传",
+                    "name": "🎨画灵绘卷合一",
                     "enabled": true
                 },
                 {
@@ -89,24 +77,76 @@
                     "enabled": true
                 },
                 {
-                    "name": "🌟画灵提升",
+                    "name": "🎭手偶剧场三合一",
                     "enabled": true
+                },
+                {
+                    "name": "🔴清红点",
+                    "enabled": false
+                },
+                {
+                    "name": "🍰清体力",
+                    "enabled": false
+                },
+                {
+                    "name": "🍓领体力",
+                    "enabled": false
+                },
+                {
+                    "name": "💰月卡领取",
+                    "enabled": false
+                },
+                {
+                    "name": "🎀免费礼包",
+                    "enabled": false
+                },
+                {
+                    "name": "🎁出行赠礼",
+                    "enabled": false
+                },
+                {
+                    "name": "🍀出行收礼",
+                    "enabled": false
+                },
+                {
+                    "name": "🗓️安排日程",
+                    "enabled": false
+                },
+                {
+                    "name": "🖼️画展宣传",
+                    "enabled": false
+                },
+                {
+                    "name": "🌟画灵提升",
+                    "enabled": false
                 },
                 {
                     "name": "📜绘卷提升",
-                    "enabled": true
-                },
-                {
-                    "name": "🎭手偶剧场三合一",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "name": "👍手偶剧场点赞",
                     "enabled": false
                 },
                 {
-                    "name": "🍰清体力",
+                    "name": "🏋️练习合一（每周）",
                     "enabled": false
+                },
+                {
+                    "name": "📼绘卷回忆扫荡",
+                    "enabled": false
+                },
+                {
+                    "name": "🎬时光电影院",
+                    "enabled": false
+                },
+                {
+                    "name": "🛒月卡每周购买",
+                    "enabled": false
+                },
+                {
+                    "name": "🏖️假日一键领取",
+                    "enabled": true
                 },
                 {
                     "name": "📋每日任务领取",
@@ -115,26 +155,6 @@
                 {
                     "name": "📆周常领取",
                     "enabled": true
-                },
-                {
-                    "name": "🛒月卡每周购买",
-                    "enabled": false
-                },
-                {
-                    "name": "📼绘卷回忆扫荡",
-                    "enabled": false
-                },
-                {
-                    "name": "🏖️假日一键领取",
-                    "enabled": true
-                },
-                {
-                    "name": "🎬时光电影院",
-                    "enabled": false
-                },
-                {
-                    "name": "🍓领体力",
-                    "enabled": false
                 },
                 {
                     "name": "🏁结束后操作",
@@ -171,19 +191,47 @@
                     "enabled": false
                 },
                 {
+                    "name": "💌好友体力",
+                    "enabled": false
+                },
+                {
+                    "name": "🛍️采购合一",
+                    "enabled": false
+                },
+                {
+                    "name": "🏫校园合一",
+                    "enabled": false
+                },
+                {
+                    "name": "🎨画灵绘卷合一",
+                    "enabled": false
+                },
+                {
+                    "name": "🎴免费抽卡",
+                    "enabled": false
+                },
+                {
+                    "name": "🎭手偶剧场三合一",
+                    "enabled": false
+                },
+                {
+                    "name": "🔴清红点",
+                    "enabled": false
+                },
+                {
+                    "name": "🍰清体力",
+                    "enabled": false
+                },
+                {
+                    "name": "🍓领体力",
+                    "enabled": true
+                },
+                {
                     "name": "💰月卡领取",
                     "enabled": false
                 },
                 {
                     "name": "🎀免费礼包",
-                    "enabled": false
-                },
-                {
-                    "name": "💌好友体力",
-                    "enabled": false
-                },
-                {
-                    "name": "🗓️安排日程",
                     "enabled": false
                 },
                 {
@@ -195,11 +243,11 @@
                     "enabled": false
                 },
                 {
-                    "name": "🖼️画展宣传",
+                    "name": "🗓️安排日程",
                     "enabled": false
                 },
                 {
-                    "name": "🎴免费抽卡",
+                    "name": "🖼️画展宣传",
                     "enabled": false
                 },
                 {
@@ -211,15 +259,27 @@
                     "enabled": false
                 },
                 {
-                    "name": "🎭手偶剧场三合一",
-                    "enabled": false
-                },
-                {
                     "name": "👍手偶剧场点赞",
                     "enabled": false
                 },
                 {
-                    "name": "🍰清体力",
+                    "name": "🏋️练习合一（每周）",
+                    "enabled": false
+                },
+                {
+                    "name": "📼绘卷回忆扫荡",
+                    "enabled": false
+                },
+                {
+                    "name": "🎬时光电影院",
+                    "enabled": false
+                },
+                {
+                    "name": "🛒月卡每周购买",
+                    "enabled": false
+                },
+                {
+                    "name": "🏖️假日一键领取",
                     "enabled": false
                 },
                 {
@@ -229,26 +289,6 @@
                 {
                     "name": "📆周常领取",
                     "enabled": false
-                },
-                {
-                    "name": "🛒月卡每周购买",
-                    "enabled": false
-                },
-                {
-                    "name": "📼绘卷回忆扫荡",
-                    "enabled": false
-                },
-                {
-                    "name": "🏖️假日一键领取",
-                    "enabled": false
-                },
-                {
-                    "name": "🎬时光电影院",
-                    "enabled": false
-                },
-                {
-                    "name": "🍓领体力",
-                    "enabled": true
                 },
                 {
                     "name": "🏁结束后操作",
@@ -285,19 +325,47 @@
                     "enabled": false
                 },
                 {
+                    "name": "💌好友体力",
+                    "enabled": false
+                },
+                {
+                    "name": "🛍️采购合一",
+                    "enabled": false
+                },
+                {
+                    "name": "🏫校园合一",
+                    "enabled": false
+                },
+                {
+                    "name": "🎨画灵绘卷合一",
+                    "enabled": false
+                },
+                {
+                    "name": "🎴免费抽卡",
+                    "enabled": false
+                },
+                {
+                    "name": "🎭手偶剧场三合一",
+                    "enabled": false
+                },
+                {
+                    "name": "🔴清红点",
+                    "enabled": false
+                },
+                {
+                    "name": "🍰清体力",
+                    "enabled": false
+                },
+                {
+                    "name": "🍓领体力",
+                    "enabled": false
+                },
+                {
                     "name": "💰月卡领取",
                     "enabled": false
                 },
                 {
                     "name": "🎀免费礼包",
-                    "enabled": false
-                },
-                {
-                    "name": "💌好友体力",
-                    "enabled": false
-                },
-                {
-                    "name": "🗓️安排日程",
                     "enabled": false
                 },
                 {
@@ -309,11 +377,11 @@
                     "enabled": false
                 },
                 {
-                    "name": "🖼️画展宣传",
+                    "name": "🗓️安排日程",
                     "enabled": false
                 },
                 {
-                    "name": "🎴免费抽卡",
+                    "name": "🖼️画展宣传",
                     "enabled": false
                 },
                 {
@@ -325,15 +393,27 @@
                     "enabled": false
                 },
                 {
-                    "name": "🎭手偶剧场三合一",
-                    "enabled": false
-                },
-                {
                     "name": "👍手偶剧场点赞",
                     "enabled": false
                 },
                 {
-                    "name": "🍰清体力",
+                    "name": "🏋️练习合一（每周）",
+                    "enabled": false
+                },
+                {
+                    "name": "📼绘卷回忆扫荡",
+                    "enabled": true
+                },
+                {
+                    "name": "🎬时光电影院",
+                    "enabled": true
+                },
+                {
+                    "name": "🛒月卡每周购买",
+                    "enabled": true
+                },
+                {
+                    "name": "🏖️假日一键领取",
                     "enabled": false
                 },
                 {
@@ -342,26 +422,6 @@
                 },
                 {
                     "name": "📆周常领取",
-                    "enabled": false
-                },
-                {
-                    "name": "🛒月卡每周购买",
-                    "enabled": true
-                },
-                {
-                    "name": "📼绘卷回忆扫荡",
-                    "enabled": true
-                },
-                {
-                    "name": "🏖️假日一键领取",
-                    "enabled": false
-                },
-                {
-                    "name": "🎬时光电影院",
-                    "enabled": true
-                },
-                {
-                    "name": "🍓领体力",
                     "enabled": false
                 },
                 {
@@ -378,35 +438,73 @@
             ]
         }
     ],
+    "group": [
+        {
+            "name": "start",
+            "label": "🚀 启动",
+            "description": "先启动游戏，其他任务都要在主界面开始。",
+            "default_expand": true
+        },
+        {
+            "name": "daily",
+            "label": "☀️ 每日",
+            "description": "每天跑一次的日常。打包任务进一次界面连做几项，比单项快。",
+            "default_expand": true
+        },
+        {
+            "name": "daily_single",
+            "label": "🧩 每日单项（已含在打包里）",
+            "description": "打包任务里已经包含这些，平时不用勾；只想补跑某一项时再单独勾。",
+            "default_expand": false
+        },
+        {
+            "name": "weekly",
+            "label": "📅 每周",
+            "description": "每周跑一次就够。",
+            "default_expand": true
+        },
+        {
+            "name": "claim",
+            "label": "🎁 领奖励（放在日常之后）",
+            "description": "做完上面的日常再领，才能把今天的进度都领到。",
+            "default_expand": true
+        },
+        {
+            "name": "end",
+            "label": "🏁 结束",
+            "default_expand": true
+        }
+    ],
     "import": [
         "tasks/SmokeTest.json",
         "tasks/StartUp.json",
         "tasks/SignIn.json",
         "tasks/Mail.json",
+        "tasks/Friend.json",
+        "tasks/Purchase.json",
+        "tasks/Campus.json",
+        "tasks/TaskRowsAll.json",
+        "tasks/Gacha.json",
+        "tasks/Theater.json",
+        "tasks/RedPoint.json",
+        "tasks/Sweep.json",
+        "tasks/Stamina.json",
         "tasks/MonthCard.json",
         "tasks/GiftBox.json",
-        "tasks/Friend.json",
-        "tasks/Schedule.json",
-        "tasks/Campus.json",
-        "tasks/Purchase.json",
-        "tasks/Practice.json",
-        "tasks/TaskRowsAll.json",
-        "tasks/RedPoint.json",
         "tasks/OutingGift.json",
         "tasks/OutingReceive.json",
+        "tasks/Schedule.json",
         "tasks/Exhibition.json",
-        "tasks/Gacha.json",
         "tasks/Spirit.json",
         "tasks/Scroll.json",
-        "tasks/Theater.json",
-        "tasks/Sweep.json",
+        "tasks/TheaterLike.json",
+        "tasks/Practice.json",
+        "tasks/Memory.json",
+        "tasks/Cinema.json",
+        "tasks/WeeklyShop.json",
+        "tasks/Holiday.json",
         "tasks/DailyClaim.json",
         "tasks/WeeklyClaim.json",
-        "tasks/WeeklyShop.json",
-        "tasks/Memory.json",
-        "tasks/Holiday.json",
-        "tasks/Cinema.json",
-        "tasks/Stamina.json",
         "tasks/AfterRun.json",
         "tasks/CloseGame.json"
     ],

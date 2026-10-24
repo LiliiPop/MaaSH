@@ -3,8 +3,11 @@
         {
             "name": "💌好友体力",
             "entry": "好友体力",
+            "group": [
+                "daily"
+            ],
             "default_check": true,
-            "description": "好友页「一键赠领」：赠送并领取好友体力。"
+            "description": "tasks/doc/Friend.md"
         }
     ]
 }

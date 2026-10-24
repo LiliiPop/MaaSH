@@ -460,6 +460,7 @@
     "假日_清单领后": {
         "timeout": 15000,
         "next": [
+            "[JumpBack]质检_假日领取",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
             "[JumpBack]公共_跳过卡面",
@@ -562,6 +563,7 @@
     "假日_计划领后": {
         "timeout": 15000,
         "next": [
+            "[JumpBack]质检_假日领取",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
             "[JumpBack]公共_跳过卡面",
@@ -894,5 +896,21 @@
         "focus": {
             "Node.Action.Succeeded": "[color:Orange]假日：关掉购买页后回到了主界面，没有可领取的，跳过[/color]"
         }
+    },
+    "质检_假日领取": {
+        "desc": "质检截图点：假日清单 / 计划一键领取的奖励。默认什么都不做；在「任务预设配置 → 质检截图」勾上后这里会截一张图（存 debug/screencap）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "恭喜获得",
+                "roi": [
+                    450,
+                    110,
+                    400,
+                    150
+                ]
+            }
+        },
+        "max_hit": 2
     }
 }

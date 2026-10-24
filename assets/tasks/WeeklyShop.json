@@ -3,8 +3,11 @@
         {
             "name": "🛒月卡每周购买",
             "entry": "月卡周购",
+            "group": [
+                "weekly"
+            ],
             "default_check": false,
-            "description": "采购 → 礼包 → 月卡直购 →「超值颜料礼盒」（每周限购 1 次）。<br>⚠️ <b>会花 1200 钻石</b>，需要有月卡；只在详情里看到这个礼盒、价签正好是 1200 时才买，价格不对就不买。<br>本周买过会直接跳过，建议放在「每周」预设里每周跑一次。"
+            "description": "tasks/doc/WeeklyShop.md"
         }
     ]
 }
