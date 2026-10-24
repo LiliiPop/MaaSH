@@ -101,6 +101,10 @@
                     "enabled": true
                 },
                 {
+                    "name": "👍手偶剧场点赞",
+                    "enabled": false
+                },
+                {
                     "name": "🍰清体力",
                     "enabled": false
                 },
@@ -211,6 +215,10 @@
                     "enabled": false
                 },
                 {
+                    "name": "👍手偶剧场点赞",
+                    "enabled": false
+                },
+                {
                     "name": "🍰清体力",
                     "enabled": false
                 },
@@ -318,6 +326,10 @@
                 },
                 {
                     "name": "🎭手偶剧场三合一",
+                    "enabled": false
+                },
+                {
+                    "name": "👍手偶剧场点赞",
                     "enabled": false
                 },
                 {
