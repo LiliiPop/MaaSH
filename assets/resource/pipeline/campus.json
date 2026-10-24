@@ -5,7 +5,8 @@
             "校园下一步": "校园_点出行",
             "收礼之后": "校园_去赠礼",
             "赠礼之后": "校园_出行做完",
-            "校园收尾": "Flag_校园合一完成"
+            "校园收尾": "Flag_校园合一完成",
+            "校园跳过": "校园_出行做完"
         },
         "timeout": 60000,
         "next": [
@@ -155,8 +156,10 @@
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_关好感度提升",
             "[JumpBack]公共_跳过卡面",
             "[JumpBack]公共_点击空白继续",
+            "校园_缺按钮",
             "校园_主界面进校园",
             "校园_主界面进校园_默认",
             "[JumpBack]公共_返回按钮"
@@ -236,7 +239,8 @@
     "校园_日程做完": {
         "desc": "日程做完（或今天已安排）→ 回校园做画展",
         "anchor": {
-            "校园下一步": "画展_点画展按钮"
+            "校园下一步": "画展_点画展按钮",
+            "校园跳过": "校园_画展未开放"
         },
         "next": [
             "校园_回校园"
@@ -283,7 +287,8 @@
     "校园_出行做完": {
         "desc": "收礼、赠礼都做完 → 回校园做日程",
         "anchor": {
-            "校园下一步": "日程_点日程按钮"
+            "校园下一步": "日程_点日程按钮",
+            "校园跳过": "校园_日程做完"
         },
         "next": [
             "校园_回校园"
@@ -351,5 +356,198 @@
         "next": [
             "[Anchor]赠礼之后"
         ]
+    },
+    "校园_缺按钮": {
+        "desc": "10-24 新号实机：校园底栏只有「装扮 / 日程 / 出行」，还没开放画展。原来找不到画展按钮就按返回、又从主界面重进校园，来回转了 35 秒后任务失败。现在：已经在校园（底栏认得出日程和出行）但要点的下一项按钮找不到时，先等 1.5 秒再看一次",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": "campus/日程_字.png",
+                                                "roi": [
+                                                    600,
+                                                    600,
+                                                    680,
+                                                    120
+                                                ],
+                                                "threshold": 0.8
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "^日程$",
+                                                "roi": [
+                                                    640,
+                                                    650,
+                                                    640,
+                                                    55
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": "campus/出行_字.png",
+                                                "roi": [
+                                                    600,
+                                                    600,
+                                                    680,
+                                                    120
+                                                ],
+                                                "threshold": 0.8
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "^出行$",
+                                                "roi": [
+                                                    640,
+                                                    650,
+                                                    640,
+                                                    55
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "post_delay": 1500,
+        "max_hit": 3,
+        "next": [
+            "[Anchor]校园下一步",
+            "校园_缺按钮_跳过"
+        ]
+    },
+    "校园_缺按钮_跳过": {
+        "desc": "等了一下还是没有这个按钮：这一项还没开放，跳过",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": "campus/日程_字.png",
+                                                "roi": [
+                                                    600,
+                                                    600,
+                                                    680,
+                                                    120
+                                                ],
+                                                "threshold": 0.8
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "^日程$",
+                                                "roi": [
+                                                    640,
+                                                    650,
+                                                    640,
+                                                    55
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": "campus/出行_字.png",
+                                                "roi": [
+                                                    600,
+                                                    600,
+                                                    680,
+                                                    120
+                                                ],
+                                                "threshold": 0.8
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "^出行$",
+                                                "roi": [
+                                                    640,
+                                                    650,
+                                                    640,
+                                                    55
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "next": [
+            "[Anchor]校园跳过"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]校园里没有这一项的按钮（还没开放），跳过[/color]"
+        }
+    },
+    "校园_画展未开放": {
+        "desc": "画展还没开放：画展这一步跳过，进入收尾",
+        "next": [
+            "[Anchor]校园收尾"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]这个号还没开放画展，跳过画展[/color]"
+        }
     }
 }

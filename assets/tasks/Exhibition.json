@@ -81,10 +81,10 @@
         },
         "画展二选一奖励": {
             "type": "select",
-            "description": "偶尔出现的二选一奖励（默认右边，例如星尘之铃）",
+            "description": "画展结束领奖时偶尔出现的二选一：左边是金币，右边是经验（默认右边）",
             "cases": [
                 {
-                    "name": "左边",
+                    "name": "左边（金币）",
                     "pipeline_override": {
                         "画展_选择奖励": {
                             "action": {
@@ -102,7 +102,7 @@
                     }
                 },
                 {
-                    "name": "右边",
+                    "name": "右边（经验）",
                     "pipeline_override": {
                         "画展_选择奖励": {
                             "action": {
@@ -120,7 +120,7 @@
                     }
                 }
             ],
-            "default_case": "右边"
+            "default_case": "右边（经验）"
         }
     }
 }
