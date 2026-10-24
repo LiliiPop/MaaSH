@@ -59,7 +59,7 @@ def build():
         d[f"红点_扫描_{k}"] = {
             "desc": "在这个活动页里找能领的东西；什么都没有就看下一个活动",
             "pre_wait_freezes": PW,
-            "next": SAFE + POPS + [f"[JumpBack]红点_领取_{k}", f"[JumpBack]红点_发光_{k}", nxt],
+            "next": SAFE + POPS + [f"[JumpBack]红点_领取_{k}", f"[JumpBack]红点_发光_{k}", f"[JumpBack]红点_页内红点_{k}", nxt],
         }
         d[f"红点_领取_{k}"] = {
             "desc": "只点写着「领取」的按钮（「前往」「充值」「未达成」都不点）",
@@ -76,6 +76,15 @@ def build():
                     "count": 600, "connected": True}}}], "box_index": 1}},
             "action": {"type": "Click"}, "post_wait_freezes": PW, "max_hit": 2,
             "focus": {"Node.Action.Succeeded": "[color:Dimgray]活动中心：点了发光的签到格[/color]"},
+        }
+    for k, y in enumerate(ROW_Y, 1):
+        d[f"红点_页内红点_{k}"] = {
+            "desc": "10-24 实机：页面里还有带红点但没有发光框的东西（例如「第二天」页签右上角的红点、没发光的可领格子）："
+                    "按红点图样找（只在活动页内容区找，活动页没有红点时匹配度 ≤0.68），点红点左下方的本体，再回来重新扫描",
+            "recognition": {"type": "TemplateMatch", "param": {"template": "common/红点.png", "roi": [470, 90, 800, 600], "threshold": 0.88}},
+            "action": {"type": "Click", "param": {"target_offset": [-40, 6, 18, 18]}},
+            "post_wait_freezes": PW, "max_hit": 4,
+            "focus": {"Node.Action.Succeeded": "[color:Dimgray]活动中心：点了页面里的红点[/color]"},
         }
     d["Flag_清红点完成"] = {
         "desc": "活动列表都看过了",
