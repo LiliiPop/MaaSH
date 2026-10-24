@@ -416,7 +416,7 @@
             "rate_limit": 200
         },
         "next": [
-            "公共_进入日常列表"
+            "出行收礼_完成"
         ],
         "focus": {
             "Node.Action.Starting": "[color:Dimgray]收到礼物，回任务页确认[/color]"
@@ -505,7 +505,7 @@
             }
         },
         "next": [
-            "公共_进入日常列表"
+            "出行赠礼_完成"
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]礼物已送出，回任务页确认[/color]"
@@ -742,7 +742,7 @@
             }
         },
         "next": [
-            "公共_进入日常列表"
+            "出行收礼_完成"
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]出行收礼：右上角提示今天已经收过（冷却中或已到上限）[/color]"
@@ -987,10 +987,22 @@
         },
         "pre_delay": 1200,
         "next": [
-            "公共_进入日常列表"
+            "出行赠礼_完成"
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]礼物已送出（数量归零），回任务页确认[/color]"
+        }
+    },
+    "出行赠礼_完成": {
+        "desc": "10-24：送出（看到好感度+N 或数量归零）就算完成，不再回任务页复核",
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]出行赠礼完成：礼物已送出[/color]"
+        }
+    },
+    "出行收礼_完成": {
+        "desc": "10-24：弹出恭喜获得（或提示今天已收过）就算完成，不再回任务页复核",
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]出行收礼完成[/color]"
         }
     }
 }

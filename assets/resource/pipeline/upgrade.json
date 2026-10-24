@@ -222,7 +222,7 @@
             "rate_limit": 200
         },
         "next": [
-            "公共_进入日常列表"
+            "画灵提升_完成"
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]画灵已升 1 级，回任务页确认[/color]"
@@ -469,7 +469,7 @@
             "rate_limit": 200
         },
         "next": [
-            "公共_进入日常列表"
+            "绘卷提升_完成"
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]绘卷已升 1 级，回任务页确认[/color]"
@@ -491,6 +491,18 @@
         },
         "focus": {
             "Node.Action.Succeeded": "[color:Orange]绘卷升级材料不够（「提升」是灰色），跳过[/color]"
+        }
+    },
+    "画灵提升_完成": {
+        "desc": "10-24：弹出「等级提升」就算完成，不再回任务页复核",
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]画灵提升完成：已升 1 级[/color]"
+        }
+    },
+    "绘卷提升_完成": {
+        "desc": "10-24：弹出「等级提升」就算完成，不再回任务页复核",
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]绘卷提升完成：已升 1 级[/color]"
         }
     }
 }
