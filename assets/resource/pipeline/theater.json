@@ -934,30 +934,84 @@
         "post_delay": 2000,
         "next": [
             "剧场_评论_重输",
-            "剧场_评论_发送前截图"
+            "剧场_评论_发送",
+            "剧场_评论_放弃"
         ],
         "on_error": [
             "剧场_评论_输不进"
         ]
     },
     "剧场_评论_发送": {
-        "desc": "点输入栏右端的纸飞机发送，视频继续播放",
-        "action": {
-            "type": "Click",
+        "desc": "10-24：点输入栏右端的纸飞机发送。前两次实机 Click 点在纸飞机上但游戏没反应（前后截图一模一样），改成按住 0.2 秒再松开（像手指点），并先认出纸飞机还在、视频还暂停着（=输入栏还开着）才点。发出去后输入栏收起、视频继续播放",
+        "recognition": {
+            "type": "And",
             "param": {
-                "target": [
-                    1208,
-                    36,
-                    36,
-                    34
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    1195,
+                                    30,
+                                    65,
+                                    52
+                                ],
+                                "lower": [
+                                    235,
+                                    235,
+                                    235
+                                ],
+                                "upper": [
+                                    255,
+                                    255,
+                                    255
+                                ],
+                                "count": 250,
+                                "method": 4
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "TemplateMatch",
+                            "param": {
+                                "template": "theater/播放键_暂停中.png",
+                                "roi": [
+                                    15,
+                                    610,
+                                    90,
+                                    90
+                                ],
+                                "threshold": 0.75
+                            }
+                        }
+                    }
                 ]
             }
         },
-        "post_delay": 1000,
+        "action": {
+            "type": "LongPress",
+            "param": {
+                "target": [
+                    1210,
+                    42,
+                    30,
+                    26
+                ],
+                "duration": 200
+            }
+        },
+        "pre_delay": 500,
+        "post_delay": 1500,
+        "max_hit": 3,
         "next": [
-            "剧场_评论_发送后截图"
-        ],
-        "pre_delay": 500
+            "剧场_评论_发送失败",
+            "剧场_评论_回车发送",
+            "剧场_评论_发送",
+            "剧场_评论_没发出",
+            "剧场_评论_已发送"
+        ]
     },
     "剧场_评论_放弃": {
         "desc": "评论没发出去：不影响点赞，继续等播完",
@@ -1046,7 +1100,7 @@
         }
     },
     "剧场_评论_已发送": {
-        "desc": "没有出现失败提示，算发出去了",
+        "desc": "没有失败提示，并且输入栏已经收起/视频在播放（纸飞机和暂停状态的播放键不同时在了），算发出去了",
         "next": [
             "剧场_等播放"
         ],
@@ -1082,30 +1136,136 @@
             "Node.Action.Starting": "[color:Orange]剧场评论：这个账号没做手机验证，游戏不让评论（弹窗关不掉）。已关掉游戏重开，剧场三合一跳过；只想点赞可以改用「👍手偶剧场点赞」[/color]"
         }
     },
-    "剧场_评论_发送前截图": {
-        "desc": "10-24 排查纸飞机点不上：发送前存一张图（debug/screencap）",
-        "action": {
-            "type": "Screencap",
+    "剧场_评论_回车发送": {
+        "desc": "点纸飞机后输入栏还开着：试一下按回车键提交（只试一次），再回去点纸飞机",
+        "recognition": {
+            "type": "And",
             "param": {
-                "format": "png"
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    1195,
+                                    30,
+                                    65,
+                                    52
+                                ],
+                                "lower": [
+                                    235,
+                                    235,
+                                    235
+                                ],
+                                "upper": [
+                                    255,
+                                    255,
+                                    255
+                                ],
+                                "count": 250,
+                                "method": 4
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "TemplateMatch",
+                            "param": {
+                                "template": "theater/播放键_暂停中.png",
+                                "roi": [
+                                    15,
+                                    610,
+                                    90,
+                                    90
+                                ],
+                                "threshold": 0.75
+                            }
+                        }
+                    }
+                ]
             }
         },
-        "next": [
-            "剧场_评论_发送"
-        ]
-    },
-    "剧场_评论_发送后截图": {
-        "desc": "点完纸飞机 1 秒后再存一张图",
-        "pre_delay": 0,
         "action": {
-            "type": "Screencap",
+            "type": "ClickKey",
             "param": {
-                "format": "png"
+                "key": 66
             }
         },
+        "post_delay": 1500,
+        "max_hit": 1,
         "next": [
             "剧场_评论_发送失败",
+            "剧场_评论_发送",
+            "剧场_评论_没发出",
             "剧场_评论_已发送"
         ]
+    },
+    "剧场_评论_没发出": {
+        "desc": "点了 3 次纸飞机 + 回车，输入栏还开着：放弃评论，点画面空白处收起，继续看完点赞",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    1195,
+                                    30,
+                                    65,
+                                    52
+                                ],
+                                "lower": [
+                                    235,
+                                    235,
+                                    235
+                                ],
+                                "upper": [
+                                    255,
+                                    255,
+                                    255
+                                ],
+                                "count": 250,
+                                "method": 4
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "TemplateMatch",
+                            "param": {
+                                "template": "theater/播放键_暂停中.png",
+                                "roi": [
+                                    15,
+                                    610,
+                                    90,
+                                    90
+                                ],
+                                "threshold": 0.75
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    560,
+                    330,
+                    160,
+                    120
+                ]
+            }
+        },
+        "post_delay": 1000,
+        "next": [
+            "剧场_等播放"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]剧场评论：纸飞机点了几次都没发出去，这次不评论，继续点赞[/color]"
+        }
     }
 }
