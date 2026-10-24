@@ -4,9 +4,9 @@
             "name": "💰月卡领取",
             "entry": "月卡",
             "group": [
-                "daily_single"
+                "daily"
             ],
-            "default_check": false,
+            "default_check": true,
             "description": "tasks/doc/MonthCard.md"
         }
     ]

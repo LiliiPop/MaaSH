@@ -4,9 +4,9 @@
             "name": "🎀免费礼包",
             "entry": "免费礼包",
             "group": [
-                "daily_single"
+                "daily"
             ],
-            "default_check": false,
+            "default_check": true,
             "description": "tasks/doc/GiftBox.md",
             "option": [
                 "活动免费礼包"

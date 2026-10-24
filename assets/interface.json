@@ -28,10 +28,12 @@
                 "赠礼角色",
                 "送礼次数",
                 "收礼角色",
+                "画展宣传时间",
+                "画展二选一奖励",
                 "质检截图"
             ],
             "label": "🗂️任务预设配置",
-            "description": "所有任务共用的设置：赠礼 / 收礼的角色、送礼次数、质检截图。选一次就记住，不会因为任务更新被重置。"
+            "description": "所有任务共用的设置：赠礼 / 收礼的角色、送礼次数、画展宣传时间和二选一奖励、质检截图。选一次就记住，「🖼️画展宣传」和「🏫校园打包」用同一份设置，不会因为任务更新被重置。"
         }
     ],
     "preset": [
@@ -61,7 +63,11 @@
                     "enabled": true
                 },
                 {
-                    "name": "🛍️采购合一",
+                    "name": "💰月卡领取",
+                    "enabled": true
+                },
+                {
+                    "name": "🎀免费礼包",
                     "enabled": true
                 },
                 {
@@ -93,14 +99,6 @@
                     "enabled": false
                 },
                 {
-                    "name": "💰月卡领取",
-                    "enabled": false
-                },
-                {
-                    "name": "🎀免费礼包",
-                    "enabled": false
-                },
-                {
                     "name": "🎁出行赠礼",
                     "enabled": false
                 },
@@ -126,10 +124,6 @@
                 },
                 {
                     "name": "👍手偶剧场点赞",
-                    "enabled": false
-                },
-                {
-                    "name": "🏋️练习合一（每周）",
                     "enabled": false
                 },
                 {
@@ -195,7 +189,11 @@
                     "enabled": false
                 },
                 {
-                    "name": "🛍️采购合一",
+                    "name": "💰月卡领取",
+                    "enabled": false
+                },
+                {
+                    "name": "🎀免费礼包",
                     "enabled": false
                 },
                 {
@@ -227,14 +225,6 @@
                     "enabled": true
                 },
                 {
-                    "name": "💰月卡领取",
-                    "enabled": false
-                },
-                {
-                    "name": "🎀免费礼包",
-                    "enabled": false
-                },
-                {
                     "name": "🎁出行赠礼",
                     "enabled": false
                 },
@@ -260,10 +250,6 @@
                 },
                 {
                     "name": "👍手偶剧场点赞",
-                    "enabled": false
-                },
-                {
-                    "name": "🏋️练习合一（每周）",
                     "enabled": false
                 },
                 {
@@ -329,7 +315,11 @@
                     "enabled": false
                 },
                 {
-                    "name": "🛍️采购合一",
+                    "name": "💰月卡领取",
+                    "enabled": false
+                },
+                {
+                    "name": "🎀免费礼包",
                     "enabled": false
                 },
                 {
@@ -361,14 +351,6 @@
                     "enabled": false
                 },
                 {
-                    "name": "💰月卡领取",
-                    "enabled": false
-                },
-                {
-                    "name": "🎀免费礼包",
-                    "enabled": false
-                },
-                {
                     "name": "🎁出行赠礼",
                     "enabled": false
                 },
@@ -394,10 +376,6 @@
                 },
                 {
                     "name": "👍手偶剧场点赞",
-                    "enabled": false
-                },
-                {
-                    "name": "🏋️练习合一（每周）",
                     "enabled": false
                 },
                 {
@@ -481,7 +459,8 @@
         "tasks/SignIn.json",
         "tasks/Mail.json",
         "tasks/Friend.json",
-        "tasks/Purchase.json",
+        "tasks/MonthCard.json",
+        "tasks/GiftBox.json",
         "tasks/Campus.json",
         "tasks/TaskRowsAll.json",
         "tasks/Gacha.json",
@@ -489,8 +468,6 @@
         "tasks/RedPoint.json",
         "tasks/Sweep.json",
         "tasks/Stamina.json",
-        "tasks/MonthCard.json",
-        "tasks/GiftBox.json",
         "tasks/OutingGift.json",
         "tasks/OutingReceive.json",
         "tasks/Schedule.json",
@@ -498,7 +475,6 @@
         "tasks/Spirit.json",
         "tasks/Scroll.json",
         "tasks/TheaterLike.json",
-        "tasks/Practice.json",
         "tasks/Memory.json",
         "tasks/Cinema.json",
         "tasks/WeeklyShop.json",
@@ -509,5 +485,113 @@
         "tasks/CloseGame.json"
     ],
     "task": [],
-    "option": {}
+    "option": {
+        "画展宣传时间": {
+            "type": "select",
+            "description": "新开画展的宣传时间（新号必须选，否则点申请没反应）",
+            "cases": [
+                {
+                    "name": "2小时",
+                    "pipeline_override": {
+                        "画展_选宣传时间": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "^2\\s*小时$",
+                                    "roi": [
+                                        700,
+                                        420,
+                                        420,
+                                        80
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "4小时",
+                    "pipeline_override": {
+                        "画展_选宣传时间": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "^4\\s*小时$",
+                                    "roi": [
+                                        700,
+                                        420,
+                                        420,
+                                        80
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "8小时",
+                    "pipeline_override": {
+                        "画展_选宣传时间": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "expected": "^8\\s*小时$",
+                                    "roi": [
+                                        700,
+                                        420,
+                                        420,
+                                        80
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            ],
+            "default_case": "8小时"
+        },
+        "画展二选一奖励": {
+            "type": "select",
+            "description": "偶尔出现的二选一奖励（默认右边，例如星尘之铃）",
+            "cases": [
+                {
+                    "name": "左边",
+                    "pipeline_override": {
+                        "画展_选择奖励": {
+                            "action": {
+                                "type": "Click",
+                                "param": {
+                                    "target": [
+                                        500,
+                                        300,
+                                        110,
+                                        140
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "右边",
+                    "pipeline_override": {
+                        "画展_选择奖励": {
+                            "action": {
+                                "type": "Click",
+                                "param": {
+                                    "target": [
+                                        670,
+                                        300,
+                                        110,
+                                        140
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            ],
+            "default_case": "右边"
+        }
+    }
 }

@@ -335,7 +335,7 @@
         "timeout": 15000,
         "next": [
             "好友_一键赠领",
-            "Flag_好友体力完成",
+            "好友_疑似已领",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_跳过卡面",
             "[JumpBack]公共_点击空白继续"
@@ -657,5 +657,60 @@
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]今日好友体力领取已达上限[/color]"
         }
+    },
+    "好友_疑似已领": {
+        "desc": "10-24 实机：好友页刚打开、列表还没加载出来时「一键赠领」是灰的，被当成今天已经领过直接结束了。所以第一次看到灰按钮先等 2 秒再看一次",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "赠领",
+                                "roi": [
+                                    985,
+                                    630,
+                                    170,
+                                    65
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "roi": [
+                                    985,
+                                    630,
+                                    170,
+                                    65
+                                ],
+                                "method": 4,
+                                "lower": [
+                                    195,
+                                    190,
+                                    185
+                                ],
+                                "upper": [
+                                    255,
+                                    255,
+                                    255
+                                ],
+                                "count": 4000
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "post_delay": 2000,
+        "max_hit": 1,
+        "next": [
+            "好友_一键赠领",
+            "Flag_好友体力完成"
+        ]
     }
 }
