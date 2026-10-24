@@ -37,6 +37,7 @@ on:
 
 permissions:
   contents: write
+  actions: write # 发布后要用 gh workflow run 触发 Mirror酱 上传
 
 jobs:
   meta:
