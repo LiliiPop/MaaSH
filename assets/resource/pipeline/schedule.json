@@ -222,6 +222,12 @@
             "[JumpBack]日程_回日程页",
             "[JumpBack]日程_翻页",
             "Flag_日程_今日已完成",
+            "[JumpBack]日程_第一页随机",
+            "[JumpBack]日程_选人_1",
+            "[JumpBack]日程_选人_2",
+            "[JumpBack]日程_选人_3",
+            "[JumpBack]日程_选人_4",
+            "[JumpBack]日程_选人_5",
             "[JumpBack]日程_随机选择",
             "日程_选择回复",
             "[JumpBack]日程_对话推进",
@@ -242,7 +248,7 @@
         ]
     },
     "日程_随机选择": {
-        "desc": "日程页左下「随机选择」，随后点「确定」（先等画面静止，避免点完确定后在过场里又点一次）",
+        "desc": "日程页左下「随机选择」，随后点「确定」（先等画面静止，避免点完确定后在过场里又点一次）。10-24：第二页设了顺位但一个都没刷出来时也走这里（随机）",
         "recognition": {
             "type": "OCR",
             "param": {
@@ -1101,5 +1107,391 @@
             }
         },
         "max_hit": 1
+    },
+    "日程_第一页随机": {
+        "desc": "10-24：第一页「校园活动」（右边一排 5 个信封）：照旧点「随机选择」再确定。用左边两个信封上的 INVITATION 字认出是第一页，免得第二页的选人逻辑在第一页点人",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "随机选择",
+                                "roi": [
+                                    115,
+                                    600,
+                                    125,
+                                    50
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "INVITATION",
+                                "roi": [
+                                    510,
+                                    320,
+                                    250,
+                                    40
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 0
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 6,
+        "pre_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_确定",
+            "日程_本页已完成"
+        ],
+        "on_error": [
+            "日程_回循环"
+        ],
+        "timeout": 5000
+    },
+    "日程_选人_1": {
+        "desc": "10-24：第二页「特殊邀约」（中间只有 1 个信封）按用户设的顺位选人：第 1 顺位的角色在左边名单里（名单是今天刷出来的人，按好感度从高到低排）就点他，再点确定。没设这个顺位或今天没刷出他，就看下一个顺位；都没有就随机选择",
+        "enabled": false,
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "随机选择",
+                                "roi": [
+                                    115,
+                                    600,
+                                    125,
+                                    50
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "占位",
+                                "roi": [
+                                    200,
+                                    100,
+                                    110,
+                                    460
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 2,
+        "pre_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_确定",
+            "日程_本页已完成"
+        ],
+        "on_error": [
+            "日程_回循环"
+        ],
+        "timeout": 5000,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]日程：按第 1 顺位选了角色[/color]"
+        }
+    },
+    "日程_选人_2": {
+        "desc": "10-24：第二页「特殊邀约」（中间只有 1 个信封）按用户设的顺位选人：第 2 顺位的角色在左边名单里（名单是今天刷出来的人，按好感度从高到低排）就点他，再点确定。没设这个顺位或今天没刷出他，就看下一个顺位；都没有就随机选择",
+        "enabled": false,
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "随机选择",
+                                "roi": [
+                                    115,
+                                    600,
+                                    125,
+                                    50
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "占位",
+                                "roi": [
+                                    200,
+                                    100,
+                                    110,
+                                    460
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 2,
+        "pre_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_确定",
+            "日程_本页已完成"
+        ],
+        "on_error": [
+            "日程_回循环"
+        ],
+        "timeout": 5000,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]日程：按第 2 顺位选了角色[/color]"
+        }
+    },
+    "日程_选人_3": {
+        "desc": "10-24：第二页「特殊邀约」（中间只有 1 个信封）按用户设的顺位选人：第 3 顺位的角色在左边名单里（名单是今天刷出来的人，按好感度从高到低排）就点他，再点确定。没设这个顺位或今天没刷出他，就看下一个顺位；都没有就随机选择",
+        "enabled": false,
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "随机选择",
+                                "roi": [
+                                    115,
+                                    600,
+                                    125,
+                                    50
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "占位",
+                                "roi": [
+                                    200,
+                                    100,
+                                    110,
+                                    460
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 2,
+        "pre_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_确定",
+            "日程_本页已完成"
+        ],
+        "on_error": [
+            "日程_回循环"
+        ],
+        "timeout": 5000,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]日程：按第 3 顺位选了角色[/color]"
+        }
+    },
+    "日程_选人_4": {
+        "desc": "10-24：第二页「特殊邀约」（中间只有 1 个信封）按用户设的顺位选人：第 4 顺位的角色在左边名单里（名单是今天刷出来的人，按好感度从高到低排）就点他，再点确定。没设这个顺位或今天没刷出他，就看下一个顺位；都没有就随机选择",
+        "enabled": false,
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "随机选择",
+                                "roi": [
+                                    115,
+                                    600,
+                                    125,
+                                    50
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "占位",
+                                "roi": [
+                                    200,
+                                    100,
+                                    110,
+                                    460
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 2,
+        "pre_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_确定",
+            "日程_本页已完成"
+        ],
+        "on_error": [
+            "日程_回循环"
+        ],
+        "timeout": 5000,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]日程：按第 4 顺位选了角色[/color]"
+        }
+    },
+    "日程_选人_5": {
+        "desc": "10-24：第二页「特殊邀约」（中间只有 1 个信封）按用户设的顺位选人：第 5 顺位的角色在左边名单里（名单是今天刷出来的人，按好感度从高到低排）就点他，再点确定。没设这个顺位或今天没刷出他，就看下一个顺位；都没有就随机选择",
+        "enabled": false,
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "随机选择",
+                                "roi": [
+                                    115,
+                                    600,
+                                    125,
+                                    50
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "占位",
+                                "roi": [
+                                    200,
+                                    100,
+                                    110,
+                                    460
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 2,
+        "pre_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_确定",
+            "日程_本页已完成"
+        ],
+        "on_error": [
+            "日程_回循环"
+        ],
+        "timeout": 5000,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]日程：按第 5 顺位选了角色[/color]"
+        }
     }
 }
