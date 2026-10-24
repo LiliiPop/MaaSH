@@ -222,12 +222,8 @@
             "[JumpBack]日程_回日程页",
             "[JumpBack]日程_翻页",
             "Flag_日程_今日已完成",
-            "[JumpBack]日程_第一页随机",
-            "[JumpBack]日程_选人_1",
-            "[JumpBack]日程_选人_2",
-            "[JumpBack]日程_选人_3",
-            "[JumpBack]日程_选人_4",
-            "[JumpBack]日程_选人_5",
+            "[JumpBack]日程_第一页",
+            "[JumpBack]日程_第二页",
             "[JumpBack]日程_随机选择",
             "日程_选择回复",
             "[JumpBack]日程_对话推进",
@@ -1108,8 +1104,8 @@
         },
         "max_hit": 1
     },
-    "日程_第一页随机": {
-        "desc": "10-24：第一页「校园活动」（右边一排 5 个信封）：照旧点「随机选择」再确定。用左边两个信封上的 INVITATION 字认出是第一页，免得第二页的选人逻辑在第一页点人",
+    "日程_第一页": {
+        "desc": "10-24：第一页「校园活动」（右边一排 5 个信封，用左边两个信封上的 INVITATION 字认）。没设第 1 顺位：照旧随机选择；设了：先找第 1 顺位，名单里没有就先「刷新列表」一次，再按顺位依次点人，最后从名单上往下补满 5 个",
         "recognition": {
             "type": "And",
             "param": {
@@ -1146,32 +1142,630 @@
                 "box_index": 0
             }
         },
-        "action": {
-            "type": "Click"
-        },
-        "max_hit": 6,
         "pre_wait_freezes": {
             "time": 500,
             "timeout": 1500,
             "rate_limit": 200
         },
-        "post_wait_freezes": {
-            "time": 500,
-            "timeout": 1500,
-            "rate_limit": 200
-        },
+        "max_hit": 3,
         "next": [
-            "日程_确定",
-            "日程_本页已完成"
+            "日程_一页_随机",
+            "日程_一页_首选在",
+            "日程_一页_刷新",
+            "日程_一页_1"
         ],
         "on_error": [
             "日程_回循环"
         ],
         "timeout": 5000
     },
-    "日程_选人_1": {
-        "desc": "10-24：第二页「特殊邀约」（中间只有 1 个信封）按用户设的顺位选人：第 1 顺位的角色在左边名单里（名单是今天刷出来的人，按好感度从高到低排）就点他，再点确定。没设这个顺位或今天没刷出他，就看下一个顺位；都没有就随机选择",
+    "日程_一页_随机": {
+        "desc": "没设第 1 顺位：点「随机选择」，再点确定（原来的做法）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "随机选择",
+                "roi": [
+                    115,
+                    600,
+                    125,
+                    50
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_确定"
+        ],
+        "on_error": [
+            "日程_回循环"
+        ],
+        "timeout": 5000
+    },
+    "日程_一页_首选在": {
+        "desc": "第 1 顺位的人就在名单里：不用刷新，直接按顺位点",
         "enabled": false,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "占位",
+                "roi": [
+                    200,
+                    100,
+                    110,
+                    460
+                ]
+            }
+        },
+        "next": [
+            "日程_一页_1"
+        ]
+    },
+    "日程_一页_刷新": {
+        "desc": "第 1 顺位的人不在名单里，而且还能刷新（「刷新列表 N/1」N≥1）：点一次刷新，再按顺位点",
+        "enabled": false,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "刷新列表\\s*[1-9]",
+                "roi": [
+                    285,
+                    600,
+                    150,
+                    45
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 4000,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_一页_1"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]日程：第 1 顺位没刷出来，刷新了一次名单[/color]"
+        }
+    },
+    "日程_一页_1": {
+        "desc": "第一页：看第 1 顺位",
+        "next": [
+            "日程_一页_1_点",
+            "日程_一页_2"
+        ]
+    },
+    "日程_一页_1_点": {
+        "desc": "第 1 顺位的人在名单里：点他（刚进页面时谁都没选，点一下就是选中）",
+        "enabled": false,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "占位",
+                "roi": [
+                    200,
+                    100,
+                    110,
+                    460
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_一页_2"
+        ]
+    },
+    "日程_一页_2": {
+        "desc": "第一页：看第 2 顺位",
+        "next": [
+            "日程_一页_2_点",
+            "日程_一页_3"
+        ]
+    },
+    "日程_一页_2_点": {
+        "desc": "第 2 顺位的人在名单里：点他（刚进页面时谁都没选，点一下就是选中）",
+        "enabled": false,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "占位",
+                "roi": [
+                    200,
+                    100,
+                    110,
+                    460
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_一页_3"
+        ]
+    },
+    "日程_一页_3": {
+        "desc": "第一页：看第 3 顺位",
+        "next": [
+            "日程_一页_3_点",
+            "日程_一页_4"
+        ]
+    },
+    "日程_一页_3_点": {
+        "desc": "第 3 顺位的人在名单里：点他（刚进页面时谁都没选，点一下就是选中）",
+        "enabled": false,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "占位",
+                "roi": [
+                    200,
+                    100,
+                    110,
+                    460
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_一页_4"
+        ]
+    },
+    "日程_一页_4": {
+        "desc": "第一页：看第 4 顺位",
+        "next": [
+            "日程_一页_4_点",
+            "日程_一页_5"
+        ]
+    },
+    "日程_一页_4_点": {
+        "desc": "第 4 顺位的人在名单里：点他（刚进页面时谁都没选，点一下就是选中）",
+        "enabled": false,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "占位",
+                "roi": [
+                    200,
+                    100,
+                    110,
+                    460
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_一页_5"
+        ]
+    },
+    "日程_一页_5": {
+        "desc": "第一页：看第 5 顺位",
+        "next": [
+            "日程_一页_5_点",
+            "日程_一页_补_1"
+        ]
+    },
+    "日程_一页_5_点": {
+        "desc": "第 5 顺位的人在名单里：点他（刚进页面时谁都没选，点一下就是选中）",
+        "enabled": false,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "占位",
+                "roi": [
+                    200,
+                    100,
+                    110,
+                    460
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_一页_补_1"
+        ]
+    },
+    "日程_一页_补_1": {
+        "desc": "补满 5 个：看名单第 1 行（5 个信封都有人了就直接确定；这一行已经打勾就跳过，免得点掉）",
+        "next": [
+            "日程_一页_满",
+            "日程_一页_补_1_已选",
+            "日程_一页_补_1_点"
+        ]
+    },
+    "日程_一页_补_1_已选": {
+        "desc": "第 1 行右下有红勾：已选，跳过",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    398,
+                    158,
+                    40,
+                    30
+                ],
+                "method": 4,
+                "lower": [
+                    180,
+                    60,
+                    50
+                ],
+                "upper": [
+                    240,
+                    130,
+                    120
+                ],
+                "count": 25
+            }
+        },
+        "next": [
+            "日程_一页_补_2"
+        ]
+    },
+    "日程_一页_补_1_点": {
+        "desc": "第 1 行没选：点名字选上",
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    200,
+                    107,
+                    110,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_一页_补_2"
+        ]
+    },
+    "日程_一页_补_2": {
+        "desc": "补满 5 个：看名单第 2 行（5 个信封都有人了就直接确定；这一行已经打勾就跳过，免得点掉）",
+        "next": [
+            "日程_一页_满",
+            "日程_一页_补_2_已选",
+            "日程_一页_补_2_点"
+        ]
+    },
+    "日程_一页_补_2_已选": {
+        "desc": "第 2 行右下有红勾：已选，跳过",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    398,
+                    254,
+                    40,
+                    30
+                ],
+                "method": 4,
+                "lower": [
+                    180,
+                    60,
+                    50
+                ],
+                "upper": [
+                    240,
+                    130,
+                    120
+                ],
+                "count": 25
+            }
+        },
+        "next": [
+            "日程_一页_补_3"
+        ]
+    },
+    "日程_一页_补_2_点": {
+        "desc": "第 2 行没选：点名字选上",
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    200,
+                    203,
+                    110,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_一页_补_3"
+        ]
+    },
+    "日程_一页_补_3": {
+        "desc": "补满 5 个：看名单第 3 行（5 个信封都有人了就直接确定；这一行已经打勾就跳过，免得点掉）",
+        "next": [
+            "日程_一页_满",
+            "日程_一页_补_3_已选",
+            "日程_一页_补_3_点"
+        ]
+    },
+    "日程_一页_补_3_已选": {
+        "desc": "第 3 行右下有红勾：已选，跳过",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    398,
+                    350,
+                    40,
+                    30
+                ],
+                "method": 4,
+                "lower": [
+                    180,
+                    60,
+                    50
+                ],
+                "upper": [
+                    240,
+                    130,
+                    120
+                ],
+                "count": 25
+            }
+        },
+        "next": [
+            "日程_一页_补_4"
+        ]
+    },
+    "日程_一页_补_3_点": {
+        "desc": "第 3 行没选：点名字选上",
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    200,
+                    299,
+                    110,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_一页_补_4"
+        ]
+    },
+    "日程_一页_补_4": {
+        "desc": "补满 5 个：看名单第 4 行（5 个信封都有人了就直接确定；这一行已经打勾就跳过，免得点掉）",
+        "next": [
+            "日程_一页_满",
+            "日程_一页_补_4_已选",
+            "日程_一页_补_4_点"
+        ]
+    },
+    "日程_一页_补_4_已选": {
+        "desc": "第 4 行右下有红勾：已选，跳过",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    398,
+                    446,
+                    40,
+                    30
+                ],
+                "method": 4,
+                "lower": [
+                    180,
+                    60,
+                    50
+                ],
+                "upper": [
+                    240,
+                    130,
+                    120
+                ],
+                "count": 25
+            }
+        },
+        "next": [
+            "日程_一页_补_5"
+        ]
+    },
+    "日程_一页_补_4_点": {
+        "desc": "第 4 行没选：点名字选上",
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    200,
+                    395,
+                    110,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_一页_补_5"
+        ]
+    },
+    "日程_一页_补_5": {
+        "desc": "补满 5 个：看名单第 5 行（5 个信封都有人了就直接确定；这一行已经打勾就跳过，免得点掉）",
+        "next": [
+            "日程_一页_满",
+            "日程_一页_补_5_已选",
+            "日程_一页_补_5_点"
+        ]
+    },
+    "日程_一页_补_5_已选": {
+        "desc": "第 5 行右下有红勾：已选，跳过",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    398,
+                    542,
+                    40,
+                    30
+                ],
+                "method": 4,
+                "lower": [
+                    180,
+                    60,
+                    50
+                ],
+                "upper": [
+                    240,
+                    130,
+                    120
+                ],
+                "count": 25
+            }
+        },
+        "next": [
+            "日程_一页_确定"
+        ]
+    },
+    "日程_一页_补_5_点": {
+        "desc": "第 5 行没选：点名字选上",
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    200,
+                    491,
+                    110,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_一页_确定"
+        ]
+    },
+    "日程_一页_满": {
+        "desc": "第 5 个信封右上有红色叉号（= 5 个人都选好了）：点确定",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    1085,
+                    352,
+                    25,
+                    22
+                ],
+                "method": 4,
+                "lower": [
+                    180,
+                    40,
+                    30
+                ],
+                "upper": [
+                    255,
+                    110,
+                    100
+                ],
+                "count": 50
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    925,
+                    595,
+                    110,
+                    55
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        }
+    },
+    "日程_一页_确定": {
+        "desc": "名单前 5 行都看过了：不管选满没有都点确定（人少的号可能凑不满 5 个）",
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    925,
+                    595,
+                    110,
+                    55
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        }
+    },
+    "日程_第二页": {
+        "desc": "10-24：第二页「特殊邀约」（中间只有 1 个信封）。先找第 1 顺位，名单里没有就「刷新列表」一次，再按顺位选；都没有就随机",
         "recognition": {
             "type": "And",
             "param": {
@@ -1194,28 +1788,117 @@
                         "recognition": {
                             "type": "OCR",
                             "param": {
-                                "expected": "占位",
+                                "expected": "INVITATION",
                                 "roi": [
-                                    200,
-                                    100,
-                                    110,
-                                    460
+                                    760,
+                                    320,
+                                    130,
+                                    40
                                 ]
                             }
                         }
                     }
                 ],
-                "box_index": 1
+                "box_index": 0
+            }
+        },
+        "pre_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "max_hit": 3,
+        "next": [
+            "日程_二页_首选在",
+            "日程_二页_刷新",
+            "日程_二页_选"
+        ],
+        "on_error": [
+            "日程_回循环"
+        ],
+        "timeout": 5000
+    },
+    "日程_二页_首选在": {
+        "desc": "第 1 顺位的人就在名单里",
+        "enabled": false,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "占位",
+                "roi": [
+                    200,
+                    100,
+                    110,
+                    460
+                ]
+            }
+        },
+        "next": [
+            "日程_选人_1"
+        ]
+    },
+    "日程_二页_刷新": {
+        "desc": "第 1 顺位不在名单里、还能刷新：刷新一次再选",
+        "enabled": false,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "刷新列表\\s*[1-9]",
+                "roi": [
+                    285,
+                    600,
+                    150,
+                    45
+                ]
             }
         },
         "action": {
             "type": "Click"
         },
-        "max_hit": 2,
-        "pre_wait_freezes": {
-            "time": 500,
-            "timeout": 1500,
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 4000,
             "rate_limit": 200
+        },
+        "next": [
+            "日程_二页_选"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]日程：第 1 顺位没刷出来，刷新了一次名单[/color]"
+        }
+    },
+    "日程_二页_选": {
+        "desc": "按顺位找名单里的人，都没有就随机选择",
+        "next": [
+            "日程_选人_1",
+            "日程_选人_2",
+            "日程_选人_3",
+            "日程_选人_4",
+            "日程_选人_5",
+            "日程_随机选择"
+        ],
+        "timeout": 3000,
+        "on_error": [
+            "日程_回循环"
+        ]
+    },
+    "日程_选人_1": {
+        "desc": "第 1 顺位的人在名单里：点他，再点确定",
+        "enabled": false,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "占位",
+                "roi": [
+                    200,
+                    100,
+                    110,
+                    460
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
         },
         "post_wait_freezes": {
             "time": 500,
@@ -1223,64 +1906,29 @@
             "rate_limit": 200
         },
         "next": [
-            "日程_确定",
-            "日程_本页已完成"
+            "日程_确定"
         ],
-        "on_error": [
-            "日程_回循环"
-        ],
-        "timeout": 5000,
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]日程：按第 1 顺位选了角色[/color]"
         }
     },
     "日程_选人_2": {
-        "desc": "10-24：第二页「特殊邀约」（中间只有 1 个信封）按用户设的顺位选人：第 2 顺位的角色在左边名单里（名单是今天刷出来的人，按好感度从高到低排）就点他，再点确定。没设这个顺位或今天没刷出他，就看下一个顺位；都没有就随机选择",
+        "desc": "第 2 顺位的人在名单里：点他，再点确定",
         "enabled": false,
         "recognition": {
-            "type": "And",
+            "type": "OCR",
             "param": {
-                "all_of": [
-                    {
-                        "recognition": {
-                            "type": "OCR",
-                            "param": {
-                                "expected": "随机选择",
-                                "roi": [
-                                    115,
-                                    600,
-                                    125,
-                                    50
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "recognition": {
-                            "type": "OCR",
-                            "param": {
-                                "expected": "占位",
-                                "roi": [
-                                    200,
-                                    100,
-                                    110,
-                                    460
-                                ]
-                            }
-                        }
-                    }
-                ],
-                "box_index": 1
+                "expected": "占位",
+                "roi": [
+                    200,
+                    100,
+                    110,
+                    460
+                ]
             }
         },
         "action": {
             "type": "Click"
-        },
-        "max_hit": 2,
-        "pre_wait_freezes": {
-            "time": 500,
-            "timeout": 1500,
-            "rate_limit": 200
         },
         "post_wait_freezes": {
             "time": 500,
@@ -1288,64 +1936,29 @@
             "rate_limit": 200
         },
         "next": [
-            "日程_确定",
-            "日程_本页已完成"
+            "日程_确定"
         ],
-        "on_error": [
-            "日程_回循环"
-        ],
-        "timeout": 5000,
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]日程：按第 2 顺位选了角色[/color]"
         }
     },
     "日程_选人_3": {
-        "desc": "10-24：第二页「特殊邀约」（中间只有 1 个信封）按用户设的顺位选人：第 3 顺位的角色在左边名单里（名单是今天刷出来的人，按好感度从高到低排）就点他，再点确定。没设这个顺位或今天没刷出他，就看下一个顺位；都没有就随机选择",
+        "desc": "第 3 顺位的人在名单里：点他，再点确定",
         "enabled": false,
         "recognition": {
-            "type": "And",
+            "type": "OCR",
             "param": {
-                "all_of": [
-                    {
-                        "recognition": {
-                            "type": "OCR",
-                            "param": {
-                                "expected": "随机选择",
-                                "roi": [
-                                    115,
-                                    600,
-                                    125,
-                                    50
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "recognition": {
-                            "type": "OCR",
-                            "param": {
-                                "expected": "占位",
-                                "roi": [
-                                    200,
-                                    100,
-                                    110,
-                                    460
-                                ]
-                            }
-                        }
-                    }
-                ],
-                "box_index": 1
+                "expected": "占位",
+                "roi": [
+                    200,
+                    100,
+                    110,
+                    460
+                ]
             }
         },
         "action": {
             "type": "Click"
-        },
-        "max_hit": 2,
-        "pre_wait_freezes": {
-            "time": 500,
-            "timeout": 1500,
-            "rate_limit": 200
         },
         "post_wait_freezes": {
             "time": 500,
@@ -1353,64 +1966,29 @@
             "rate_limit": 200
         },
         "next": [
-            "日程_确定",
-            "日程_本页已完成"
+            "日程_确定"
         ],
-        "on_error": [
-            "日程_回循环"
-        ],
-        "timeout": 5000,
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]日程：按第 3 顺位选了角色[/color]"
         }
     },
     "日程_选人_4": {
-        "desc": "10-24：第二页「特殊邀约」（中间只有 1 个信封）按用户设的顺位选人：第 4 顺位的角色在左边名单里（名单是今天刷出来的人，按好感度从高到低排）就点他，再点确定。没设这个顺位或今天没刷出他，就看下一个顺位；都没有就随机选择",
+        "desc": "第 4 顺位的人在名单里：点他，再点确定",
         "enabled": false,
         "recognition": {
-            "type": "And",
+            "type": "OCR",
             "param": {
-                "all_of": [
-                    {
-                        "recognition": {
-                            "type": "OCR",
-                            "param": {
-                                "expected": "随机选择",
-                                "roi": [
-                                    115,
-                                    600,
-                                    125,
-                                    50
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "recognition": {
-                            "type": "OCR",
-                            "param": {
-                                "expected": "占位",
-                                "roi": [
-                                    200,
-                                    100,
-                                    110,
-                                    460
-                                ]
-                            }
-                        }
-                    }
-                ],
-                "box_index": 1
+                "expected": "占位",
+                "roi": [
+                    200,
+                    100,
+                    110,
+                    460
+                ]
             }
         },
         "action": {
             "type": "Click"
-        },
-        "max_hit": 2,
-        "pre_wait_freezes": {
-            "time": 500,
-            "timeout": 1500,
-            "rate_limit": 200
         },
         "post_wait_freezes": {
             "time": 500,
@@ -1418,64 +1996,29 @@
             "rate_limit": 200
         },
         "next": [
-            "日程_确定",
-            "日程_本页已完成"
+            "日程_确定"
         ],
-        "on_error": [
-            "日程_回循环"
-        ],
-        "timeout": 5000,
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]日程：按第 4 顺位选了角色[/color]"
         }
     },
     "日程_选人_5": {
-        "desc": "10-24：第二页「特殊邀约」（中间只有 1 个信封）按用户设的顺位选人：第 5 顺位的角色在左边名单里（名单是今天刷出来的人，按好感度从高到低排）就点他，再点确定。没设这个顺位或今天没刷出他，就看下一个顺位；都没有就随机选择",
+        "desc": "第 5 顺位的人在名单里：点他，再点确定",
         "enabled": false,
         "recognition": {
-            "type": "And",
+            "type": "OCR",
             "param": {
-                "all_of": [
-                    {
-                        "recognition": {
-                            "type": "OCR",
-                            "param": {
-                                "expected": "随机选择",
-                                "roi": [
-                                    115,
-                                    600,
-                                    125,
-                                    50
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "recognition": {
-                            "type": "OCR",
-                            "param": {
-                                "expected": "占位",
-                                "roi": [
-                                    200,
-                                    100,
-                                    110,
-                                    460
-                                ]
-                            }
-                        }
-                    }
-                ],
-                "box_index": 1
+                "expected": "占位",
+                "roi": [
+                    200,
+                    100,
+                    110,
+                    460
+                ]
             }
         },
         "action": {
             "type": "Click"
-        },
-        "max_hit": 2,
-        "pre_wait_freezes": {
-            "time": 500,
-            "timeout": 1500,
-            "rate_limit": 200
         },
         "post_wait_freezes": {
             "time": 500,
@@ -1483,13 +2026,8 @@
             "rate_limit": 200
         },
         "next": [
-            "日程_确定",
-            "日程_本页已完成"
+            "日程_确定"
         ],
-        "on_error": [
-            "日程_回循环"
-        ],
-        "timeout": 5000,
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]日程：按第 5 顺位选了角色[/color]"
         }
