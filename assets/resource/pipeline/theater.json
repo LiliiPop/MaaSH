@@ -895,7 +895,7 @@
         ]
     },
     "剧场_评论_点顶框": {
-        "desc": "再点一下上方输入栏，才能输入文字",
+        "desc": "再点一下上方输入栏，才能输入文字。10-24：点完多等一会儿（1.5 秒）再输入，输入框要先进入可输入状态",
         "recognition": {
             "type": "OCR",
             "param": {
@@ -911,7 +911,7 @@
         "action": {
             "type": "Click"
         },
-        "post_delay": 800,
+        "post_delay": 1500,
         "timeout": 4000,
         "next": [
             "剧场_评论_输入"
@@ -982,7 +982,7 @@
         "action": {
             "type": "Click"
         },
-        "post_delay": 800,
+        "post_delay": 1500,
         "max_hit": 2,
         "next": [
             "剧场_评论_输入"
