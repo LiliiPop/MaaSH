@@ -33,9 +33,17 @@ def build():
             "focus": {"Node.Action.Starting": f"[color:Dimgray]开始：{name}[/color]"},
         }
         d[f"{name}_找行"] = {
-            "timeout": 40000,
-            "next": [f"{name}_行", "[JumpBack]公共_任务列表下滚"],
+            "desc": "在日常列表里找这一行，找不到就往下滚一屏。10-24：每个任务用自己的下滚节点（最多 7 次，日常列表约 12 行、每次滚约 1.4 行，7 次能到底），滚完还没有就 6 秒后算没找到（原来共用一个最多 10 次的下滚，找不到时还要再干等 40 秒）",
+            "timeout": 6000,
+            "next": [f"{name}_行", f"[JumpBack]{name}_下滚"],
             "on_error": [f"{name}_未找到"],
+        }
+        d[f"{name}_下滚"] = {
+            "desc": "在「今日任务」页把右侧列表往下滚一段（只给这一个任务计次数）",
+            "recognition": {"type": "OCR", "param": {"expected": "今日任务", "roi": [220, 80, 260, 85]}},
+            "action": {"type": "Swipe", "param": {"begin": [900, 560, 20, 20], "end": [900, 300, 20, 20], "duration": 400}},
+            "max_hit": 7,
+            "post_wait_freezes": {"time": 500, "timeout": 1500, "rate_limit": 200},
         }
         d[f"{name}_行"] = {
             "recognition": {"type": "OCR", "param": {"expected": text, "roi": LIST_ROI}},

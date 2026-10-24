@@ -1,3 +1,9 @@
+"""⚠️ 10-24：已过时，不要再运行！cinema.json / Cinema.json 之后在 JSON 里手改过（售罄判断、关选择弹窗、页签 ROI、等待时间等），
+重新生成会把这些改动全部冲掉。要改电影院请直接改 assets/resource/pipeline/cinema.json。
+"""
+import sys
+if __name__ == "__main__" and "--force" not in sys.argv:
+    sys.exit("gen_cinema.py 已过时（会冲掉 cinema.json 里的手改），确实要跑请加 --force")
 """
 ⚠️ 已过时：cinema.json 生成后又手工修过很多处（弹窗处理、扫荡完成判断等），
 直接重新生成会把这些修复冲掉。现在请直接改 assets/resource/pipeline/cinema.json。

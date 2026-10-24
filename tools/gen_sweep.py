@@ -512,9 +512,16 @@ def build():
 
     # ---------- 回任务页确认 ----------
     d["清体力_找行"] = {
-        "timeout": 40000,
-        "next": ["清体力_行", "[JumpBack]公共_任务列表下滚"],
+        "timeout": 6000,  # 10-24：滚完还找不到就 6 秒后放弃（原来干等 40 秒）
+        "next": ["清体力_行", "[JumpBack]清体力_下滚"],
         "on_error": ["清体力_未找到行"],
+    }
+    d["清体力_下滚"] = {
+        "desc": "在「今日任务」页把右侧列表往下滚一段（只给清体力计次数，最多 7 次）",
+        "recognition": ocr("今日任务", [220, 80, 260, 85]),
+        "action": {"type": "Swipe", "param": {"begin": [900, 560, 20, 20], "end": [900, 300, 20, 20], "duration": 400}},
+        "max_hit": 7,
+        "post_wait_freezes": {"time": 500, "timeout": 1500, "rate_limit": 200},
     }
     d["清体力_行"] = {
         "recognition": ocr("累计消耗(60点体力)?$", LIST_ROI),  # 10-23：OCR 常把「累计消耗」「60点体力」拆成两段
@@ -663,8 +670,9 @@ if __name__ == "__main__":
         "task": [{
             "name": "🍰清体力",
             "entry": "清体力",
+            "group": ["daily"],
             "default_check": False,
-            "description": "练习 → 所选关卡 → 刷到至少 60 / 120 体力 → 回任务页确认「累计消耗60点体力」。<br>默认用超强助力符快速过关；不够刷满时按「体力不足时」处理；默认不使用体力道具，绝不花钻石买体力。",
+            "description": "tasks/doc/Sweep.md",  # 说明文字在 assets/tasks/doc/Sweep.md
             "option": ["清体力关卡", "清体力难度", "道具符", "体力档", "体力不足时", "自动使用体力道具"],
         }],
         "option": options(),

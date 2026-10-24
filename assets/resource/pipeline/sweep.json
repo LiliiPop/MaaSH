@@ -327,9 +327,8 @@
             "type": "Click"
         },
         "post_wait_freezes": {
-            "time": 500,
-            "timeout": 1500,
-            "rate_limit": 200
+            "time": 800,
+            "timeout": 10000
         },
         "next": [
             "清体力_进关卡"
@@ -7342,11 +7341,50 @@
         "timeout": 6000,
         "next": [
             "清体力_行",
-            "[JumpBack]公共_任务列表下滚"
+            "[JumpBack]清体力_下滚"
         ],
         "on_error": [
             "清体力_未找到行"
         ]
+    },
+    "清体力_下滚": {
+        "desc": "在「今日任务」页把右侧列表往下滚一段（只给清体力计次数，最多 7 次）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "今日任务",
+                "roi": [
+                    220,
+                    80,
+                    260,
+                    85
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    900,
+                    560,
+                    20,
+                    20
+                ],
+                "end": [
+                    900,
+                    300,
+                    20,
+                    20
+                ],
+                "duration": 400
+            }
+        },
+        "max_hit": 7,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        }
     },
     "清体力_行": {
         "recognition": {

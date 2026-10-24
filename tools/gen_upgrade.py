@@ -29,7 +29,7 @@ def build():
             "on_error": ["公共_任务失败"],
         }
         d[f"{k}_点第一张"] = {
-            "recognition": {"type": "OCR", "param": {"expected": "图鉴", "roi": [114, 17, 152, 66]}},
+            "recognition": {"type": "OCR", "param": {"expected": "图鉴", "roi": [114, 17, 152, 66], "only_rec": True}},
             "action": {"type": "Click", "param": {"target": [150, 175, 115, 110]}},
             "max_hit": 2,
             "post_wait_freezes": FREEZE,
@@ -70,12 +70,16 @@ def build():
             "on_error": ["公共_进入日常列表"],
         }
         d[f"{k}_已提升"] = {
-            "desc": "弹出「等级提升」：点空白关掉，回任务页复核",
+            "desc": "弹出「等级提升」：点空白关掉，算完成（10-24 起不再回任务页复核）",
             "recognition": ocr("等级提升", [454, 187, 392, 126])["recognition"],
             "action": {"type": "Click", "param": {"target": [560, 650, 160, 40]}},
             "post_wait_freezes": FREEZE,
-            "next": ["公共_进入日常列表"],
-            "focus": {"Node.Action.Succeeded": f"[color:Dimgray]{k}已升 1 级，回任务页确认[/color]"},
+            "next": [f"{task}_完成"],
+            "focus": {"Node.Action.Succeeded": f"[color:Dimgray]{k}已升 1 级[/color]"},
+        }
+        d[f"{task}_完成"] = {
+            "desc": "10-24：弹出「等级提升」就算完成，不再回任务页复核",
+            "focus": {"Node.Action.Succeeded": f"[color:Limegreen]{task}完成：已升 1 级[/color]"},
         }
         d[f"{k}_材料不足"] = {
             "desc": "「提升」是灰色：经验材料或金币不够",
