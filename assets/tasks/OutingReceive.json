@@ -7,13 +7,16 @@
                 "daily_single"
             ],
             "default_check": false,
-            "description": "tasks/doc/OutingReceive.md"
+            "description": "tasks/doc/OutingReceive.md",
+            "option": [
+                "收礼角色"
+            ]
         }
     ],
     "option": {
         "收礼角色": {
             "type": "select",
-            "description": "在谁的出行里点人物收礼。选「当前角色」就不换人<br>按头像头顶的<b>发色</b>认人（黑 艾因 / 深蓝 司岚 / 橙 罗夏 / 金 路辰 / 银 叶瑄），换装扮也认得出；头像栏顺序随好感度变也没关系。认不出时改用头像栏第一个角色。（校园那个打包任务和出行赠礼、出行收礼共用这一个设置，选一次就记住）",
+            "description": "在谁的出行里点人物收礼。选「当前角色」就不换人<br>按头像头顶的<b>发色</b>认人（黑 艾因 / 深蓝 司岚 / 橙 罗夏 / 金 路辰 / 银 叶瑄），换装扮也认得出；头像栏顺序随好感度变也没关系。认不出时改用头像栏第一个角色。",
             "default_case": "当前角色",
             "cases": [
                 {

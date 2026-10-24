@@ -25,15 +25,10 @@
                 "./resource"
             ],
             "option": [
-                "赠礼角色",
-                "送礼次数",
-                "收礼角色",
-                "画展宣传时间",
-                "画展二选一奖励",
                 "质检截图"
             ],
             "label": "🗂️任务预设配置",
-            "description": "所有任务共用的设置：赠礼 / 收礼的角色、送礼次数、画展宣传时间和二选一奖励、质检截图。选一次就记住，「🖼️画展宣传」和「🏫校园打包」用同一份设置，不会因为任务更新被重置。"
+            "description": "勾上要截图的环节后，脚本到了那个环节的结算 / 奖励页面会自动截一张图，方便事后检查有没有做对。\n\n截图存在 **MaaSH 目录\\debug\\screencap**（文件名是「时间_环节名」），不会自动删除，请定期手动清理。任务失败时的截图另外存在 debug\\on_error。\n\n不勾 = 不截图。"
         }
     ],
     "preset": [
@@ -484,114 +479,5 @@
         "tasks/AfterRun.json",
         "tasks/CloseGame.json"
     ],
-    "task": [],
-    "option": {
-        "画展宣传时间": {
-            "type": "select",
-            "description": "新开画展的宣传时间（新号必须选，否则点申请没反应）",
-            "cases": [
-                {
-                    "name": "2小时",
-                    "pipeline_override": {
-                        "画展_选宣传时间": {
-                            "recognition": {
-                                "type": "OCR",
-                                "param": {
-                                    "expected": "^2\\s*小时$",
-                                    "roi": [
-                                        700,
-                                        420,
-                                        420,
-                                        80
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "name": "4小时",
-                    "pipeline_override": {
-                        "画展_选宣传时间": {
-                            "recognition": {
-                                "type": "OCR",
-                                "param": {
-                                    "expected": "^4\\s*小时$",
-                                    "roi": [
-                                        700,
-                                        420,
-                                        420,
-                                        80
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "name": "8小时",
-                    "pipeline_override": {
-                        "画展_选宣传时间": {
-                            "recognition": {
-                                "type": "OCR",
-                                "param": {
-                                    "expected": "^8\\s*小时$",
-                                    "roi": [
-                                        700,
-                                        420,
-                                        420,
-                                        80
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                }
-            ],
-            "default_case": "8小时"
-        },
-        "画展二选一奖励": {
-            "type": "select",
-            "description": "偶尔出现的二选一奖励（默认右边，例如星尘之铃）",
-            "cases": [
-                {
-                    "name": "左边",
-                    "pipeline_override": {
-                        "画展_选择奖励": {
-                            "action": {
-                                "type": "Click",
-                                "param": {
-                                    "target": [
-                                        500,
-                                        300,
-                                        110,
-                                        140
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "name": "右边",
-                    "pipeline_override": {
-                        "画展_选择奖励": {
-                            "action": {
-                                "type": "Click",
-                                "param": {
-                                    "target": [
-                                        670,
-                                        300,
-                                        110,
-                                        140
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                }
-            ],
-            "default_case": "右边"
-        }
-    }
+    "task": []
 }
