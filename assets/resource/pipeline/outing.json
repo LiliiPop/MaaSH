@@ -168,7 +168,8 @@
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "出行赠礼_跳过倾心",
-            "出行赠礼_点第一个礼物"
+            "出行赠礼_点第一个礼物",
+            "出行赠礼_再点赠礼"
         ],
         "on_error": [
             "出行赠礼_流程"
@@ -206,6 +207,7 @@
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "出行赠礼_已送出",
+            "出行赠礼_数量归零",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续"
         ],
@@ -903,6 +905,90 @@
         ],
         "focus": {
             "Node.Action.Starting": "[color:Dimgray]出行赠礼：右上角提示「与他互动」，先点人物把对话走完[/color]"
+        }
+    },
+    "出行赠礼_再点赠礼": {
+        "desc": "点了「赠礼」2 秒后面板还没出来（角色正在说话时，第一下点击只会推进/跳过台词——10-24 实机：罗夏自我介绍时连续 3 次都没打开）：原地再点一次赠礼，不必回头重选角色。最多 4 次",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "outing/赠礼按钮.png",
+                "roi": [
+                    500,
+                    560,
+                    780,
+                    160
+                ],
+                "threshold": 0.85
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "pre_delay": 1500,
+        "max_hit": 4,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_生日弹窗等待",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "出行赠礼_跳过倾心",
+            "出行赠礼_点第一个礼物",
+            "出行赠礼_再点赠礼"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]赠礼面板没打开（角色在说话），再点一次[/color]"
+        }
+    },
+    "出行赠礼_数量归零": {
+        "desc": "点「赠送」后没赶上「好感度+N」那一闪，但面板里数量已经回到 0、角色在说收礼台词：说明已经送出去了（10-24 实机两次都是这样），不用再等 5 秒超时",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^0$",
+                                "roi": [
+                                    840,
+                                    560,
+                                    90,
+                                    50
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "赠\\s*送",
+                                "roi": [
+                                    830,
+                                    630,
+                                    230,
+                                    60
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "pre_delay": 1200,
+        "next": [
+            "公共_进入日常列表"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]礼物已送出（数量归零），回任务页确认[/color]"
         }
     }
 }
