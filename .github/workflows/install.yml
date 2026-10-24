@@ -175,8 +175,11 @@ jobs:
         if: matrix.os == 'win'
         shell: bash
         run: |
-          # 复制一份界面程序，命名为 MaaSH.exe（原 MFAAvalonia.exe 保留，供界面自更新使用）
-          cp install/MFAAvalonia.exe install/MaaSH.exe
+          # 界面程序改名为 MaaSH.exe（只留这一个入口）。
+          # 10-24：原来是复制一份、两个 exe 都放进包里。用 MaaSH.exe 打开时自更新，MFA 认包里的主程序是 MFAAvalonia.exe，
+          # 判定「主程序改名了」，把正在运行的 MaaSH.exe 改名备份、拷入新 MaaSH.exe 后又把它当旧主程序改名删掉，结果 MaaSH.exe 消失。
+          # 包里只有 MaaSH.exe 时，MFA 通过 MFAAvalonia.dll 定位到的主程序就是 MaaSH.exe，和正在运行的同名，不会再触发改名。
+          mv install/MFAAvalonia.exe install/MaaSH.exe
           # 有 assets/logo.ico 时，把 MaaSH.exe 的图标换成它
           if [ -f assets/logo.ico ]; then
             npx --yes resedit-cli@2 --in install/MaaSH.exe --out install/MaaSH.exe --icon 1,assets/logo.ico
