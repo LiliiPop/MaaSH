@@ -19,7 +19,7 @@
         }
     },
     "好友_打开好友页": {
-        "desc": "全景主题：左上角第四个图标；默认主题：右下角「好友」（必须先确认在主界面，避免公告未关时误点）",
+        "desc": "全景主题：左上角第四个图标；默认主题：右下角「好友」（必须先确认在主界面，避免公告未关时误点）。10-24：打开后等好友列表里的心加载出来再判断（列表没加载出来时一键赠领按钮也是灰的，不能按按钮判断）",
         "recognition": {
             "type": "And",
             "param": {
@@ -334,286 +334,37 @@
         },
         "timeout": 15000,
         "next": [
-            "好友_一键赠领",
-            "好友_疑似已领",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_跳过卡面",
-            "[JumpBack]公共_点击空白继续"
+            "[JumpBack]公共_点击空白继续",
+            "好友_有红心",
+            "好友_全灰心"
         ],
         "on_error": [
             "公共_任务失败"
         ]
     },
-    "好友_一键赠领": {
-        "desc": "「一键赠领」按钮为深色（可点）",
-        "recognition": {
-            "type": "And",
-            "param": {
-                "all_of": [
-                    {
-                        "recognition": {
-                            "type": "OCR",
-                            "param": {
-                                "expected": "赠领",
-                                "roi": [
-                                    985,
-                                    630,
-                                    170,
-                                    65
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "recognition": {
-                            "type": "ColorMatch",
-                            "param": {
-                                "roi": [
-                                    985,
-                                    630,
-                                    170,
-                                    65
-                                ],
-                                "method": 4,
-                                "lower": [
-                                    40,
-                                    30,
-                                    20
-                                ],
-                                "upper": [
-                                    115,
-                                    100,
-                                    90
-                                ],
-                                "count": 2000
-                            }
-                        }
-                    }
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "post_wait_freezes": {
-            "time": 500,
-            "timeout": 1500,
-            "rate_limit": 200
-        },
-        "next": [
-            "好友_等待"
-        ]
-    },
     "好友_等待": {
-        "timeout": 20000,
+        "desc": "点完一键赠领：关掉奖励弹窗；领取到上限就算完成；还有红心就再点（最多 3 次），都变灰就完成",
+        "timeout": 15000,
         "next": [
-            "Flag_好友体力完成",
             "好友_领取上限",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_跳过卡面",
             "[JumpBack]公共_点击空白继续",
-            "好友_再点一次"
+            "好友_全灰心",
+            "好友_有红心",
+            "好友_红心还在"
         ],
         "on_error": [
             "公共_任务失败"
         ]
     },
     "Flag_好友体力完成": {
-        "desc": "「一键赠领」按钮变为浅色（已赠领）",
-        "recognition": {
-            "type": "And",
-            "param": {
-                "all_of": [
-                    {
-                        "recognition": {
-                            "type": "OCR",
-                            "param": {
-                                "expected": "赠领",
-                                "roi": [
-                                    985,
-                                    630,
-                                    170,
-                                    65
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "recognition": {
-                            "type": "ColorMatch",
-                            "param": {
-                                "roi": [
-                                    985,
-                                    630,
-                                    170,
-                                    65
-                                ],
-                                "method": 4,
-                                "lower": [
-                                    195,
-                                    190,
-                                    185
-                                ],
-                                "upper": [
-                                    255,
-                                    255,
-                                    255
-                                ],
-                                "count": 4000
-                            }
-                        }
-                    }
-                ]
-            }
-        },
-        "pre_wait_freezes": {
-            "time": 500,
-            "timeout": 1500,
-            "rate_limit": 200
-        },
+        "desc": "好友列表里全是灰心：赠送、领取都做完了",
         "focus": {
             "Node.Action.Succeeded": "[color:Limegreen]好友体力已赠送并领取[/color]"
         }
-    },
-    "好友_再点一次": {
-        "desc": "10-23：点过一键赠领后按钮仍是深色（可能好友刚又送了体力，或领取已达上限），再点一次",
-        "recognition": {
-            "type": "And",
-            "param": {
-                "all_of": [
-                    {
-                        "recognition": {
-                            "type": "OCR",
-                            "param": {
-                                "expected": "赠领",
-                                "roi": [
-                                    985,
-                                    630,
-                                    170,
-                                    65
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "recognition": {
-                            "type": "ColorMatch",
-                            "param": {
-                                "roi": [
-                                    985,
-                                    630,
-                                    170,
-                                    65
-                                ],
-                                "method": 4,
-                                "lower": [
-                                    40,
-                                    30,
-                                    20
-                                ],
-                                "upper": [
-                                    115,
-                                    100,
-                                    90
-                                ],
-                                "count": 2000
-                            }
-                        }
-                    }
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "pre_wait_freezes": {
-            "time": 1000,
-            "timeout": 4000,
-            "rate_limit": 200
-        },
-        "post_wait_freezes": {
-            "time": 500,
-            "timeout": 1500,
-            "rate_limit": 200
-        },
-        "max_hit": 1,
-        "next": [
-            "好友_再等"
-        ]
-    },
-    "好友_再等": {
-        "timeout": 10000,
-        "next": [
-            "Flag_好友体力完成",
-            "好友_领取上限",
-            "[JumpBack]公共_获得奖励",
-            "[JumpBack]公共_跳过卡面",
-            "[JumpBack]公共_点击空白继续",
-            "好友_仍可点"
-        ],
-        "on_error": [
-            "公共_任务失败"
-        ]
-    },
-    "好友_仍可点": {
-        "desc": "点了两次一键赠领，按钮还是深色：赠送已做，剩下的多半是领取达到上限，算完成",
-        "recognition": {
-            "type": "And",
-            "param": {
-                "all_of": [
-                    {
-                        "recognition": {
-                            "type": "OCR",
-                            "param": {
-                                "expected": "赠领",
-                                "roi": [
-                                    985,
-                                    630,
-                                    170,
-                                    65
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "recognition": {
-                            "type": "ColorMatch",
-                            "param": {
-                                "roi": [
-                                    985,
-                                    630,
-                                    170,
-                                    65
-                                ],
-                                "method": 4,
-                                "lower": [
-                                    40,
-                                    30,
-                                    20
-                                ],
-                                "upper": [
-                                    115,
-                                    100,
-                                    90
-                                ],
-                                "count": 2000
-                            }
-                        }
-                    }
-                ]
-            }
-        },
-        "pre_wait_freezes": {
-            "time": 1000,
-            "timeout": 4000,
-            "rate_limit": 200
-        },
-        "focus": {
-            "Node.Action.Succeeded": "[color:Orange]已点过两次「一键赠领」，按钮仍可点（可能领取已达上限或好友刚送了体力），算完成[/color]"
-        },
-        "next": [
-            "Flag_好友体力_已赠领"
-        ]
     },
     "Flag_好友体力_已赠领": {
         "desc": "好友体力的另一个完成标志（按钮仍深色但已点过两次）",
@@ -658,59 +409,111 @@
             "Node.Action.Succeeded": "[color:Dimgray]今日好友体力领取已达上限[/color]"
         }
     },
-    "好友_疑似已领": {
-        "desc": "10-24 实机：好友页刚打开、列表还没加载出来时「一键赠领」是灰的，被当成今天已经领过直接结束了。所以第一次看到灰按钮先等 2 秒再看一次",
+    "好友_有红心": {
+        "desc": "10-24 用户：按好友列表里的心判断——有红心（可赠送 / 可领取）时「一键赠领」一定能点。红心实测 RGB≈(244,108,101)，每行约 400 像素",
         "recognition": {
-            "type": "And",
+            "type": "ColorMatch",
             "param": {
-                "all_of": [
-                    {
-                        "recognition": {
-                            "type": "OCR",
-                            "param": {
-                                "expected": "赠领",
-                                "roi": [
-                                    985,
-                                    630,
-                                    170,
-                                    65
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "recognition": {
-                            "type": "ColorMatch",
-                            "param": {
-                                "roi": [
-                                    985,
-                                    630,
-                                    170,
-                                    65
-                                ],
-                                "method": 4,
-                                "lower": [
-                                    195,
-                                    190,
-                                    185
-                                ],
-                                "upper": [
-                                    255,
-                                    255,
-                                    255
-                                ],
-                                "count": 4000
-                            }
-                        }
-                    }
+                "roi": [
+                    990,
+                    290,
+                    150,
+                    340
+                ],
+                "method": 4,
+                "lower": [
+                    215,
+                    80,
+                    75
+                ],
+                "upper": [
+                    255,
+                    145,
+                    135
+                ],
+                "count": 150
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    945,
+                    635,
+                    220,
+                    60
                 ]
             }
         },
-        "post_delay": 2000,
-        "max_hit": 1,
+        "max_hit": 3,
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 4000,
+            "rate_limit": 200
+        },
         "next": [
-            "好友_一键赠领",
+            "好友_等待"
+        ]
+    },
+    "好友_全灰心": {
+        "desc": "列表里的心都是灰的（≈(175,173,174)），没有红心：今天已经赠领过，一键赠领点不了",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    990,
+                    290,
+                    150,
+                    340
+                ],
+                "method": 4,
+                "lower": [
+                    160,
+                    158,
+                    158
+                ],
+                "upper": [
+                    190,
+                    188,
+                    188
+                ],
+                "count": 150
+            }
+        },
+        "next": [
             "Flag_好友体力完成"
         ]
+    },
+    "好友_红心还在": {
+        "desc": "点了 3 次一键赠领还有红心（多半是领取已到上限、提示没认出来）：赠送已做，算完成",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    990,
+                    290,
+                    150,
+                    340
+                ],
+                "method": 4,
+                "lower": [
+                    215,
+                    80,
+                    75
+                ],
+                "upper": [
+                    255,
+                    145,
+                    135
+                ],
+                "count": 150
+            }
+        },
+        "next": [
+            "Flag_好友体力_已赠领"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]点了 3 次「一键赠领」还有红心（可能领取已达上限），算完成[/color]"
+        }
     }
 }
