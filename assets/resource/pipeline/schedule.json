@@ -8,6 +8,7 @@
             "[JumpBack]公共_我知道了",
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_生日弹窗等待",
+            "日程_邀约进行中",
             "日程_进入校园",
             "日程_进入校园_默认",
             "[JumpBack]公共_返回主界面"
@@ -208,8 +209,8 @@
         ]
     },
     "日程_流程": {
-        "desc": "日程主循环：第一页校园活动（随机选择 → 确定），第二页选角色的个人活动（去地图找信封、对话、选回复）",
-        "timeout": 180000,
+        "desc": "日程主循环：第一页校园活动（随机选择 → 确定），第二页选角色的个人活动（去地图找信封、对话、选回复）。10-25：走路改成小步、次数加倍，整段上限从 3 分钟放宽到 5 分钟",
+        "timeout": 300000,
         "next": [
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_生日弹窗等待",
@@ -587,7 +588,7 @@
         }
     },
     "日程_场景右走": {
-        "desc": "个人活动场景里画面中没有信封：点右半边地面，主角向右走、场景右移，然后再找信封（先认左上角返回键确认在场景里；画面静止后才点，避免对话过场中误点）",
+        "desc": "个人活动场景里画面中没有信封：点主角右边一点的地面（10-25 用户：每次走小一点，原来点最右边一步走太远，信封容易被走过去），场景右移一小段，然后再找信封。先认左上角返回键确认在场景里；画面静止后才点",
         "recognition": {
             "type": "TemplateMatch",
             "param": {
@@ -605,14 +606,14 @@
             "type": "Click",
             "param": {
                 "target": [
-                    1100,
+                    800,
                     655,
-                    150,
+                    80,
                     40
                 ]
             }
         },
-        "max_hit": 8,
+        "max_hit": 18,
         "pre_wait_freezes": {
             "time": 500,
             "timeout": 1500,
@@ -628,7 +629,7 @@
         }
     },
     "日程_场景左走": {
-        "desc": "向右走了 8 次还没找到信封（多半已经走到最右边）：改点左半边地面往回走，一路找到最左边。16 次 = 先走回出发点 8 次 + 再往左 8 次。10-24 用户建议",
+        "desc": "向右走了 18 小步还没找到信封（多半已经走到最右边）：改点主角左边一点的地面往回走，一路找到最左边。36 次 = 先走回出发点 18 次 + 再往左 18 次",
         "recognition": {
             "type": "TemplateMatch",
             "param": {
@@ -646,14 +647,14 @@
             "type": "Click",
             "param": {
                 "target": [
-                    30,
+                    400,
                     655,
-                    150,
+                    80,
                     40
                 ]
             }
         },
-        "max_hit": 16,
+        "max_hit": 36,
         "pre_wait_freezes": {
             "time": 500,
             "timeout": 1500,
@@ -669,12 +670,12 @@
         }
     },
     "日程_点击信封": {
-        "desc": "校园地图上头顶有信封的人物：先点信封正下方的头像（最多 3 次）",
+        "desc": "校园地图上头顶有信封的人物：先点信封正下方的头像（最多 3 次）。10-25：阈值 0.75→0.65（地图背景不同时信封模板只有 0.747；没有邀约的校园地图最高 0.505）",
         "recognition": {
             "type": "TemplateMatch",
             "param": {
                 "template": "schedule/信封_地图.png",
-                "threshold": 0.75
+                "threshold": 0.65
             }
         },
         "action": {
@@ -813,7 +814,7 @@
             "type": "TemplateMatch",
             "param": {
                 "template": "schedule/信封_地图.png",
-                "threshold": 0.75
+                "threshold": 0.65
             }
         },
         "action": {
@@ -2022,6 +2023,87 @@
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]日程：按第 5 顺位选了角色[/color]"
+        }
+    },
+    "日程_邀约进行中": {
+        "desc": "10-25：上次的特殊邀约没做完，游戏停在「邀约中」的校园地图（人物头顶有信封）或邀约场景里。这时按返回出不去，直接接着把邀约做完",
+        "recognition": {
+            "type": "Or",
+            "param": {
+                "any_of": [
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "校园",
+                                                "roi": [
+                                                    90,
+                                                    10,
+                                                    180,
+                                                    70
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": "schedule/信封_地图.png",
+                                                "threshold": 0.65
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": "common/返回按钮.png",
+                                                "roi": [
+                                                    0,
+                                                    0,
+                                                    140,
+                                                    110
+                                                ],
+                                                "threshold": 0.8
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": "schedule/信封_场景.png",
+                                                "threshold": 0.75
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "next": [
+            "日程_流程"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]上次的特殊邀约还没做完，接着做[/color]"
         }
     }
 }
