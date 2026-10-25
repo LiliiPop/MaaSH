@@ -2,6 +2,7 @@
     "task": [
         {
             "name": "✈️启动绘旅人",
+            "label": "✈️启动游戏",
             "entry": "启动游戏",
             "group": [
                 "start"
@@ -9,7 +10,8 @@
             "default_check": true,
             "option": [
                 "启动等待上限",
-                "使用指定账号登录"
+                "使用指定账号登录",
+                "B服登录记录核对"
             ],
             "description": "tasks/doc/StartUp.md"
         }
@@ -36,6 +38,9 @@
                         }
                     }
                 }
+            ],
+            "resource": [
+                "官服"
             ]
         },
         "启动等待上限": {
@@ -275,6 +280,93 @@
                     }
                 }
             }
+        },
+        "B服登录记录核对": {
+            "type": "select",
+            "resource": [
+                "B服"
+            ],
+            "default_case": "关闭",
+            "description": "只核对已保存的 B服登录记录，不主动注销当前账号；找不到指定昵称时停止。",
+            "cases": [
+                {
+                    "name": "关闭"
+                },
+                {
+                    "name": "开启",
+                    "option": [
+                        "B服登录账号昵称"
+                    ],
+                    "pipeline_override": {
+                        "B服_账号选择等待登录记录": {
+                            "enabled": true
+                        },
+                        "B服_sub_登录账号": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "B服登录账号昵称": {
+            "type": "input",
+            "label": "已保存账号的昵称片段",
+            "description": "须为已添加且成功登录过的账号。可填昵称前三字或其他容易识别的唯一片段；如果多个昵称包含相同片段，请填写更长内容以区分。找不到或核对不符时停止。无需填写密码。",
+            "inputs": [
+                {
+                    "name": "账号昵称",
+                    "label": "昵称前三字或唯一片段",
+                    "default": "请填写已保存账号昵称",
+                    "pipeline_type": "string",
+                    "verify": "^[一-龥A-Za-z0-9_-]{1,32}$",
+                    "pattern_msg": "请填写1至32位昵称，支持汉字、字母、数字、下划线、短横线。"
+                }
+            ],
+            "pipeline_override": {
+                "B服_账号选择目标": {
+                    "all_of": [
+                        "B服_登录记录标识",
+                        {
+                            "recognition": "OCR",
+                            "roi": [
+                                530,
+                                270,
+                                215,
+                                195
+                            ],
+                            "expected": "{账号昵称}"
+                        }
+                    ]
+                },
+                "B服_账号核对并登录": {
+                    "all_of": [
+                        "B服_登录记录标识",
+                        {
+                            "recognition": "OCR",
+                            "roi": [
+                                530,
+                                275,
+                                215,
+                                70
+                            ],
+                            "expected": "{账号昵称}"
+                        },
+                        {
+                            "recognition": "OCR",
+                            "roi": [
+                                480,
+                                365,
+                                335,
+                                85
+                            ],
+                            "expected": "^登录$"
+                        }
+                    ]
+                }
+            },
+            "resource": [
+                "B服"
+            ]
         }
     }
 }

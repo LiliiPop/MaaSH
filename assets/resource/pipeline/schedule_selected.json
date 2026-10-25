@@ -1,0 +1,763 @@
+{
+    "日程_指定_点击角色6": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "expected": "确定",
+                "roi": [
+                    918,
+                    579,
+                    117,
+                    80
+                ]
+            },
+            {
+                "recognition": "Or",
+                "any_of": [
+                    {
+                        "recognition": "OCR",
+                        "expected": "艾因",
+                        "roi": [
+                            100,
+                            80,
+                            500,
+                            500
+                        ]
+                    },
+                    {
+                        "recognition": "TemplateMatch",
+                        "template": "hlr/速写/艾因.png",
+                        "roi": [
+                            100,
+                            80,
+                            500,
+                            500
+                        ],
+                        "threshold": 0.8
+                    }
+                ]
+            }
+        ],
+        "box_index": 1,
+        "action": "Click",
+        "pre_delay": 300,
+        "post_delay": 500,
+        "next": [
+            "日程_指定_日程确定2"
+        ],
+        "timeout": 8000,
+        "desc": "指定男主日程移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "max_hit": 10
+    },
+    "日程_指定_日程确定2": {
+        "recognition": "OCR",
+        "expected": "确定",
+        "roi": [
+            918,
+            579,
+            117,
+            80
+        ],
+        "action": "Click",
+        "pre_delay": 150,
+        "post_wait_freezes": 800,
+        "next": [
+            "日程_指定_日程地图信封",
+            "日程_指定_日程场景信封",
+            "日程_指定_寻找位置"
+        ],
+        "timeout": 60000,
+        "desc": "指定男主日程移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "max_hit": 10
+    },
+    "日程_指定_寻找位置": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "hlr/日常/艾因头像.png",
+            "hlr/速写/艾因.png"
+        ],
+        "action": "Click",
+        "pre_delay": 200,
+        "post_wait_freezes": 150,
+        "next": [
+            "日程_指定_寻找信封"
+        ],
+        "roi": [
+            0,
+            100,
+            1280,
+            520
+        ],
+        "threshold": 0.8,
+        "post_delay": 1200,
+        "timeout": 10000,
+        "desc": "指定男主日程移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "max_hit": 10
+    },
+    "日程_指定_寻找信封": {
+        "next": [
+            "Flag_日程完成",
+            "Flag_日程今日已完成",
+            "日程_指定_日程场景选择回答",
+            "日程_指定_日程场景对话翻页",
+            "日程_指定_日程场景信封",
+            "日程_指定_点击信封",
+            "日程_指定_日程场景点击男主",
+            "日程_指定_点击行动",
+            "日程_指定_日程场景向左寻找",
+            "日程_指定_日程场景向右寻找"
+        ],
+        "desc": "指定男主日程移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "timeout": 15000,
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "日程_指定_点击行动": {
+        "action": "Click",
+        "target": [
+            1099,
+            464,
+            56,
+            45
+        ],
+        "next": [
+            "日程_指定_寻找信封"
+        ],
+        "recognition": "OCR",
+        "expected": "行动",
+        "roi": [
+            1040,
+            415,
+            200,
+            130
+        ],
+        "max_hit": 3,
+        "post_delay": 800,
+        "desc": "指定男主日程移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "timeout": 15000,
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "日程_指定_点击信封": {
+        "recognition": "TemplateMatch",
+        "template": "hlr/日常/日程信封.png",
+        "action": "Click",
+        "pre_delay": 200,
+        "post_wait_freezes": 150,
+        "next": [
+            "Flag_日程完成",
+            "日程_指定_日程对话继续",
+            "日程_指定_日程场景选择回答",
+            "日程_指定_日程场景对话翻页",
+            "日程_指定_日程靠近信封男主",
+            "日程_指定_日程场景信封",
+            "日程_指定_点击信封"
+        ],
+        "post_delay": 700,
+        "timeout": 20000,
+        "max_hit": 5,
+        "target_offset": [
+            43,
+            29,
+            -86,
+            -58
+        ],
+        "desc": "指定男主日程移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "日程_指定_点击对话1": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "Flag_日程完成",
+            "日程_指定_日程对话继续"
+        ],
+        "timeout": 10000,
+        "desc": "指定男主日程移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "日程_指定_点击对话2": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "Flag_日程完成",
+            "日程_指定_日程对话继续"
+        ],
+        "timeout": 10000,
+        "desc": "指定男主日程移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "日程_指定_点击对话3": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "Flag_日程完成",
+            "日程_指定_日程对话继续"
+        ],
+        "timeout": 10000,
+        "desc": "指定男主日程移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "日程_指定_日程对话继续": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    125,
+                    15,
+                    135,
+                    70
+                ],
+                "expected": "日程"
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    680,
+                    530,
+                    350,
+                    140
+                ],
+                "expected": "[一-龥]{2,}"
+            }
+        ],
+        "action": "Click",
+        "target": [
+            730,
+            580,
+            150,
+            45
+        ],
+        "pre_delay": 200,
+        "post_delay": 900,
+        "max_hit": 40,
+        "next": [
+            "Flag_日程完成",
+            "日程_指定_日程对话继续"
+        ],
+        "timeout": 10000,
+        "desc": "指定男主日程移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "日程_指定_日程场景信封": {
+        "recognition": "TemplateMatch",
+        "template": "hlr/startup/itinerary_envelope.png",
+        "roi": [
+            0,
+            80,
+            1280,
+            500
+        ],
+        "threshold": 0.85,
+        "action": "Click",
+        "post_delay": 900,
+        "max_hit": 5,
+        "next": [
+            "Flag_日程完成",
+            "日程_指定_日程对话继续",
+            "日程_指定_日程场景选择回答",
+            "日程_指定_日程场景对话翻页",
+            "日程_指定_日程靠近信封男主",
+            "日程_指定_日程场景信封",
+            "日程_指定_点击信封"
+        ],
+        "timeout": 20000,
+        "target_offset": [
+            37,
+            29,
+            -74,
+            -57
+        ],
+        "desc": "指定男主日程移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "日程_指定_日程场景选择回答": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "expected": "艾因|路辰|罗夏|司岚|叶瑄",
+                "roi": [
+                    215,
+                    15,
+                    700,
+                    90
+                ]
+            },
+            {
+                "recognition": "OCR",
+                "expected": "[一-龥]{2,}",
+                "roi": [
+                    490,
+                    480,
+                    550,
+                    170
+                ]
+            }
+        ],
+        "action": "Click",
+        "target": [
+            740,
+            525,
+            2,
+            2
+        ],
+        "pre_delay": 300,
+        "post_delay": 900,
+        "max_hit": 40,
+        "next": [
+            "Flag_日程完成",
+            "Flag_日程今日已完成",
+            "日程_指定_日程场景选择回答",
+            "日程_指定_日程场景对话翻页",
+            "日程_指定_日程场景信封",
+            "日程_指定_点击信封",
+            "日程_指定_日程场景向左寻找",
+            "日程_指定_日程场景向右寻找",
+            "日程_指定_日程场景返回校园复核"
+        ],
+        "timeout": 12000,
+        "desc": "指定男主日程移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "日程_指定_日程场景对话翻页": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "expected": "艾因|路辰|罗夏|司岚|叶瑄",
+                "roi": [
+                    215,
+                    15,
+                    700,
+                    90
+                ]
+            },
+            {
+                "recognition": "OCR",
+                "expected": "[一-龥]{3,}",
+                "roi": [
+                    240,
+                    85,
+                    790,
+                    130
+                ]
+            }
+        ],
+        "action": "Click",
+        "target": [
+            1100,
+            250,
+            2,
+            2
+        ],
+        "pre_delay": 300,
+        "post_delay": 900,
+        "max_hit": 40,
+        "next": [
+            "Flag_日程完成",
+            "Flag_日程今日已完成",
+            "日程_指定_日程场景选择回答",
+            "日程_指定_日程场景对话翻页",
+            "日程_指定_日程场景信封",
+            "日程_指定_点击信封",
+            "日程_指定_日程场景向左寻找",
+            "日程_指定_日程场景向右寻找",
+            "日程_指定_日程场景返回校园复核"
+        ],
+        "timeout": 12000,
+        "desc": "指定男主日程移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "日程_指定_日程场景点击男主": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "hlr/日常/艾因头像.png",
+            "hlr/速写/艾因.png"
+        ],
+        "roi": [
+            0,
+            230,
+            1280,
+            380
+        ],
+        "threshold": 0.8,
+        "action": "Click",
+        "post_delay": 900,
+        "max_hit": 2,
+        "next": [
+            "日程_指定_日程场景选择回答",
+            "日程_指定_日程场景对话翻页",
+            "日程_指定_日程场景信封",
+            "日程_指定_点击信封",
+            "日程_指定_寻找信封"
+        ],
+        "timeout": 8000,
+        "desc": "指定男主日程移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "日程_指定_日程场景返回校园复核": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "hlr/startup/scene_back_arrow.png",
+            "hlr/startup/back_butterfly.png"
+        ],
+        "roi": [
+            0,
+            0,
+            120,
+            100
+        ],
+        "threshold": 0.8,
+        "action": "Click",
+        "target": [
+            63,
+            43,
+            2,
+            2
+        ],
+        "post_delay": 900,
+        "max_hit": 1,
+        "next": [
+            "Flag_日程完成",
+            "Flag_日程今日已完成",
+            "日程_指定_日程场景重新打开日程"
+        ],
+        "timeout": 8000,
+        "desc": "指定男主日程移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "日程_指定_日程场景重新打开日程": {
+        "recognition": "OCR",
+        "expected": "校园",
+        "roi": [
+            110,
+            10,
+            180,
+            80
+        ],
+        "action": "Click",
+        "target": [
+            1088,
+            666,
+            2,
+            2
+        ],
+        "post_delay": 1000,
+        "max_hit": 1,
+        "next": [
+            "Flag_日程完成",
+            "Flag_日程今日已完成"
+        ],
+        "timeout": 10000,
+        "desc": "指定男主日程移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "日程_指定_日程地图信封": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "expected": "校园",
+                "roi": [
+                    110,
+                    10,
+                    180,
+                    80
+                ]
+            },
+            {
+                "recognition": "TemplateMatch",
+                "template": "hlr/startup/itinerary_map_envelope.png",
+                "roi": [
+                    0,
+                    90,
+                    1280,
+                    500
+                ],
+                "threshold": 0.8
+            }
+        ],
+        "box_index": 1,
+        "action": "Click",
+        "post_delay": 1200,
+        "max_hit": 2,
+        "next": [
+            "日程_指定_日程场景信封",
+            "日程_指定_点击信封",
+            "日程_指定_日程场景选择回答",
+            "日程_指定_日程场景对话翻页",
+            "日程_指定_日程场景点击男主",
+            "日程_指定_寻找信封"
+        ],
+        "timeout": 12000,
+        "desc": "指定男主日程移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "日程_指定_日程场景向左寻找": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "TemplateMatch",
+                "template": [
+                    "hlr/startup/scene_back_arrow.png",
+                    "hlr/startup/back_butterfly.png"
+                ],
+                "roi": [
+                    0,
+                    0,
+                    120,
+                    100
+                ],
+                "threshold": 0.8
+            },
+            {
+                "recognition": "ColorMatch",
+                "method": 4,
+                "roi": [
+                    300,
+                    80,
+                    600,
+                    100
+                ],
+                "lower": [
+                    60,
+                    140,
+                    160
+                ],
+                "upper": [
+                    220,
+                    255,
+                    255
+                ],
+                "count": 8000,
+                "connected": false
+            }
+        ],
+        "action": "Swipe",
+        "begin": [
+            1060,
+            420,
+            2,
+            2
+        ],
+        "end": [
+            260,
+            420,
+            2,
+            2
+        ],
+        "duration": 700,
+        "post_delay": 1000,
+        "max_hit": 3,
+        "next": [
+            "Flag_日程完成",
+            "Flag_日程今日已完成",
+            "日程_指定_日程场景选择回答",
+            "日程_指定_日程场景对话翻页",
+            "日程_指定_日程场景信封",
+            "日程_指定_点击信封",
+            "日程_指定_日程场景点击男主",
+            "日程_指定_日程场景向左寻找",
+            "日程_指定_日程场景向右寻找",
+            "日程_指定_日程场景返回校园复核"
+        ],
+        "timeout": 12000,
+        "desc": "指定男主日程移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "日程_指定_日程场景向右寻找": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "TemplateMatch",
+                "template": [
+                    "hlr/startup/scene_back_arrow.png",
+                    "hlr/startup/back_butterfly.png"
+                ],
+                "roi": [
+                    0,
+                    0,
+                    120,
+                    100
+                ],
+                "threshold": 0.8
+            },
+            {
+                "recognition": "ColorMatch",
+                "method": 4,
+                "roi": [
+                    300,
+                    80,
+                    600,
+                    100
+                ],
+                "lower": [
+                    60,
+                    140,
+                    160
+                ],
+                "upper": [
+                    220,
+                    255,
+                    255
+                ],
+                "count": 8000,
+                "connected": false
+            }
+        ],
+        "action": "Swipe",
+        "begin": [
+            260,
+            420,
+            2,
+            2
+        ],
+        "end": [
+            1060,
+            420,
+            2,
+            2
+        ],
+        "duration": 700,
+        "post_delay": 1000,
+        "max_hit": 3,
+        "next": [
+            "Flag_日程完成",
+            "Flag_日程今日已完成",
+            "日程_指定_日程场景选择回答",
+            "日程_指定_日程场景对话翻页",
+            "日程_指定_日程场景信封",
+            "日程_指定_点击信封",
+            "日程_指定_日程场景点击男主",
+            "日程_指定_日程场景向左寻找",
+            "日程_指定_日程场景向右寻找",
+            "日程_指定_日程场景返回校园复核"
+        ],
+        "timeout": 12000,
+        "desc": "指定男主日程移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "日程_指定_日程靠近信封男主": {
+        "recognition": "TemplateMatch",
+        "template": "hlr/startup/itinerary_envelope.png",
+        "roi": [
+            0,
+            80,
+            1280,
+            500
+        ],
+        "threshold": 0.8,
+        "action": "Click",
+        "target_offset": [
+            37,
+            138,
+            -74,
+            -57
+        ],
+        "post_delay": 1500,
+        "max_hit": 3,
+        "next": [
+            "日程_指定_日程场景选择回答",
+            "日程_指定_日程场景对话翻页",
+            "日程_指定_日程场景信封",
+            "日程_指定_点击信封"
+        ],
+        "timeout": 10000,
+        "desc": "指定男主日程移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "日程_指定_翻页": {
+        "desc": "第一页盖章完成（右下 1/2）：点箭头进第二页。10-24 实跑：盖章后底部头像会飘「+2」好感动画，动画没放完时点箭头会被吞掉（连点 4 次都没翻）→ 先等底部画面静止再点，每次点完再等一会儿",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^1/2$",
+                "roi": [
+                    1064,
+                    592,
+                    102,
+                    66
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1090,
+                    550,
+                    60,
+                    55
+                ]
+            }
+        },
+        "max_hit": 4,
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "pre_wait_freezes": {
+            "time": 1500,
+            "target": [
+                380,
+                480,
+                560,
+                120
+            ],
+            "timeout": 8000,
+            "rate_limit": 200
+        },
+        "post_delay": 1200,
+        "next": [
+            "日程_指定_点击角色6"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    }
+}

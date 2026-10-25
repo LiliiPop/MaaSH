@@ -1,0 +1,1486 @@
+{
+    "速写_点击入口": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "expected": "校园",
+                "roi": [
+                    110,
+                    10,
+                    180,
+                    80
+                ]
+            },
+            {
+                "recognition": "OCR",
+                "expected": "速写",
+                "roi": [
+                    800,
+                    600,
+                    150,
+                    120
+                ]
+            }
+        ],
+        "box_index": 1,
+        "action": "Click",
+        "post_delay": 1000,
+        "max_hit": 1,
+        "next": [
+            "速写_工具不足关闭",
+            "速写_一键收集",
+            "速写_选择男主"
+        ],
+        "timeout": 10000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_选择男主": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "expected": "校园",
+                "roi": [
+                    110,
+                    10,
+                    180,
+                    80
+                ]
+            },
+            {
+                "recognition": "OCR",
+                "expected": "退出速写",
+                "roi": [
+                    1090,
+                    640,
+                    190,
+                    80
+                ]
+            },
+            {
+                "recognition": "TemplateMatch",
+                "template": "hlr/速写/艾因.png",
+                "roi": [
+                    0,
+                    85,
+                    1280,
+                    545
+                ],
+                "threshold": 0.85
+            }
+        ],
+        "box_index": 2,
+        "action": "Click",
+        "pre_delay": 400,
+        "post_delay": 1500,
+        "max_hit": 1,
+        "next": [
+            "速写_一键收集"
+        ],
+        "timeout": 15000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_一键收集": {
+        "recognition": "OCR",
+        "expected": "一?键收集",
+        "roi": [
+            1010,
+            40,
+            250,
+            130
+        ],
+        "action": "Click",
+        "pre_delay": 500,
+        "post_delay": 2000,
+        "max_hit": 1,
+        "timeout": 60000,
+        "next": [
+            "速写_侦探题目",
+            "速写_海边度假题目",
+            "速写_架子鼓题目",
+            "速写_天体观测题目"
+        ],
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_架子鼓题目": {
+        "recognition": "OCR",
+        "expected": "架子鼓鼓手",
+        "roi": [
+            0,
+            20,
+            700,
+            90
+        ],
+        "action": "DoNothing",
+        "next": [
+            "速写_清除旧连线",
+            "速写_灵感音符"
+        ],
+        "timeout": 10000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_清除旧连线": {
+        "recognition": "OCR",
+        "expected": "重.*画",
+        "roi": [
+            260,
+            620,
+            300,
+            90
+        ],
+        "action": "Click",
+        "post_delay": 600,
+        "max_hit": 1,
+        "next": [
+            "速写_灵感音符"
+        ],
+        "timeout": 5000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_灵感音符": {
+        "recognition": "TemplateMatch",
+        "template": "hlr/速写/灵感/音符.png",
+        "roi": [
+            100,
+            130,
+            1100,
+            480
+        ],
+        "threshold": 0.8,
+        "action": "DoNothing",
+        "timeout": 5000,
+        "next": [
+            "速写_灵感鼓"
+        ],
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_灵感鼓": {
+        "recognition": "TemplateMatch",
+        "template": "hlr/速写/灵感/鼓.png",
+        "roi": [
+            100,
+            130,
+            1100,
+            480
+        ],
+        "threshold": 0.8,
+        "action": "DoNothing",
+        "timeout": 5000,
+        "next": [
+            "速写_灵感手臂"
+        ],
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_灵感手臂": {
+        "recognition": "TemplateMatch",
+        "template": "hlr/速写/灵感/手臂.png",
+        "roi": [
+            100,
+            130,
+            1100,
+            480
+        ],
+        "threshold": 0.8,
+        "action": "DoNothing",
+        "timeout": 5000,
+        "next": [
+            "速写_架子鼓连线"
+        ],
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_灵感星星": {
+        "recognition": "TemplateMatch",
+        "template": "hlr/速写/灵感/星星.png",
+        "roi": [
+            100,
+            130,
+            1100,
+            480
+        ],
+        "threshold": 0.8,
+        "action": "DoNothing",
+        "timeout": 5000,
+        "next": [
+            "速写_灵感土星"
+        ],
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_灵感土星": {
+        "recognition": "TemplateMatch",
+        "template": "hlr/速写/灵感/土星.png",
+        "roi": [
+            100,
+            130,
+            1100,
+            480
+        ],
+        "threshold": 0.8,
+        "action": "DoNothing",
+        "timeout": 5000,
+        "next": [
+            "速写_灵感放大镜"
+        ],
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_灵感放大镜": {
+        "recognition": "TemplateMatch",
+        "template": "hlr/速写/灵感/放大镜.png",
+        "roi": [
+            100,
+            130,
+            1100,
+            480
+        ],
+        "threshold": 0.8,
+        "action": "DoNothing",
+        "timeout": 5000,
+        "next": [
+            "速写_天体观测连线"
+        ],
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_架子鼓连线": {
+        "recognition": "OCR",
+        "expected": "架子鼓鼓手",
+        "roi": [
+            0,
+            20,
+            700,
+            90
+        ],
+        "action": "Swipe",
+        "begin": "速写_灵感音符",
+        "end": [
+            "速写_灵感鼓",
+            "速写_灵感手臂"
+        ],
+        "duration": [
+            700,
+            700
+        ],
+        "end_hold": 200,
+        "post_delay": 800,
+        "max_hit": 1,
+        "next": [
+            "速写_架子鼓确认"
+        ],
+        "timeout": 5000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_架子鼓确认": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "expected": "架子鼓鼓手",
+                "roi": [
+                    0,
+                    20,
+                    700,
+                    90
+                ]
+            },
+            {
+                "recognition": "OCR",
+                "expected": "确.*定",
+                "roi": [
+                    730,
+                    620,
+                    300,
+                    90
+                ]
+            }
+        ],
+        "box_index": 1,
+        "action": "Click",
+        "post_delay": 1500,
+        "max_hit": 1,
+        "next": [
+            "速写_结果退出"
+        ],
+        "timeout": 30000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_天体观测题目": {
+        "recognition": "OCR",
+        "expected": "天体观测",
+        "roi": [
+            0,
+            20,
+            700,
+            90
+        ],
+        "action": "DoNothing",
+        "next": [
+            "速写_天体观测重画",
+            "速写_灵感星星"
+        ],
+        "timeout": 10000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_天体观测重画": {
+        "recognition": "OCR",
+        "expected": "重.*画",
+        "roi": [
+            260,
+            620,
+            300,
+            90
+        ],
+        "action": "Click",
+        "post_delay": 600,
+        "max_hit": 1,
+        "next": [
+            "速写_灵感星星"
+        ],
+        "timeout": 5000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_天体观测连线": {
+        "recognition": "OCR",
+        "expected": "天体观测",
+        "roi": [
+            0,
+            20,
+            700,
+            90
+        ],
+        "action": "Swipe",
+        "begin": "速写_灵感星星",
+        "end": [
+            "速写_灵感土星",
+            "速写_灵感放大镜"
+        ],
+        "duration": [
+            700,
+            700
+        ],
+        "end_hold": 200,
+        "post_delay": 800,
+        "max_hit": 1,
+        "next": [
+            "速写_天体观测确认"
+        ],
+        "timeout": 5000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_天体观测确认": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "expected": "天体观测",
+                "roi": [
+                    0,
+                    20,
+                    700,
+                    90
+                ]
+            },
+            {
+                "recognition": "OCR",
+                "expected": "确.*定",
+                "roi": [
+                    730,
+                    620,
+                    300,
+                    90
+                ]
+            }
+        ],
+        "box_index": 1,
+        "action": "Click",
+        "post_delay": 1500,
+        "max_hit": 1,
+        "next": [
+            "速写_结果退出"
+        ],
+        "timeout": 30000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_结果退出": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "expected": "速写结果",
+                "roi": [
+                    420,
+                    120,
+                    450,
+                    120
+                ]
+            },
+            {
+                "recognition": "OCR",
+                "expected": "点击屏幕退出",
+                "roi": [
+                    420,
+                    590,
+                    450,
+                    100
+                ]
+            }
+        ],
+        "action": "Click",
+        "target": [
+            630,
+            635,
+            2,
+            2
+        ],
+        "pre_delay": 600,
+        "post_delay": 1200,
+        "max_hit": 2,
+        "next": [
+            "速写_赠送选择第一位",
+            "Flag_速写已返回主页",
+            "速写_结果退出",
+            "速写_校园返回主页",
+            "速写_离开场景"
+        ],
+        "timeout": 15000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_赠送选择第一位": {
+        "recognition": "OCR",
+        "expected": "速写赠送",
+        "roi": [
+            420,
+            120,
+            450,
+            120
+        ],
+        "action": "Click",
+        "target": [
+            430,
+            290,
+            2,
+            2
+        ],
+        "pre_delay": 400,
+        "post_delay": 600,
+        "max_hit": 1,
+        "next": [
+            "速写_点击赠送"
+        ],
+        "timeout": 10000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_点击赠送": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "expected": "速写赠送",
+                "roi": [
+                    420,
+                    120,
+                    450,
+                    120
+                ]
+            },
+            {
+                "recognition": "OCR",
+                "expected": "赠.*送",
+                "roi": [
+                    520,
+                    480,
+                    230,
+                    100
+                ]
+            }
+        ],
+        "box_index": 1,
+        "action": "Click",
+        "target": [
+            640,
+            520,
+            2,
+            2
+        ],
+        "pre_delay": 400,
+        "post_delay": 1500,
+        "max_hit": 1,
+        "next": [
+            "Flag_速写已返回主页",
+            "速写_校园返回主页",
+            "速写_赠送后离开场景",
+            "速写_离开场景"
+        ],
+        "timeout": 15000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_赠送后离开场景": {
+        "recognition": "OCR",
+        "expected": "速写",
+        "roi": [
+            1120,
+            600,
+            160,
+            120
+        ],
+        "action": "Click",
+        "target": [
+            63,
+            45,
+            2,
+            2
+        ],
+        "pre_delay": 500,
+        "post_delay": 1200,
+        "max_hit": 3,
+        "next": [
+            "Flag_速写已返回主页",
+            "速写_校园返回主页",
+            "速写_赠送后离开场景"
+        ],
+        "timeout": 10000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_离开场景": {
+        "recognition": "OCR",
+        "expected": "一?键收集",
+        "roi": [
+            1010,
+            40,
+            250,
+            130
+        ],
+        "action": "Click",
+        "target": [
+            63,
+            55,
+            2,
+            2
+        ],
+        "post_delay": 1200,
+        "max_hit": 2,
+        "next": [
+            "Flag_速写已返回主页",
+            "速写_校园返回主页",
+            "速写_离开场景"
+        ],
+        "timeout": 10000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_校园返回主页": {
+        "recognition": "OCR",
+        "expected": "校园",
+        "roi": [
+            110,
+            10,
+            180,
+            80
+        ],
+        "action": "Click",
+        "target": [
+            63,
+            55,
+            2,
+            2
+        ],
+        "post_delay": 1200,
+        "max_hit": 2,
+        "next": [
+            "Flag_速写已返回主页",
+            "速写_校园返回主页"
+        ],
+        "timeout": 10000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_执行流程": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "速写_侦探题目",
+            "速写_海边度假题目",
+            "速写_天体观测题目",
+            "速写_架子鼓题目",
+            "速写_一键收集",
+            "速写_选择男主",
+            "速写_点击入口",
+            "速写_进入校园"
+        ],
+        "timeout": 10000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_海边度假题目": {
+        "recognition": "OCR",
+        "expected": "海边度假",
+        "roi": [
+            0,
+            20,
+            700,
+            90
+        ],
+        "action": "DoNothing",
+        "next": [
+            "速写_海边度假重画",
+            "速写_灵感贝壳"
+        ],
+        "timeout": 10000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_海边度假重画": {
+        "recognition": "OCR",
+        "expected": "重.*画",
+        "roi": [
+            260,
+            620,
+            300,
+            90
+        ],
+        "action": "Click",
+        "post_delay": 600,
+        "max_hit": 1,
+        "next": [
+            "速写_灵感贝壳"
+        ],
+        "timeout": 5000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_灵感贝壳": {
+        "recognition": "TemplateMatch",
+        "template": "hlr/速写/灵感/贝壳.png",
+        "roi": [
+            100,
+            100,
+            1100,
+            510
+        ],
+        "threshold": 0.8,
+        "action": "DoNothing",
+        "next": [
+            "速写_灵感墨镜"
+        ],
+        "timeout": 5000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_灵感墨镜": {
+        "recognition": "TemplateMatch",
+        "template": "hlr/速写/灵感/墨镜.png",
+        "roi": [
+            100,
+            100,
+            1100,
+            510
+        ],
+        "threshold": 0.8,
+        "action": "DoNothing",
+        "next": [
+            "速写_灵感海浪"
+        ],
+        "timeout": 5000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_灵感海浪": {
+        "recognition": "TemplateMatch",
+        "template": "hlr/速写/灵感/海浪.png",
+        "roi": [
+            100,
+            100,
+            1100,
+            510
+        ],
+        "threshold": 0.8,
+        "action": "DoNothing",
+        "next": [
+            "速写_海边度假连线"
+        ],
+        "timeout": 5000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_海边度假连线": {
+        "recognition": "OCR",
+        "expected": "海边度假",
+        "roi": [
+            0,
+            20,
+            700,
+            90
+        ],
+        "action": "Swipe",
+        "begin": "速写_灵感贝壳",
+        "end": [
+            "速写_灵感墨镜",
+            "速写_灵感海浪"
+        ],
+        "duration": [
+            700,
+            700
+        ],
+        "end_hold": 200,
+        "post_delay": 800,
+        "max_hit": 1,
+        "next": [
+            "速写_海边度假确认"
+        ],
+        "timeout": 5000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_海边度假确认": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "expected": "海边度假",
+                "roi": [
+                    0,
+                    20,
+                    700,
+                    90
+                ]
+            },
+            {
+                "recognition": "OCR",
+                "expected": "确.*定",
+                "roi": [
+                    730,
+                    620,
+                    300,
+                    90
+                ]
+            }
+        ],
+        "box_index": 1,
+        "action": "Click",
+        "post_delay": 1500,
+        "max_hit": 1,
+        "next": [
+            "速写_结果退出"
+        ],
+        "timeout": 30000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_工具不足关闭": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "expected": "速写工具",
+                "roi": [
+                    450,
+                    140,
+                    400,
+                    90
+                ]
+            },
+            {
+                "recognition": "OCR",
+                "expected": "必需工具|必须工具|每次消耗",
+                "roi": [
+                    450,
+                    270,
+                    650,
+                    90
+                ]
+            }
+        ],
+        "action": "Click",
+        "target": [
+            1100,
+            660,
+            2,
+            2
+        ],
+        "post_delay": 800,
+        "max_hit": 2,
+        "next": [
+            "速写_校园返回主页"
+        ],
+        "timeout": 8000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_侦探题目": {
+        "recognition": "OCR",
+        "expected": "侦探",
+        "roi": [
+            0,
+            20,
+            700,
+            90
+        ],
+        "action": "DoNothing",
+        "next": [
+            "速写_侦探重画",
+            "速写_侦探放大镜"
+        ],
+        "timeout": 10000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_侦探重画": {
+        "recognition": "OCR",
+        "expected": "重.*画",
+        "roi": [
+            260,
+            620,
+            300,
+            90
+        ],
+        "action": "Click",
+        "post_delay": 600,
+        "max_hit": 1,
+        "next": [
+            "速写_侦探放大镜"
+        ],
+        "timeout": 5000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_侦探放大镜": {
+        "recognition": "TemplateMatch",
+        "template": "hlr/速写/灵感/放大镜.png",
+        "roi": [
+            100,
+            100,
+            1100,
+            510
+        ],
+        "threshold": 0.8,
+        "action": "DoNothing",
+        "timeout": 5000,
+        "next": [
+            "速写_侦探烟斗"
+        ],
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_侦探烟斗": {
+        "recognition": "ColorMatch",
+        "method": 4,
+        "roi": [
+            660,
+            325,
+            50,
+            45
+        ],
+        "lower": [
+            180,
+            110,
+            0
+        ],
+        "upper": [
+            255,
+            240,
+            180
+        ],
+        "count": 40,
+        "connected": false,
+        "action": "DoNothing",
+        "next": [
+            "速写_侦探记录纸"
+        ],
+        "timeout": 10000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_侦探记录纸": {
+        "recognition": "ColorMatch",
+        "method": 4,
+        "roi": [
+            870,
+            455,
+            60,
+            65
+        ],
+        "lower": [
+            180,
+            110,
+            0
+        ],
+        "upper": [
+            255,
+            240,
+            180
+        ],
+        "count": 140,
+        "connected": false,
+        "action": "DoNothing",
+        "next": [
+            "速写_侦探连线"
+        ],
+        "timeout": 10000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_侦探连线": {
+        "recognition": "OCR",
+        "expected": "侦探",
+        "roi": [
+            0,
+            20,
+            700,
+            90
+        ],
+        "action": "Swipe",
+        "begin": "速写_侦探放大镜",
+        "end": [
+            "速写_侦探烟斗",
+            "速写_侦探记录纸"
+        ],
+        "duration": [
+            700,
+            700
+        ],
+        "end_hold": 200,
+        "post_delay": 800,
+        "max_hit": 1,
+        "next": [
+            "速写_侦探确认"
+        ],
+        "timeout": 5000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_侦探确认": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "expected": "侦探",
+                "roi": [
+                    0,
+                    20,
+                    700,
+                    90
+                ]
+            },
+            {
+                "recognition": "OCR",
+                "expected": "确.*定",
+                "roi": [
+                    730,
+                    620,
+                    300,
+                    90
+                ]
+            }
+        ],
+        "box_index": 1,
+        "action": "Click",
+        "post_delay": 1500,
+        "max_hit": 1,
+        "next": [
+            "速写_结果退出"
+        ],
+        "timeout": 30000,
+        "desc": "速写移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写": {
+        "desc": "速写任务入口，先归位；仅支持已接入的四种题型。",
+        "timeout": 30000,
+        "next": [
+            "速写_进入校园",
+            "速写_进入校园_默认",
+            "[JumpBack]公共_返回主界面"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_进入校园": {
+        "desc": "速写复用 SH 的校园入口，区分主页主题。",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "画廊",
+                                "roi": [
+                                    950,
+                                    290,
+                                    120,
+                                    80
+                                ],
+                                "only_rec": true
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^校园$",
+                                "roi": [
+                                    950,
+                                    395,
+                                    110,
+                                    65
+                                ],
+                                "only_rec": true
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    18,
+                    12,
+                    -36,
+                    -24
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 1200,
+            "timeout": 6000,
+            "rate_limit": 200
+        },
+        "next": [
+            "速写_点击入口"
+        ],
+        "max_hit": 3,
+        "timeout": 20000,
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "速写_进入校园_默认": {
+        "desc": "速写复用 SH 的校园入口，区分主页主题。",
+        "recognition": {
+            "type": "Or",
+            "param": {
+                "any_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "画廊",
+                                "roi": [
+                                    180,
+                                    410,
+                                    95,
+                                    60
+                                ],
+                                "only_rec": true
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "画廊",
+                                "roi": [
+                                    175,
+                                    405,
+                                    105,
+                                    70
+                                ],
+                                "only_rec": false
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    30,
+                    300,
+                    38,
+                    30
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 1200,
+            "timeout": 6000,
+            "rate_limit": 200
+        },
+        "next": [
+            "速写_点击入口"
+        ],
+        "max_hit": 3,
+        "timeout": 20000,
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "Flag_速写已返回主页": {
+        "desc": "结束时识别主界面；是否实际赠送以速写结算画面和运行日志为准。",
+        "recognition": {
+            "type": "Or",
+            "param": {
+                "any_of": [
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "Or",
+                                            "param": {
+                                                "any_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    950,
+                                                                    290,
+                                                                    120,
+                                                                    80
+                                                                ],
+                                                                "only_rec": true
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    930,
+                                                                    275,
+                                                                    160,
+                                                                    110
+                                                                ],
+                                                                "only_rec": false
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "Or",
+                                            "param": {
+                                                "any_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    700,
+                                                                    635,
+                                                                    100,
+                                                                    60
+                                                                ],
+                                                                "only_rec": true
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    680,
+                                                                    620,
+                                                                    140,
+                                                                    90
+                                                                ],
+                                                                "only_rec": false
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "^校园$",
+                                                                "roi": [
+                                                                    950,
+                                                                    395,
+                                                                    110,
+                                                                    65
+                                                                ],
+                                                                "only_rec": true
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "出行",
+                                                                "roi": [
+                                                                    1060,
+                                                                    390,
+                                                                    140,
+                                                                    75
+                                                                ],
+                                                                "only_rec": false
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "Or",
+                                            "param": {
+                                                "any_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    180,
+                                                                    410,
+                                                                    95,
+                                                                    60
+                                                                ],
+                                                                "only_rec": true
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "画廊",
+                                                                "roi": [
+                                                                    160,
+                                                                    395,
+                                                                    135,
+                                                                    90
+                                                                ],
+                                                                "only_rec": false
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "Or",
+                                            "param": {
+                                                "any_of": [
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    780,
+                                                                    655,
+                                                                    85,
+                                                                    50
+                                                                ],
+                                                                "only_rec": true
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "图鉴",
+                                                                "roi": [
+                                                                    760,
+                                                                    640,
+                                                                    125,
+                                                                    80
+                                                                ],
+                                                                "only_rec": false
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "出行|^行$",
+                                                                "roi": [
+                                                                    10,
+                                                                    395,
+                                                                    100,
+                                                                    65
+                                                                ],
+                                                                "only_rec": false
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "出行|^行$",
+                                                                "roi": [
+                                                                    15,
+                                                                    400,
+                                                                    90,
+                                                                    55
+                                                                ],
+                                                                "only_rec": true
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "recognition": {
+                                                            "type": "OCR",
+                                                            "param": {
+                                                                "expected": "^.?园$",
+                                                                "roi": [
+                                                                    10,
+                                                                    295,
+                                                                    80,
+                                                                    50
+                                                                ],
+                                                                "only_rec": true
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]速写流程结束，已返回主页[/color]"
+        }
+    }
+}

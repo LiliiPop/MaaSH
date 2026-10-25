@@ -1,0 +1,212 @@
+{
+    "B服_账号选择等待登录记录": {
+        "recognition": "And",
+        "all_of": [
+            "B服_登录记录标识"
+        ],
+        "action": "DoNothing",
+        "next": [
+            "B服_账号核对并登录",
+            "B服_账号展开登录记录",
+            "B服_账号选择目标"
+        ],
+        "timeout": 5000,
+        "desc": "B服登录记录移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "enabled": false
+    },
+    "B服_登录记录标识": {
+        "recognition": "OCR",
+        "roi": [
+            525,
+            210,
+            255,
+            65
+        ],
+        "expected": "登录记录",
+        "action": "DoNothing",
+        "desc": "B服登录记录移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。"
+    },
+    "B服_账号展开登录记录": {
+        "recognition": "And",
+        "all_of": [
+            "B服_登录记录标识",
+            {
+                "recognition": "OCR",
+                "roi": [
+                    480,
+                    365,
+                    335,
+                    85
+                ],
+                "expected": "^登录$"
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    530,
+                    275,
+                    215,
+                    70
+                ],
+                "expected": "[^ ]{2,}"
+            }
+        ],
+        "box_index": 2,
+        "action": "Click",
+        "pre_delay": 200,
+        "post_delay": 500,
+        "max_hit": 1,
+        "next": [
+            "B服_账号选择目标"
+        ],
+        "timeout": 5000,
+        "desc": "B服登录记录移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "B服_账号选择目标": {
+        "recognition": "And",
+        "all_of": [
+            "B服_登录记录标识",
+            {
+                "recognition": "OCR",
+                "roi": [
+                    530,
+                    270,
+                    215,
+                    195
+                ],
+                "expected": "请填写已保存账号昵称"
+            }
+        ],
+        "box_index": 1,
+        "action": "Click",
+        "pre_delay": 200,
+        "post_delay": 500,
+        "max_hit": 1,
+        "next": [
+            "B服_账号核对并登录"
+        ],
+        "timeout": 5000,
+        "desc": "B服登录记录移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "B服_账号核对并登录": {
+        "recognition": "And",
+        "all_of": [
+            "B服_登录记录标识",
+            {
+                "recognition": "OCR",
+                "roi": [
+                    530,
+                    275,
+                    215,
+                    70
+                ],
+                "expected": "请填写已保存账号昵称"
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    480,
+                    365,
+                    335,
+                    85
+                ],
+                "expected": "^登录$"
+            }
+        ],
+        "box_index": 2,
+        "action": "Click",
+        "pre_delay": 200,
+        "post_delay": 1000,
+        "max_hit": 1,
+        "next": [
+            "B服_继续启动"
+        ],
+        "timeout": 5000,
+        "desc": "B服登录记录移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "B服_继续启动": {
+        "desc": "结束 B服弹窗子流程，回到 SH 启动等待。"
+    },
+    "B服_sub_登录账号": {
+        "action": "Click",
+        "next": [
+            "B服_继续启动"
+        ],
+        "max_hit": 5,
+        "post_delay": 1000,
+        "desc": "B服启动弹窗移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "timeout": 15000,
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "recognition": "And",
+        "all_of": [
+            "B服_登录记录标识",
+            {
+                "recognition": "OCR",
+                "expected": "登录",
+                "roi": [
+                    621,
+                    383,
+                    37,
+                    22
+                ]
+            }
+        ],
+        "box_index": 1
+    },
+    "B服_sub_隐私政策关闭": {
+        "recognition": "OCR",
+        "expected": "同意",
+        "roi": [
+            686,
+            499,
+            55,
+            35
+        ],
+        "action": "Click",
+        "next": [
+            "B服_继续启动"
+        ],
+        "max_hit": 5,
+        "post_delay": 1000,
+        "desc": "B服启动弹窗移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "timeout": 15000,
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "B服_sub_网易协议关闭": {
+        "recognition": "OCR",
+        "expected": "接受",
+        "action": "Click",
+        "roi": [
+            734,
+            605,
+            71,
+            37
+        ],
+        "next": [
+            "B服_继续启动"
+        ],
+        "max_hit": 5,
+        "post_delay": 1000,
+        "desc": "B服启动弹窗移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "timeout": 15000,
+        "on_error": [
+            "公共_任务失败"
+        ]
+    }
+}
