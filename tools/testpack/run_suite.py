@@ -28,7 +28,11 @@ HERE = Path(__file__).resolve().parent
 # ---------------------------------------------------------------- interface / 选项
 
 def load_json(p: Path):
-    return json.loads(p.read_text(encoding="utf-8-sig"))
+    try:
+        return json.loads(p.read_text(encoding="utf-8-sig"))
+    except json.JSONDecodeError as e:
+        raise SystemExit(f"{p.name} 格式不对（第 {e.lineno} 行第 {e.colno} 个字附近）：{e.msg}。"
+                         f"常见原因：两行之间少了英文逗号「,」，或用了中文引号。") from None
 
 
 class Interface:
