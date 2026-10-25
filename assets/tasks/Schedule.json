@@ -7,7 +7,628 @@
                 "daily_single"
             ],
             "default_check": false,
-            "description": "tasks/doc/Schedule.md"
+            "description": "tasks/doc/Schedule.md",
+            "option": [
+                "日程第二项男主"
+            ]
         }
-    ]
+    ],
+    "option": {
+        "日程第二项男主": {
+            "type": "select",
+            "label": "日程第二项男主",
+            "default_case": "沿用随机",
+            "description": "第二项日程选择此男主，并按对应头像寻找地点和角色；第一项多人日程保持原有选择。",
+            "cases": [
+                {
+                    "name": "沿用随机"
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_指定_点击角色6": {
+                            "all_of": [
+                                {
+                                    "recognition": "OCR",
+                                    "expected": "确定",
+                                    "roi": [
+                                        918,
+                                        579,
+                                        117,
+                                        80
+                                    ]
+                                },
+                                {
+                                    "recognition": "Or",
+                                    "any_of": [
+                                        {
+                                            "recognition": "OCR",
+                                            "expected": "艾因",
+                                            "roi": [
+                                                100,
+                                                80,
+                                                500,
+                                                500
+                                            ]
+                                        },
+                                        {
+                                            "recognition": "TemplateMatch",
+                                            "template": "hlr/速写/艾因.png",
+                                            "roi": [
+                                                100,
+                                                80,
+                                                500,
+                                                500
+                                            ],
+                                            "threshold": 0.8
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "日程_指定_寻找位置": {
+                            "template": [
+                                "hlr/速写/艾因.png"
+                            ]
+                        },
+                        "日程_指定_日程场景点击男主": {
+                            "template": [
+                                "hlr/速写/艾因.png"
+                            ]
+                        },
+                        "日程_流程": {
+                            "next": [
+                                "[JumpBack]公共_晚点再说",
+                                "[JumpBack]公共_生日弹窗等待",
+                                "[JumpBack]公共_稍后再说",
+                                "[JumpBack]公共_不再提醒",
+                                "[JumpBack]公共_我知道了",
+                                "[JumpBack]质检_日程结算",
+                                "Flag_日程完成",
+                                "Flag_日程今日已完成",
+                                "[JumpBack]日程_回日程页",
+                                "日程_指定_翻页",
+                                "Flag_日程_今日已完成",
+                                "[JumpBack]日程_随机选择",
+                                "日程_选择回复",
+                                "[JumpBack]日程_对话推进",
+                                "[JumpBack]日程_点击信封",
+                                "[JumpBack]日程_点击信封_地点",
+                                "[JumpBack]日程_点击信封_场景",
+                                "[JumpBack]日程_点击信封_场景_2",
+                                "[JumpBack]日程_点击信封_场景_3",
+                                "[JumpBack]日程_点击信封_场景_4",
+                                "[JumpBack]公共_获得奖励",
+                                "[JumpBack]公共_跳过卡面",
+                                "[JumpBack]公共_点击空白继续",
+                                "[JumpBack]日程_场景右走",
+                                "[JumpBack]日程_场景左走"
+                            ]
+                        },
+                        "日程_随机选择": {
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "随机选择",
+                                                    "roi": [
+                                                        115,
+                                                        600,
+                                                        125,
+                                                        50
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "^1/2$",
+                                                    "roi": [
+                                                        1064,
+                                                        592,
+                                                        102,
+                                                        66
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_指定_点击角色6": {
+                            "all_of": [
+                                {
+                                    "recognition": "OCR",
+                                    "expected": "确定",
+                                    "roi": [
+                                        918,
+                                        579,
+                                        117,
+                                        80
+                                    ]
+                                },
+                                {
+                                    "recognition": "Or",
+                                    "any_of": [
+                                        {
+                                            "recognition": "OCR",
+                                            "expected": "路辰",
+                                            "roi": [
+                                                100,
+                                                80,
+                                                500,
+                                                500
+                                            ]
+                                        },
+                                        {
+                                            "recognition": "TemplateMatch",
+                                            "template": "hlr/速写/路辰.png",
+                                            "roi": [
+                                                100,
+                                                80,
+                                                500,
+                                                500
+                                            ],
+                                            "threshold": 0.8
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "日程_指定_寻找位置": {
+                            "template": [
+                                "hlr/速写/路辰.png"
+                            ]
+                        },
+                        "日程_指定_日程场景点击男主": {
+                            "template": [
+                                "hlr/速写/路辰.png"
+                            ]
+                        },
+                        "日程_流程": {
+                            "next": [
+                                "[JumpBack]公共_晚点再说",
+                                "[JumpBack]公共_生日弹窗等待",
+                                "[JumpBack]公共_稍后再说",
+                                "[JumpBack]公共_不再提醒",
+                                "[JumpBack]公共_我知道了",
+                                "[JumpBack]质检_日程结算",
+                                "Flag_日程完成",
+                                "Flag_日程今日已完成",
+                                "[JumpBack]日程_回日程页",
+                                "日程_指定_翻页",
+                                "Flag_日程_今日已完成",
+                                "[JumpBack]日程_随机选择",
+                                "日程_选择回复",
+                                "[JumpBack]日程_对话推进",
+                                "[JumpBack]日程_点击信封",
+                                "[JumpBack]日程_点击信封_地点",
+                                "[JumpBack]日程_点击信封_场景",
+                                "[JumpBack]日程_点击信封_场景_2",
+                                "[JumpBack]日程_点击信封_场景_3",
+                                "[JumpBack]日程_点击信封_场景_4",
+                                "[JumpBack]公共_获得奖励",
+                                "[JumpBack]公共_跳过卡面",
+                                "[JumpBack]公共_点击空白继续",
+                                "[JumpBack]日程_场景右走",
+                                "[JumpBack]日程_场景左走"
+                            ]
+                        },
+                        "日程_随机选择": {
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "随机选择",
+                                                    "roi": [
+                                                        115,
+                                                        600,
+                                                        125,
+                                                        50
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "^1/2$",
+                                                    "roi": [
+                                                        1064,
+                                                        592,
+                                                        102,
+                                                        66
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_指定_点击角色6": {
+                            "all_of": [
+                                {
+                                    "recognition": "OCR",
+                                    "expected": "确定",
+                                    "roi": [
+                                        918,
+                                        579,
+                                        117,
+                                        80
+                                    ]
+                                },
+                                {
+                                    "recognition": "Or",
+                                    "any_of": [
+                                        {
+                                            "recognition": "OCR",
+                                            "expected": "罗夏",
+                                            "roi": [
+                                                100,
+                                                80,
+                                                500,
+                                                500
+                                            ]
+                                        },
+                                        {
+                                            "recognition": "TemplateMatch",
+                                            "template": "hlr/速写/罗夏.png",
+                                            "roi": [
+                                                100,
+                                                80,
+                                                500,
+                                                500
+                                            ],
+                                            "threshold": 0.8
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "日程_指定_寻找位置": {
+                            "template": [
+                                "hlr/速写/罗夏.png"
+                            ]
+                        },
+                        "日程_指定_日程场景点击男主": {
+                            "template": [
+                                "hlr/速写/罗夏.png"
+                            ]
+                        },
+                        "日程_流程": {
+                            "next": [
+                                "[JumpBack]公共_晚点再说",
+                                "[JumpBack]公共_生日弹窗等待",
+                                "[JumpBack]公共_稍后再说",
+                                "[JumpBack]公共_不再提醒",
+                                "[JumpBack]公共_我知道了",
+                                "[JumpBack]质检_日程结算",
+                                "Flag_日程完成",
+                                "Flag_日程今日已完成",
+                                "[JumpBack]日程_回日程页",
+                                "日程_指定_翻页",
+                                "Flag_日程_今日已完成",
+                                "[JumpBack]日程_随机选择",
+                                "日程_选择回复",
+                                "[JumpBack]日程_对话推进",
+                                "[JumpBack]日程_点击信封",
+                                "[JumpBack]日程_点击信封_地点",
+                                "[JumpBack]日程_点击信封_场景",
+                                "[JumpBack]日程_点击信封_场景_2",
+                                "[JumpBack]日程_点击信封_场景_3",
+                                "[JumpBack]日程_点击信封_场景_4",
+                                "[JumpBack]公共_获得奖励",
+                                "[JumpBack]公共_跳过卡面",
+                                "[JumpBack]公共_点击空白继续",
+                                "[JumpBack]日程_场景右走",
+                                "[JumpBack]日程_场景左走"
+                            ]
+                        },
+                        "日程_随机选择": {
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "随机选择",
+                                                    "roi": [
+                                                        115,
+                                                        600,
+                                                        125,
+                                                        50
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "^1/2$",
+                                                    "roi": [
+                                                        1064,
+                                                        592,
+                                                        102,
+                                                        66
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_指定_点击角色6": {
+                            "all_of": [
+                                {
+                                    "recognition": "OCR",
+                                    "expected": "确定",
+                                    "roi": [
+                                        918,
+                                        579,
+                                        117,
+                                        80
+                                    ]
+                                },
+                                {
+                                    "recognition": "Or",
+                                    "any_of": [
+                                        {
+                                            "recognition": "OCR",
+                                            "expected": "司岚",
+                                            "roi": [
+                                                100,
+                                                80,
+                                                500,
+                                                500
+                                            ]
+                                        },
+                                        {
+                                            "recognition": "TemplateMatch",
+                                            "template": "hlr/速写/司岚.png",
+                                            "roi": [
+                                                100,
+                                                80,
+                                                500,
+                                                500
+                                            ],
+                                            "threshold": 0.8
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "日程_指定_寻找位置": {
+                            "template": [
+                                "hlr/速写/司岚.png"
+                            ]
+                        },
+                        "日程_指定_日程场景点击男主": {
+                            "template": [
+                                "hlr/速写/司岚.png"
+                            ]
+                        },
+                        "日程_流程": {
+                            "next": [
+                                "[JumpBack]公共_晚点再说",
+                                "[JumpBack]公共_生日弹窗等待",
+                                "[JumpBack]公共_稍后再说",
+                                "[JumpBack]公共_不再提醒",
+                                "[JumpBack]公共_我知道了",
+                                "[JumpBack]质检_日程结算",
+                                "Flag_日程完成",
+                                "Flag_日程今日已完成",
+                                "[JumpBack]日程_回日程页",
+                                "日程_指定_翻页",
+                                "Flag_日程_今日已完成",
+                                "[JumpBack]日程_随机选择",
+                                "日程_选择回复",
+                                "[JumpBack]日程_对话推进",
+                                "[JumpBack]日程_点击信封",
+                                "[JumpBack]日程_点击信封_地点",
+                                "[JumpBack]日程_点击信封_场景",
+                                "[JumpBack]日程_点击信封_场景_2",
+                                "[JumpBack]日程_点击信封_场景_3",
+                                "[JumpBack]日程_点击信封_场景_4",
+                                "[JumpBack]公共_获得奖励",
+                                "[JumpBack]公共_跳过卡面",
+                                "[JumpBack]公共_点击空白继续",
+                                "[JumpBack]日程_场景右走",
+                                "[JumpBack]日程_场景左走"
+                            ]
+                        },
+                        "日程_随机选择": {
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "随机选择",
+                                                    "roi": [
+                                                        115,
+                                                        600,
+                                                        125,
+                                                        50
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "^1/2$",
+                                                    "roi": [
+                                                        1064,
+                                                        592,
+                                                        102,
+                                                        66
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_指定_点击角色6": {
+                            "all_of": [
+                                {
+                                    "recognition": "OCR",
+                                    "expected": "确定",
+                                    "roi": [
+                                        918,
+                                        579,
+                                        117,
+                                        80
+                                    ]
+                                },
+                                {
+                                    "recognition": "Or",
+                                    "any_of": [
+                                        {
+                                            "recognition": "OCR",
+                                            "expected": "叶瑄",
+                                            "roi": [
+                                                100,
+                                                80,
+                                                500,
+                                                500
+                                            ]
+                                        },
+                                        {
+                                            "recognition": "TemplateMatch",
+                                            "template": "hlr/速写/叶瑄.png",
+                                            "roi": [
+                                                100,
+                                                80,
+                                                500,
+                                                500
+                                            ],
+                                            "threshold": 0.8
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "日程_指定_寻找位置": {
+                            "template": [
+                                "hlr/速写/叶瑄.png"
+                            ]
+                        },
+                        "日程_指定_日程场景点击男主": {
+                            "template": [
+                                "hlr/速写/叶瑄.png"
+                            ]
+                        },
+                        "日程_流程": {
+                            "next": [
+                                "[JumpBack]公共_晚点再说",
+                                "[JumpBack]公共_生日弹窗等待",
+                                "[JumpBack]公共_稍后再说",
+                                "[JumpBack]公共_不再提醒",
+                                "[JumpBack]公共_我知道了",
+                                "[JumpBack]质检_日程结算",
+                                "Flag_日程完成",
+                                "Flag_日程今日已完成",
+                                "[JumpBack]日程_回日程页",
+                                "日程_指定_翻页",
+                                "Flag_日程_今日已完成",
+                                "[JumpBack]日程_随机选择",
+                                "日程_选择回复",
+                                "[JumpBack]日程_对话推进",
+                                "[JumpBack]日程_点击信封",
+                                "[JumpBack]日程_点击信封_地点",
+                                "[JumpBack]日程_点击信封_场景",
+                                "[JumpBack]日程_点击信封_场景_2",
+                                "[JumpBack]日程_点击信封_场景_3",
+                                "[JumpBack]日程_点击信封_场景_4",
+                                "[JumpBack]公共_获得奖励",
+                                "[JumpBack]公共_跳过卡面",
+                                "[JumpBack]公共_点击空白继续",
+                                "[JumpBack]日程_场景右走",
+                                "[JumpBack]日程_场景左走"
+                            ]
+                        },
+                        "日程_随机选择": {
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "随机选择",
+                                                    "roi": [
+                                                        115,
+                                                        600,
+                                                        125,
+                                                        50
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "^1/2$",
+                                                    "roi": [
+                                                        1064,
+                                                        592,
+                                                        102,
+                                                        66
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
 }

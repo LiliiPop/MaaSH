@@ -1,0 +1,108 @@
+"""Verify the four requested integrations without input to the game."""
+import json
+import importlib.util
+from pathlib import Path
+import unittest
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def load(path):
+    return json.loads((ROOT / path).read_text(encoding='utf-8'))
+
+
+class FeatureIntegrationTests(unittest.TestCase):
+    def test_presets_include_visible_sketch_and_renamed_startup(self):
+        interface = load('assets/interface.json')
+        self.assertEqual(load('assets/tasks/StartUp.json')['task'][0]['name'], '✈️启动游戏')
+        self.assertEqual(load('assets/tasks/Sketch.json')['task'][0]['group'], ['daily'])
+        for preset in interface['preset']:
+            names = [t['name'] for t in preset['task']]
+            self.assertIn('✈️启动游戏', names)
+            self.assertNotIn('✈️启动绘旅人', names)
+            sketch = next(t for t in preset['task'] if t['name'] == '✏️速写')
+            self.assertFalse(sketch['enabled'])
+
+    def test_saved_config_sync_preserves_selections_and_device(self):
+        spec = importlib.util.spec_from_file_location('sync_tasks', ROOT / 'tools/sync_local_tasks.py')
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        before = {'Resource': '官服', 'AdbDevice': {'AdbSerial': 'existing-device'},
+                  'CurrentTasks': ['✈️启动绘旅人<|||>启动游戏'],
+                  'TaskItems': [{'name': '✈️启动绘旅人', 'entry': '启动游戏',
+                                 'default_check': False, 'option': [{'name': '启动等待上限', 'index': 2}]}]}
+        sketch = load('assets/tasks/Sketch.json')['task'][0]
+        after = module.migrate_instance(before, sketch)
+        self.assertEqual(after['Resource'], 'B服')
+        self.assertEqual(after['AdbDevice'], before['AdbDevice'])
+        self.assertFalse(after['TaskItems'][0]['default_check'])
+        self.assertEqual(after['TaskItems'][0]['option'], before['TaskItems'][0]['option'])
+        self.assertIn('✏️速写<|||>速写', after['CurrentTasks'])
+        self.assertEqual(after, module.migrate_instance(after, sketch))
+
+    def test_only_sketch_is_added_as_a_new_task(self):
+        interface = load('assets/interface.json')
+        tasks = [task for path in interface['import'] for task in load('assets/' + path).get('task', [])]
+        self.assertEqual(len(tasks), 30)
+        self.assertFalse(any(task['name'].startswith('HLR_') for task in tasks))
+        sketch = load('assets/tasks/Sketch.json')['task']
+        self.assertEqual(len(sketch), 1)
+        self.assertFalse(sketch[0]['default_check'])
+        roles = load('assets/tasks/Sketch.json')['option']['速写男主']
+        self.assertEqual([c['name'] for c in roles['cases']], ['艾因', '路辰', '罗夏', '司岚', '叶瑄'])
+
+    def test_schedule_changes_only_second_page_and_keeps_bundle_continuation(self):
+        task = load('assets/tasks/Schedule.json')
+        option = task['option']['日程第二项男主']
+        self.assertEqual(option['default_case'], '沿用随机')
+        self.assertNotIn('pipeline_override', option['cases'][0])
+        original = load('assets/resource/pipeline/schedule.json')
+        imported = load('assets/resource/pipeline/schedule_selected.json')
+        self.assertEqual(imported['日程_指定_翻页']['action'], original['日程_翻页']['action'])
+        self.assertEqual(imported['日程_指定_翻页']['next'], ['日程_指定_点击角色6'])
+        for case in option['cases'][1:]:
+            override = case['pipeline_override']
+            expected = ['日程_指定_翻页' if r == '[JumpBack]日程_翻页' else r
+                        for r in original['日程_流程']['next']]
+            self.assertEqual(override['日程_流程']['next'], expected)
+            self.assertNotIn('日程_指定_点击角色1', imported)
+            self.assertIn(case['name'], json.dumps(override, ensure_ascii=False))
+        self.assertIn('Flag_日程完成', imported['日程_指定_寻找信封']['next'])
+        campus = load('assets/tasks/Campus.json')['task'][0]
+        self.assertIn('日程第二项男主', campus['option'])
+        self.assertEqual(campus['pipeline_override']['Flag_日程完成']['next'], ['校园_日程做完'])
+
+    def test_theater_only_adds_optional_ticket_tail(self):
+        definition = load('assets/tasks/Theater.json')
+        task = definition['task'][0]
+        self.assertEqual(task['entry'], '剧场三合一')
+        self.assertEqual(task['pipeline_override']['剧场_点第一部']['next'], ['剧场_评论_唤出'])
+        option = definition['option']['领取观影券进度奖励']
+        self.assertEqual(option['cases'][0]['pipeline_override']['剧场_完成']['next'], ['剧场_领券_完成'])
+        self.assertEqual(option['cases'][1]['pipeline_override']['剧场_完成']['next'], [])
+        tickets = load('assets/resource/pipeline/theater_tickets.json')
+        self.assertEqual(len(tickets), 5)
+        self.assertFalse(any(n.get('action') == 'InputText' for n in tickets.values()))
+
+    def test_bilibili_covers_every_lifecycle_node_and_gates_account_matching(self):
+        overlay = load('assets/resource_bilibili/pipeline/server.json')
+        for path in (ROOT / 'assets/resource/pipeline').glob('*.json'):
+            for name, node in json.loads(path.read_text(encoding='utf-8')).items():
+                action = node.get('action')
+                kind = action.get('type') if isinstance(action, dict) else action
+                if kind in ('StartApp', 'StopApp'):
+                    self.assertEqual(overlay[name]['action']['param']['package'], 'com.netease.skzdhlr.bilibili')
+        startup = load('assets/tasks/StartUp.json')['option']
+        self.assertEqual(startup['使用指定账号登录']['resource'], ['官服'])
+        self.assertEqual(startup['B服登录记录核对']['resource'], ['B服'])
+        self.assertEqual(startup['B服登录记录核对']['default_case'], '关闭')
+        handlers = load('assets/resource/pipeline/bilibili.json')
+        self.assertFalse(handlers['B服_账号选择等待登录记录']['enabled'])
+        self.assertEqual(handlers['B服_sub_登录账号']['all_of'][0], 'B服_登录记录标识')
+        enabled = startup['B服登录记录核对']['cases'][1]['pipeline_override']
+        self.assertFalse(enabled['B服_sub_登录账号']['enabled'])
+        self.assertTrue(enabled['B服_账号选择等待登录记录']['enabled'])
+
+
+if __name__ == '__main__':
+    unittest.main()

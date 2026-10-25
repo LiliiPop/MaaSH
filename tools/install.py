@@ -109,6 +109,11 @@ def install_resource():
         dirs_exist_ok=True,
     )
     shutil.copytree(
+        working_dir / "assets" / "resource_bilibili",
+        install_path / "resource_bilibili",
+        dirs_exist_ok=True,
+    )
+    shutil.copytree(
         working_dir / "assets" / "tasks",
         install_path / "tasks",
         dirs_exist_ok=True,
@@ -128,6 +133,11 @@ def install_resource():
 
 
 def install_chores():
+    shutil.copytree(
+        working_dir / "third_party",
+        install_path / "third_party",
+        dirs_exist_ok=True,
+    )
     shutil.copy2(
         working_dir / "README.md",
         install_path,

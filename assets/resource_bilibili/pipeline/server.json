@@ -1,0 +1,97 @@
+{
+    "关闭游戏": {
+        "action": {
+            "type": "StopApp",
+            "param": {
+                "package": "com.netease.skzdhlr.bilibili"
+            }
+        }
+    },
+    "冒烟测试": {
+        "action": {
+            "type": "StartApp",
+            "param": {
+                "package": "com.netease.skzdhlr.bilibili"
+            }
+        }
+    },
+    "启动游戏": {
+        "action": {
+            "type": "StartApp",
+            "param": {
+                "package": "com.netease.skzdhlr.bilibili"
+            }
+        }
+    },
+    "剧场_评论_未验证": {
+        "action": {
+            "type": "StopApp",
+            "param": {
+                "package": "com.netease.skzdhlr.bilibili"
+            }
+        }
+    },
+    "启动_等待主界面": {
+        "next": [
+            "[JumpBack]B服_账号选择等待登录记录",
+            "[JumpBack]B服_sub_登录账号",
+            "[JumpBack]B服_sub_隐私政策关闭",
+            "[JumpBack]B服_sub_网易协议关闭",
+            "[JumpBack]公共_回归信件",
+            "[JumpBack]公共_回归信",
+            "[JumpBack]公共_回归选人",
+            "[JumpBack]公共_回归确定",
+            "[JumpBack]公共_剧情快进",
+            "[JumpBack]公共_关闭支付",
+            "[JumpBack]公共_放弃付款",
+            "[JumpBack]公共_退出后重开",
+            "启动_主界面初判",
+            "[JumpBack]启动_切换账号",
+            "[JumpBack]启动_关闭登录公告",
+            "[JumpBack]启动_点击登录",
+            "[JumpBack]公共_关闭月度推荐",
+            "[JumpBack]公共_关闭公告_边缘",
+            "[JumpBack]公共_关闭公告",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_跳过卡面",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_断线重连",
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_生日弹窗等待",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "[JumpBack]公共_返回按钮",
+            "[JumpBack]启动_兜底点击"
+        ]
+    },
+    "启动_主界面初判": {
+        "next": [
+            "[JumpBack]B服_账号选择等待登录记录",
+            "[JumpBack]B服_sub_登录账号",
+            "[JumpBack]B服_sub_隐私政策关闭",
+            "[JumpBack]B服_sub_网易协议关闭",
+            "[JumpBack]公共_退出后重开",
+            "[JumpBack]公共_关闭月度推荐",
+            "[JumpBack]公共_放弃付款",
+            "[JumpBack]公共_关闭支付",
+            "[JumpBack]公共_回归信件",
+            "[JumpBack]公共_回归信",
+            "[JumpBack]公共_回归选人",
+            "[JumpBack]公共_回归确定",
+            "[JumpBack]公共_剧情快进",
+            "Flag_启动完成",
+            "[JumpBack]公共_关闭公告_边缘",
+            "[JumpBack]公共_关闭公告",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_跳过卡面",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_生日弹窗等待",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "[JumpBack]公共_返回按钮"
+        ]
+    }
+}

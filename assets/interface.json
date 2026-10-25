@@ -27,7 +27,19 @@
             "option": [
                 "质检截图"
             ],
-            "label": "📸质检截图",
+            "label": "官服",
+            "description": "这是所有任务共用的设置，**不是一个任务**：前面的勾点不动也没关系，不管勾没勾，这里的设置都会一直生效。\n\n**质检截图**：勾上要截图的环节后，脚本到了那个环节的结算 / 奖励页面会自动截一张图，方便事后检查有没有做对。截图存在 **MaaSH 目录\\debug\\screencap**（文件名是「时间_环节名」），不会自动删除，请定期手动清理。任务失败时的截图另外存在 debug\\on_error。一个环节都不勾 = 不截图。"
+        },
+        {
+            "name": "B服",
+            "path": [
+                "./resource",
+                "./resource_bilibili"
+            ],
+            "option": [
+                "质检截图"
+            ],
+            "label": "B服",
             "description": "这是所有任务共用的设置，**不是一个任务**：前面的勾点不动也没关系，不管勾没勾，这里的设置都会一直生效。\n\n**质检截图**：勾上要截图的环节后，脚本到了那个环节的结算 / 奖励页面会自动截一张图，方便事后检查有没有做对。截图存在 **MaaSH 目录\\debug\\screencap**（文件名是「时间_环节名」），不会自动删除，请定期手动清理。任务失败时的截图另外存在 debug\\on_error。一个环节都不勾 = 不截图。"
         }
     ],
@@ -42,7 +54,7 @@
                     "enabled": false
                 },
                 {
-                    "name": "✈️启动绘旅人",
+                    "name": "✈️启动游戏",
                     "enabled": true
                 },
                 {
@@ -68,6 +80,10 @@
                 {
                     "name": "🏫校园合一",
                     "enabled": true
+                },
+                {
+                    "name": "✏️速写",
+                    "enabled": false
                 },
                 {
                     "name": "🎨画灵绘卷合一",
@@ -168,7 +184,7 @@
                     "enabled": false
                 },
                 {
-                    "name": "✈️启动绘旅人",
+                    "name": "✈️启动游戏",
                     "enabled": true
                 },
                 {
@@ -193,6 +209,10 @@
                 },
                 {
                     "name": "🏫校园合一",
+                    "enabled": false
+                },
+                {
+                    "name": "✏️速写",
                     "enabled": false
                 },
                 {
@@ -294,7 +314,7 @@
                     "enabled": false
                 },
                 {
-                    "name": "✈️启动绘旅人",
+                    "name": "✈️启动游戏",
                     "enabled": true
                 },
                 {
@@ -319,6 +339,10 @@
                 },
                 {
                     "name": "🏫校园合一",
+                    "enabled": false
+                },
+                {
+                    "name": "✏️速写",
                     "enabled": false
                 },
                 {
@@ -477,7 +501,8 @@
         "tasks/DailyClaim.json",
         "tasks/WeeklyClaim.json",
         "tasks/AfterRun.json",
-        "tasks/CloseGame.json"
+        "tasks/CloseGame.json",
+        "tasks/Sketch.json"
     ],
     "task": []
 }

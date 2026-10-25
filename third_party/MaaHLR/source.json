@@ -1,0 +1,40 @@
+{
+    "repository": "https://github.com/MelinaQ/MaaHLR",
+    "license": "MIT",
+    "scope": [
+        "速写",
+        "日程第二项男主",
+        "剧场观影券进度奖励",
+        "B服启动与登录记录"
+    ],
+    "source": "local working tree, including uncommitted changes",
+    "sha256": {
+        "assets/interface.json": "8c6385f37a1e0a8afca5e34e8b44a8ab5a8ca3762b15fceadb8f765378cb978e",
+        "assets/resource/image/startup/back_butterfly.png": "5560ba23c5c92b4ee233cc3aaa8ce67af35d5a54c3697a4f999fdde17eda1880",
+        "assets/resource/image/startup/itinerary_envelope.png": "98331ff14c0e21c4783eff7eefbc8708035f60b819798fe14b29e7d125ef96ec",
+        "assets/resource/image/startup/itinerary_map_envelope.png": "64f567e5e8a832c4a16a36088ab56c1e2133579817af388facc4fd4003cfc624",
+        "assets/resource/image/startup/scene_back_arrow.png": "358bcc6cc60b39ffdec928169ba22ba549470d652e961029829490e4b3e770fd",
+        "assets/resource/image/日常/日程信封.png": "26f2c106b4093f54f27a459831b5b1138d2354dbca8790489a46aae7f07953de",
+        "assets/resource/image/日常/艾因头像.png": "a3988b983c015645c04d40a739c71486277d15bb907fc8abeb8ae9ad5ba38383",
+        "assets/resource/image/速写/叶瑄.png": "32118f73d302f67ea8150b436c0c2906ab8c508c644c7d44d4252c31cded7b43",
+        "assets/resource/image/速写/司岚.png": "c1bdeb3fd14fdb6b3fa64ba71580db963d8fe7d3dc625cc10292b2233b15b1c5",
+        "assets/resource/image/速写/灵感/土星.png": "895319e9a314d32d60f8dbd6aebcadca51a6ef3fc609e82de5e8813e48c77373",
+        "assets/resource/image/速写/灵感/墨镜.png": "b16e34d50569805ffe74e11da170415f4b352c6a073429692bc6bc2e49d158fc",
+        "assets/resource/image/速写/灵感/手臂.png": "87fcf9c2383e58d43a07325624a86916ff594fcb5f7b547a80603650ec9fd144",
+        "assets/resource/image/速写/灵感/放大镜.png": "58897c210f9f70b7baaaf5d1a24d6a6a5c0ddc6b8fc8cead0b0a4f1199bda181",
+        "assets/resource/image/速写/灵感/星星.png": "b1d58250c46062db2a5044084910b50e1a0f9689a346327ea8e5eca24b50cc0d",
+        "assets/resource/image/速写/灵感/海浪.png": "0c3583acff7edaeaf5fde6b4d8dc43d7a94de32a24f37829bab9eea313dc69a5",
+        "assets/resource/image/速写/灵感/贝壳.png": "5c7b7888930d047de03d07edf90effbd17dc2350db7612fe3900aaa8c6938500",
+        "assets/resource/image/速写/灵感/音符.png": "b8f93225523fc9ca1464bf8ea7b1c98a2fb40d4f30f047f56ef01d0192a7f381",
+        "assets/resource/image/速写/灵感/鼓.png": "b2aaec3279fe8a9575fb7a3652409e0c021aa76c40f70862302451fec40b0e31",
+        "assets/resource/image/速写/罗夏.png": "3c1267aa09ad4b39b55ab75024a786deb110acebba01136c9b8c4973ed2cc6cf",
+        "assets/resource/image/速写/艾因.png": "c8fcecc219a0087b26cbddce927350a1f6717c623636c6a12602fb2d3b8096e8",
+        "assets/resource/image/速写/路辰.png": "2679a9c6726b380c904fbf876ac4da7a83c781a01c154ad96efcaec43981ee91",
+        "assets/resource/pipeline/account.json": "c6ca589ea186589e0d8d4d244c0dc6d48fa7a2b12a9183fc26a5b775f0ef50a7",
+        "assets/resource/pipeline/itinerary.json": "f009b5db84a9c650c86da28913a27e70bc1b284c6055aa42e1653e49bc4ee7cb",
+        "assets/resource/pipeline/puppet.json": "2c7be8ae9e300b46645dc5794a160d007d9a5bcc0f2feea336d693d9441caa26",
+        "assets/resource/pipeline/sketch.json": "0572b87b33d10fda9fdea86c23892da7277423d42febb57930a792bcf4e99ca6",
+        "assets/resource/pipeline/start.json": "c1a1382c3dd82f63a4c2b1d908c24ef99cf6fc6ed513baac9d60bbafb8d25097",
+        "LICENSE": "2a4e534a0b69c7a338356293f8cd3dabed30a8fb4d397e67ecf1d1f2a53c76b9"
+    }
+}

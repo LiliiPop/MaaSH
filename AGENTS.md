@@ -10,6 +10,7 @@ assets/tasks/*.json          # 每个任务一个文件：任务名、入口节�
 assets/resource/pipeline/    # 流程节点（按功能分文件）
 assets/resource/image/       # 模板图，按任务分子文件夹
 assets/resource/model/ocr/   # OCR 模型（打包时从 MaaCommonAssets 复制）
+assets/resource_bilibili/    # B服增量包，加载在共用资源后
 tools/                       # 打包、校验脚本
 ```
 
@@ -35,7 +36,7 @@ tools/                       # 打包、校验脚本
 ## 提交前
 
 ```bash
-python tools/validate_schema.py --schema-dir deps/tools --resource-dirs assets/resource --interface-files assets/interface.json --task-dirs assets/tasks
+python tools/validate_schema.py --schema-dir deps/tools --resource-dirs assets/resource assets/resource_bilibili --exclude-dirs assets/resource/announcement --interface-files assets/interface.json --task-dirs assets/tasks
 python tools/lint_pipeline.py   # And/Or 包装、节点引用、模板图
 ```
 

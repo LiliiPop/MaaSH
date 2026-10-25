@@ -1,0 +1,226 @@
+{
+    "task": [
+        {
+            "name": "✏️速写",
+            "entry": "速写",
+            "group": [
+                "daily"
+            ],
+            "default_check": false,
+            "option": [
+                "速写男主"
+            ],
+            "description": "tasks/doc/Sketch.md"
+        }
+    ],
+    "option": {
+        "速写男主": {
+            "type": "select",
+            "label": "速写男主",
+            "default_case": "艾因",
+            "description": "在校园地图中识别所选男主头像并点击，支持头像随机出现在不同地点。识别不到时停止。",
+            "cases": [
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "速写_选择男主": {
+                            "all_of": [
+                                {
+                                    "recognition": "OCR",
+                                    "expected": "校园",
+                                    "roi": [
+                                        110,
+                                        10,
+                                        180,
+                                        80
+                                    ]
+                                },
+                                {
+                                    "recognition": "OCR",
+                                    "expected": "退出速写",
+                                    "roi": [
+                                        1090,
+                                        640,
+                                        190,
+                                        80
+                                    ]
+                                },
+                                {
+                                    "recognition": "TemplateMatch",
+                                    "template": "hlr/速写/艾因.png",
+                                    "roi": [
+                                        0,
+                                        85,
+                                        1280,
+                                        545
+                                    ],
+                                    "threshold": 0.85
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "速写_选择男主": {
+                            "all_of": [
+                                {
+                                    "recognition": "OCR",
+                                    "expected": "校园",
+                                    "roi": [
+                                        110,
+                                        10,
+                                        180,
+                                        80
+                                    ]
+                                },
+                                {
+                                    "recognition": "OCR",
+                                    "expected": "退出速写",
+                                    "roi": [
+                                        1090,
+                                        640,
+                                        190,
+                                        80
+                                    ]
+                                },
+                                {
+                                    "recognition": "TemplateMatch",
+                                    "template": "hlr/速写/路辰.png",
+                                    "roi": [
+                                        0,
+                                        85,
+                                        1280,
+                                        545
+                                    ],
+                                    "threshold": 0.85
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "速写_选择男主": {
+                            "all_of": [
+                                {
+                                    "recognition": "OCR",
+                                    "expected": "校园",
+                                    "roi": [
+                                        110,
+                                        10,
+                                        180,
+                                        80
+                                    ]
+                                },
+                                {
+                                    "recognition": "OCR",
+                                    "expected": "退出速写",
+                                    "roi": [
+                                        1090,
+                                        640,
+                                        190,
+                                        80
+                                    ]
+                                },
+                                {
+                                    "recognition": "TemplateMatch",
+                                    "template": "hlr/速写/罗夏.png",
+                                    "roi": [
+                                        0,
+                                        85,
+                                        1280,
+                                        545
+                                    ],
+                                    "threshold": 0.85
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "速写_选择男主": {
+                            "all_of": [
+                                {
+                                    "recognition": "OCR",
+                                    "expected": "校园",
+                                    "roi": [
+                                        110,
+                                        10,
+                                        180,
+                                        80
+                                    ]
+                                },
+                                {
+                                    "recognition": "OCR",
+                                    "expected": "退出速写",
+                                    "roi": [
+                                        1090,
+                                        640,
+                                        190,
+                                        80
+                                    ]
+                                },
+                                {
+                                    "recognition": "TemplateMatch",
+                                    "template": "hlr/速写/司岚.png",
+                                    "roi": [
+                                        0,
+                                        85,
+                                        1280,
+                                        545
+                                    ],
+                                    "threshold": 0.85
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "速写_选择男主": {
+                            "all_of": [
+                                {
+                                    "recognition": "OCR",
+                                    "expected": "校园",
+                                    "roi": [
+                                        110,
+                                        10,
+                                        180,
+                                        80
+                                    ]
+                                },
+                                {
+                                    "recognition": "OCR",
+                                    "expected": "退出速写",
+                                    "roi": [
+                                        1090,
+                                        640,
+                                        190,
+                                        80
+                                    ]
+                                },
+                                {
+                                    "recognition": "TemplateMatch",
+                                    "template": "hlr/速写/叶瑄.png",
+                                    "roi": [
+                                        0,
+                                        85,
+                                        1280,
+                                        545
+                                    ],
+                                    "threshold": 0.85
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
