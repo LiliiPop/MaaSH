@@ -27,6 +27,7 @@
             "[JumpBack]公共_点击空白继续",
             "[JumpBack]公共_关闭公告_边缘",
             "[JumpBack]公共_关闭公告",
+            "[JumpBack]公共_签到页弹出",
             "[JumpBack]公共_返回按钮"
         ],
         "on_error": [
@@ -1846,5 +1847,83 @@
         "focus": {
             "Node.Action.Starting": "[color:Orange]30 秒回不到主界面（画面卡住了），关掉游戏重开[/color]"
         }
+    },
+    "公共_签到页弹出": {
+        "desc": "10-26 实机：登录后签到页会晚几秒自己弹出来（没月卡的号不会自动签），盖住要点的按钮。认到签到页（「签到计划」「累计签到」）：先点左边「日常」页签再点回「签到」页签——切到签到页签时游戏会自动签到并弹奖励（和签到任务同一做法）；之后交回调用方按返回关掉",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "签到计划|累计签到",
+                "roi": [
+                    240,
+                    120,
+                    420,
+                    80
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    28,
+                    330,
+                    40,
+                    70
+                ]
+            }
+        },
+        "max_hit": 1,
+        "pre_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "公共_签到页_切回"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到页弹出来了：顺手签到[/color]"
+        }
+    },
+    "公共_签到页_切回": {
+        "desc": "点回左边「签到」页签，触发自动签到",
+        "recognition": "DirectHit",
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    28,
+                    170,
+                    40,
+                    70
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 4000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_跳过卡面",
+            "[JumpBack]公共_点击空白继续",
+            "公共_签到页_好了"
+        ],
+        "timeout": 8000,
+        "on_error": [
+            "公共_签到页_好了"
+        ]
+    },
+    "公共_签到页_好了": {
+        "desc": "签到页已稳定（没有奖励弹窗）：结束这一小段，回调用方",
+        "recognition": "DirectHit",
+        "pre_delay": 300
     }
 }
