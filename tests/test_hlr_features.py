@@ -43,7 +43,7 @@ class FeatureIntegrationTests(unittest.TestCase):
         self.assertFalse(any(k.startswith('日程_指定_') for k in pri))
         self.assertNotIn('日程_一页_刷新', pri)  # 第一页不刷新
         for i in range(1, 6):
-            self.assertEqual(pri[f'日程_选人_{i}']['next'], ['日程_确定'])
+            self.assertEqual(pri[f'日程_选人_{i}']['next'], ['日程_顺位确定'])
         flow = load('assets/resource/pipeline/schedule.json')['日程_流程']['next']
         self.assertLess(flow.index('[JumpBack]日程_一页_顺位'), flow.index('[JumpBack]日程_二页_选人'))
         campus = load('assets/tasks/Campus.json')['task'][0]
@@ -63,7 +63,7 @@ class FeatureIntegrationTests(unittest.TestCase):
         self.assertEqual(comment['Yes']['pipeline_override']['剧场_点第一部']['next'], ['剧场_评论_唤出'])
         self.assertEqual(comment['Yes']['option'], ['评论内容'])
         option = definition['option']['领取观影券进度奖励']
-        self.assertEqual(option['cases'][0]['pipeline_override']['剧场_完成']['next'], ['剧场_领券_完成'])
+        self.assertEqual(option['cases'][0]['pipeline_override']['剧场_完成']['next'], ['剧场_领券_完成', '剧场_领券_没有可领'])
         self.assertEqual(option['cases'][1]['pipeline_override']['剧场_完成']['next'], [])
         interface = load('assets/interface.json')
         self.assertNotIn('tasks/TheaterLike.json', interface['import'])

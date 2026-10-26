@@ -93,7 +93,7 @@
             "rate_limit": 200
         },
         "next": [
-            "日程_确定"
+            "日程_顺位确定"
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]日程第二页：按第 1 顺位选了角色[/color]"
@@ -133,7 +133,7 @@
             "rate_limit": 200
         },
         "next": [
-            "日程_确定"
+            "日程_顺位确定"
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]日程第二页：按第 2 顺位选了角色[/color]"
@@ -173,7 +173,7 @@
             "rate_limit": 200
         },
         "next": [
-            "日程_确定"
+            "日程_顺位确定"
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]日程第二页：按第 3 顺位选了角色[/color]"
@@ -213,7 +213,7 @@
             "rate_limit": 200
         },
         "next": [
-            "日程_确定"
+            "日程_顺位确定"
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]日程第二页：按第 4 顺位选了角色[/color]"
@@ -253,7 +253,7 @@
             "rate_limit": 200
         },
         "next": [
-            "日程_确定"
+            "日程_顺位确定"
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]日程第二页：按第 5 顺位选了角色[/color]"
@@ -309,7 +309,7 @@
             "rate_limit": 200
         },
         "next": [
-            "日程_确定"
+            "日程_顺位确定"
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Orange]日程第二页：顺位里的人都不在名单，改为随机[/color]"
@@ -926,8 +926,8 @@
             }
         },
         "post_wait_freezes": {
-            "time": 500,
-            "timeout": 3000,
+            "time": 1000,
+            "timeout": 6000,
             "rate_limit": 200
         },
         "focus": {
@@ -965,10 +965,34 @@
         },
         "next": [
             "日程_一页_满",
-            "日程_确定"
+            "日程_顺位确定"
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Orange]日程第一页：没选满，用随机选择补齐[/color]"
         }
+    },
+    "日程_顺位确定": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "确定",
+                "roi": [
+                    925,
+                    595,
+                    110,
+                    55
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 6000,
+            "rate_limit": 200
+        },
+        "timeout": 5000,
+        "desc": "顺位选完人后点确定，并等选人页完全消失（画面静止 1 秒）再交回主流程。10-26 实机：原来点完立刻交回，选人页还在淡出时被「随机选择」认到，又点了一次随机、干等 5 秒"
     }
 }
