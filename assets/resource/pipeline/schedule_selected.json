@@ -27,11 +27,11 @@
         "recognition": "TemplateMatch",
         "template": [
             "schedule/艾因头像.png",
-            "sketch/男主/艾因.png",
-            "sketch/男主/路辰.png",
-            "sketch/男主/罗夏.png",
-            "sketch/男主/司岚.png",
-            "sketch/男主/叶瑄.png"
+            "schedule/男主/艾因.png",
+            "schedule/男主/路辰.png",
+            "schedule/男主/罗夏.png",
+            "schedule/男主/司岚.png",
+            "schedule/男主/叶瑄.png"
         ],
         "action": "Click",
         "pre_delay": 200,
@@ -352,11 +352,11 @@
         "recognition": "TemplateMatch",
         "template": [
             "schedule/艾因头像.png",
-            "sketch/男主/艾因.png",
-            "sketch/男主/路辰.png",
-            "sketch/男主/罗夏.png",
-            "sketch/男主/司岚.png",
-            "sketch/男主/叶瑄.png"
+            "schedule/男主/艾因.png",
+            "schedule/男主/路辰.png",
+            "schedule/男主/罗夏.png",
+            "schedule/男主/司岚.png",
+            "schedule/男主/叶瑄.png"
         ],
         "roi": [
             0,

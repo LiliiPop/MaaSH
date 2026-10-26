@@ -11,28 +11,18 @@ def load(path):
 
 
 class FeatureIntegrationTests(unittest.TestCase):
-    def test_presets_include_visible_sketch_and_renamed_startup(self):
+    def test_startup_keeps_name_and_sketch_not_shipped(self):
         interface = load('assets/interface.json')
         startup_task = load('assets/tasks/StartUp.json')['task'][0]
         self.assertEqual(startup_task['name'], '✈️启动绘旅人')  # 任务名不变，已存配置和管家预设按名字对应
         self.assertEqual(startup_task['label'], '✈️启动游戏')
-        self.assertEqual(load('assets/tasks/Sketch.json')['task'][0]['group'], ['daily'])
+        self.assertNotIn('tasks/Sketch.json', interface['import'])  # 速写待贡献者完善退出机制后再提交
         for preset in interface['preset']:
             names = [t['name'] for t in preset['task']]
             self.assertIn('✈️启动绘旅人', names)
-            sketch = next(t for t in preset['task'] if t['name'] == '✏️速写')
-            self.assertFalse(sketch['enabled'])
-
-    def test_only_sketch_is_added_as_a_new_task(self):
-        interface = load('assets/interface.json')
+            self.assertNotIn('✏️速写', names)
         tasks = [task for path in interface['import'] for task in load('assets/' + path).get('task', [])]
-        self.assertEqual(len(tasks), 30)
         self.assertFalse(any(task['name'].startswith('HLR_') for task in tasks))
-        sketch = load('assets/tasks/Sketch.json')['task']
-        self.assertEqual(len(sketch), 1)
-        self.assertFalse(sketch[0]['default_check'])
-        roles = load('assets/tasks/Sketch.json')['option']['速写男主']
-        self.assertEqual([c['name'] for c in roles['cases']], ['艾因', '路辰', '罗夏', '司岚', '叶瑄'])
 
     def test_schedule_priority_only_changes_second_page(self):
         task = load('assets/tasks/Schedule.json')
