@@ -130,10 +130,6 @@
                     "enabled": false
                 },
                 {
-                    "name": "👍手偶剧场点赞",
-                    "enabled": false
-                },
-                {
                     "name": "📼绘卷回忆扫荡",
                     "enabled": false
                 },
@@ -253,10 +249,6 @@
                 },
                 {
                     "name": "📜绘卷提升",
-                    "enabled": false
-                },
-                {
-                    "name": "👍手偶剧场点赞",
                     "enabled": false
                 },
                 {
@@ -382,10 +374,6 @@
                     "enabled": false
                 },
                 {
-                    "name": "👍手偶剧场点赞",
-                    "enabled": false
-                },
-                {
                     "name": "📼绘卷回忆扫荡",
                     "enabled": true
                 },
@@ -481,7 +469,6 @@
         "tasks/Exhibition.json",
         "tasks/Spirit.json",
         "tasks/Scroll.json",
-        "tasks/TheaterLike.json",
         "tasks/Memory.json",
         "tasks/Cinema.json",
         "tasks/WeeklyShop.json",

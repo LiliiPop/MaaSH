@@ -8,20 +8,63 @@
             ],
             "default_check": true,
             "description": "tasks/doc/Theater.md",
-            "pipeline_override": {
-                "剧场_点第一部": {
-                    "next": [
-                        "剧场_评论_唤出"
-                    ]
-                }
-            },
             "option": [
-                "评论内容",
+                "剧场点赞",
+                "剧场评论",
                 "领取观影券进度奖励"
-            ]
+            ],
+            "label": "🎭手偶剧场"
         }
     ],
     "option": {
+        "剧场点赞": {
+            "type": "switch",
+            "default_case": "Yes",
+            "description": "播完给热门剧场第一部点赞（完成每日「手偶剧场点赞1次」）。原来已经是红心会先取消再点，保证今天算点了一次。",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "剧场_等播放": {
+                            "next": [
+                                "剧场_不点赞_返回"
+                            ]
+                        },
+                        "剧场_返回社交": {
+                            "next": [
+                                "剧场_回到社交"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "剧场评论": {
+            "type": "switch",
+            "default_case": "Yes",
+            "description": "播放时发一条评论（内容见「评论内容」）。没做手机验证的号游戏不让评论，会重开游戏并跳过本任务。",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "剧场_点第一部": {
+                            "next": [
+                                "剧场_评论_唤出"
+                            ]
+                        }
+                    },
+                    "option": [
+                        "评论内容"
+                    ]
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
         "评论内容": {
             "type": "input",
             "description": "开启「剧场评论」时发送的内容（建议数字或英文）",
@@ -48,7 +91,7 @@
         "领取观影券进度奖励": {
             "type": "select",
             "default_case": "开启",
-            "description": "三合一完成后尝试领取社交页观影券进度奖励；已领过或没有奖励弹窗时正常返回。",
+            "description": "最后在社交页领观影券进度奖励（观看 / 点赞 / 评论各算进度）。已领过或没有奖励时直接返回。",
             "cases": [
                 {
                     "name": "开启",

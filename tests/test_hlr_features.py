@@ -54,16 +54,24 @@ class FeatureIntegrationTests(unittest.TestCase):
             self.assertIn(f'日程第{i}顺位', campus['option'])
         self.assertEqual(campus['pipeline_override']['Flag_日程完成']['next'], ['校园_日程做完'])
 
-    def test_theater_only_adds_optional_ticket_tail(self):
+    def test_theater_has_three_switches(self):
         definition = load('assets/tasks/Theater.json')
         task = definition['task'][0]
+        self.assertEqual(task['name'], '🎭手偶剧场三合一')  # 内部名不变（已存配置、管家按名字对应）
         self.assertEqual(task['entry'], '剧场三合一')
-        self.assertEqual(task['pipeline_override']['剧场_点第一部']['next'], ['剧场_评论_唤出'])
+        self.assertEqual(task['option'], ['剧场点赞', '剧场评论', '领取观影券进度奖励'])
+        self.assertNotIn('pipeline_override', task)
+        like = {c['name']: c for c in definition['option']['剧场点赞']['cases']}
+        self.assertEqual(like['No']['pipeline_override']['剧场_等播放']['next'], ['剧场_不点赞_返回'])
+        comment = {c['name']: c for c in definition['option']['剧场评论']['cases']}
+        self.assertEqual(comment['Yes']['pipeline_override']['剧场_点第一部']['next'], ['剧场_评论_唤出'])
+        self.assertEqual(comment['Yes']['option'], ['评论内容'])
         option = definition['option']['领取观影券进度奖励']
         self.assertEqual(option['cases'][0]['pipeline_override']['剧场_完成']['next'], ['剧场_领券_完成'])
         self.assertEqual(option['cases'][1]['pipeline_override']['剧场_完成']['next'], [])
+        interface = load('assets/interface.json')
+        self.assertNotIn('tasks/TheaterLike.json', interface['import'])
         tickets = load('assets/resource/pipeline/theater_tickets.json')
-        self.assertEqual(len(tickets), 5)
         self.assertFalse(any(n.get('action') == 'InputText' for n in tickets.values()))
 
     def test_bilibili_covers_every_lifecycle_node_and_gates_account_matching(self):
