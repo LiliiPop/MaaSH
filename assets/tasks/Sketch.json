@@ -8,7 +8,8 @@
             ],
             "default_check": false,
             "option": [
-                "速写男主"
+                "速写男主",
+                "速写练习方向"
             ],
             "description": "tasks/doc/Sketch.md"
         }
@@ -217,6 +218,193 @@
                                     "threshold": 0.85
                                 }
                             ]
+                        }
+                    }
+                }
+            ]
+        },
+        "速写练习方向": {
+            "type": "select",
+            "label": "速写练习方向",
+            "default_case": "默认（不选）",
+            "description": "「速写开始」时选哪个练习方向。默认不选，直接点开始（沿用游戏里当前的选择）。",
+            "cases": [
+                {
+                    "name": "默认（不选）"
+                },
+                {
+                    "name": "造型",
+                    "pipeline_override": {
+                        "速写_选方向": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "速写开始",
+                                                    "roi": [
+                                                        480,
+                                                        130,
+                                                        320,
+                                                        90
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "^造型$",
+                                                    "roi": [
+                                                        470,
+                                                        400,
+                                                        520,
+                                                        60
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "张力",
+                    "pipeline_override": {
+                        "速写_选方向": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "速写开始",
+                                                    "roi": [
+                                                        480,
+                                                        130,
+                                                        320,
+                                                        90
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "^张力$",
+                                                    "roi": [
+                                                        470,
+                                                        400,
+                                                        520,
+                                                        60
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "情感",
+                    "pipeline_override": {
+                        "速写_选方向": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "速写开始",
+                                                    "roi": [
+                                                        480,
+                                                        130,
+                                                        320,
+                                                        90
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "^情感$",
+                                                    "roi": [
+                                                        470,
+                                                        400,
+                                                        520,
+                                                        60
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "色彩",
+                    "pipeline_override": {
+                        "速写_选方向": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "速写开始",
+                                                    "roi": [
+                                                        480,
+                                                        130,
+                                                        320,
+                                                        90
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "^色彩$",
+                                                    "roi": [
+                                                        470,
+                                                        400,
+                                                        520,
+                                                        60
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
                         }
                     }
                 }
