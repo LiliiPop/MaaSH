@@ -3,7 +3,7 @@
 import cv2,numpy as np,glob,os,sys
 from scipy import ndimage
 SRC='tools/sketch_src/灵感/'
-OUT=sys.argv[1] if len(sys.argv)>1 else 'assets/resource/image/hlr/速写/灵感_多尺寸'; os.makedirs(OUT,exist_ok=True)
+OUT=sys.argv[1] if len(sys.argv)>1 else 'assets/resource/image/sketch/灵感'; os.makedirs(OUT,exist_ok=True)
 scales=[0.6,0.67,0.75,0.85,0.92,1.0,1.08,1.16,1.25,1.4,1.5,1.6]
 def icon_mask(img):
     b,g,r=[img[...,i].astype(int) for i in range(3)]

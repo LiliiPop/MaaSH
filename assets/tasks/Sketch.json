@@ -48,7 +48,7 @@
                                 },
                                 {
                                     "recognition": "TemplateMatch",
-                                    "template": "hlr/速写/艾因.png",
+                                    "template": "sketch/男主/艾因.png",
                                     "roi": [
                                         0,
                                         85,
@@ -88,7 +88,7 @@
                                 },
                                 {
                                     "recognition": "TemplateMatch",
-                                    "template": "hlr/速写/路辰.png",
+                                    "template": "sketch/男主/路辰.png",
                                     "roi": [
                                         0,
                                         85,
@@ -128,7 +128,7 @@
                                 },
                                 {
                                     "recognition": "TemplateMatch",
-                                    "template": "hlr/速写/罗夏.png",
+                                    "template": "sketch/男主/罗夏.png",
                                     "roi": [
                                         0,
                                         85,
@@ -168,7 +168,7 @@
                                 },
                                 {
                                     "recognition": "TemplateMatch",
-                                    "template": "hlr/速写/司岚.png",
+                                    "template": "sketch/男主/司岚.png",
                                     "roi": [
                                         0,
                                         85,
@@ -208,7 +208,7 @@
                                 },
                                 {
                                     "recognition": "TemplateMatch",
-                                    "template": "hlr/速写/叶瑄.png",
+                                    "template": "sketch/男主/叶瑄.png",
                                     "roi": [
                                         0,
                                         85,
