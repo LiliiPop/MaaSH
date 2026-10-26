@@ -45,6 +45,8 @@
         "desc": "关掉签到奖励弹窗，直到签到页稳定",
         "timeout": 20000,
         "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_签到_点今日",
             "Flag_签到完成",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_跳过卡面",

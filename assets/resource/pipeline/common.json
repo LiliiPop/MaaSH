@@ -3,6 +3,7 @@
         "desc": "任务开始前调用：反复处理弹窗和返回键，直到认出主界面。max_hit 防止「已在主界面但入口认不出」时无限循环",
         "timeout": 30000,
         "next": [
+            "[JumpBack]公共_补签取消",
             "[JumpBack]公共_放弃付款",
             "[JumpBack]公共_关闭支付",
             "[JumpBack]公共_退出后重开",
@@ -1911,6 +1912,8 @@
             "rate_limit": 200
         },
         "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_签到_点今日",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_跳过卡面",
             "[JumpBack]公共_点击空白继续",
@@ -1921,5 +1924,111 @@
         "desc": "签到页已稳定（没有奖励弹窗）：结束这一小段，回调用方",
         "recognition": "DirectHit",
         "pre_delay": 300
+    },
+    "公共_签到_点今日": {
+        "desc": "10-26 用户：多数天的签到奖励是道具，打开签到页就自动领；但当天奖励是钻石时要手动点格子才领，不点就一直等不到「恭喜获得」卡住。认今天日期上的红圈（RGB≈227,94,78，只在日历格子区域里找），点这一格中间领取。这是签到奖励不是购买",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    250,
+                    190,
+                    900,
+                    470
+                ],
+                "lower": [
+                    205,
+                    65,
+                    50
+                ],
+                "upper": [
+                    250,
+                    125,
+                    105
+                ],
+                "count": 60,
+                "connected": true
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    50,
+                    40,
+                    -17,
+                    10
+                ]
+            }
+        },
+        "max_hit": 1,
+        "pre_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：今天的奖励要手动点，点今天这一格领取[/color]"
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "公共_签到页_好了"
+        ]
+    },
+    "公共_补签取消": {
+        "desc": "安全网：签到页点错了以前没签的日子会弹「补签」（消耗 25 钻石）——一律点「取消」，绝不点确定",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "补签",
+                                "roi": [
+                                    300,
+                                    200,
+                                    680,
+                                    320
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^\\+?\\s*取\\s*消\\s*\\+?$",
+                                "roi": [
+                                    330,
+                                    420,
+                                    320,
+                                    110
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": "Click",
+        "max_hit": 3,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "focus": {
+            "Node.Action.Starting": "[color:Orange]弹出补签（要花钻石），已取消[/color]"
+        }
     }
 }
