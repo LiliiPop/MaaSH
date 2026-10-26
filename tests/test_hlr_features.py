@@ -34,25 +34,33 @@ class FeatureIntegrationTests(unittest.TestCase):
         roles = load('assets/tasks/Sketch.json')['option']['速写男主']
         self.assertEqual([c['name'] for c in roles['cases']], ['艾因', '路辰', '罗夏', '司岚', '叶瑄'])
 
-    def test_schedule_changes_only_second_page_and_keeps_bundle_continuation(self):
+    def test_schedule_priority_only_changes_second_page(self):
         task = load('assets/tasks/Schedule.json')
-        option = task['option']['日程第二项男主']
-        self.assertEqual(option['default_case'], '沿用随机')
-        self.assertNotIn('pipeline_override', option['cases'][0])
+        self.assertEqual(task['task'][0]['option'], [f'日程第{i}顺位' for i in range(1, 6)])
         original = load('assets/resource/pipeline/schedule.json')
         imported = load('assets/resource/pipeline/schedule_selected.json')
-        self.assertEqual(imported['日程_指定_翻页']['action'], original['日程_翻页']['action'])
-        self.assertEqual(imported['日程_指定_翻页']['next'], ['日程_指定_点击角色6'])
-        for case in option['cases'][1:]:
-            override = case['pipeline_override']
-            expected = ['日程_指定_翻页' if r == '[JumpBack]日程_翻页' else r
-                        for r in original['日程_流程']['next']]
-            self.assertEqual(override['日程_流程']['next'], expected)
-            self.assertNotIn('日程_指定_点击角色1', imported)
-            self.assertIn(case['name'], json.dumps(override, ensure_ascii=False))
+        self.assertNotIn('日程_指定_翻页', imported)
+        self.assertEqual(imported['日程_二页_选人']['next'][0], '日程_选人_1')
+        self.assertEqual(imported['日程_二页_选人']['next'][-1], '日程_二页_随机')
+        for i in range(1, 6):
+            option = task['option'][f'日程第{i}顺位']
+            self.assertEqual(option['default_case'], '不指定')
+            self.assertNotIn('pipeline_override', option['cases'][0])
+            self.assertEqual([c['name'] for c in option['cases'][1:]], ['艾因', '路辰', '罗夏', '司岚', '叶瑄'])
+            for case in option['cases'][1:]:
+                override = case['pipeline_override']
+                self.assertTrue(override[f'日程_选人_{i}']['enabled'])
+                self.assertIn(case['name'], json.dumps(override, ensure_ascii=False))
+                self.assertEqual(override['日程_翻页']['next'], ['日程_二页_选人'])
+                self.assertNotIn('日程_流程', override)
+                self.assertNotIn('日程_随机选择', override)
+            self.assertFalse(imported[f'日程_选人_{i}']['enabled'])
+            self.assertEqual(imported[f'日程_选人_{i}']['next'], ['日程_指定_日程确定2'])
+        self.assertIn('[JumpBack]日程_翻页', original['日程_流程']['next'])
         self.assertIn('Flag_日程完成', imported['日程_指定_寻找信封']['next'])
         campus = load('assets/tasks/Campus.json')['task'][0]
-        self.assertIn('日程第二项男主', campus['option'])
+        for i in range(1, 6):
+            self.assertIn(f'日程第{i}顺位', campus['option'])
         self.assertEqual(campus['pipeline_override']['Flag_日程完成']['next'], ['校园_日程做完'])
 
     def test_theater_only_adds_optional_ticket_tail(self):

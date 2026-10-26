@@ -1,58 +1,4 @@
 {
-    "日程_指定_点击角色6": {
-        "recognition": "And",
-        "all_of": [
-            {
-                "recognition": "OCR",
-                "expected": "确定",
-                "roi": [
-                    918,
-                    579,
-                    117,
-                    80
-                ]
-            },
-            {
-                "recognition": "Or",
-                "any_of": [
-                    {
-                        "recognition": "OCR",
-                        "expected": "艾因",
-                        "roi": [
-                            100,
-                            80,
-                            500,
-                            500
-                        ]
-                    },
-                    {
-                        "recognition": "TemplateMatch",
-                        "template": "hlr/速写/艾因.png",
-                        "roi": [
-                            100,
-                            80,
-                            500,
-                            500
-                        ],
-                        "threshold": 0.8
-                    }
-                ]
-            }
-        ],
-        "box_index": 1,
-        "action": "Click",
-        "pre_delay": 300,
-        "post_delay": 500,
-        "next": [
-            "日程_指定_日程确定2"
-        ],
-        "timeout": 8000,
-        "desc": "指定男主日程移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
-        "on_error": [
-            "公共_任务失败"
-        ],
-        "max_hit": 10
-    },
     "日程_指定_日程确定2": {
         "recognition": "OCR",
         "expected": "确定",
@@ -81,7 +27,11 @@
         "recognition": "TemplateMatch",
         "template": [
             "hlr/日常/艾因头像.png",
-            "hlr/速写/艾因.png"
+            "hlr/速写/艾因.png",
+            "hlr/速写/路辰.png",
+            "hlr/速写/罗夏.png",
+            "hlr/速写/司岚.png",
+            "hlr/速写/叶瑄.png"
         ],
         "action": "Click",
         "pre_delay": 200,
@@ -98,7 +48,7 @@
         "threshold": 0.8,
         "post_delay": 1200,
         "timeout": 10000,
-        "desc": "指定男主日程移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "desc": "10-25：改成按顺位选人后，选中的是谁要到运行时才知道，所以五位男主的头像都认（地图/场景里一般只有这次邀约的人）",
         "on_error": [
             "公共_任务失败"
         ],
@@ -402,7 +352,11 @@
         "recognition": "TemplateMatch",
         "template": [
             "hlr/日常/艾因头像.png",
-            "hlr/速写/艾因.png"
+            "hlr/速写/艾因.png",
+            "hlr/速写/路辰.png",
+            "hlr/速写/罗夏.png",
+            "hlr/速写/司岚.png",
+            "hlr/速写/叶瑄.png"
         ],
         "roi": [
             0,
@@ -422,7 +376,7 @@
             "日程_指定_寻找信封"
         ],
         "timeout": 8000,
-        "desc": "指定男主日程移植；沿用 HLR 已有截图、识别与动作。原延迟用于点击后画面过渡，待实测后再改为识别等待。",
+        "desc": "10-25：改成按顺位选人后，选中的是谁要到运行时才知道，所以五位男主的头像都认（地图/场景里一般只有这次邀约的人）",
         "on_error": [
             "公共_任务失败"
         ]
@@ -710,54 +664,359 @@
             "公共_任务失败"
         ]
     },
-    "日程_指定_翻页": {
-        "desc": "第一页盖章完成（右下 1/2）：点箭头进第二页。10-24 实跑：盖章后底部头像会飘「+2」好感动画，动画没放完时点箭头会被吞掉（连点 4 次都没翻）→ 先等底部画面静止再点，每次点完再等一会儿",
+    "日程_二页_选人": {
+        "desc": "10-25：第二页（翻页后）按顺位选人：第 1 顺位 → 没有就刷新一次名单 → 第 2~5 顺位 → 都没有就随机。选中后点确定，走 HLR 的地图/场景找人流程",
         "recognition": {
             "type": "OCR",
             "param": {
-                "expected": "^1/2$",
+                "expected": "随机选择",
                 "roi": [
-                    1064,
-                    592,
-                    102,
-                    66
+                    115,
+                    600,
+                    125,
+                    50
                 ]
             }
         },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    1090,
-                    550,
-                    60,
-                    55
-                ]
-            }
-        },
-        "max_hit": 4,
-        "post_wait_freezes": {
-            "time": 800,
+        "pre_wait_freezes": {
+            "time": 500,
             "timeout": 3000,
             "rate_limit": 200
         },
-        "pre_wait_freezes": {
-            "time": 1500,
-            "target": [
-                380,
-                480,
-                560,
-                120
-            ],
-            "timeout": 8000,
-            "rate_limit": 200
-        },
-        "post_delay": 1200,
+        "action": "DoNothing",
+        "timeout": 8000,
         "next": [
-            "日程_指定_点击角色6"
+            "日程_选人_1",
+            "日程_二页_刷新",
+            "日程_选人_2",
+            "日程_选人_3",
+            "日程_选人_4",
+            "日程_选人_5",
+            "日程_二页_随机"
         ],
         "on_error": [
-            "公共_任务失败"
+            "日程_回循环"
         ]
+    },
+    "日程_选人_1": {
+        "desc": "第 1 顺位的人在第二页名单里：点他（名字或头像），再点确定。名字由任务选项「日程第1顺位」填入",
+        "enabled": false,
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "确定",
+                                "roi": [
+                                    918,
+                                    579,
+                                    117,
+                                    80
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "占位",
+                                "roi": [
+                                    100,
+                                    80,
+                                    500,
+                                    500
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": "Click",
+        "pre_delay": 300,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_指定_日程确定2"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]日程第二页：按第 1 顺位选了角色[/color]"
+        }
+    },
+    "日程_选人_2": {
+        "desc": "第 2 顺位的人在第二页名单里：点他（名字或头像），再点确定。名字由任务选项「日程第2顺位」填入",
+        "enabled": false,
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "确定",
+                                "roi": [
+                                    918,
+                                    579,
+                                    117,
+                                    80
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "占位",
+                                "roi": [
+                                    100,
+                                    80,
+                                    500,
+                                    500
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": "Click",
+        "pre_delay": 300,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_指定_日程确定2"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]日程第二页：按第 2 顺位选了角色[/color]"
+        }
+    },
+    "日程_选人_3": {
+        "desc": "第 3 顺位的人在第二页名单里：点他（名字或头像），再点确定。名字由任务选项「日程第3顺位」填入",
+        "enabled": false,
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "确定",
+                                "roi": [
+                                    918,
+                                    579,
+                                    117,
+                                    80
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "占位",
+                                "roi": [
+                                    100,
+                                    80,
+                                    500,
+                                    500
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": "Click",
+        "pre_delay": 300,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_指定_日程确定2"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]日程第二页：按第 3 顺位选了角色[/color]"
+        }
+    },
+    "日程_选人_4": {
+        "desc": "第 4 顺位的人在第二页名单里：点他（名字或头像），再点确定。名字由任务选项「日程第4顺位」填入",
+        "enabled": false,
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "确定",
+                                "roi": [
+                                    918,
+                                    579,
+                                    117,
+                                    80
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "占位",
+                                "roi": [
+                                    100,
+                                    80,
+                                    500,
+                                    500
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": "Click",
+        "pre_delay": 300,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_指定_日程确定2"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]日程第二页：按第 4 顺位选了角色[/color]"
+        }
+    },
+    "日程_选人_5": {
+        "desc": "第 5 顺位的人在第二页名单里：点他（名字或头像），再点确定。名字由任务选项「日程第5顺位」填入",
+        "enabled": false,
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "确定",
+                                "roi": [
+                                    918,
+                                    579,
+                                    117,
+                                    80
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "占位",
+                                "roi": [
+                                    100,
+                                    80,
+                                    500,
+                                    500
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": "Click",
+        "pre_delay": 300,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_指定_日程确定2"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]日程第二页：按第 5 顺位选了角色[/color]"
+        }
+    },
+    "日程_二页_刷新": {
+        "desc": "第 1 顺位不在名单里、还有免费刷新次数（「刷新列表 N/1」N≥1）：刷新一次再从第 1 顺位找起。只认 N≥1，次数用完不点",
+        "enabled": false,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "刷新列表\\s*[1-9]",
+                "roi": [
+                    285,
+                    600,
+                    150,
+                    45
+                ]
+            }
+        },
+        "action": "Click",
+        "max_hit": 1,
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 4000,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_二页_选人"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]日程：第 1 顺位没在名单里，刷新了一次[/color]"
+        }
+    },
+    "日程_二页_随机": {
+        "desc": "顺位里的人都不在第二页名单：照旧随机选择，之后交回原来的日程流程",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "随机选择",
+                "roi": [
+                    115,
+                    600,
+                    125,
+                    50
+                ]
+            }
+        },
+        "action": "Click",
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_确定"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]日程第二页：顺位里的人都不在名单，改为随机[/color]"
+        }
     }
 }

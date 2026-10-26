@@ -9,7 +9,11 @@
             "default_check": false,
             "description": "tasks/doc/Schedule.md",
             "option": [
-                "日程第二项男主"
+                "日程第1顺位",
+                "日程第2顺位",
+                "日程第3顺位",
+                "日程第4顺位",
+                "日程第5顺位"
             ],
             "pipeline_override": {
                 "公共_返回主界面": {
@@ -19,98 +23,20 @@
         }
     ],
     "option": {
-        "日程第二项男主": {
+        "日程第1顺位": {
             "type": "select",
-            "label": "日程第二项男主",
-            "default_case": "沿用随机",
-            "description": "第二项日程选择此男主，并按对应头像寻找地点和角色；第一项多人日程保持原有选择。",
+            "label": "日程第1顺位",
+            "default_case": "不指定",
+            "description": "第二项日程（翻到第二页）优先选的男主。先找第 1 顺位，没有就免费刷新一次名单，再依次找第 2~5 顺位，都没有就随机。全部「不指定」= 两页都随机。第一项多人日程始终随机。",
             "cases": [
                 {
-                    "name": "沿用随机"
+                    "name": "不指定"
                 },
                 {
                     "name": "艾因",
                     "pipeline_override": {
-                        "日程_指定_点击角色6": {
-                            "all_of": [
-                                {
-                                    "recognition": "OCR",
-                                    "expected": "确定",
-                                    "roi": [
-                                        918,
-                                        579,
-                                        117,
-                                        80
-                                    ]
-                                },
-                                {
-                                    "recognition": "Or",
-                                    "any_of": [
-                                        {
-                                            "recognition": "OCR",
-                                            "expected": "艾因",
-                                            "roi": [
-                                                100,
-                                                80,
-                                                500,
-                                                500
-                                            ]
-                                        },
-                                        {
-                                            "recognition": "TemplateMatch",
-                                            "template": "hlr/速写/艾因.png",
-                                            "roi": [
-                                                100,
-                                                80,
-                                                500,
-                                                500
-                                            ],
-                                            "threshold": 0.8
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        "日程_指定_寻找位置": {
-                            "template": [
-                                "hlr/速写/艾因.png"
-                            ]
-                        },
-                        "日程_指定_日程场景点击男主": {
-                            "template": [
-                                "hlr/速写/艾因.png"
-                            ]
-                        },
-                        "日程_流程": {
-                            "next": [
-                                "[JumpBack]公共_晚点再说",
-                                "[JumpBack]公共_生日弹窗等待",
-                                "[JumpBack]公共_稍后再说",
-                                "[JumpBack]公共_不再提醒",
-                                "[JumpBack]公共_我知道了",
-                                "[JumpBack]质检_日程结算",
-                                "Flag_日程完成",
-                                "Flag_日程今日已完成",
-                                "[JumpBack]日程_回日程页",
-                                "日程_指定_翻页",
-                                "Flag_日程_今日已完成",
-                                "[JumpBack]日程_随机选择",
-                                "日程_选择回复",
-                                "[JumpBack]日程_对话推进",
-                                "[JumpBack]日程_点击信封",
-                                "[JumpBack]日程_点击信封_地点",
-                                "[JumpBack]日程_点击信封_场景",
-                                "[JumpBack]日程_点击信封_场景_2",
-                                "[JumpBack]日程_点击信封_场景_3",
-                                "[JumpBack]日程_点击信封_场景_4",
-                                "[JumpBack]公共_获得奖励",
-                                "[JumpBack]公共_跳过卡面",
-                                "[JumpBack]公共_点击空白继续",
-                                "[JumpBack]日程_场景右走",
-                                "[JumpBack]日程_场景左走"
-                            ]
-                        },
-                        "日程_随机选择": {
+                        "日程_选人_1": {
+                            "enabled": true,
                             "recognition": {
                                 "type": "And",
                                 "param": {
@@ -119,119 +45,74 @@
                                             "recognition": {
                                                 "type": "OCR",
                                                 "param": {
-                                                    "expected": "随机选择",
+                                                    "expected": "确定",
                                                     "roi": [
-                                                        115,
-                                                        600,
-                                                        125,
-                                                        50
+                                                        918,
+                                                        579,
+                                                        117,
+                                                        80
                                                     ]
                                                 }
                                             }
                                         },
                                         {
                                             "recognition": {
-                                                "type": "OCR",
+                                                "type": "Or",
                                                 "param": {
-                                                    "expected": "^1/2$",
-                                                    "roi": [
-                                                        1064,
-                                                        592,
-                                                        102,
-                                                        66
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "艾因",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "TemplateMatch",
+                                                                "param": {
+                                                                    "template": "hlr/速写/艾因.png",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ],
+                                                                    "threshold": 0.8
+                                                                }
+                                                            }
+                                                        }
                                                     ]
                                                 }
                                             }
                                         }
-                                    ]
+                                    ],
+                                    "box_index": 1
                                 }
                             }
+                        },
+                        "日程_翻页": {
+                            "next": [
+                                "日程_二页_选人"
+                            ]
+                        },
+                        "日程_二页_刷新": {
+                            "enabled": true
                         }
                     }
                 },
                 {
                     "name": "路辰",
                     "pipeline_override": {
-                        "日程_指定_点击角色6": {
-                            "all_of": [
-                                {
-                                    "recognition": "OCR",
-                                    "expected": "确定",
-                                    "roi": [
-                                        918,
-                                        579,
-                                        117,
-                                        80
-                                    ]
-                                },
-                                {
-                                    "recognition": "Or",
-                                    "any_of": [
-                                        {
-                                            "recognition": "OCR",
-                                            "expected": "路辰",
-                                            "roi": [
-                                                100,
-                                                80,
-                                                500,
-                                                500
-                                            ]
-                                        },
-                                        {
-                                            "recognition": "TemplateMatch",
-                                            "template": "hlr/速写/路辰.png",
-                                            "roi": [
-                                                100,
-                                                80,
-                                                500,
-                                                500
-                                            ],
-                                            "threshold": 0.8
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        "日程_指定_寻找位置": {
-                            "template": [
-                                "hlr/速写/路辰.png"
-                            ]
-                        },
-                        "日程_指定_日程场景点击男主": {
-                            "template": [
-                                "hlr/速写/路辰.png"
-                            ]
-                        },
-                        "日程_流程": {
-                            "next": [
-                                "[JumpBack]公共_晚点再说",
-                                "[JumpBack]公共_生日弹窗等待",
-                                "[JumpBack]公共_稍后再说",
-                                "[JumpBack]公共_不再提醒",
-                                "[JumpBack]公共_我知道了",
-                                "[JumpBack]质检_日程结算",
-                                "Flag_日程完成",
-                                "Flag_日程今日已完成",
-                                "[JumpBack]日程_回日程页",
-                                "日程_指定_翻页",
-                                "Flag_日程_今日已完成",
-                                "[JumpBack]日程_随机选择",
-                                "日程_选择回复",
-                                "[JumpBack]日程_对话推进",
-                                "[JumpBack]日程_点击信封",
-                                "[JumpBack]日程_点击信封_地点",
-                                "[JumpBack]日程_点击信封_场景",
-                                "[JumpBack]日程_点击信封_场景_2",
-                                "[JumpBack]日程_点击信封_场景_3",
-                                "[JumpBack]日程_点击信封_场景_4",
-                                "[JumpBack]公共_获得奖励",
-                                "[JumpBack]公共_跳过卡面",
-                                "[JumpBack]公共_点击空白继续",
-                                "[JumpBack]日程_场景右走",
-                                "[JumpBack]日程_场景左走"
-                            ]
-                        },
-                        "日程_随机选择": {
+                        "日程_选人_1": {
+                            "enabled": true,
                             "recognition": {
                                 "type": "And",
                                 "param": {
@@ -240,119 +121,74 @@
                                             "recognition": {
                                                 "type": "OCR",
                                                 "param": {
-                                                    "expected": "随机选择",
+                                                    "expected": "确定",
                                                     "roi": [
-                                                        115,
-                                                        600,
-                                                        125,
-                                                        50
+                                                        918,
+                                                        579,
+                                                        117,
+                                                        80
                                                     ]
                                                 }
                                             }
                                         },
                                         {
                                             "recognition": {
-                                                "type": "OCR",
+                                                "type": "Or",
                                                 "param": {
-                                                    "expected": "^1/2$",
-                                                    "roi": [
-                                                        1064,
-                                                        592,
-                                                        102,
-                                                        66
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "路辰",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "TemplateMatch",
+                                                                "param": {
+                                                                    "template": "hlr/速写/路辰.png",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ],
+                                                                    "threshold": 0.8
+                                                                }
+                                                            }
+                                                        }
                                                     ]
                                                 }
                                             }
                                         }
-                                    ]
+                                    ],
+                                    "box_index": 1
                                 }
                             }
+                        },
+                        "日程_翻页": {
+                            "next": [
+                                "日程_二页_选人"
+                            ]
+                        },
+                        "日程_二页_刷新": {
+                            "enabled": true
                         }
                     }
                 },
                 {
                     "name": "罗夏",
                     "pipeline_override": {
-                        "日程_指定_点击角色6": {
-                            "all_of": [
-                                {
-                                    "recognition": "OCR",
-                                    "expected": "确定",
-                                    "roi": [
-                                        918,
-                                        579,
-                                        117,
-                                        80
-                                    ]
-                                },
-                                {
-                                    "recognition": "Or",
-                                    "any_of": [
-                                        {
-                                            "recognition": "OCR",
-                                            "expected": "罗夏",
-                                            "roi": [
-                                                100,
-                                                80,
-                                                500,
-                                                500
-                                            ]
-                                        },
-                                        {
-                                            "recognition": "TemplateMatch",
-                                            "template": "hlr/速写/罗夏.png",
-                                            "roi": [
-                                                100,
-                                                80,
-                                                500,
-                                                500
-                                            ],
-                                            "threshold": 0.8
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        "日程_指定_寻找位置": {
-                            "template": [
-                                "hlr/速写/罗夏.png"
-                            ]
-                        },
-                        "日程_指定_日程场景点击男主": {
-                            "template": [
-                                "hlr/速写/罗夏.png"
-                            ]
-                        },
-                        "日程_流程": {
-                            "next": [
-                                "[JumpBack]公共_晚点再说",
-                                "[JumpBack]公共_生日弹窗等待",
-                                "[JumpBack]公共_稍后再说",
-                                "[JumpBack]公共_不再提醒",
-                                "[JumpBack]公共_我知道了",
-                                "[JumpBack]质检_日程结算",
-                                "Flag_日程完成",
-                                "Flag_日程今日已完成",
-                                "[JumpBack]日程_回日程页",
-                                "日程_指定_翻页",
-                                "Flag_日程_今日已完成",
-                                "[JumpBack]日程_随机选择",
-                                "日程_选择回复",
-                                "[JumpBack]日程_对话推进",
-                                "[JumpBack]日程_点击信封",
-                                "[JumpBack]日程_点击信封_地点",
-                                "[JumpBack]日程_点击信封_场景",
-                                "[JumpBack]日程_点击信封_场景_2",
-                                "[JumpBack]日程_点击信封_场景_3",
-                                "[JumpBack]日程_点击信封_场景_4",
-                                "[JumpBack]公共_获得奖励",
-                                "[JumpBack]公共_跳过卡面",
-                                "[JumpBack]公共_点击空白继续",
-                                "[JumpBack]日程_场景右走",
-                                "[JumpBack]日程_场景左走"
-                            ]
-                        },
-                        "日程_随机选择": {
+                        "日程_选人_1": {
+                            "enabled": true,
                             "recognition": {
                                 "type": "And",
                                 "param": {
@@ -361,119 +197,74 @@
                                             "recognition": {
                                                 "type": "OCR",
                                                 "param": {
-                                                    "expected": "随机选择",
+                                                    "expected": "确定",
                                                     "roi": [
-                                                        115,
-                                                        600,
-                                                        125,
-                                                        50
+                                                        918,
+                                                        579,
+                                                        117,
+                                                        80
                                                     ]
                                                 }
                                             }
                                         },
                                         {
                                             "recognition": {
-                                                "type": "OCR",
+                                                "type": "Or",
                                                 "param": {
-                                                    "expected": "^1/2$",
-                                                    "roi": [
-                                                        1064,
-                                                        592,
-                                                        102,
-                                                        66
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "罗夏",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "TemplateMatch",
+                                                                "param": {
+                                                                    "template": "hlr/速写/罗夏.png",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ],
+                                                                    "threshold": 0.8
+                                                                }
+                                                            }
+                                                        }
                                                     ]
                                                 }
                                             }
                                         }
-                                    ]
+                                    ],
+                                    "box_index": 1
                                 }
                             }
+                        },
+                        "日程_翻页": {
+                            "next": [
+                                "日程_二页_选人"
+                            ]
+                        },
+                        "日程_二页_刷新": {
+                            "enabled": true
                         }
                     }
                 },
                 {
                     "name": "司岚",
                     "pipeline_override": {
-                        "日程_指定_点击角色6": {
-                            "all_of": [
-                                {
-                                    "recognition": "OCR",
-                                    "expected": "确定",
-                                    "roi": [
-                                        918,
-                                        579,
-                                        117,
-                                        80
-                                    ]
-                                },
-                                {
-                                    "recognition": "Or",
-                                    "any_of": [
-                                        {
-                                            "recognition": "OCR",
-                                            "expected": "司岚",
-                                            "roi": [
-                                                100,
-                                                80,
-                                                500,
-                                                500
-                                            ]
-                                        },
-                                        {
-                                            "recognition": "TemplateMatch",
-                                            "template": "hlr/速写/司岚.png",
-                                            "roi": [
-                                                100,
-                                                80,
-                                                500,
-                                                500
-                                            ],
-                                            "threshold": 0.8
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        "日程_指定_寻找位置": {
-                            "template": [
-                                "hlr/速写/司岚.png"
-                            ]
-                        },
-                        "日程_指定_日程场景点击男主": {
-                            "template": [
-                                "hlr/速写/司岚.png"
-                            ]
-                        },
-                        "日程_流程": {
-                            "next": [
-                                "[JumpBack]公共_晚点再说",
-                                "[JumpBack]公共_生日弹窗等待",
-                                "[JumpBack]公共_稍后再说",
-                                "[JumpBack]公共_不再提醒",
-                                "[JumpBack]公共_我知道了",
-                                "[JumpBack]质检_日程结算",
-                                "Flag_日程完成",
-                                "Flag_日程今日已完成",
-                                "[JumpBack]日程_回日程页",
-                                "日程_指定_翻页",
-                                "Flag_日程_今日已完成",
-                                "[JumpBack]日程_随机选择",
-                                "日程_选择回复",
-                                "[JumpBack]日程_对话推进",
-                                "[JumpBack]日程_点击信封",
-                                "[JumpBack]日程_点击信封_地点",
-                                "[JumpBack]日程_点击信封_场景",
-                                "[JumpBack]日程_点击信封_场景_2",
-                                "[JumpBack]日程_点击信封_场景_3",
-                                "[JumpBack]日程_点击信封_场景_4",
-                                "[JumpBack]公共_获得奖励",
-                                "[JumpBack]公共_跳过卡面",
-                                "[JumpBack]公共_点击空白继续",
-                                "[JumpBack]日程_场景右走",
-                                "[JumpBack]日程_场景左走"
-                            ]
-                        },
-                        "日程_随机选择": {
+                        "日程_选人_1": {
+                            "enabled": true,
                             "recognition": {
                                 "type": "And",
                                 "param": {
@@ -482,119 +273,74 @@
                                             "recognition": {
                                                 "type": "OCR",
                                                 "param": {
-                                                    "expected": "随机选择",
+                                                    "expected": "确定",
                                                     "roi": [
-                                                        115,
-                                                        600,
-                                                        125,
-                                                        50
+                                                        918,
+                                                        579,
+                                                        117,
+                                                        80
                                                     ]
                                                 }
                                             }
                                         },
                                         {
                                             "recognition": {
-                                                "type": "OCR",
+                                                "type": "Or",
                                                 "param": {
-                                                    "expected": "^1/2$",
-                                                    "roi": [
-                                                        1064,
-                                                        592,
-                                                        102,
-                                                        66
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "司岚",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "TemplateMatch",
+                                                                "param": {
+                                                                    "template": "hlr/速写/司岚.png",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ],
+                                                                    "threshold": 0.8
+                                                                }
+                                                            }
+                                                        }
                                                     ]
                                                 }
                                             }
                                         }
-                                    ]
+                                    ],
+                                    "box_index": 1
                                 }
                             }
+                        },
+                        "日程_翻页": {
+                            "next": [
+                                "日程_二页_选人"
+                            ]
+                        },
+                        "日程_二页_刷新": {
+                            "enabled": true
                         }
                     }
                 },
                 {
                     "name": "叶瑄",
                     "pipeline_override": {
-                        "日程_指定_点击角色6": {
-                            "all_of": [
-                                {
-                                    "recognition": "OCR",
-                                    "expected": "确定",
-                                    "roi": [
-                                        918,
-                                        579,
-                                        117,
-                                        80
-                                    ]
-                                },
-                                {
-                                    "recognition": "Or",
-                                    "any_of": [
-                                        {
-                                            "recognition": "OCR",
-                                            "expected": "叶瑄",
-                                            "roi": [
-                                                100,
-                                                80,
-                                                500,
-                                                500
-                                            ]
-                                        },
-                                        {
-                                            "recognition": "TemplateMatch",
-                                            "template": "hlr/速写/叶瑄.png",
-                                            "roi": [
-                                                100,
-                                                80,
-                                                500,
-                                                500
-                                            ],
-                                            "threshold": 0.8
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        "日程_指定_寻找位置": {
-                            "template": [
-                                "hlr/速写/叶瑄.png"
-                            ]
-                        },
-                        "日程_指定_日程场景点击男主": {
-                            "template": [
-                                "hlr/速写/叶瑄.png"
-                            ]
-                        },
-                        "日程_流程": {
-                            "next": [
-                                "[JumpBack]公共_晚点再说",
-                                "[JumpBack]公共_生日弹窗等待",
-                                "[JumpBack]公共_稍后再说",
-                                "[JumpBack]公共_不再提醒",
-                                "[JumpBack]公共_我知道了",
-                                "[JumpBack]质检_日程结算",
-                                "Flag_日程完成",
-                                "Flag_日程今日已完成",
-                                "[JumpBack]日程_回日程页",
-                                "日程_指定_翻页",
-                                "Flag_日程_今日已完成",
-                                "[JumpBack]日程_随机选择",
-                                "日程_选择回复",
-                                "[JumpBack]日程_对话推进",
-                                "[JumpBack]日程_点击信封",
-                                "[JumpBack]日程_点击信封_地点",
-                                "[JumpBack]日程_点击信封_场景",
-                                "[JumpBack]日程_点击信封_场景_2",
-                                "[JumpBack]日程_点击信封_场景_3",
-                                "[JumpBack]日程_点击信封_场景_4",
-                                "[JumpBack]公共_获得奖励",
-                                "[JumpBack]公共_跳过卡面",
-                                "[JumpBack]公共_点击空白继续",
-                                "[JumpBack]日程_场景右走",
-                                "[JumpBack]日程_场景左走"
-                            ]
-                        },
-                        "日程_随机选择": {
+                        "日程_选人_1": {
+                            "enabled": true,
                             "recognition": {
                                 "type": "And",
                                 "param": {
@@ -603,33 +349,1570 @@
                                             "recognition": {
                                                 "type": "OCR",
                                                 "param": {
-                                                    "expected": "随机选择",
+                                                    "expected": "确定",
                                                     "roi": [
-                                                        115,
-                                                        600,
-                                                        125,
-                                                        50
+                                                        918,
+                                                        579,
+                                                        117,
+                                                        80
                                                     ]
                                                 }
                                             }
                                         },
                                         {
                                             "recognition": {
-                                                "type": "OCR",
+                                                "type": "Or",
                                                 "param": {
-                                                    "expected": "^1/2$",
-                                                    "roi": [
-                                                        1064,
-                                                        592,
-                                                        102,
-                                                        66
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "叶瑄",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "TemplateMatch",
+                                                                "param": {
+                                                                    "template": "hlr/速写/叶瑄.png",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ],
+                                                                    "threshold": 0.8
+                                                                }
+                                                            }
+                                                        }
                                                     ]
                                                 }
                                             }
                                         }
-                                    ]
+                                    ],
+                                    "box_index": 1
                                 }
                             }
+                        },
+                        "日程_翻页": {
+                            "next": [
+                                "日程_二页_选人"
+                            ]
+                        },
+                        "日程_二页_刷新": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第2顺位": {
+            "type": "select",
+            "label": "日程第2顺位",
+            "default_case": "不指定",
+            "description": "第 1 顺位不在名单时，第 2 个尝试的男主",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_选人_2": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "确定",
+                                                    "roi": [
+                                                        918,
+                                                        579,
+                                                        117,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "Or",
+                                                "param": {
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "艾因",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "TemplateMatch",
+                                                                "param": {
+                                                                    "template": "hlr/速写/艾因.png",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ],
+                                                                    "threshold": 0.8
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        },
+                        "日程_翻页": {
+                            "next": [
+                                "日程_二页_选人"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_选人_2": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "确定",
+                                                    "roi": [
+                                                        918,
+                                                        579,
+                                                        117,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "Or",
+                                                "param": {
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "路辰",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "TemplateMatch",
+                                                                "param": {
+                                                                    "template": "hlr/速写/路辰.png",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ],
+                                                                    "threshold": 0.8
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        },
+                        "日程_翻页": {
+                            "next": [
+                                "日程_二页_选人"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_选人_2": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "确定",
+                                                    "roi": [
+                                                        918,
+                                                        579,
+                                                        117,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "Or",
+                                                "param": {
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "罗夏",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "TemplateMatch",
+                                                                "param": {
+                                                                    "template": "hlr/速写/罗夏.png",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ],
+                                                                    "threshold": 0.8
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        },
+                        "日程_翻页": {
+                            "next": [
+                                "日程_二页_选人"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_选人_2": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "确定",
+                                                    "roi": [
+                                                        918,
+                                                        579,
+                                                        117,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "Or",
+                                                "param": {
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "司岚",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "TemplateMatch",
+                                                                "param": {
+                                                                    "template": "hlr/速写/司岚.png",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ],
+                                                                    "threshold": 0.8
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        },
+                        "日程_翻页": {
+                            "next": [
+                                "日程_二页_选人"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_选人_2": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "确定",
+                                                    "roi": [
+                                                        918,
+                                                        579,
+                                                        117,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "Or",
+                                                "param": {
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "叶瑄",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "TemplateMatch",
+                                                                "param": {
+                                                                    "template": "hlr/速写/叶瑄.png",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ],
+                                                                    "threshold": 0.8
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        },
+                        "日程_翻页": {
+                            "next": [
+                                "日程_二页_选人"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第3顺位": {
+            "type": "select",
+            "label": "日程第3顺位",
+            "default_case": "不指定",
+            "description": "第 1 顺位不在名单时，第 3 个尝试的男主",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_选人_3": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "确定",
+                                                    "roi": [
+                                                        918,
+                                                        579,
+                                                        117,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "Or",
+                                                "param": {
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "艾因",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "TemplateMatch",
+                                                                "param": {
+                                                                    "template": "hlr/速写/艾因.png",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ],
+                                                                    "threshold": 0.8
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        },
+                        "日程_翻页": {
+                            "next": [
+                                "日程_二页_选人"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_选人_3": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "确定",
+                                                    "roi": [
+                                                        918,
+                                                        579,
+                                                        117,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "Or",
+                                                "param": {
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "路辰",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "TemplateMatch",
+                                                                "param": {
+                                                                    "template": "hlr/速写/路辰.png",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ],
+                                                                    "threshold": 0.8
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        },
+                        "日程_翻页": {
+                            "next": [
+                                "日程_二页_选人"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_选人_3": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "确定",
+                                                    "roi": [
+                                                        918,
+                                                        579,
+                                                        117,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "Or",
+                                                "param": {
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "罗夏",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "TemplateMatch",
+                                                                "param": {
+                                                                    "template": "hlr/速写/罗夏.png",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ],
+                                                                    "threshold": 0.8
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        },
+                        "日程_翻页": {
+                            "next": [
+                                "日程_二页_选人"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_选人_3": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "确定",
+                                                    "roi": [
+                                                        918,
+                                                        579,
+                                                        117,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "Or",
+                                                "param": {
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "司岚",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "TemplateMatch",
+                                                                "param": {
+                                                                    "template": "hlr/速写/司岚.png",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ],
+                                                                    "threshold": 0.8
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        },
+                        "日程_翻页": {
+                            "next": [
+                                "日程_二页_选人"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_选人_3": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "确定",
+                                                    "roi": [
+                                                        918,
+                                                        579,
+                                                        117,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "Or",
+                                                "param": {
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "叶瑄",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "TemplateMatch",
+                                                                "param": {
+                                                                    "template": "hlr/速写/叶瑄.png",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ],
+                                                                    "threshold": 0.8
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        },
+                        "日程_翻页": {
+                            "next": [
+                                "日程_二页_选人"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "description": "第 1 顺位不在名单时，第 4 个尝试的男主",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_选人_4": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "确定",
+                                                    "roi": [
+                                                        918,
+                                                        579,
+                                                        117,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "Or",
+                                                "param": {
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "艾因",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "TemplateMatch",
+                                                                "param": {
+                                                                    "template": "hlr/速写/艾因.png",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ],
+                                                                    "threshold": 0.8
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        },
+                        "日程_翻页": {
+                            "next": [
+                                "日程_二页_选人"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_选人_4": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "确定",
+                                                    "roi": [
+                                                        918,
+                                                        579,
+                                                        117,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "Or",
+                                                "param": {
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "路辰",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "TemplateMatch",
+                                                                "param": {
+                                                                    "template": "hlr/速写/路辰.png",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ],
+                                                                    "threshold": 0.8
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        },
+                        "日程_翻页": {
+                            "next": [
+                                "日程_二页_选人"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_选人_4": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "确定",
+                                                    "roi": [
+                                                        918,
+                                                        579,
+                                                        117,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "Or",
+                                                "param": {
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "罗夏",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "TemplateMatch",
+                                                                "param": {
+                                                                    "template": "hlr/速写/罗夏.png",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ],
+                                                                    "threshold": 0.8
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        },
+                        "日程_翻页": {
+                            "next": [
+                                "日程_二页_选人"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_选人_4": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "确定",
+                                                    "roi": [
+                                                        918,
+                                                        579,
+                                                        117,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "Or",
+                                                "param": {
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "司岚",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "TemplateMatch",
+                                                                "param": {
+                                                                    "template": "hlr/速写/司岚.png",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ],
+                                                                    "threshold": 0.8
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        },
+                        "日程_翻页": {
+                            "next": [
+                                "日程_二页_选人"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_选人_4": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "确定",
+                                                    "roi": [
+                                                        918,
+                                                        579,
+                                                        117,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "Or",
+                                                "param": {
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "叶瑄",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "TemplateMatch",
+                                                                "param": {
+                                                                    "template": "hlr/速写/叶瑄.png",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ],
+                                                                    "threshold": 0.8
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        },
+                        "日程_翻页": {
+                            "next": [
+                                "日程_二页_选人"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第5顺位": {
+            "type": "select",
+            "label": "日程第5顺位",
+            "default_case": "不指定",
+            "description": "第 1 顺位不在名单时，第 5 个尝试的男主",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_选人_5": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "确定",
+                                                    "roi": [
+                                                        918,
+                                                        579,
+                                                        117,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "Or",
+                                                "param": {
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "艾因",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "TemplateMatch",
+                                                                "param": {
+                                                                    "template": "hlr/速写/艾因.png",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ],
+                                                                    "threshold": 0.8
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        },
+                        "日程_翻页": {
+                            "next": [
+                                "日程_二页_选人"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_选人_5": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "确定",
+                                                    "roi": [
+                                                        918,
+                                                        579,
+                                                        117,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "Or",
+                                                "param": {
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "路辰",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "TemplateMatch",
+                                                                "param": {
+                                                                    "template": "hlr/速写/路辰.png",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ],
+                                                                    "threshold": 0.8
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        },
+                        "日程_翻页": {
+                            "next": [
+                                "日程_二页_选人"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_选人_5": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "确定",
+                                                    "roi": [
+                                                        918,
+                                                        579,
+                                                        117,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "Or",
+                                                "param": {
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "罗夏",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "TemplateMatch",
+                                                                "param": {
+                                                                    "template": "hlr/速写/罗夏.png",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ],
+                                                                    "threshold": 0.8
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        },
+                        "日程_翻页": {
+                            "next": [
+                                "日程_二页_选人"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_选人_5": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "确定",
+                                                    "roi": [
+                                                        918,
+                                                        579,
+                                                        117,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "Or",
+                                                "param": {
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "司岚",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "TemplateMatch",
+                                                                "param": {
+                                                                    "template": "hlr/速写/司岚.png",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ],
+                                                                    "threshold": 0.8
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        },
+                        "日程_翻页": {
+                            "next": [
+                                "日程_二页_选人"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_选人_5": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "确定",
+                                                    "roi": [
+                                                        918,
+                                                        579,
+                                                        117,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "Or",
+                                                "param": {
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "叶瑄",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "TemplateMatch",
+                                                                "param": {
+                                                                    "template": "hlr/速写/叶瑄.png",
+                                                                    "roi": [
+                                                                        100,
+                                                                        80,
+                                                                        500,
+                                                                        500
+                                                                    ],
+                                                                    "threshold": 0.8
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        },
+                        "日程_翻页": {
+                            "next": [
+                                "日程_二页_选人"
+                            ]
                         }
                     }
                 }
