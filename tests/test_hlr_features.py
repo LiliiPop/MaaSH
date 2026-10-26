@@ -24,35 +24,30 @@ class FeatureIntegrationTests(unittest.TestCase):
         tasks = [task for path in interface['import'] for task in load('assets/' + path).get('task', [])]
         self.assertFalse(any(task['name'].startswith('HLR_') for task in tasks))
 
-    def test_schedule_priority_only_changes_second_page(self):
+    def test_schedule_priority_options_cannot_repeat_a_man(self):
         task = load('assets/tasks/Schedule.json')
-        self.assertEqual(task['task'][0]['option'], [f'日程第{i}顺位' for i in range(1, 6)])
-        original = load('assets/resource/pipeline/schedule.json')
-        imported = load('assets/resource/pipeline/schedule_selected.json')
-        self.assertNotIn('日程_指定_翻页', imported)
-        self.assertEqual(imported['日程_二页_选人']['next'][0], '日程_选人_1')
-        self.assertEqual(imported['日程_二页_选人']['next'][-1], '日程_二页_随机')
+        self.assertEqual(task['task'][0]['option'], ['日程第1顺位'])
+        options = task['option']
+        men = {'罗夏', '司岚', '叶瑄', '艾因', '路辰'}
+
+        def walk(name, chosen):
+            opt = options[name]
+            self.assertEqual(opt['default_case'], '不指定')
+            names = [c['name'] for c in opt['cases']]
+            self.assertEqual(set(names[1:]), men - set(chosen))  # 已选过的男主不会再出现
+            for case in opt['cases'][1:]:
+                for sub in case.get('option', []):
+                    walk(sub, chosen + [case['name']])
+        walk('日程第1顺位', [])
+        pri = load('assets/resource/pipeline/schedule_priority.json')
+        self.assertFalse(any(k.startswith('日程_指定_') for k in pri))
+        self.assertNotIn('日程_一页_刷新', pri)  # 第一页不刷新
         for i in range(1, 6):
-            option = task['option'][f'日程第{i}顺位']
-            self.assertEqual(option['default_case'], '不指定')
-            self.assertNotIn('pipeline_override', option['cases'][0])
-            self.assertEqual([c['name'] for c in option['cases'][1:]], ['艾因', '路辰', '罗夏', '司岚', '叶瑄'])
-            for case in option['cases'][1:]:
-                override = case['pipeline_override']
-                self.assertTrue(override[f'日程_选人_{i}']['enabled'])
-                self.assertIn(case['name'], json.dumps(override, ensure_ascii=False))
-                self.assertTrue(override['日程_二页_选人']['enabled'])
-                self.assertTrue(override['日程_一页_顺位']['enabled'])
-                self.assertTrue(override[f'日程_一页_选_{i}_点']['enabled'])
-                self.assertNotIn('日程_流程', override)
-                self.assertNotIn('日程_随机选择', override)
-            self.assertFalse(imported[f'日程_选人_{i}']['enabled'])
-            self.assertEqual(imported[f'日程_选人_{i}']['next'], ['日程_指定_日程确定2'])
-        self.assertIn('[JumpBack]日程_翻页', original['日程_流程']['next'])
-        self.assertIn('Flag_日程完成', imported['日程_指定_寻找信封']['next'])
+            self.assertEqual(pri[f'日程_选人_{i}']['next'], ['日程_确定'])
+        flow = load('assets/resource/pipeline/schedule.json')['日程_流程']['next']
+        self.assertLess(flow.index('[JumpBack]日程_一页_顺位'), flow.index('[JumpBack]日程_二页_选人'))
         campus = load('assets/tasks/Campus.json')['task'][0]
-        for i in range(1, 6):
-            self.assertIn(f'日程第{i}顺位', campus['option'])
+        self.assertIn('日程第1顺位', campus['option'])
         self.assertEqual(campus['pipeline_override']['Flag_日程完成']['next'], ['校园_日程做完'])
 
     def test_theater_has_three_switches(self):

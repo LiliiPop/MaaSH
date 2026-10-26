@@ -9,11 +9,7 @@
             "default_check": false,
             "description": "tasks/doc/Schedule.md",
             "option": [
-                "日程第1顺位",
-                "日程第2顺位",
-                "日程第3顺位",
-                "日程第4顺位",
-                "日程第5顺位"
+                "日程第1顺位"
             ],
             "pipeline_override": {
                 "公共_返回主界面": {
@@ -23,588 +19,5114 @@
         }
     ],
     "option": {
+        "日程第4顺位（除罗夏、司岚、叶瑄）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除罗夏、司岚、艾因）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除罗夏、司岚、路辰）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第3顺位（除罗夏、司岚）": {
+            "type": "select",
+            "label": "日程第3顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除罗夏、司岚、叶瑄）"
+                    ]
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除罗夏、司岚、艾因）"
+                    ]
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除罗夏、司岚、路辰）"
+                    ]
+                }
+            ]
+        },
+        "日程第4顺位（除罗夏、叶瑄、司岚）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除罗夏、叶瑄、艾因）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除罗夏、叶瑄、路辰）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第3顺位（除罗夏、叶瑄）": {
+            "type": "select",
+            "label": "日程第3顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除罗夏、叶瑄、司岚）"
+                    ]
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除罗夏、叶瑄、艾因）"
+                    ]
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除罗夏、叶瑄、路辰）"
+                    ]
+                }
+            ]
+        },
+        "日程第4顺位（除罗夏、艾因、司岚）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除罗夏、艾因、叶瑄）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除罗夏、艾因、路辰）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第3顺位（除罗夏、艾因）": {
+            "type": "select",
+            "label": "日程第3顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除罗夏、艾因、司岚）"
+                    ]
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除罗夏、艾因、叶瑄）"
+                    ]
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除罗夏、艾因、路辰）"
+                    ]
+                }
+            ]
+        },
+        "日程第4顺位（除罗夏、路辰、司岚）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除罗夏、路辰、叶瑄）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除罗夏、路辰、艾因）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第3顺位（除罗夏、路辰）": {
+            "type": "select",
+            "label": "日程第3顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除罗夏、路辰、司岚）"
+                    ]
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除罗夏、路辰、叶瑄）"
+                    ]
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除罗夏、路辰、艾因）"
+                    ]
+                }
+            ]
+        },
+        "日程第2顺位（除罗夏）": {
+            "type": "select",
+            "label": "日程第2顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_2": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_2": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_2_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第3顺位（除罗夏、司岚）"
+                    ]
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_2": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_2": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_2_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第3顺位（除罗夏、叶瑄）"
+                    ]
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_2": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_2": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_2_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第3顺位（除罗夏、艾因）"
+                    ]
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_2": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_2": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_2_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第3顺位（除罗夏、路辰）"
+                    ]
+                }
+            ]
+        },
+        "日程第4顺位（除司岚、罗夏、叶瑄）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除司岚、罗夏、艾因）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除司岚、罗夏、路辰）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第3顺位（除司岚、罗夏）": {
+            "type": "select",
+            "label": "日程第3顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除司岚、罗夏、叶瑄）"
+                    ]
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除司岚、罗夏、艾因）"
+                    ]
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除司岚、罗夏、路辰）"
+                    ]
+                }
+            ]
+        },
+        "日程第4顺位（除司岚、叶瑄、罗夏）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除司岚、叶瑄、艾因）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除司岚、叶瑄、路辰）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第3顺位（除司岚、叶瑄）": {
+            "type": "select",
+            "label": "日程第3顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除司岚、叶瑄、罗夏）"
+                    ]
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除司岚、叶瑄、艾因）"
+                    ]
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除司岚、叶瑄、路辰）"
+                    ]
+                }
+            ]
+        },
+        "日程第4顺位（除司岚、艾因、罗夏）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除司岚、艾因、叶瑄）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除司岚、艾因、路辰）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第3顺位（除司岚、艾因）": {
+            "type": "select",
+            "label": "日程第3顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除司岚、艾因、罗夏）"
+                    ]
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除司岚、艾因、叶瑄）"
+                    ]
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除司岚、艾因、路辰）"
+                    ]
+                }
+            ]
+        },
+        "日程第4顺位（除司岚、路辰、罗夏）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除司岚、路辰、叶瑄）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除司岚、路辰、艾因）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第3顺位（除司岚、路辰）": {
+            "type": "select",
+            "label": "日程第3顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除司岚、路辰、罗夏）"
+                    ]
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除司岚、路辰、叶瑄）"
+                    ]
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除司岚、路辰、艾因）"
+                    ]
+                }
+            ]
+        },
+        "日程第2顺位（除司岚）": {
+            "type": "select",
+            "label": "日程第2顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_2": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_2": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_2_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第3顺位（除司岚、罗夏）"
+                    ]
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_2": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_2": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_2_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第3顺位（除司岚、叶瑄）"
+                    ]
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_2": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_2": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_2_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第3顺位（除司岚、艾因）"
+                    ]
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_2": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_2": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_2_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第3顺位（除司岚、路辰）"
+                    ]
+                }
+            ]
+        },
+        "日程第4顺位（除叶瑄、罗夏、司岚）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除叶瑄、罗夏、艾因）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除叶瑄、罗夏、路辰）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第3顺位（除叶瑄、罗夏）": {
+            "type": "select",
+            "label": "日程第3顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除叶瑄、罗夏、司岚）"
+                    ]
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除叶瑄、罗夏、艾因）"
+                    ]
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除叶瑄、罗夏、路辰）"
+                    ]
+                }
+            ]
+        },
+        "日程第4顺位（除叶瑄、司岚、罗夏）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除叶瑄、司岚、艾因）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除叶瑄、司岚、路辰）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第3顺位（除叶瑄、司岚）": {
+            "type": "select",
+            "label": "日程第3顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除叶瑄、司岚、罗夏）"
+                    ]
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除叶瑄、司岚、艾因）"
+                    ]
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除叶瑄、司岚、路辰）"
+                    ]
+                }
+            ]
+        },
+        "日程第4顺位（除叶瑄、艾因、罗夏）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除叶瑄、艾因、司岚）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除叶瑄、艾因、路辰）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第3顺位（除叶瑄、艾因）": {
+            "type": "select",
+            "label": "日程第3顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除叶瑄、艾因、罗夏）"
+                    ]
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除叶瑄、艾因、司岚）"
+                    ]
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除叶瑄、艾因、路辰）"
+                    ]
+                }
+            ]
+        },
+        "日程第4顺位（除叶瑄、路辰、罗夏）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除叶瑄、路辰、司岚）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除叶瑄、路辰、艾因）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第3顺位（除叶瑄、路辰）": {
+            "type": "select",
+            "label": "日程第3顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除叶瑄、路辰、罗夏）"
+                    ]
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除叶瑄、路辰、司岚）"
+                    ]
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除叶瑄、路辰、艾因）"
+                    ]
+                }
+            ]
+        },
+        "日程第2顺位（除叶瑄）": {
+            "type": "select",
+            "label": "日程第2顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_2": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_2": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_2_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第3顺位（除叶瑄、罗夏）"
+                    ]
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_2": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_2": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_2_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第3顺位（除叶瑄、司岚）"
+                    ]
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_2": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_2": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_2_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第3顺位（除叶瑄、艾因）"
+                    ]
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_2": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_2": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_2_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第3顺位（除叶瑄、路辰）"
+                    ]
+                }
+            ]
+        },
+        "日程第4顺位（除艾因、罗夏、司岚）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除艾因、罗夏、叶瑄）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除艾因、罗夏、路辰）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第3顺位（除艾因、罗夏）": {
+            "type": "select",
+            "label": "日程第3顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除艾因、罗夏、司岚）"
+                    ]
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除艾因、罗夏、叶瑄）"
+                    ]
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除艾因、罗夏、路辰）"
+                    ]
+                }
+            ]
+        },
+        "日程第4顺位（除艾因、司岚、罗夏）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除艾因、司岚、叶瑄）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除艾因、司岚、路辰）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第3顺位（除艾因、司岚）": {
+            "type": "select",
+            "label": "日程第3顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除艾因、司岚、罗夏）"
+                    ]
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除艾因、司岚、叶瑄）"
+                    ]
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除艾因、司岚、路辰）"
+                    ]
+                }
+            ]
+        },
+        "日程第4顺位（除艾因、叶瑄、罗夏）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除艾因、叶瑄、司岚）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除艾因、叶瑄、路辰）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第3顺位（除艾因、叶瑄）": {
+            "type": "select",
+            "label": "日程第3顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除艾因、叶瑄、罗夏）"
+                    ]
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除艾因、叶瑄、司岚）"
+                    ]
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除艾因、叶瑄、路辰）"
+                    ]
+                }
+            ]
+        },
+        "日程第4顺位（除艾因、路辰、罗夏）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除艾因、路辰、司岚）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除艾因、路辰、叶瑄）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第3顺位（除艾因、路辰）": {
+            "type": "select",
+            "label": "日程第3顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除艾因、路辰、罗夏）"
+                    ]
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除艾因、路辰、司岚）"
+                    ]
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除艾因、路辰、叶瑄）"
+                    ]
+                }
+            ]
+        },
+        "日程第2顺位（除艾因）": {
+            "type": "select",
+            "label": "日程第2顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_2": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_2": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_2_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第3顺位（除艾因、罗夏）"
+                    ]
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_2": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_2": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_2_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第3顺位（除艾因、司岚）"
+                    ]
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_2": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_2": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_2_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第3顺位（除艾因、叶瑄）"
+                    ]
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_2": {
+                            "expected": "路辰"
+                        },
+                        "日程_选人_2": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_2_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第3顺位（除艾因、路辰）"
+                    ]
+                }
+            ]
+        },
+        "日程第4顺位（除路辰、罗夏、司岚）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除路辰、罗夏、叶瑄）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除路辰、罗夏、艾因）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第3顺位（除路辰、罗夏）": {
+            "type": "select",
+            "label": "日程第3顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除路辰、罗夏、司岚）"
+                    ]
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除路辰、罗夏、叶瑄）"
+                    ]
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除路辰、罗夏、艾因）"
+                    ]
+                }
+            ]
+        },
+        "日程第4顺位（除路辰、司岚、罗夏）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除路辰、司岚、叶瑄）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除路辰、司岚、艾因）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第3顺位（除路辰、司岚）": {
+            "type": "select",
+            "label": "日程第3顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除路辰、司岚、罗夏）"
+                    ]
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除路辰、司岚、叶瑄）"
+                    ]
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除路辰、司岚、艾因）"
+                    ]
+                }
+            ]
+        },
+        "日程第4顺位（除路辰、叶瑄、罗夏）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除路辰、叶瑄、司岚）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除路辰、叶瑄、艾因）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第3顺位（除路辰、叶瑄）": {
+            "type": "select",
+            "label": "日程第3顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除路辰、叶瑄、罗夏）"
+                    ]
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除路辰、叶瑄、司岚）"
+                    ]
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除路辰、叶瑄、艾因）"
+                    ]
+                }
+            ]
+        },
+        "日程第4顺位（除路辰、艾因、罗夏）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除路辰、艾因、司岚）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第4顺位（除路辰、艾因、叶瑄）": {
+            "type": "select",
+            "label": "日程第4顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_4": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_4": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_4_点": {
+                            "enabled": true
+                        },
+                        "日程_人名_5": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_5": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_5_点": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "日程第3顺位（除路辰、艾因）": {
+            "type": "select",
+            "label": "日程第3顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除路辰、艾因、罗夏）"
+                    ]
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除路辰、艾因、司岚）"
+                    ]
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_3": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_3": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_3_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第4顺位（除路辰、艾因、叶瑄）"
+                    ]
+                }
+            ]
+        },
+        "日程第2顺位（除路辰）": {
+            "type": "select",
+            "label": "日程第2顺位",
+            "default_case": "不指定",
+            "cases": [
+                {
+                    "name": "不指定"
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "日程_人名_2": {
+                            "expected": "罗夏"
+                        },
+                        "日程_选人_2": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_2_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第3顺位（除路辰、罗夏）"
+                    ]
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_2": {
+                            "expected": "司岚"
+                        },
+                        "日程_选人_2": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_2_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第3顺位（除路辰、司岚）"
+                    ]
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_2": {
+                            "expected": "叶瑄"
+                        },
+                        "日程_选人_2": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_2_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第3顺位（除路辰、叶瑄）"
+                    ]
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_2": {
+                            "expected": "艾因|文因"
+                        },
+                        "日程_选人_2": {
+                            "enabled": true
+                        },
+                        "日程_一页_选_2_点": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第3顺位（除路辰、艾因）"
+                    ]
+                }
+            ]
+        },
         "日程第1顺位": {
             "type": "select",
             "label": "日程第1顺位",
             "default_case": "不指定",
-            "description": "日程两页都按顺位选男主。第一页（多人，选 5 人）：先找第 1 顺位，没有就免费刷新一次，再点名单里有的顺位男主，不够 5 人从名单上往下补，还不够就随机补齐。第二页（单人）：第 1 顺位 → 免费刷新一次 → 第 2~5 顺位 → 都没有就随机。全部「不指定」= 两页都随机。同一个男主不要填两次。",
+            "description": "日程两页都按顺位选男主（全部「不指定」= 两页都随机）。第一页（多人，选 5 人）：把名单里有的顺位男主依次选上，不够 5 人从名单上往下补，还不够就随机补齐。第二页（单人）：第 1 顺位 → 不在就免费刷新一次 → 第 2~5 顺位 → 都没有就随机。选了第 1 顺位后会出现第 2 顺位，已选过的男主不会再出现；选完第 4 顺位，剩下那位自动排第 5。",
             "cases": [
                 {
                     "name": "不指定"
                 },
                 {
-                    "name": "艾因",
+                    "name": "罗夏",
                     "pipeline_override": {
+                        "日程_人名_1": {
+                            "expected": "罗夏"
+                        },
                         "日程_选人_1": {
                             "enabled": true
                         },
-                        "日程_人名_1": {
-                            "expected": "艾因|文因"
+                        "日程_一页_选_1_点": {
+                            "enabled": true
+                        },
+                        "日程_一页_顺位": {
+                            "enabled": true
                         },
                         "日程_二页_选人": {
                             "enabled": true
                         },
                         "日程_二页_刷新": {
                             "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第2顺位（除罗夏）"
+                    ]
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "日程_人名_1": {
+                            "expected": "司岚"
                         },
-                        "日程_一页_顺位": {
+                        "日程_选人_1": {
                             "enabled": true
                         },
                         "日程_一页_选_1_点": {
                             "enabled": true
                         },
-                        "日程_一页_刷新": {
+                        "日程_一页_顺位": {
                             "enabled": true
-                        }
-                    }
-                },
-                {
-                    "name": "路辰",
-                    "pipeline_override": {
-                        "日程_选人_1": {
-                            "enabled": true
-                        },
-                        "日程_人名_1": {
-                            "expected": "路辰"
                         },
                         "日程_二页_选人": {
                             "enabled": true
                         },
                         "日程_二页_刷新": {
                             "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第2顺位（除司岚）"
+                    ]
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "日程_人名_1": {
+                            "expected": "叶瑄"
                         },
-                        "日程_一页_顺位": {
+                        "日程_选人_1": {
                             "enabled": true
                         },
                         "日程_一页_选_1_点": {
                             "enabled": true
                         },
-                        "日程_一页_刷新": {
+                        "日程_一页_顺位": {
                             "enabled": true
-                        }
-                    }
-                },
-                {
-                    "name": "罗夏",
-                    "pipeline_override": {
-                        "日程_选人_1": {
-                            "enabled": true
-                        },
-                        "日程_人名_1": {
-                            "expected": "罗夏"
                         },
                         "日程_二页_选人": {
                             "enabled": true
                         },
                         "日程_二页_刷新": {
                             "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第2顺位（除叶瑄）"
+                    ]
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "日程_人名_1": {
+                            "expected": "艾因|文因"
                         },
-                        "日程_一页_顺位": {
+                        "日程_选人_1": {
                             "enabled": true
                         },
                         "日程_一页_选_1_点": {
                             "enabled": true
                         },
-                        "日程_一页_刷新": {
+                        "日程_一页_顺位": {
                             "enabled": true
-                        }
-                    }
-                },
-                {
-                    "name": "司岚",
-                    "pipeline_override": {
-                        "日程_选人_1": {
-                            "enabled": true
-                        },
-                        "日程_人名_1": {
-                            "expected": "司岚"
                         },
                         "日程_二页_选人": {
                             "enabled": true
                         },
                         "日程_二页_刷新": {
                             "enabled": true
+                        }
+                    },
+                    "option": [
+                        "日程第2顺位（除艾因）"
+                    ]
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "日程_人名_1": {
+                            "expected": "路辰"
                         },
-                        "日程_一页_顺位": {
+                        "日程_选人_1": {
                             "enabled": true
                         },
                         "日程_一页_选_1_点": {
                             "enabled": true
                         },
-                        "日程_一页_刷新": {
+                        "日程_一页_顺位": {
                             "enabled": true
-                        }
-                    }
-                },
-                {
-                    "name": "叶瑄",
-                    "pipeline_override": {
-                        "日程_选人_1": {
-                            "enabled": true
-                        },
-                        "日程_人名_1": {
-                            "expected": "叶瑄"
                         },
                         "日程_二页_选人": {
                             "enabled": true
                         },
                         "日程_二页_刷新": {
                             "enabled": true
-                        },
-                        "日程_一页_顺位": {
-                            "enabled": true
-                        },
-                        "日程_一页_选_1_点": {
-                            "enabled": true
-                        },
-                        "日程_一页_刷新": {
-                            "enabled": true
                         }
-                    }
-                }
-            ]
-        },
-        "日程第2顺位": {
-            "type": "select",
-            "label": "日程第2顺位",
-            "default_case": "不指定",
-            "description": "第 1 顺位不在名单时，第 2 个尝试的男主",
-            "cases": [
-                {
-                    "name": "不指定"
-                },
-                {
-                    "name": "艾因",
-                    "pipeline_override": {
-                        "日程_选人_2": {
-                            "enabled": true
-                        },
-                        "日程_人名_2": {
-                            "expected": "艾因|文因"
-                        },
-                        "日程_二页_选人": {
-                            "enabled": true
-                        },
-                        "日程_一页_顺位": {
-                            "enabled": true
-                        },
-                        "日程_一页_选_2_点": {
-                            "enabled": true
-                        }
-                    }
-                },
-                {
-                    "name": "路辰",
-                    "pipeline_override": {
-                        "日程_选人_2": {
-                            "enabled": true
-                        },
-                        "日程_人名_2": {
-                            "expected": "路辰"
-                        },
-                        "日程_二页_选人": {
-                            "enabled": true
-                        },
-                        "日程_一页_顺位": {
-                            "enabled": true
-                        },
-                        "日程_一页_选_2_点": {
-                            "enabled": true
-                        }
-                    }
-                },
-                {
-                    "name": "罗夏",
-                    "pipeline_override": {
-                        "日程_选人_2": {
-                            "enabled": true
-                        },
-                        "日程_人名_2": {
-                            "expected": "罗夏"
-                        },
-                        "日程_二页_选人": {
-                            "enabled": true
-                        },
-                        "日程_一页_顺位": {
-                            "enabled": true
-                        },
-                        "日程_一页_选_2_点": {
-                            "enabled": true
-                        }
-                    }
-                },
-                {
-                    "name": "司岚",
-                    "pipeline_override": {
-                        "日程_选人_2": {
-                            "enabled": true
-                        },
-                        "日程_人名_2": {
-                            "expected": "司岚"
-                        },
-                        "日程_二页_选人": {
-                            "enabled": true
-                        },
-                        "日程_一页_顺位": {
-                            "enabled": true
-                        },
-                        "日程_一页_选_2_点": {
-                            "enabled": true
-                        }
-                    }
-                },
-                {
-                    "name": "叶瑄",
-                    "pipeline_override": {
-                        "日程_选人_2": {
-                            "enabled": true
-                        },
-                        "日程_人名_2": {
-                            "expected": "叶瑄"
-                        },
-                        "日程_二页_选人": {
-                            "enabled": true
-                        },
-                        "日程_一页_顺位": {
-                            "enabled": true
-                        },
-                        "日程_一页_选_2_点": {
-                            "enabled": true
-                        }
-                    }
-                }
-            ]
-        },
-        "日程第3顺位": {
-            "type": "select",
-            "label": "日程第3顺位",
-            "default_case": "不指定",
-            "description": "第 1 顺位不在名单时，第 3 个尝试的男主",
-            "cases": [
-                {
-                    "name": "不指定"
-                },
-                {
-                    "name": "艾因",
-                    "pipeline_override": {
-                        "日程_选人_3": {
-                            "enabled": true
-                        },
-                        "日程_人名_3": {
-                            "expected": "艾因|文因"
-                        },
-                        "日程_二页_选人": {
-                            "enabled": true
-                        },
-                        "日程_一页_顺位": {
-                            "enabled": true
-                        },
-                        "日程_一页_选_3_点": {
-                            "enabled": true
-                        }
-                    }
-                },
-                {
-                    "name": "路辰",
-                    "pipeline_override": {
-                        "日程_选人_3": {
-                            "enabled": true
-                        },
-                        "日程_人名_3": {
-                            "expected": "路辰"
-                        },
-                        "日程_二页_选人": {
-                            "enabled": true
-                        },
-                        "日程_一页_顺位": {
-                            "enabled": true
-                        },
-                        "日程_一页_选_3_点": {
-                            "enabled": true
-                        }
-                    }
-                },
-                {
-                    "name": "罗夏",
-                    "pipeline_override": {
-                        "日程_选人_3": {
-                            "enabled": true
-                        },
-                        "日程_人名_3": {
-                            "expected": "罗夏"
-                        },
-                        "日程_二页_选人": {
-                            "enabled": true
-                        },
-                        "日程_一页_顺位": {
-                            "enabled": true
-                        },
-                        "日程_一页_选_3_点": {
-                            "enabled": true
-                        }
-                    }
-                },
-                {
-                    "name": "司岚",
-                    "pipeline_override": {
-                        "日程_选人_3": {
-                            "enabled": true
-                        },
-                        "日程_人名_3": {
-                            "expected": "司岚"
-                        },
-                        "日程_二页_选人": {
-                            "enabled": true
-                        },
-                        "日程_一页_顺位": {
-                            "enabled": true
-                        },
-                        "日程_一页_选_3_点": {
-                            "enabled": true
-                        }
-                    }
-                },
-                {
-                    "name": "叶瑄",
-                    "pipeline_override": {
-                        "日程_选人_3": {
-                            "enabled": true
-                        },
-                        "日程_人名_3": {
-                            "expected": "叶瑄"
-                        },
-                        "日程_二页_选人": {
-                            "enabled": true
-                        },
-                        "日程_一页_顺位": {
-                            "enabled": true
-                        },
-                        "日程_一页_选_3_点": {
-                            "enabled": true
-                        }
-                    }
-                }
-            ]
-        },
-        "日程第4顺位": {
-            "type": "select",
-            "label": "日程第4顺位",
-            "default_case": "不指定",
-            "description": "第 1 顺位不在名单时，第 4 个尝试的男主",
-            "cases": [
-                {
-                    "name": "不指定"
-                },
-                {
-                    "name": "艾因",
-                    "pipeline_override": {
-                        "日程_选人_4": {
-                            "enabled": true
-                        },
-                        "日程_人名_4": {
-                            "expected": "艾因|文因"
-                        },
-                        "日程_二页_选人": {
-                            "enabled": true
-                        },
-                        "日程_一页_顺位": {
-                            "enabled": true
-                        },
-                        "日程_一页_选_4_点": {
-                            "enabled": true
-                        }
-                    }
-                },
-                {
-                    "name": "路辰",
-                    "pipeline_override": {
-                        "日程_选人_4": {
-                            "enabled": true
-                        },
-                        "日程_人名_4": {
-                            "expected": "路辰"
-                        },
-                        "日程_二页_选人": {
-                            "enabled": true
-                        },
-                        "日程_一页_顺位": {
-                            "enabled": true
-                        },
-                        "日程_一页_选_4_点": {
-                            "enabled": true
-                        }
-                    }
-                },
-                {
-                    "name": "罗夏",
-                    "pipeline_override": {
-                        "日程_选人_4": {
-                            "enabled": true
-                        },
-                        "日程_人名_4": {
-                            "expected": "罗夏"
-                        },
-                        "日程_二页_选人": {
-                            "enabled": true
-                        },
-                        "日程_一页_顺位": {
-                            "enabled": true
-                        },
-                        "日程_一页_选_4_点": {
-                            "enabled": true
-                        }
-                    }
-                },
-                {
-                    "name": "司岚",
-                    "pipeline_override": {
-                        "日程_选人_4": {
-                            "enabled": true
-                        },
-                        "日程_人名_4": {
-                            "expected": "司岚"
-                        },
-                        "日程_二页_选人": {
-                            "enabled": true
-                        },
-                        "日程_一页_顺位": {
-                            "enabled": true
-                        },
-                        "日程_一页_选_4_点": {
-                            "enabled": true
-                        }
-                    }
-                },
-                {
-                    "name": "叶瑄",
-                    "pipeline_override": {
-                        "日程_选人_4": {
-                            "enabled": true
-                        },
-                        "日程_人名_4": {
-                            "expected": "叶瑄"
-                        },
-                        "日程_二页_选人": {
-                            "enabled": true
-                        },
-                        "日程_一页_顺位": {
-                            "enabled": true
-                        },
-                        "日程_一页_选_4_点": {
-                            "enabled": true
-                        }
-                    }
-                }
-            ]
-        },
-        "日程第5顺位": {
-            "type": "select",
-            "label": "日程第5顺位",
-            "default_case": "不指定",
-            "description": "第 1 顺位不在名单时，第 5 个尝试的男主",
-            "cases": [
-                {
-                    "name": "不指定"
-                },
-                {
-                    "name": "艾因",
-                    "pipeline_override": {
-                        "日程_选人_5": {
-                            "enabled": true
-                        },
-                        "日程_人名_5": {
-                            "expected": "艾因|文因"
-                        },
-                        "日程_二页_选人": {
-                            "enabled": true
-                        },
-                        "日程_一页_顺位": {
-                            "enabled": true
-                        },
-                        "日程_一页_选_5_点": {
-                            "enabled": true
-                        }
-                    }
-                },
-                {
-                    "name": "路辰",
-                    "pipeline_override": {
-                        "日程_选人_5": {
-                            "enabled": true
-                        },
-                        "日程_人名_5": {
-                            "expected": "路辰"
-                        },
-                        "日程_二页_选人": {
-                            "enabled": true
-                        },
-                        "日程_一页_顺位": {
-                            "enabled": true
-                        },
-                        "日程_一页_选_5_点": {
-                            "enabled": true
-                        }
-                    }
-                },
-                {
-                    "name": "罗夏",
-                    "pipeline_override": {
-                        "日程_选人_5": {
-                            "enabled": true
-                        },
-                        "日程_人名_5": {
-                            "expected": "罗夏"
-                        },
-                        "日程_二页_选人": {
-                            "enabled": true
-                        },
-                        "日程_一页_顺位": {
-                            "enabled": true
-                        },
-                        "日程_一页_选_5_点": {
-                            "enabled": true
-                        }
-                    }
-                },
-                {
-                    "name": "司岚",
-                    "pipeline_override": {
-                        "日程_选人_5": {
-                            "enabled": true
-                        },
-                        "日程_人名_5": {
-                            "expected": "司岚"
-                        },
-                        "日程_二页_选人": {
-                            "enabled": true
-                        },
-                        "日程_一页_顺位": {
-                            "enabled": true
-                        },
-                        "日程_一页_选_5_点": {
-                            "enabled": true
-                        }
-                    }
-                },
-                {
-                    "name": "叶瑄",
-                    "pipeline_override": {
-                        "日程_选人_5": {
-                            "enabled": true
-                        },
-                        "日程_人名_5": {
-                            "expected": "叶瑄"
-                        },
-                        "日程_二页_选人": {
-                            "enabled": true
-                        },
-                        "日程_一页_顺位": {
-                            "enabled": true
-                        },
-                        "日程_一页_选_5_点": {
-                            "enabled": true
-                        }
-                    }
+                    },
+                    "option": [
+                        "日程第2顺位（除路辰）"
+                    ]
                 }
             ]
         }

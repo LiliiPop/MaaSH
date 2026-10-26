@@ -110,7 +110,7 @@ class Interface:
             raise KeyError(f"选项「{name}」没有「{sel}」，可选：{names}")
         merge(out, case.get("pipeline_override", {}))
         for sub in case.get("option", []):
-            self.option_override(sub, self._pending.get(sub), out)
+            self.option_override(sub, self._pick(sub), out)
 
     def build(self, task_name: str, choices: dict, resource_choices: dict) -> tuple[str, dict]:
         t = self.find_task(task_name)
@@ -126,11 +126,29 @@ class Interface:
             raise KeyError(f"任务「{t['name']}」没有选项 {sorted(unknown)}，它的选项：{t.get('option', [])}")
         return t["entry"], out
 
+    def _pick(self, sub: str):
+        """子选项的取值：套件里可以写完整选项名，也可以写界面上显示的名字（label），
+        比如「日程第2顺位」就能对上「日程第2顺位（除罗夏）」。"""
+        if sub in self._pending:
+            return self._pending[sub]
+        label = self.options.get(sub, {}).get("label")
+        return self._pending.get(label) if label else None
+
     def _sub_options(self, t: dict) -> list[str]:
-        subs = []
-        for o in t.get("option", []):
+        """任务所有层级的子选项（名字和界面显示名都算）。"""
+        subs, todo, seen = [], list(t.get("option", [])), set()
+        while todo:
+            o = todo.pop()
+            if o in seen:
+                continue
+            seen.add(o)
             for c in self.options.get(o, {}).get("cases", []):
-                subs += c.get("option", [])
+                for sub in c.get("option", []):
+                    subs.append(sub)
+                    label = self.options.get(sub, {}).get("label")
+                    if label:
+                        subs.append(label)
+                    todo.append(sub)
         return subs
 
 

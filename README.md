@@ -122,7 +122,7 @@ MaaSH 打开后会自动查找正在运行的模拟器，在「连接」里选�
 
 见 [AGENTS.md](./AGENTS.md)。
 
-日程顺位选人后的找人流程、剧场观影券领取和 B服适配最初由 @Q-Cchennn 从 MaaHLR（MIT）移植，来源说明见 [third_party/MaaHLR](third_party/MaaHLR/README.md)。
+剧场观影券领取和 B服适配最初由 @Q-Cchennn 从 MaaHLR（MIT）移植，来源说明见 [third_party/MaaHLR](third_party/MaaHLR/README.md)。
 
 ## 致谢
 
