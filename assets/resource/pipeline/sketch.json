@@ -1149,7 +1149,9 @@
             "rate_limit": 200
         },
         "next": [
-            "速写_点击入口"
+            "速写_点击入口",
+            "速写_未解锁",
+            "速写_误入他页"
         ],
         "max_hit": 3,
         "timeout": 20000,
@@ -1213,7 +1215,9 @@
             "rate_limit": 200
         },
         "next": [
-            "速写_点击入口"
+            "速写_点击入口",
+            "速写_未解锁",
+            "速写_误入他页"
         ],
         "max_hit": 3,
         "timeout": 20000,
@@ -1481,6 +1485,244 @@
         },
         "focus": {
             "Node.Action.Succeeded": "[color:Limegreen]速写流程结束，已返回主页[/color]"
+        }
+    },
+    "速写_误入他页": {
+        "desc": "10-25 新号实测：点完校园却停在签到页（登录后签到页晚弹出），原来干等 20 秒判失败。左上有返回键但不在校园：等 1.5 秒再确认",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "common/返回按钮.png",
+                    "common/返回按钮_蝴蝶.png",
+                    "common/返回按钮_社交.png"
+                ],
+                "roi": [
+                    20,
+                    10,
+                    120,
+                    110
+                ],
+                "threshold": 0.8
+            }
+        },
+        "pre_delay": 1500,
+        "action": "DoNothing",
+        "max_hit": 2,
+        "next": [
+            "速写_点击入口",
+            "速写_未解锁",
+            "速写_误入他页_确认"
+        ]
+    },
+    "速写_未解锁": {
+        "desc": "在校园里（底栏认得出日程、出行）却没有「速写」：等 1.5 秒再看一次",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": "campus/日程_字.png",
+                                                "roi": [
+                                                    600,
+                                                    600,
+                                                    680,
+                                                    120
+                                                ],
+                                                "threshold": 0.8
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "^日程$",
+                                                "roi": [
+                                                    640,
+                                                    650,
+                                                    640,
+                                                    55
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": "campus/出行_字.png",
+                                                "roi": [
+                                                    600,
+                                                    600,
+                                                    680,
+                                                    120
+                                                ],
+                                                "threshold": 0.8
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "^出行$",
+                                                "roi": [
+                                                    640,
+                                                    650,
+                                                    640,
+                                                    55
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "pre_delay": 1500,
+        "action": "DoNothing",
+        "max_hit": 1,
+        "next": [
+            "速写_点击入口",
+            "速写_未解锁_确认"
+        ]
+    },
+    "速写_未解锁_确认": {
+        "desc": "再看一次还是没有速写入口：这个号还没开放速写，算完成",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": "campus/日程_字.png",
+                                                "roi": [
+                                                    600,
+                                                    600,
+                                                    680,
+                                                    120
+                                                ],
+                                                "threshold": 0.8
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "^日程$",
+                                                "roi": [
+                                                    640,
+                                                    650,
+                                                    640,
+                                                    55
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": "campus/出行_字.png",
+                                                "roi": [
+                                                    600,
+                                                    600,
+                                                    680,
+                                                    120
+                                                ],
+                                                "threshold": 0.8
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "^出行$",
+                                                "roi": [
+                                                    640,
+                                                    650,
+                                                    640,
+                                                    55
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]这个号校园里没有速写入口（未开放），跳过[/color]"
+        }
+    },
+    "速写_误入他页_确认": {
+        "desc": "确认不在校园：回主界面后重新进校园（最多 2 次）",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "common/返回按钮.png",
+                    "common/返回按钮_蝴蝶.png",
+                    "common/返回按钮_社交.png"
+                ],
+                "roi": [
+                    20,
+                    10,
+                    120,
+                    110
+                ],
+                "threshold": 0.8
+            }
+        },
+        "action": "DoNothing",
+        "max_hit": 2,
+        "next": [
+            "速写"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Orange]速写：没进到校园，先回主界面再进[/color]"
         }
     }
 }
