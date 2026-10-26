@@ -56,11 +56,15 @@ class FeatureIntegrationTests(unittest.TestCase):
         self.assertEqual(task['name'], '🎭手偶剧场三合一')  # 内部名不变（已存配置、管家按名字对应）
         self.assertEqual(task['entry'], '剧场三合一')
         self.assertEqual(task['option'], ['剧场点赞', '剧场评论', '领取观影券进度奖励'])
-        self.assertNotIn('pipeline_override', task)
+        # 任务自带的默认 = 不看视频只进社交页；点赞 / 评论开了任意一个才改成看视频
+        self.assertEqual(task['pipeline_override']['剧场_流程']['next'][0], '剧场_仅领券')
+        self.assertEqual(task['pipeline_override']['剧场_等播放']['next'], ['剧场_不点赞_返回'])
         like = {c['name']: c for c in definition['option']['剧场点赞']['cases']}
-        self.assertEqual(like['No']['pipeline_override']['剧场_等播放']['next'], ['剧场_不点赞_返回'])
+        self.assertEqual(like['Yes']['pipeline_override']['剧场_流程']['next'][0], '剧场_点作品')
+        self.assertEqual(like['Yes']['pipeline_override']['剧场_等播放']['next'], ['剧场_点赞', '剧场_先取消赞'])
         comment = {c['name']: c for c in definition['option']['剧场评论']['cases']}
         self.assertEqual(comment['Yes']['pipeline_override']['剧场_点第一部']['next'], ['剧场_评论_唤出'])
+        self.assertEqual(comment['Yes']['pipeline_override']['剧场_流程']['next'][0], '剧场_点作品')
         self.assertEqual(comment['Yes']['option'], ['评论内容'])
         option = definition['option']['领取观影券进度奖励']
         self.assertEqual(option['cases'][0]['pipeline_override']['剧场_完成']['next'], ['剧场_领券_完成', '剧场_领券_没有可领'])

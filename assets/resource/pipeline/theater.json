@@ -1401,5 +1401,32 @@
         "on_error": [
             "公共_任务失败"
         ]
+    },
+    "剧场_仅领券": {
+        "desc": "「剧场点赞」「剧场评论」都关、只领观影券时：进了社交页（左边有「观影券」页签）就不进剧院，直接去领",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "观影券",
+                "roi": [
+                    150,
+                    190,
+                    220,
+                    70
+                ]
+            }
+        },
+        "pre_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "action": "DoNothing",
+        "next": [
+            "剧场_完成"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]剧场：不看视频，直接领观影券[/color]"
+        }
     }
 }
