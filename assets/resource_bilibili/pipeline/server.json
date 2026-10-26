@@ -7,14 +7,6 @@
             }
         }
     },
-    "冒烟测试": {
-        "action": {
-            "type": "StartApp",
-            "param": {
-                "package": "com.netease.skzdhlr.bilibili"
-            }
-        }
-    },
     "启动游戏": {
         "action": {
             "type": "StartApp",

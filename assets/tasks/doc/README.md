@@ -25,7 +25,6 @@
 | 🗓️安排日程 | `tasks/doc/Schedule.md` |
 | 📜绘卷提升 | `tasks/doc/Scroll.md` |
 | 📅签到 | `tasks/doc/SignIn.md` |
-| 🧪冒烟测试 | `tasks/doc/SmokeTest.md` |
 | 🌟画灵提升 | `tasks/doc/Spirit.md` |
 | 🍓领体力 | `tasks/doc/Stamina.md` |
 | ✈️启动绘旅人 | `tasks/doc/StartUp.md` |

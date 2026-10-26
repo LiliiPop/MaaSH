@@ -139,6 +139,20 @@
                     }
                 },
                 {
+                    "name": "存粮计划",
+                    "pipeline_override": {
+                        "质检_存粮计划": {
+                            "action": {
+                                "type": "Screencap",
+                                "param": {
+                                    "format": "jpg",
+                                    "quality": 85
+                                }
+                            }
+                        }
+                    }
+                },
+                {
                     "name": "每日任务领取",
                     "pipeline_override": {
                         "质检_每日领取": {

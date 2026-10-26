@@ -50,10 +50,6 @@
             "description": "每天跑一次：启动、全部日常、领每日/周常奖励，最后关闭游戏。",
             "task": [
                 {
-                    "name": "🧪冒烟测试",
-                    "enabled": false
-                },
-                {
                     "name": "✈️启动绘旅人",
                     "enabled": true
                 },
@@ -172,10 +168,6 @@
             "description": "只启动游戏、领午间/晚间体力、关闭游戏。建议新建一个只勾这几项的配置，配合「定时」在每天 12:05 和 17:35 各运行一次，见 README「定时领体力」。",
             "task": [
                 {
-                    "name": "🧪冒烟测试",
-                    "enabled": false
-                },
-                {
                     "name": "✈️启动绘旅人",
                     "enabled": true
                 },
@@ -293,10 +285,6 @@
             "label": "每周任务",
             "description": "每周跑一次：启动、时光电影院扫荡（可在任务选项里开商店兑换）、月卡每周购买（花 1200 钻石）、绘卷回忆扫荡，最后关闭游戏。",
             "task": [
-                {
-                    "name": "🧪冒烟测试",
-                    "enabled": false
-                },
                 {
                     "name": "✈️启动绘旅人",
                     "enabled": true
@@ -449,7 +437,6 @@
         }
     ],
     "import": [
-        "tasks/SmokeTest.json",
         "tasks/StartUp.json",
         "tasks/SignIn.json",
         "tasks/Mail.json",
