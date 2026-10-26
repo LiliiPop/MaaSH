@@ -16,11 +16,10 @@ class FeatureIntegrationTests(unittest.TestCase):
         startup_task = load('assets/tasks/StartUp.json')['task'][0]
         self.assertEqual(startup_task['name'], '✈️启动绘旅人')  # 任务名不变，已存配置和管家预设按名字对应
         self.assertEqual(startup_task['label'], '✈️启动游戏')
-        self.assertNotIn('tasks/Sketch.json', interface['import'])  # 速写待贡献者完善退出机制后再提交
+        self.assertIn('tasks/Sketch.json', interface['import'])  # feature/sketch 分支：速写开发中，不进 main
         for preset in interface['preset']:
             names = [t['name'] for t in preset['task']]
             self.assertIn('✈️启动绘旅人', names)
-            self.assertNotIn('✏️速写', names)
         tasks = [task for path in interface['import'] for task in load('assets/' + path).get('task', [])]
         self.assertFalse(any(task['name'].startswith('HLR_') for task in tasks))
 
