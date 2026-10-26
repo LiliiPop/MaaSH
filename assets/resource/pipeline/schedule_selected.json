@@ -665,17 +665,41 @@
         ]
     },
     "日程_二页_选人": {
-        "desc": "10-25：第二页（翻页后）按顺位选人：第 1 顺位 → 没有就刷新一次名单 → 第 2~5 顺位 → 都没有就随机。选中后点确定，走 HLR 的地图/场景找人流程",
+        "desc": "10-26 实测：第一页确定后游戏会自动翻到第二页，不经过「翻页」→ 直接认第二页（随机选择 + 中间信封）。第一页也有中间信封，所以 日程_流程 里先放 日程_一页_随机（认最左那个信封）把第一页截走。默认不启用，设了任一顺位才启用",
         "recognition": {
-            "type": "OCR",
+            "type": "And",
             "param": {
-                "expected": "随机选择",
-                "roi": [
-                    115,
-                    600,
-                    125,
-                    50
-                ]
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "随机选择",
+                                "roi": [
+                                    115,
+                                    600,
+                                    125,
+                                    50
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "INVITATION",
+                                "roi": [
+                                    765,
+                                    315,
+                                    120,
+                                    40
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 0
             }
         },
         "pre_wait_freezes": {
@@ -696,7 +720,9 @@
         ],
         "on_error": [
             "日程_回循环"
-        ]
+        ],
+        "enabled": false,
+        "max_hit": 3
     },
     "日程_选人_1": {
         "desc": "第 1 顺位的人在第二页名单里：点他（名字或头像），再点确定。名字由任务选项「日程第1顺位」填入",
@@ -1018,5 +1044,67 @@
         "focus": {
             "Node.Action.Succeeded": "[color:Orange]日程第二页：顺位里的人都不在名单，改为随机[/color]"
         }
+    },
+    "日程_一页_随机": {
+        "desc": "设了顺位时用：只认第一页（最左边还有一排信封，INVITATION 在 x≈536），点随机选择。第二页交给 日程_二页_选人",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "随机选择",
+                                "roi": [
+                                    115,
+                                    600,
+                                    125,
+                                    50
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "INVITATION",
+                                "roi": [
+                                    515,
+                                    315,
+                                    120,
+                                    40
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 0
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 6,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "日程_确定",
+            "日程_本页已完成"
+        ],
+        "pre_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "on_error": [
+            "日程_回循环"
+        ],
+        "timeout": 5000,
+        "enabled": false
     }
 }

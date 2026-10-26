@@ -51,7 +51,8 @@ class FeatureIntegrationTests(unittest.TestCase):
                 override = case['pipeline_override']
                 self.assertTrue(override[f'日程_选人_{i}']['enabled'])
                 self.assertIn(case['name'], json.dumps(override, ensure_ascii=False))
-                self.assertEqual(override['日程_翻页']['next'], ['日程_二页_选人'])
+                self.assertTrue(override['日程_二页_选人']['enabled'])
+                self.assertTrue(override['日程_一页_随机']['enabled'])
                 self.assertNotIn('日程_流程', override)
                 self.assertNotIn('日程_随机选择', override)
             self.assertFalse(imported[f'日程_选人_{i}']['enabled'])
