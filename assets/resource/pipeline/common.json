@@ -1926,59 +1926,58 @@
         "pre_delay": 300
     },
     "公共_签到_点今日": {
-        "desc": "10-26 用户：多数天的签到奖励是道具，打开签到页就自动领；但当天奖励是钻石时要手动点格子才领，不点就一直等不到「恭喜获得」卡住。认今天日期上的红圈（RGB≈227,94,78，只在日历格子区域里找），点这一格中间领取。这是签到奖励不是购买",
+        "desc": "10-26 用户：多数天的签到奖励打开签到页就自动领；但这一格是钻石时要手动点格子才领，不点就等不到「恭喜获得」卡住。签到是累计的：领的是「本月累计签到 N/…」后面那一格（第 N+1 格），不是今天日期那格（漏签过的号两者不同）。读出 N，点第 N+1 格。已经领过时这一格会弹物品说明（关掉）或补签（花钻石，一律取消）",
         "recognition": {
-            "type": "ColorMatch",
+            "type": "OCR",
             "param": {
+                "expected": "累计签到\\d+/",
                 "roi": [
-                    250,
-                    190,
-                    900,
-                    470
-                ],
-                "lower": [
-                    205,
-                    65,
-                    50
-                ],
-                "upper": [
-                    250,
-                    125,
-                    105
-                ],
-                "count": 60,
-                "connected": true
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target_offset": [
-                    50,
-                    40,
-                    -17,
-                    10
+                    240,
+                    110,
+                    440,
+                    90
                 ]
             }
         },
+        "action": "DoNothing",
         "max_hit": 1,
         "pre_wait_freezes": {
             "time": 500,
             "timeout": 2000,
             "rate_limit": 200
         },
-        "post_wait_freezes": {
-            "time": 500,
-            "timeout": 2000,
-            "rate_limit": 200
-        },
-        "focus": {
-            "Node.Action.Starting": "[color:Dimgray]签到：今天的奖励要手动点，点今天这一格领取[/color]"
-        },
         "next": [
-            "[JumpBack]公共_补签取消",
-            "[JumpBack]公共_获得奖励",
-            "[JumpBack]公共_点击空白继续",
+            "公共_签到_点第1格",
+            "公共_签到_点第2格",
+            "公共_签到_点第3格",
+            "公共_签到_点第4格",
+            "公共_签到_点第5格",
+            "公共_签到_点第6格",
+            "公共_签到_点第7格",
+            "公共_签到_点第8格",
+            "公共_签到_点第9格",
+            "公共_签到_点第10格",
+            "公共_签到_点第11格",
+            "公共_签到_点第12格",
+            "公共_签到_点第13格",
+            "公共_签到_点第14格",
+            "公共_签到_点第15格",
+            "公共_签到_点第16格",
+            "公共_签到_点第17格",
+            "公共_签到_点第18格",
+            "公共_签到_点第19格",
+            "公共_签到_点第20格",
+            "公共_签到_点第21格",
+            "公共_签到_点第22格",
+            "公共_签到_点第23格",
+            "公共_签到_点第24格",
+            "公共_签到_点第25格",
+            "公共_签到_点第26格",
+            "公共_签到_点第27格",
+            "公共_签到_点第28格",
+            "公共_签到_点第29格",
+            "公共_签到_点第30格",
+            "公共_签到_点第31格",
             "公共_签到页_好了"
         ]
     },
@@ -2030,5 +2029,1342 @@
         "focus": {
             "Node.Action.Starting": "[color:Orange]弹出补签（要花钻石），已取消[/color]"
         }
+    },
+    "公共_签到_点第1格": {
+        "desc": "累计已签 0 天：点第 1 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到0/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    285,
+                    230,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 1 格领取[/color]"
+        }
+    },
+    "公共_签到_点第2格": {
+        "desc": "累计已签 1 天：点第 2 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到1/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    402,
+                    230,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 2 格领取[/color]"
+        }
+    },
+    "公共_签到_点第3格": {
+        "desc": "累计已签 2 天：点第 3 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到2/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    520,
+                    230,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 3 格领取[/color]"
+        }
+    },
+    "公共_签到_点第4格": {
+        "desc": "累计已签 3 天：点第 4 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到3/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    285,
+                    342,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 4 格领取[/color]"
+        }
+    },
+    "公共_签到_点第5格": {
+        "desc": "累计已签 4 天：点第 5 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到4/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    402,
+                    342,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 5 格领取[/color]"
+        }
+    },
+    "公共_签到_点第6格": {
+        "desc": "累计已签 5 天：点第 6 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到5/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    520,
+                    342,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 6 格领取[/color]"
+        }
+    },
+    "公共_签到_点第7格": {
+        "desc": "累计已签 6 天：点第 7 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到6/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    285,
+                    454,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 7 格领取[/color]"
+        }
+    },
+    "公共_签到_点第8格": {
+        "desc": "累计已签 7 天：点第 8 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到7/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    402,
+                    454,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 8 格领取[/color]"
+        }
+    },
+    "公共_签到_点第9格": {
+        "desc": "累计已签 8 天：点第 9 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到8/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    520,
+                    454,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 9 格领取[/color]"
+        }
+    },
+    "公共_签到_点第10格": {
+        "desc": "累计已签 9 天：点第 10 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到9/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    285,
+                    566,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 10 格领取[/color]"
+        }
+    },
+    "公共_签到_点第11格": {
+        "desc": "累计已签 10 天：点第 11 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到10/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    402,
+                    566,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 11 格领取[/color]"
+        }
+    },
+    "公共_签到_点第12格": {
+        "desc": "累计已签 11 天：点第 12 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到11/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    520,
+                    566,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 12 格领取[/color]"
+        }
+    },
+    "公共_签到_点第13格": {
+        "desc": "累计已签 12 天：点第 13 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到12/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    703,
+                    120,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 13 格领取[/color]"
+        }
+    },
+    "公共_签到_点第14格": {
+        "desc": "累计已签 13 天：点第 14 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到13/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    820,
+                    120,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 14 格领取[/color]"
+        }
+    },
+    "公共_签到_点第15格": {
+        "desc": "累计已签 14 天：点第 15 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到14/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    937,
+                    120,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 15 格领取[/color]"
+        }
+    },
+    "公共_签到_点第16格": {
+        "desc": "累计已签 15 天：点第 16 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到15/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1054,
+                    120,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 16 格领取[/color]"
+        }
+    },
+    "公共_签到_点第17格": {
+        "desc": "累计已签 16 天：点第 17 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到16/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    703,
+                    230,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 17 格领取[/color]"
+        }
+    },
+    "公共_签到_点第18格": {
+        "desc": "累计已签 17 天：点第 18 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到17/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    820,
+                    230,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 18 格领取[/color]"
+        }
+    },
+    "公共_签到_点第19格": {
+        "desc": "累计已签 18 天：点第 19 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到18/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    937,
+                    230,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 19 格领取[/color]"
+        }
+    },
+    "公共_签到_点第20格": {
+        "desc": "累计已签 19 天：点第 20 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到19/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1054,
+                    230,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 20 格领取[/color]"
+        }
+    },
+    "公共_签到_点第21格": {
+        "desc": "累计已签 20 天：点第 21 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到20/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    703,
+                    342,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 21 格领取[/color]"
+        }
+    },
+    "公共_签到_点第22格": {
+        "desc": "累计已签 21 天：点第 22 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到21/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    820,
+                    342,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 22 格领取[/color]"
+        }
+    },
+    "公共_签到_点第23格": {
+        "desc": "累计已签 22 天：点第 23 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到22/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    937,
+                    342,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 23 格领取[/color]"
+        }
+    },
+    "公共_签到_点第24格": {
+        "desc": "累计已签 23 天：点第 24 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到23/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1054,
+                    342,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 24 格领取[/color]"
+        }
+    },
+    "公共_签到_点第25格": {
+        "desc": "累计已签 24 天：点第 25 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到24/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    703,
+                    454,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 25 格领取[/color]"
+        }
+    },
+    "公共_签到_点第26格": {
+        "desc": "累计已签 25 天：点第 26 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到25/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    820,
+                    454,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 26 格领取[/color]"
+        }
+    },
+    "公共_签到_点第27格": {
+        "desc": "累计已签 26 天：点第 27 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到26/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    937,
+                    454,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 27 格领取[/color]"
+        }
+    },
+    "公共_签到_点第28格": {
+        "desc": "累计已签 27 天：点第 28 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到27/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1054,
+                    454,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 28 格领取[/color]"
+        }
+    },
+    "公共_签到_点第29格": {
+        "desc": "累计已签 28 天：点第 29 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到28/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    703,
+                    566,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 29 格领取[/color]"
+        }
+    },
+    "公共_签到_点第30格": {
+        "desc": "累计已签 29 天：点第 30 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到29/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    820,
+                    566,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 30 格领取[/color]"
+        }
+    },
+    "公共_签到_点第31格": {
+        "desc": "累计已签 30 天：点第 31 格领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "累计签到30/",
+                "roi": [
+                    240,
+                    110,
+                    440,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    937,
+                    566,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[JumpBack]公共_补签取消",
+            "[JumpBack]公共_获得奖励",
+            "[JumpBack]公共_点击空白继续",
+            "[JumpBack]公共_跳过卡面",
+            "公共_签到_关提示",
+            "公共_签到页_好了"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]签到：点第 31 格领取[/color]"
+        }
+    },
+    "公共_签到_关提示": {
+        "desc": "点格子弹出的是物品说明（这一格已领或还没到）：点下方空白处关掉",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "拥有",
+                "roi": [
+                    450,
+                    280,
+                    650,
+                    280
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    600,
+                    685,
+                    80,
+                    20
+                ]
+            }
+        },
+        "max_hit": 2,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "next": [
+            "公共_签到页_好了"
+        ]
     }
 }
