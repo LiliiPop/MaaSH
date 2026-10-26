@@ -7,7 +7,30 @@
                 "daily"
             ],
             "default_check": true,
-            "description": "tasks/doc/SignIn.md"
+            "description": "tasks/doc/SignIn.md",
+            "option": [
+                "存粮计划"
+            ]
         }
-    ]
+    ],
+    "option": {
+        "存粮计划": {
+            "type": "switch",
+            "default_case": "Yes",
+            "description": "签到页左侧「存粮计划」：今天还能存时点「打开」存入（存过就跳过）。",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "签到_存粮打开": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        }
+    }
 }
