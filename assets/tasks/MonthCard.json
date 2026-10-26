@@ -2,7 +2,7 @@
     "task": [
         {
             "name": "💰月卡领取",
-            "entry": "月卡",
+            "entry": "月卡领取",
             "group": [
                 "daily"
             ],
