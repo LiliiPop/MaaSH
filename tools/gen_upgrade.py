@@ -30,15 +30,17 @@ def build():
         }
         d[f"{k}_点第一张"] = {
             "recognition": {"type": "OCR", "param": {"expected": "图鉴", "roi": [114, 17, 152, 66], "only_rec": True}},
+            "desc": "10-27 实机：刚进图鉴、列表还在动时就点，点击被吞，停在列表干等 8 秒失败 → 点前先等列表静止；进不去详情就再点（最多 3 次）",
             "action": {"type": "Click", "param": {"target": [150, 175, 115, 110]}},
-            "max_hit": 2,
+            "max_hit": 3,
+            "pre_wait_freezes": {"time": 800, "target": [120, 150, 1060, 450], "timeout": 4000, "rate_limit": 200},
             "post_wait_freezes": FREEZE,
             "next": [f"{k}_详情"],
         }
         d[f"{k}_详情"] = {
             "desc": "详情页：有「培养」就升级，「等级已满/突破」就点右箭头换下一张",
             "timeout": 8000,
-            "next": [f"{k}_培养", f"{k}_下一张", f"{k}_需突破"],
+            "next": [f"{k}_培养", f"{k}_下一张", f"{k}_需突破", f"{k}_点第一张"],
             "on_error": ["公共_任务失败"],
         }
         d[f"{k}_培养"] = {
