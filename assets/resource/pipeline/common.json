@@ -22,6 +22,7 @@
             "[JumpBack]公共_跳过卡面",
             "[JumpBack]公共_退出速写",
             "[JumpBack]公共_剧情快进",
+            "[JumpBack]公共_出行邀约下次",
             "[JumpBack]公共_付费防呆",
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_点击空白继续",
@@ -3389,5 +3390,54 @@
     "公共_取消弹窗_不是": {
         "desc": "左边有「取消」但右边没有「确定」：不是两按钮弹窗，什么都不做，回调用方",
         "recognition": "DirectHit"
+    },
+    "公共_出行邀约下次": {
+        "desc": "10-27 实机：课后出行页会弹出男主邀约（「罗夏在咖啡厅，要和他一起吃下午茶吗？」，两个选项「我想去」「下次吧」），挡住左下角头像栏，出行赠礼连点 4 次都没打开、任务失败 → 点「下次吧」关掉（不接受邀约、不改变当天日程）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^下次吧$",
+                                "roi": [
+                                    560,
+                                    370,
+                                    260,
+                                    80
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^我想去$",
+                                "roi": [
+                                    560,
+                                    265,
+                                    260,
+                                    80
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 0
+            }
+        },
+        "action": "Click",
+        "max_hit": 3,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]出行页弹出邀约，点「下次吧」[/color]"
+        }
     }
 }

@@ -20,7 +20,7 @@ COLOR = {   # 角色: (lower, upper, count)
     "叶瑄": ([180, 195, 232], [240, 250, 255], 150),
 }
 EXCLUDE = {"路辰": ["罗夏"]}
-POPS = ["[JumpBack]公共_晚点再说", "[JumpBack]公共_生日弹窗等待", "[JumpBack]公共_稍后再说", "[JumpBack]公共_不再提醒", "[JumpBack]公共_我知道了"]
+POPS = ["[JumpBack]公共_晚点再说", "[JumpBack]公共_生日弹窗等待", "[JumpBack]公共_稍后再说", "[JumpBack]公共_不再提醒", "[JumpBack]公共_我知道了", "[JumpBack]公共_出行邀约下次"]
 PW = {"time": 500, "timeout": 3000, "rate_limit": 200}
 USES = {  # 前缀: (点中之后去哪, 一个都没认出时去哪, 点中之后一直卡住时去哪)
     "赠礼": (POPS + ["出行赠礼_先互动", "出行赠礼_打开赠礼"], "出行赠礼_没认出角色", "出行赠礼_跳过"),

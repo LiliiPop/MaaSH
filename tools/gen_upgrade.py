@@ -38,7 +38,7 @@ def build():
         d[f"{k}_详情"] = {
             "desc": "详情页：有「培养」就升级，「等级已满/突破」就点右箭头换下一张",
             "timeout": 8000,
-            "next": [f"{k}_培养", f"{k}_下一张"],
+            "next": [f"{k}_培养", f"{k}_下一张", f"{k}_需突破"],
             "on_error": ["公共_任务失败"],
         }
         d[f"{k}_培养"] = {
@@ -47,7 +47,7 @@ def build():
             "max_hit": 3,
             "post_wait_freezes": FREEZE,
             "timeout": 5000,
-            "next": [f"{k}_提升", f"{k}_材料不足"],
+            "next": [f"{k}_提升", f"{k}_材料不足", f"{k}_需突破"],
             "on_error": ["公共_任务失败"],
         }
         d[f"{k}_下一张"] = {
@@ -57,6 +57,15 @@ def build():
             "max_hit": 300,
             "post_wait_freezes": FREEZE,
             "next": [f"{k}_详情"],
+        }
+        d[f"{k}_需突破"] = {
+            "desc": f"10-27 实机：等级到了当前阶段的上限（如「三阶画灵等级上限为70级」）时，等级那一行仍显示「+培养」，点了之后变成「突破后等级上限可提升至…」和「突破」按钮——要突破才能再升，不在这里突破，点右侧箭头换下一张{k}",
+            "recognition": ocr("突破后等级上限|^突\\s*破$", [540, 200, 640, 130])["recognition"],
+            "action": {"type": "Click", "param": {"target": [1215, 335, 45, 50]}},
+            "max_hit": 300,
+            "post_wait_freezes": FREEZE,
+            "next": [f"{k}_详情"],
+            "focus": {"Node.Action.Starting": f"[color:Dimgray]这张{k}要突破才能再升，换下一张[/color]"},
         }
         d[f"{k}_提升"] = {
             "desc": "「提升」是深色（材料够）才点。只升 1 级：点培养时游戏已经自动把目标设为 +1，不再点「+」",

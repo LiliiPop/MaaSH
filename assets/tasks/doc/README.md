@@ -21,7 +21,7 @@
 | 💰月卡领取 | `tasks/doc/MonthCard.md` |
 | 🎁出行赠礼 | `tasks/doc/OutingGift.md` |
 | 🍀出行收礼 | `tasks/doc/OutingReceive.md` |
-| 🔴清红点 | `tasks/doc/RedPoint.md` |
+| 🔴清活动红点（实验性功能）（内部名 🔴清红点） | `tasks/doc/RedPoint.md` |
 | 🗓️安排日程 | `tasks/doc/Schedule.md` |
 | 📜绘卷提升 | `tasks/doc/Scroll.md` |
 | 📅签到 | `tasks/doc/SignIn.md` |
