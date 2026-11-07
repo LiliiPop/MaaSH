@@ -17,6 +17,7 @@
             "[JumpBack]公共_回归信",
             "[JumpBack]公共_回归选人",
             "[JumpBack]公共_回归确定",
+            "[JumpBack]公共_关闭大白窗口",
             "Flag_在主界面",
             "[JumpBack]兑换_关选择弹窗",
             "[JumpBack]公共_跳过卡面",
@@ -1310,6 +1311,25 @@
             "公共_取消弹窗_点",
             "公共_取消弹窗_不是"
         ]
+    },
+    "公共_关闭大白窗口": {
+        "desc": "11-07 实机：领体力做完后「来自大白的馈赠」窗口还开着（没有返回键），下一项任务回不去主界面、30 秒后重开游戏。认到窗口标题或底部午间/晚间两个罐头，点气泡外左下的空白地板关掉",
+        "recognition": {
+            "type": "Or",
+            "param": {
+                "any_of": [
+                    {"recognition": {"type": "OCR", "param": {"expected": "^(来自大白的馈赠|补签)$", "roi": [760, 145, 270, 60]}}},
+                    {"recognition": {"type": "And", "param": {"all_of": [
+                        {"recognition": {"type": "OCR", "param": {"expected": "^午间$", "roi": [770, 650, 100, 40]}}},
+                        {"recognition": {"type": "OCR", "param": {"expected": "^晚间$", "roi": [960, 650, 100, 40]}}}
+                    ]}}}
+                ]
+            }
+        },
+        "action": {"type": "Click", "param": {"target": [380, 640, 40, 30]}},
+        "max_hit": 5,
+        "post_wait_freezes": {"time": 500, "timeout": 2000, "rate_limit": 200},
+        "focus": {"Node.Action.Succeeded": "[color:Dimgray]关掉大白（领体力）窗口[/color]"}
     },
     "公共_我知道了": {
         "desc": "带「我知道了」按钮的提醒弹窗（例如「画灵心愿单提醒」，10-21 实跑盖住了主界面）：点「我知道了」关掉。不点弹窗里的「立即前往」",
