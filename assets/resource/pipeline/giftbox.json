@@ -764,6 +764,7 @@
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_跳过卡面",
             "活动礼包_点免费卡",
+            "活动礼包_点红点卡",
             "[JumpBack]活动礼包_下滚_1",
             "活动礼包_页签_2"
         ]
@@ -1053,6 +1054,7 @@
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_跳过卡面",
             "活动礼包_点免费卡",
+            "活动礼包_点红点卡",
             "[JumpBack]活动礼包_下滚_2",
             "活动礼包_页签_3"
         ]
@@ -1342,6 +1344,7 @@
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_跳过卡面",
             "活动礼包_点免费卡",
+            "活动礼包_点红点卡",
             "[JumpBack]活动礼包_下滚_3",
             "活动礼包_页签_4"
         ]
@@ -1631,6 +1634,7 @@
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_跳过卡面",
             "活动礼包_点免费卡",
+            "活动礼包_点红点卡",
             "[JumpBack]活动礼包_下滚_4",
             "活动礼包_页签_5"
         ]
@@ -1920,6 +1924,7 @@
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_跳过卡面",
             "活动礼包_点免费卡",
+            "活动礼包_点红点卡",
             "[JumpBack]活动礼包_下滚_5",
             "活动礼包_结束"
         ]
@@ -1993,6 +1998,232 @@
         "on_error": [
             "[Anchor]活动礼包扫描"
         ]
+    },
+    "活动礼包_点红点卡": {
+        "desc": "11-14 录屏：礼包卡片右上角的小红点（实测 16×17、约 200 像素，RGB≈232,88,76），四列卡片右缘 x≈403/662/921/1180。点卡片图片区（红点左下方，绝不点价格按钮）打开详情：是「免费」就领（活动礼包_确认免费），不是就点空白关掉（活动礼包_关详情 / 活动礼包_不是免费），红点随之消失。只认这四列窄条，避开草莓、折扣角标、「剩余N天」等红色；七日福袋横幅里的红色只有约 130 像素，阈值 180 排除",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "Or",
+                            "param": {
+                                "any_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "ColorMatch",
+                                            "param": {
+                                                "roi": [
+                                                    389,
+                                                    165,
+                                                    28,
+                                                    400
+                                                ],
+                                                "method": 4,
+                                                "lower": [
+                                                    200,
+                                                    60,
+                                                    50
+                                                ],
+                                                "upper": [
+                                                    255,
+                                                    130,
+                                                    120
+                                                ],
+                                                "count": 180,
+                                                "connected": true
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "ColorMatch",
+                                            "param": {
+                                                "roi": [
+                                                    648,
+                                                    165,
+                                                    28,
+                                                    400
+                                                ],
+                                                "method": 4,
+                                                "lower": [
+                                                    200,
+                                                    60,
+                                                    50
+                                                ],
+                                                "upper": [
+                                                    255,
+                                                    130,
+                                                    120
+                                                ],
+                                                "count": 180,
+                                                "connected": true
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "ColorMatch",
+                                            "param": {
+                                                "roi": [
+                                                    907,
+                                                    165,
+                                                    28,
+                                                    400
+                                                ],
+                                                "method": 4,
+                                                "lower": [
+                                                    200,
+                                                    60,
+                                                    50
+                                                ],
+                                                "upper": [
+                                                    255,
+                                                    130,
+                                                    120
+                                                ],
+                                                "count": 180,
+                                                "connected": true
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "ColorMatch",
+                                            "param": {
+                                                "roi": [
+                                                    1166,
+                                                    165,
+                                                    28,
+                                                    400
+                                                ],
+                                                "method": 4,
+                                                "lower": [
+                                                    200,
+                                                    60,
+                                                    50
+                                                ],
+                                                "upper": [
+                                                    255,
+                                                    130,
+                                                    120
+                                                ],
+                                                "count": 180,
+                                                "connected": true
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "理\\s*性\\s*消\\s*费",
+                                "roi": [
+                                    480,
+                                    80,
+                                    330,
+                                    360
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 0
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": true,
+                "target_offset": [
+                    -120,
+                    70,
+                    20,
+                    20
+                ]
+            }
+        },
+        "max_hit": 12,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "timeout": 5000,
+        "next": [
+            "活动礼包_确认免费",
+            "活动礼包_不是免费",
+            "活动礼包_关详情"
+        ],
+        "on_error": [
+            "[Anchor]活动礼包扫描"
+        ]
+    },
+    "活动礼包_关详情": {
+        "desc": "礼包详情（小窗「商品内容」或服装大页「立即获得」），按钮不是「免费」：点下方空白处关掉，不买。11-14 录屏：两种窗口下方 y≈690 都是窗外的列表",
+        "recognition": {
+            "type": "Or",
+            "param": {
+                "any_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "商品内容",
+                                "roi": [
+                                    470,
+                                    285,
+                                    150,
+                                    45
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "立即获得",
+                                "roi": [
+                                    590,
+                                    165,
+                                    200,
+                                    45
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    600,
+                    688,
+                    80,
+                    14
+                ]
+            }
+        },
+        "max_hit": 12,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[Anchor]活动礼包扫描"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]打开带红点的礼包看了一眼（消掉红点），不是免费，已关闭[/color]"
+        }
     },
     "活动礼包_确认免费": {
         "desc": "详情弹窗下方按钮是「免费」才点",
