@@ -470,7 +470,8 @@
         "tasks/DailyClaim.json",
         "tasks/WeeklyClaim.json",
         "tasks/AfterRun.json",
-        "tasks/CloseGame.json"
+        "tasks/CloseGame.json",
+        "tasks/Sketch.json"
     ],
     "task": []
 }

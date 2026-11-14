@@ -93,5 +93,13 @@
                 "package": "com.netease.skzdhlr.bilibili"
             }
         }
+    },
+    "速写_卡住重开": {
+        "action": {
+            "type": "StopApp",
+            "param": {
+                "package": "com.netease.skzdhlr.bilibili"
+            }
+        }
     }
 }

@@ -1,0 +1,1237 @@
+{
+    "task": [
+        {
+            "name": "✏️速写",
+            "entry": "速写",
+            "group": [
+                "daily"
+            ],
+            "default_check": false,
+            "option": [
+                "速写地点",
+                "速写赠送",
+                "速写练习方向"
+            ],
+            "description": "tasks/doc/Sketch.md"
+        }
+    ],
+    "option": {
+        "速写地点": {
+            "type": "select",
+            "label": "速写地点",
+            "default_case": "地点·港口",
+            "description": "选男主：在校园地图上认男主头像（男主每天站的地点不固定），点他所在的地点；选地点：直接点地点名。<br>地点里的写真：港口 9 张、律政楼 8 张、清音楼 7 张、天文台 6 张。",
+            "cases": [
+                {
+                    "name": "男主·艾因",
+                    "pipeline_override": {
+                        "速写_选地点": {
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "退出速写",
+                                                    "roi": [
+                                                        1090,
+                                                        640,
+                                                        190,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "TemplateMatch",
+                                                "param": {
+                                                    "template": "sketch/男主/艾因.png",
+                                                    "roi": [
+                                                        0,
+                                                        85,
+                                                        1280,
+                                                        545
+                                                    ],
+                                                    "threshold": 0.85,
+                                                    "order_by": "Score"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        },
+                        "速写_赠_指定男主": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "速写赠送",
+                                                    "roi": [
+                                                        420,
+                                                        150,
+                                                        450,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "Or",
+                                                "param": {
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "^(艾因)",
+                                                                    "roi": [
+                                                                        365,
+                                                                        246,
+                                                                        120,
+                                                                        36
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "^(艾因)",
+                                                                    "roi": [
+                                                                        730,
+                                                                        246,
+                                                                        120,
+                                                                        36
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "^(艾因)",
+                                                                    "roi": [
+                                                                        365,
+                                                                        370,
+                                                                        120,
+                                                                        36
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "^(艾因)",
+                                                                    "roi": [
+                                                                        730,
+                                                                        370,
+                                                                        120,
+                                                                        36
+                                                                    ]
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "男主·路辰",
+                    "pipeline_override": {
+                        "速写_选地点": {
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "退出速写",
+                                                    "roi": [
+                                                        1090,
+                                                        640,
+                                                        190,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "TemplateMatch",
+                                                "param": {
+                                                    "template": "sketch/男主/路辰.png",
+                                                    "roi": [
+                                                        0,
+                                                        85,
+                                                        1280,
+                                                        545
+                                                    ],
+                                                    "threshold": 0.85,
+                                                    "order_by": "Score"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        },
+                        "速写_赠_指定男主": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "速写赠送",
+                                                    "roi": [
+                                                        420,
+                                                        150,
+                                                        450,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "Or",
+                                                "param": {
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "^(路辰)",
+                                                                    "roi": [
+                                                                        365,
+                                                                        246,
+                                                                        120,
+                                                                        36
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "^(路辰)",
+                                                                    "roi": [
+                                                                        730,
+                                                                        246,
+                                                                        120,
+                                                                        36
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "^(路辰)",
+                                                                    "roi": [
+                                                                        365,
+                                                                        370,
+                                                                        120,
+                                                                        36
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "^(路辰)",
+                                                                    "roi": [
+                                                                        730,
+                                                                        370,
+                                                                        120,
+                                                                        36
+                                                                    ]
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "男主·罗夏",
+                    "pipeline_override": {
+                        "速写_选地点": {
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "退出速写",
+                                                    "roi": [
+                                                        1090,
+                                                        640,
+                                                        190,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "TemplateMatch",
+                                                "param": {
+                                                    "template": "sketch/男主/罗夏.png",
+                                                    "roi": [
+                                                        0,
+                                                        85,
+                                                        1280,
+                                                        545
+                                                    ],
+                                                    "threshold": 0.85,
+                                                    "order_by": "Score"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        },
+                        "速写_赠_指定男主": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "速写赠送",
+                                                    "roi": [
+                                                        420,
+                                                        150,
+                                                        450,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "Or",
+                                                "param": {
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "^(罗夏)",
+                                                                    "roi": [
+                                                                        365,
+                                                                        246,
+                                                                        120,
+                                                                        36
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "^(罗夏)",
+                                                                    "roi": [
+                                                                        730,
+                                                                        246,
+                                                                        120,
+                                                                        36
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "^(罗夏)",
+                                                                    "roi": [
+                                                                        365,
+                                                                        370,
+                                                                        120,
+                                                                        36
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "^(罗夏)",
+                                                                    "roi": [
+                                                                        730,
+                                                                        370,
+                                                                        120,
+                                                                        36
+                                                                    ]
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "男主·司岚",
+                    "pipeline_override": {
+                        "速写_选地点": {
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "退出速写",
+                                                    "roi": [
+                                                        1090,
+                                                        640,
+                                                        190,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "TemplateMatch",
+                                                "param": {
+                                                    "template": "sketch/男主/司岚.png",
+                                                    "roi": [
+                                                        0,
+                                                        85,
+                                                        1280,
+                                                        545
+                                                    ],
+                                                    "threshold": 0.85,
+                                                    "order_by": "Score"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        },
+                        "速写_赠_指定男主": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "速写赠送",
+                                                    "roi": [
+                                                        420,
+                                                        150,
+                                                        450,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "Or",
+                                                "param": {
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "^(司岚)",
+                                                                    "roi": [
+                                                                        365,
+                                                                        246,
+                                                                        120,
+                                                                        36
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "^(司岚)",
+                                                                    "roi": [
+                                                                        730,
+                                                                        246,
+                                                                        120,
+                                                                        36
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "^(司岚)",
+                                                                    "roi": [
+                                                                        365,
+                                                                        370,
+                                                                        120,
+                                                                        36
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "^(司岚)",
+                                                                    "roi": [
+                                                                        730,
+                                                                        370,
+                                                                        120,
+                                                                        36
+                                                                    ]
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "男主·叶瑄",
+                    "pipeline_override": {
+                        "速写_选地点": {
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "退出速写",
+                                                    "roi": [
+                                                        1090,
+                                                        640,
+                                                        190,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "TemplateMatch",
+                                                "param": {
+                                                    "template": "sketch/男主/叶瑄.png",
+                                                    "roi": [
+                                                        0,
+                                                        85,
+                                                        1280,
+                                                        545
+                                                    ],
+                                                    "threshold": 0.85,
+                                                    "order_by": "Score"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        },
+                        "速写_赠_指定男主": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "速写赠送",
+                                                    "roi": [
+                                                        420,
+                                                        150,
+                                                        450,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "Or",
+                                                "param": {
+                                                    "any_of": [
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "^(叶瑄)",
+                                                                    "roi": [
+                                                                        365,
+                                                                        246,
+                                                                        120,
+                                                                        36
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "^(叶瑄)",
+                                                                    "roi": [
+                                                                        730,
+                                                                        246,
+                                                                        120,
+                                                                        36
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "^(叶瑄)",
+                                                                    "roi": [
+                                                                        365,
+                                                                        370,
+                                                                        120,
+                                                                        36
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "recognition": {
+                                                                "type": "OCR",
+                                                                "param": {
+                                                                    "expected": "^(叶瑄)",
+                                                                    "roi": [
+                                                                        730,
+                                                                        370,
+                                                                        120,
+                                                                        36
+                                                                    ]
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "地点·港口",
+                    "pipeline_override": {
+                        "速写_选地点": {
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "退出速写",
+                                                    "roi": [
+                                                        1090,
+                                                        640,
+                                                        190,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "^港口$",
+                                                    "roi": [
+                                                        0,
+                                                        90,
+                                                        1280,
+                                                        560
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "地点·律政楼",
+                    "pipeline_override": {
+                        "速写_选地点": {
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "退出速写",
+                                                    "roi": [
+                                                        1090,
+                                                        640,
+                                                        190,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "^律政楼$",
+                                                    "roi": [
+                                                        0,
+                                                        90,
+                                                        1280,
+                                                        560
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "地点·清音楼",
+                    "pipeline_override": {
+                        "速写_选地点": {
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "退出速写",
+                                                    "roi": [
+                                                        1090,
+                                                        640,
+                                                        190,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "^清音楼$",
+                                                    "roi": [
+                                                        0,
+                                                        90,
+                                                        1280,
+                                                        560
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "地点·天文台",
+                    "pipeline_override": {
+                        "速写_选地点": {
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "退出速写",
+                                                    "roi": [
+                                                        1090,
+                                                        640,
+                                                        190,
+                                                        80
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "^天文台$",
+                                                    "roi": [
+                                                        0,
+                                                        90,
+                                                        1280,
+                                                        560
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "速写赠送": {
+            "type": "select",
+            "label": "赠送对象",
+            "default_case": "送给男主",
+            "description": "<b>送给男主</b>：送给「速写地点」里选的那位男主（选的是地点时，送给赠送窗口默认选中的第一位）。<br><b>题材偏好优先</b>：画里有 NPC 偏好的题材就送那位 NPC；没有就送偏好这些题材的男主；都没有再按「送给男主」送。（偏好表来自灰机 wiki）",
+            "cases": [
+                {
+                    "name": "送给男主"
+                },
+                {
+                    "name": "题材偏好优先",
+                    "pipeline_override": {
+                        "速写_赠_贝壳王子_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_贝壳王子_男主": {
+                            "enabled": true
+                        },
+                        "速写_赠_垂钓者_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_垂钓者_男主": {
+                            "enabled": true
+                        },
+                        "速写_赠_儿时记忆_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_儿时记忆_男主": {
+                            "enabled": true
+                        },
+                        "速写_赠_海边阅读_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_海边阅读_男主": {
+                            "enabled": true
+                        },
+                        "速写_赠_海上风帆_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_海上风帆_男主": {
+                            "enabled": true
+                        },
+                        "速写_赠_海鲜大餐_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_海之诗_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_海之诗_男主": {
+                            "enabled": true
+                        },
+                        "速写_赠_精英度假时光_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_精英度假时光_男主": {
+                            "enabled": true
+                        },
+                        "速写_赠_人鱼童话_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_人鱼童话_男主": {
+                            "enabled": true
+                        },
+                        "速写_赠_爱读书的猫_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_爱读书的猫_男主": {
+                            "enabled": true
+                        },
+                        "速写_赠_出庭的律师_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_出庭的律师_男主": {
+                            "enabled": true
+                        },
+                        "速写_赠_读书的女生_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_读书的女生_男主": {
+                            "enabled": true
+                        },
+                        "速写_赠_法律课堂_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_法律课堂_男主": {
+                            "enabled": true
+                        },
+                        "速写_赠_赶去上班的人_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_你发现了盲点_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_你发现了盲点_男主": {
+                            "enabled": true
+                        },
+                        "速写_赠_拍摄记录_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_拍摄记录_男主": {
+                            "enabled": true
+                        },
+                        "速写_赠_朱斯提提亚_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_朱斯提提亚_男主": {
+                            "enabled": true
+                        },
+                        "速写_赠_拉手风琴的猫_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_历史的回音_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_历史的回音_男主": {
+                            "enabled": true
+                        },
+                        "速写_赠_两栖明星_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_叛逆鼓手_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_托斯卡的咏叹调_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_舞会时光_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_演奏会海报_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_演奏会海报_男主": {
+                            "enabled": true
+                        },
+                        "速写_赠_捕捉星星的猫_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_捕捉星星的猫_男主": {
+                            "enabled": true
+                        },
+                        "速写_赠_天体观测_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_天体观测_男主": {
+                            "enabled": true
+                        },
+                        "速写_赠_星际童话_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_星际童话_男主": {
+                            "enabled": true
+                        },
+                        "速写_赠_星空_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_星空_男主": {
+                            "enabled": true
+                        },
+                        "速写_赠_星座传说_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_星座传说_男主": {
+                            "enabled": true
+                        },
+                        "速写_赠_追星少女_NPC": {
+                            "enabled": true
+                        },
+                        "速写_赠_追星少女_男主": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "速写练习方向": {
+            "type": "select",
+            "label": "速写练习方向",
+            "default_case": "默认（不选）",
+            "description": "「速写开始」时选哪个练习方向。默认不选，直接点开始（沿用游戏里当前的选择）。",
+            "cases": [
+                {
+                    "name": "默认（不选）"
+                },
+                {
+                    "name": "造型",
+                    "pipeline_override": {
+                        "速写_选方向": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "速写开始",
+                                                    "roi": [
+                                                        480,
+                                                        130,
+                                                        320,
+                                                        90
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "^造型$",
+                                                    "roi": [
+                                                        470,
+                                                        400,
+                                                        520,
+                                                        60
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "张力",
+                    "pipeline_override": {
+                        "速写_选方向": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "速写开始",
+                                                    "roi": [
+                                                        480,
+                                                        130,
+                                                        320,
+                                                        90
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "^张力$",
+                                                    "roi": [
+                                                        470,
+                                                        400,
+                                                        520,
+                                                        60
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "情感",
+                    "pipeline_override": {
+                        "速写_选方向": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "速写开始",
+                                                    "roi": [
+                                                        480,
+                                                        130,
+                                                        320,
+                                                        90
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "^情感$",
+                                                    "roi": [
+                                                        470,
+                                                        400,
+                                                        520,
+                                                        60
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "色彩",
+                    "pipeline_override": {
+                        "速写_选方向": {
+                            "enabled": true,
+                            "recognition": {
+                                "type": "And",
+                                "param": {
+                                    "all_of": [
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "速写开始",
+                                                    "roi": [
+                                                        480,
+                                                        130,
+                                                        320,
+                                                        90
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recognition": {
+                                                "type": "OCR",
+                                                "param": {
+                                                    "expected": "^色彩$",
+                                                    "roi": [
+                                                        470,
+                                                        400,
+                                                        520,
+                                                        60
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "box_index": 1
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
