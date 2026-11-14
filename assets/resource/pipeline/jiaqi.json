@@ -1,0 +1,816 @@
+{
+    "佳期": {
+        "desc": "任务入口（11-13 按录屏和实机）：进校园 → 出行 → 按选项换男主 → 佳期 → 选计划 → 确定 → 等倒计时结束（30 分钟起步）→ 计划完成 → 按「轮数」选「继续吧！」或「下次再说好了」→ 回到课后出行 → 回主界面。已经在佳期里（倒计时中）就直接等",
+        "anchor": {
+            "校园下一步": "佳期_点出行",
+            "校园跳过": "佳期_没有出行"
+        },
+        "timeout": 60000,
+        "next": [
+            "[JumpBack]佳期_不退出",
+            "佳期_计时中",
+            "佳期_计划完成",
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_生日弹窗等待",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "[JumpBack]公共_出行邀约下次",
+            "校园_主界面进校园",
+            "校园_主界面进校园_默认",
+            "[JumpBack]公共_返回主界面"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]开始：佳期。每轮至少 30 分钟，期间不要关模拟器、不要锁屏，否则会失败[/color]"
+        }
+    },
+    "佳期_点出行": {
+        "recognition": {
+            "type": "Or",
+            "param": {
+                "any_of": [
+                    {
+                        "recognition": {
+                            "type": "TemplateMatch",
+                            "param": {
+                                "template": "campus/出行_字.png",
+                                "roi": [
+                                    600,
+                                    600,
+                                    680,
+                                    120
+                                ],
+                                "threshold": 0.8
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^出行$",
+                                "roi": [
+                                    640,
+                                    650,
+                                    640,
+                                    55
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    0,
+                    -55,
+                    0,
+                    10
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 600,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "max_hit": 3,
+        "timeout": 15000,
+        "desc": "校园右下角「出行」（同 校园_点出行）：进课后出行页",
+        "next": [
+            "佳期_准备"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "佳期_没有出行": {
+        "desc": "校园里没有「出行」按钮（还没开放）：佳期跑不了",
+        "next": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Red]校园里找不到「出行」，佳期跑不了[/color]"
+        }
+    },
+    "佳期_准备": {
+        "desc": "进课后出行后：按选项「佳期男主」先换人（选「当前角色」就直接点佳期）。由选项改写 next",
+        "timeout": 20000,
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_生日弹窗等待",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "[JumpBack]公共_出行邀约下次",
+            "[JumpBack]出行_去赴约",
+            "佳期_打开头像栏"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "佳期_打开头像栏": {
+        "desc": "左下角当前角色头像，点开五人头像栏（同出行赠礼）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "课后出行",
+                "roi": [
+                    89,
+                    2,
+                    212,
+                    76
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    30,
+                    628,
+                    55,
+                    50
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "max_hit": 4,
+        "timeout": 5000,
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_生日弹窗等待",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "[JumpBack]公共_出行邀约下次",
+            "佳期_头像栏已展开"
+        ],
+        "on_error": [
+            "佳期_准备"
+        ]
+    },
+    "佳期_头像栏已展开": {
+        "desc": "头像栏真的展开了（右端红色「<」）",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    515,
+                    630,
+                    45,
+                    45
+                ],
+                "method": 4,
+                "lower": [
+                    230,
+                    90,
+                    80
+                ],
+                "upper": [
+                    255,
+                    160,
+                    160
+                ],
+                "count": 100
+            }
+        },
+        "pre_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "timeout": 4000,
+        "next": [
+            "佳期_选择角色"
+        ],
+        "on_error": [
+            "佳期_准备"
+        ]
+    },
+    "佳期_选择角色": {
+        "desc": "头像栏已展开：按选项「佳期男主」看发色找人。由选项改写 next",
+        "next": [
+            "佳期找人_罗夏_1"
+        ]
+    },
+    "佳期_没认出角色": {
+        "desc": "头像栏里没认出选定的男主（没解锁等）：不随便换人，结束",
+        "next": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Red]头像栏里没认出选定的男主，佳期没开始：请检查「佳期男主」[/color]"
+        }
+    },
+    "佳期_打不开": {
+        "desc": "选好男主后一直打不开佳期面板",
+        "next": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Red]打不开佳期面板，佳期没开始[/color]"
+        }
+    },
+    "佳期_打开佳期": {
+        "desc": "两件事共用一个节点，好让「轮数」直接当 max_hit 用：①课后出行页底栏「佳期」图标（每个页面背景下都 0.99，别的图标 ≤0.69）——开第一轮；②计划完成后芭啾问「还要继续吗？」时点「继续吧！」——再开一轮。一共点「轮数」次，点够了就跳过本节点，转去「下次再说好了」",
+        "recognition": {
+            "type": "Or",
+            "param": {
+                "any_of": [
+                    {
+                        "recognition": {
+                            "type": "TemplateMatch",
+                            "param": {
+                                "template": "outing/佳期按钮.png",
+                                "roi": [
+                                    500,
+                                    560,
+                                    780,
+                                    160
+                                ],
+                                "threshold": 0.85
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "^继续吧",
+                                                "roi": [
+                                                    300,
+                                                    400,
+                                                    680,
+                                                    90
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "^下次再说",
+                                                "roi": [
+                                                    300,
+                                                    520,
+                                                    680,
+                                                    90
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ],
+                                "box_index": 0
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": "Click",
+        "max_hit": 1,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "timeout": 20000,
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_生日弹窗等待",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "[JumpBack]公共_出行邀约下次",
+            "[JumpBack]佳期_不退出",
+            "佳期_选计划",
+            "佳期_计时中",
+            "佳期_计划完成",
+            "佳期_再点佳期",
+            "佳期_对话"
+        ],
+        "on_error": [
+            "佳期_打不开"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]佳期：开始一轮[/color]"
+        }
+    },
+    "佳期_再点佳期": {
+        "desc": "点了佳期 2 秒后面板还没出来（男主正在说话，第一下只推进台词）：原地再点。最多 6 次",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "outing/佳期按钮.png",
+                "roi": [
+                    500,
+                    560,
+                    780,
+                    160
+                ],
+                "threshold": 0.85
+            }
+        },
+        "action": "Click",
+        "pre_delay": 2000,
+        "max_hit": 6,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "timeout": 20000,
+        "next": [
+            "[JumpBack]公共_晚点再说",
+            "[JumpBack]公共_生日弹窗等待",
+            "[JumpBack]公共_稍后再说",
+            "[JumpBack]公共_不再提醒",
+            "[JumpBack]公共_我知道了",
+            "[JumpBack]公共_出行邀约下次",
+            "[JumpBack]佳期_不退出",
+            "佳期_选计划",
+            "佳期_计时中",
+            "佳期_计划完成",
+            "佳期_再点佳期",
+            "佳期_对话"
+        ],
+        "on_error": [
+            "佳期_打不开"
+        ]
+    },
+    "佳期_选计划": {
+        "desc": "「佳期如至」面板：点选项「佳期计划」那一格（第 1/2/3 个；罗夏是 工作 / 读写 / 收拾房间）。时长不动（默认 30 分钟）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "佳期如至",
+                                "roi": [
+                                    740,
+                                    20,
+                                    200,
+                                    50
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^确\\s*定$",
+                                "roi": [
+                                    1000,
+                                    628,
+                                    200,
+                                    58
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 0
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    727,
+                    190,
+                    148,
+                    48
+                ]
+            }
+        },
+        "post_delay": 800,
+        "max_hit": 20,
+        "timeout": 10000,
+        "next": [
+            "佳期_确定"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "佳期_确定": {
+        "desc": "「佳期如至」面板右下「确定」",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "佳期如至",
+                                "roi": [
+                                    740,
+                                    20,
+                                    200,
+                                    50
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^确\\s*定$",
+                                "roi": [
+                                    1000,
+                                    628,
+                                    200,
+                                    58
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": "Click",
+        "max_hit": 20,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "timeout": 20000,
+        "next": [
+            "[JumpBack]佳期_不退出",
+            "佳期_计时中",
+            "佳期_确定"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "佳期_计时中": {
+        "desc": "佳期房间（左上「佳期」+ 右上倒计时）：什么都不点，就停在这里等「计划完成」。这一步本身不循环——MaaFW 在 next 列表上每 5 秒看一次，最多等 65 分钟（一轮 30 分钟起步，留足余量）。等待期间不点任何东西：左上角是返回键，点了会弹「中途退出的话，之前的时间就不会被累积」",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^佳期$",
+                                "roi": [
+                                    110,
+                                    15,
+                                    200,
+                                    60
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "\\d{1,2}[:：]\\d{2}[:：]\\d{2}",
+                                "roi": [
+                                    1060,
+                                    20,
+                                    175,
+                                    65
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 0
+            }
+        },
+        "action": "DoNothing",
+        "max_hit": 50,
+        "rate_limit": 5000,
+        "timeout": 3900000,
+        "next": [
+            "[JumpBack]佳期_不退出",
+            "佳期_计划完成"
+        ],
+        "on_error": [
+            "佳期_超时"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]佳期倒计时中，等计划完成（不要关模拟器、不要锁屏）[/color]"
+        }
+    },
+    "佳期_超时": {
+        "desc": "倒计时页等了 65 分钟还没看到「计划完成」",
+        "next": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Red]佳期等了 65 分钟还没完成（模拟器被关 / 锁屏 / 时长设得太长？）[/color]"
+        }
+    },
+    "佳期_不退出": {
+        "desc": "「中途退出的话，之前的时间就不会被累积」弹窗：点「不退出」",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "中途退出",
+                                "roi": [
+                                    300,
+                                    330,
+                                    680,
+                                    70
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^不退出$",
+                                "roi": [
+                                    375,
+                                    445,
+                                    190,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": "Click",
+        "max_hit": 5,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]弹出了「中途退出」确认，已点「不退出」[/color]"
+        }
+    },
+    "佳期_计划完成": {
+        "desc": "「计划完成」（和男主一起度过了 N 分钟 / 恭喜获得…）：点下方空白处继续",
+        "recognition": {
+            "type": "Or",
+            "param": {
+                "any_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "计划完成",
+                                "roi": [
+                                    200,
+                                    40,
+                                    880,
+                                    420
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "^佳期$",
+                                                "roi": [
+                                                    110,
+                                                    15,
+                                                    200,
+                                                    60
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "点击空白处继续",
+                                                "roi": [
+                                                    400,
+                                                    560,
+                                                    480,
+                                                    120
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ],
+                                "box_index": 0
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    540,
+                    650,
+                    200,
+                    30
+                ]
+            }
+        },
+        "max_hit": 20,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "timeout": 20000,
+        "next": [
+            "[JumpBack]佳期_不退出",
+            "佳期_打开佳期",
+            "佳期_点结束",
+            "佳期_选计划",
+            "佳期_计时中",
+            "Flag_佳期完成",
+            "佳期_计划完成",
+            "佳期_对话"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]佳期计划完成[/color]"
+        }
+    },
+    "佳期_对话": {
+        "desc": "佳期房间里（没有倒计时时）芭啾 / 男主的台词：点台词框推进。不点「继续吧」「下次再说」这两个选项（交给前面的节点）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^佳期$",
+                                "roi": [
+                                    110,
+                                    15,
+                                    200,
+                                    60
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^(?!.*(继续吧|下次再说)).{4,}$",
+                                "roi": [
+                                    130,
+                                    500,
+                                    1130,
+                                    110
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": "Click",
+        "max_hit": 40,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "timeout": 20000,
+        "next": [
+            "[JumpBack]佳期_不退出",
+            "佳期_打开佳期",
+            "佳期_点结束",
+            "佳期_选计划",
+            "佳期_计时中",
+            "Flag_佳期完成",
+            "佳期_计划完成",
+            "佳期_对话"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "佳期_点结束": {
+        "desc": "「还要继续吗？」：轮数够了，点「下次再说好了」",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^继续吧",
+                                "roi": [
+                                    300,
+                                    400,
+                                    680,
+                                    90
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^下次再说",
+                                "roi": [
+                                    300,
+                                    520,
+                                    680,
+                                    90
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": "Click",
+        "max_hit": 5,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "timeout": 20000,
+        "next": [
+            "[JumpBack]佳期_不退出",
+            "Flag_佳期完成",
+            "佳期_对话"
+        ],
+        "on_error": [
+            "公共_任务失败"
+        ]
+    },
+    "Flag_佳期完成": {
+        "desc": "回到课后出行页 = 佳期结束",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "课后出行",
+                "roi": [
+                    89,
+                    2,
+                    212,
+                    76
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]佳期完成[/color]"
+        },
+        "next": [
+            "公共_返回主界面"
+        ]
+    }
+}

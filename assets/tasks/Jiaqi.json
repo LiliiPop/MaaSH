@@ -1,0 +1,173 @@
+{
+    "task": [
+        {
+            "name": "⏳佳期",
+            "entry": "佳期",
+            "group": [
+                "special"
+            ],
+            "default_check": false,
+            "description": "tasks/doc/Jiaqi.md",
+            "option": [
+                "佳期男主",
+                "佳期计划",
+                "佳期轮数"
+            ]
+        }
+    ],
+    "option": {
+        "佳期男主": {
+            "type": "select",
+            "default_case": "当前角色",
+            "description": "在课后出行页左下角头像栏按<b>发色</b>认人（黑 艾因 / 深蓝 司岚 / 橙 罗夏 / 金 路辰 / 银 叶瑄）。认不出就不开始（不会随便换人）。",
+            "cases": [
+                {
+                    "name": "当前角色",
+                    "pipeline_override": {
+                        "佳期_准备": {
+                            "next": [
+                                "[JumpBack]公共_晚点再说",
+                                "[JumpBack]公共_生日弹窗等待",
+                                "[JumpBack]公共_稍后再说",
+                                "[JumpBack]公共_不再提醒",
+                                "[JumpBack]公共_我知道了",
+                                "[JumpBack]公共_出行邀约下次",
+                                "[JumpBack]出行_去赴约",
+                                "佳期_打开佳期"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "艾因",
+                    "pipeline_override": {
+                        "佳期_选择角色": {
+                            "next": [
+                                "佳期找人_艾因_1"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "路辰",
+                    "pipeline_override": {
+                        "佳期_选择角色": {
+                            "next": [
+                                "佳期找人_路辰_1"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "罗夏",
+                    "pipeline_override": {
+                        "佳期_选择角色": {
+                            "next": [
+                                "佳期找人_罗夏_1"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "司岚",
+                    "pipeline_override": {
+                        "佳期_选择角色": {
+                            "next": [
+                                "佳期找人_司岚_1"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "叶瑄",
+                    "pipeline_override": {
+                        "佳期_选择角色": {
+                            "next": [
+                                "佳期找人_叶瑄_1"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "佳期计划": {
+            "type": "select",
+            "default_case": "第 1 个（罗夏：工作）",
+            "description": "「佳期如至」面板上三个计划按位置选（每位男主的计划名字可能不同）。时长不改，用面板默认的 30 分钟。",
+            "cases": [
+                {
+                    "name": "第 1 个（罗夏：工作）",
+                    "pipeline_override": {
+                        "佳期_选计划": {
+                            "action": {
+                                "type": "Click",
+                                "param": {
+                                    "target": [
+                                        727,
+                                        190,
+                                        148,
+                                        48
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "第 2 个（罗夏：读写）",
+                    "pipeline_override": {
+                        "佳期_选计划": {
+                            "action": {
+                                "type": "Click",
+                                "param": {
+                                    "target": [
+                                        884,
+                                        190,
+                                        148,
+                                        48
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "第 3 个（罗夏：收拾房间）",
+                    "pipeline_override": {
+                        "佳期_选计划": {
+                            "action": {
+                                "type": "Click",
+                                "param": {
+                                    "target": [
+                                        1042,
+                                        190,
+                                        148,
+                                        48
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "佳期轮数": {
+            "type": "input",
+            "description": "连续跑几轮（每轮 30 分钟起步）。计划完成后，轮数没到就选「继续吧！」，到了就选「下次再说好了」",
+            "inputs": [
+                {
+                    "name": "轮数",
+                    "default": "1",
+                    "pipeline_type": "int",
+                    "verify": "^[1-9]$",
+                    "pattern_msg": "填 1~9 的整数"
+                }
+            ],
+            "pipeline_override": {
+                "佳期_打开佳期": {
+                    "max_hit": "{轮数}"
+                }
+            }
+        }
+    }
+}
