@@ -2079,7 +2079,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Deepskyblue]第 1 顺位兑换成功[/color]"
+            "Node.Action.Succeeded": "[color:Deepskyblue]第 2 顺位兑换成功[/color]"
         }
     },
     "兑换_第2_售罄": {
@@ -2088,7 +2088,7 @@
             "type": "OCR",
             "param": {
                 "expected": "已售罄|售罄|限购\\s*[(（]\\s*(\\d+)\\s*/\\s*\\1\\s*[)）]|限购\\s*[(（]\\s*\\d*\\s*/\\s*[)）]",
-                "roi": "兑换_第1_商品",
+                "roi": "兑换_第2_商品",
                 "roi_offset": [
                     -110,
                     -140,
@@ -2114,7 +2114,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Dimgray]第 1 顺位已售罄 / 本周已买满，跳过[/color]"
+            "Node.Action.Succeeded": "[color:Dimgray]第 2 顺位已售罄 / 本周已买满，跳过[/color]"
         }
     },
     "兑换_第2_点开": {
@@ -2122,7 +2122,7 @@
         "action": {
             "type": "Click",
             "param": {
-                "target": "兑换_第1_商品"
+                "target": "兑换_第2_商品"
             }
         },
         "post_wait_freezes": {
@@ -2418,7 +2418,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Deepskyblue]第 1 顺位兑换成功[/color]"
+            "Node.Action.Succeeded": "[color:Deepskyblue]第 3 顺位兑换成功[/color]"
         }
     },
     "兑换_第3_售罄": {
@@ -2427,7 +2427,7 @@
             "type": "OCR",
             "param": {
                 "expected": "已售罄|售罄|限购\\s*[(（]\\s*(\\d+)\\s*/\\s*\\1\\s*[)）]|限购\\s*[(（]\\s*\\d*\\s*/\\s*[)）]",
-                "roi": "兑换_第1_商品",
+                "roi": "兑换_第3_商品",
                 "roi_offset": [
                     -110,
                     -140,
@@ -2452,7 +2452,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Dimgray]第 1 顺位已售罄 / 本周已买满，跳过[/color]"
+            "Node.Action.Succeeded": "[color:Dimgray]第 3 顺位已售罄 / 本周已买满，跳过[/color]"
         }
     },
     "兑换_第3_点开": {
@@ -2460,7 +2460,7 @@
         "action": {
             "type": "Click",
             "param": {
-                "target": "兑换_第1_商品"
+                "target": "兑换_第3_商品"
             }
         },
         "post_wait_freezes": {
@@ -2752,7 +2752,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Deepskyblue]第 1 顺位兑换成功[/color]"
+            "Node.Action.Succeeded": "[color:Deepskyblue]第 4 顺位兑换成功[/color]"
         }
     },
     "兑换_第4_售罄": {
@@ -2761,7 +2761,7 @@
             "type": "OCR",
             "param": {
                 "expected": "已售罄|售罄|限购\\s*[(（]\\s*(\\d+)\\s*/\\s*\\1\\s*[)）]|限购\\s*[(（]\\s*\\d*\\s*/\\s*[)）]",
-                "roi": "兑换_第1_商品",
+                "roi": "兑换_第4_商品",
                 "roi_offset": [
                     -110,
                     -140,
@@ -2785,7 +2785,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Dimgray]第 1 顺位已售罄 / 本周已买满，跳过[/color]"
+            "Node.Action.Succeeded": "[color:Dimgray]第 4 顺位已售罄 / 本周已买满，跳过[/color]"
         }
     },
     "兑换_第4_点开": {
@@ -2793,7 +2793,7 @@
         "action": {
             "type": "Click",
             "param": {
-                "target": "兑换_第1_商品"
+                "target": "兑换_第4_商品"
             }
         },
         "post_wait_freezes": {
@@ -3081,7 +3081,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Deepskyblue]第 1 顺位兑换成功[/color]"
+            "Node.Action.Succeeded": "[color:Deepskyblue]第 5 顺位兑换成功[/color]"
         }
     },
     "兑换_第5_售罄": {
@@ -3090,7 +3090,7 @@
             "type": "OCR",
             "param": {
                 "expected": "已售罄|售罄|限购\\s*[(（]\\s*(\\d+)\\s*/\\s*\\1\\s*[)）]|限购\\s*[(（]\\s*\\d*\\s*/\\s*[)）]",
-                "roi": "兑换_第1_商品",
+                "roi": "兑换_第5_商品",
                 "roi_offset": [
                     -110,
                     -140,
@@ -3113,7 +3113,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Dimgray]第 1 顺位已售罄 / 本周已买满，跳过[/color]"
+            "Node.Action.Succeeded": "[color:Dimgray]第 5 顺位已售罄 / 本周已买满，跳过[/color]"
         }
     },
     "兑换_第5_点开": {
@@ -3121,7 +3121,7 @@
         "action": {
             "type": "Click",
             "param": {
-                "target": "兑换_第1_商品"
+                "target": "兑换_第5_商品"
             }
         },
         "post_wait_freezes": {
@@ -3405,7 +3405,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Deepskyblue]第 1 顺位兑换成功[/color]"
+            "Node.Action.Succeeded": "[color:Deepskyblue]第 6 顺位兑换成功[/color]"
         }
     },
     "兑换_第6_售罄": {
@@ -3414,7 +3414,7 @@
             "type": "OCR",
             "param": {
                 "expected": "已售罄|售罄|限购\\s*[(（]\\s*(\\d+)\\s*/\\s*\\1\\s*[)）]|限购\\s*[(（]\\s*\\d*\\s*/\\s*[)）]",
-                "roi": "兑换_第1_商品",
+                "roi": "兑换_第6_商品",
                 "roi_offset": [
                     -110,
                     -140,
@@ -3436,7 +3436,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Dimgray]第 1 顺位已售罄 / 本周已买满，跳过[/color]"
+            "Node.Action.Succeeded": "[color:Dimgray]第 6 顺位已售罄 / 本周已买满，跳过[/color]"
         }
     },
     "兑换_第6_点开": {
@@ -3444,7 +3444,7 @@
         "action": {
             "type": "Click",
             "param": {
-                "target": "兑换_第1_商品"
+                "target": "兑换_第6_商品"
             }
         },
         "post_wait_freezes": {
@@ -3724,7 +3724,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Deepskyblue]第 1 顺位兑换成功[/color]"
+            "Node.Action.Succeeded": "[color:Deepskyblue]第 7 顺位兑换成功[/color]"
         }
     },
     "兑换_第7_售罄": {
@@ -3733,7 +3733,7 @@
             "type": "OCR",
             "param": {
                 "expected": "已售罄|售罄|限购\\s*[(（]\\s*(\\d+)\\s*/\\s*\\1\\s*[)）]|限购\\s*[(（]\\s*\\d*\\s*/\\s*[)）]",
-                "roi": "兑换_第1_商品",
+                "roi": "兑换_第7_商品",
                 "roi_offset": [
                     -110,
                     -140,
@@ -3754,7 +3754,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Dimgray]第 1 顺位已售罄 / 本周已买满，跳过[/color]"
+            "Node.Action.Succeeded": "[color:Dimgray]第 7 顺位已售罄 / 本周已买满，跳过[/color]"
         }
     },
     "兑换_第7_点开": {
@@ -3762,7 +3762,7 @@
         "action": {
             "type": "Click",
             "param": {
-                "target": "兑换_第1_商品"
+                "target": "兑换_第7_商品"
             }
         },
         "post_wait_freezes": {
@@ -4038,7 +4038,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Deepskyblue]第 1 顺位兑换成功[/color]"
+            "Node.Action.Succeeded": "[color:Deepskyblue]第 8 顺位兑换成功[/color]"
         }
     },
     "兑换_第8_售罄": {
@@ -4047,7 +4047,7 @@
             "type": "OCR",
             "param": {
                 "expected": "已售罄|售罄|限购\\s*[(（]\\s*(\\d+)\\s*/\\s*\\1\\s*[)）]|限购\\s*[(（]\\s*\\d*\\s*/\\s*[)）]",
-                "roi": "兑换_第1_商品",
+                "roi": "兑换_第8_商品",
                 "roi_offset": [
                     -110,
                     -140,
@@ -4067,7 +4067,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Dimgray]第 1 顺位已售罄 / 本周已买满，跳过[/color]"
+            "Node.Action.Succeeded": "[color:Dimgray]第 8 顺位已售罄 / 本周已买满，跳过[/color]"
         }
     },
     "兑换_第8_点开": {
@@ -4075,7 +4075,7 @@
         "action": {
             "type": "Click",
             "param": {
-                "target": "兑换_第1_商品"
+                "target": "兑换_第8_商品"
             }
         },
         "post_wait_freezes": {
@@ -4347,7 +4347,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Deepskyblue]第 1 顺位兑换成功[/color]"
+            "Node.Action.Succeeded": "[color:Deepskyblue]第 9 顺位兑换成功[/color]"
         }
     },
     "兑换_第9_售罄": {
@@ -4356,7 +4356,7 @@
             "type": "OCR",
             "param": {
                 "expected": "已售罄|售罄|限购\\s*[(（]\\s*(\\d+)\\s*/\\s*\\1\\s*[)）]|限购\\s*[(（]\\s*\\d*\\s*/\\s*[)）]",
-                "roi": "兑换_第1_商品",
+                "roi": "兑换_第9_商品",
                 "roi_offset": [
                     -110,
                     -140,
@@ -4375,7 +4375,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Dimgray]第 1 顺位已售罄 / 本周已买满，跳过[/color]"
+            "Node.Action.Succeeded": "[color:Dimgray]第 9 顺位已售罄 / 本周已买满，跳过[/color]"
         }
     },
     "兑换_第9_点开": {
@@ -4383,7 +4383,7 @@
         "action": {
             "type": "Click",
             "param": {
-                "target": "兑换_第1_商品"
+                "target": "兑换_第9_商品"
             }
         },
         "post_wait_freezes": {
@@ -4651,7 +4651,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Deepskyblue]第 1 顺位兑换成功[/color]"
+            "Node.Action.Succeeded": "[color:Deepskyblue]第 10 顺位兑换成功[/color]"
         }
     },
     "兑换_第10_售罄": {
@@ -4660,7 +4660,7 @@
             "type": "OCR",
             "param": {
                 "expected": "已售罄|售罄|限购\\s*[(（]\\s*(\\d+)\\s*/\\s*\\1\\s*[)）]|限购\\s*[(（]\\s*\\d*\\s*/\\s*[)）]",
-                "roi": "兑换_第1_商品",
+                "roi": "兑换_第10_商品",
                 "roi_offset": [
                     -110,
                     -140,
@@ -4678,7 +4678,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Dimgray]第 1 顺位已售罄 / 本周已买满，跳过[/color]"
+            "Node.Action.Succeeded": "[color:Dimgray]第 10 顺位已售罄 / 本周已买满，跳过[/color]"
         }
     },
     "兑换_第10_点开": {
@@ -4686,7 +4686,7 @@
         "action": {
             "type": "Click",
             "param": {
-                "target": "兑换_第1_商品"
+                "target": "兑换_第10_商品"
             }
         },
         "post_wait_freezes": {
@@ -4950,7 +4950,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Deepskyblue]第 1 顺位兑换成功[/color]"
+            "Node.Action.Succeeded": "[color:Deepskyblue]第 11 顺位兑换成功[/color]"
         }
     },
     "兑换_第11_售罄": {
@@ -4959,7 +4959,7 @@
             "type": "OCR",
             "param": {
                 "expected": "已售罄|售罄|限购\\s*[(（]\\s*(\\d+)\\s*/\\s*\\1\\s*[)）]|限购\\s*[(（]\\s*\\d*\\s*/\\s*[)）]",
-                "roi": "兑换_第1_商品",
+                "roi": "兑换_第11_商品",
                 "roi_offset": [
                     -110,
                     -140,
@@ -4976,7 +4976,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Dimgray]第 1 顺位已售罄 / 本周已买满，跳过[/color]"
+            "Node.Action.Succeeded": "[color:Dimgray]第 11 顺位已售罄 / 本周已买满，跳过[/color]"
         }
     },
     "兑换_第11_点开": {
@@ -4984,7 +4984,7 @@
         "action": {
             "type": "Click",
             "param": {
-                "target": "兑换_第1_商品"
+                "target": "兑换_第11_商品"
             }
         },
         "post_wait_freezes": {
@@ -5244,7 +5244,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Deepskyblue]第 1 顺位兑换成功[/color]"
+            "Node.Action.Succeeded": "[color:Deepskyblue]第 12 顺位兑换成功[/color]"
         }
     },
     "兑换_第12_售罄": {
@@ -5253,7 +5253,7 @@
             "type": "OCR",
             "param": {
                 "expected": "已售罄|售罄|限购\\s*[(（]\\s*(\\d+)\\s*/\\s*\\1\\s*[)）]|限购\\s*[(（]\\s*\\d*\\s*/\\s*[)）]",
-                "roi": "兑换_第1_商品",
+                "roi": "兑换_第12_商品",
                 "roi_offset": [
                     -110,
                     -140,
@@ -5269,7 +5269,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Dimgray]第 1 顺位已售罄 / 本周已买满，跳过[/color]"
+            "Node.Action.Succeeded": "[color:Dimgray]第 12 顺位已售罄 / 本周已买满，跳过[/color]"
         }
     },
     "兑换_第12_点开": {
@@ -5277,7 +5277,7 @@
         "action": {
             "type": "Click",
             "param": {
-                "target": "兑换_第1_商品"
+                "target": "兑换_第12_商品"
             }
         },
         "post_wait_freezes": {
@@ -5533,7 +5533,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Deepskyblue]第 1 顺位兑换成功[/color]"
+            "Node.Action.Succeeded": "[color:Deepskyblue]第 13 顺位兑换成功[/color]"
         }
     },
     "兑换_第13_售罄": {
@@ -5542,7 +5542,7 @@
             "type": "OCR",
             "param": {
                 "expected": "已售罄|售罄|限购\\s*[(（]\\s*(\\d+)\\s*/\\s*\\1\\s*[)）]|限购\\s*[(（]\\s*\\d*\\s*/\\s*[)）]",
-                "roi": "兑换_第1_商品",
+                "roi": "兑换_第13_商品",
                 "roi_offset": [
                     -110,
                     -140,
@@ -5557,7 +5557,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Dimgray]第 1 顺位已售罄 / 本周已买满，跳过[/color]"
+            "Node.Action.Succeeded": "[color:Dimgray]第 13 顺位已售罄 / 本周已买满，跳过[/color]"
         }
     },
     "兑换_第13_点开": {
@@ -5565,7 +5565,7 @@
         "action": {
             "type": "Click",
             "param": {
-                "target": "兑换_第1_商品"
+                "target": "兑换_第13_商品"
             }
         },
         "post_wait_freezes": {
@@ -5817,7 +5817,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Deepskyblue]第 1 顺位兑换成功[/color]"
+            "Node.Action.Succeeded": "[color:Deepskyblue]第 14 顺位兑换成功[/color]"
         }
     },
     "兑换_第14_售罄": {
@@ -5826,7 +5826,7 @@
             "type": "OCR",
             "param": {
                 "expected": "已售罄|售罄|限购\\s*[(（]\\s*(\\d+)\\s*/\\s*\\1\\s*[)）]|限购\\s*[(（]\\s*\\d*\\s*/\\s*[)）]",
-                "roi": "兑换_第1_商品",
+                "roi": "兑换_第14_商品",
                 "roi_offset": [
                     -110,
                     -140,
@@ -5840,7 +5840,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Dimgray]第 1 顺位已售罄 / 本周已买满，跳过[/color]"
+            "Node.Action.Succeeded": "[color:Dimgray]第 14 顺位已售罄 / 本周已买满，跳过[/color]"
         }
     },
     "兑换_第14_点开": {
@@ -5848,7 +5848,7 @@
         "action": {
             "type": "Click",
             "param": {
-                "target": "兑换_第1_商品"
+                "target": "兑换_第14_商品"
             }
         },
         "post_wait_freezes": {
@@ -6096,7 +6096,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Deepskyblue]第 1 顺位兑换成功[/color]"
+            "Node.Action.Succeeded": "[color:Deepskyblue]第 15 顺位兑换成功[/color]"
         }
     },
     "兑换_第15_售罄": {
@@ -6105,7 +6105,7 @@
             "type": "OCR",
             "param": {
                 "expected": "已售罄|售罄|限购\\s*[(（]\\s*(\\d+)\\s*/\\s*\\1\\s*[)）]|限购\\s*[(（]\\s*\\d*\\s*/\\s*[)）]",
-                "roi": "兑换_第1_商品",
+                "roi": "兑换_第15_商品",
                 "roi_offset": [
                     -110,
                     -140,
@@ -6118,7 +6118,7 @@
             "Flag_兑换完成"
         ],
         "focus": {
-            "Node.Action.Succeeded": "[color:Dimgray]第 1 顺位已售罄 / 本周已买满，跳过[/color]"
+            "Node.Action.Succeeded": "[color:Dimgray]第 15 顺位已售罄 / 本周已买满，跳过[/color]"
         }
     },
     "兑换_第15_点开": {
@@ -6126,7 +6126,7 @@
         "action": {
             "type": "Click",
             "param": {
-                "target": "兑换_第1_商品"
+                "target": "兑换_第15_商品"
             }
         },
         "post_wait_freezes": {
