@@ -68,21 +68,17 @@ for th in title2themes.values():
         assert x in icons, f'题材「{x}」没有图标'
 
 # ---- 每道题目 ----
-prompt_nodes = collections.OrderedDict()
-for p in prompts:
-    X, T = p['prompt'], p['title']
+def chain(key, T, start, note_desc, final_reco, focus_text, nodes, on_err):
+    """一条连线链：start 节点 → 灵_1~3（3 个题材图标）→ 连_中1~3（对角时换顺序）/ 连（一笔连完）。"""
     th = title2themes[T]
-    note = f'（{p["note"]}）' if p.get('note') else ''
-    L = [f'速写_灵_{X}_{i}' for i in (1, 2, 3)]
-    prompt_nodes[f'速写_题_{X}'] = {
-        'desc': f'题目「{X}」= 图鉴「{T}」，连 {"、".join(th)}{note}',
-        'recognition': ocr(X, PROMPT_ROI), 'action': 'DoNothing', 'next': [L[0]], 'timeout': 3000, 'on_error': [UNKNOWN]}
+    L = [f'速写_灵_{key}_{i}' for i in (1, 2, 3)]
+    start['next'] = [L[0]]
     for i in range(3):
-        prompt_nodes[L[i]] = {
+        nodes[L[i]] = {
             'desc': f'题材「{th[i]}」的气泡（图标 {icons[th[i]]["file"]}）',
             'recognition': tm(th[i], [100, 90, 1100, 540]), 'action': 'DoNothing', 'timeout': 3000,
-            'next': [L[i + 1]] if i < 2 else [f'速写_连_{X}_中1', f'速写_连_{X}_中2', f'速写_连_{X}_中3', f'速写_连_{X}'],
-            'on_error': [UNKNOWN]}
+            'next': [L[i + 1]] if i < 2 else [f'速写_连_{key}_中1', f'速写_连_{key}_中2', f'速写_连_{key}_中3', f'速写_连_{key}'],
+            'on_error': on_err}
     for k in range(3):   # 中k：另外两个在对角 → 第 k 个放中间
         a, b = [i for i in range(3) if i != k]
         ands = []
@@ -90,17 +86,46 @@ for p in prompts:
             for qa, qb in ((p0, p1), (p1, p0)):
                 ands.append({'recognition': {'type': 'And', 'param': {'all_of': [
                     {'recognition': tm(th[a], slot(qa))}, {'recognition': tm(th[b], slot(qb))}]}}})
-        prompt_nodes[f'速写_连_{X}_中{k + 1}'] = {
+        nodes[f'速写_连_{key}_中{k + 1}'] = {
             'desc': f'「{th[a]}」「{th[b]}」在对角位置（直线会穿过正中间的气泡）：改成先连「{th[a]}」→「{th[k]}」→「{th[b]}」',
             'recognition': {'type': 'Or', 'param': {'any_of': ands}},
             'action': {'type': 'Swipe', 'param': {'begin': L[a], 'end': [L[k], L[b]], 'duration': [600, 600], 'end_hold': 200}},
-            'post_delay': 800, 'max_hit': 1, 'next': ['速写_确定'], 'on_error': [UNKNOWN]}
-    prompt_nodes[f'速写_连_{X}'] = {
-        'desc': f'「{T}」：从第 1 个气泡拖到第 2、第 3 个，一笔连完',
-        'recognition': ocr(X, PROMPT_ROI),
-        'action': {'type': 'Swipe', 'param': {'begin': L[0], 'end': [L[1], L[2]], 'duration': [600, 600], 'end_hold': 200}},
-        'post_delay': 800, 'max_hit': 1, 'timeout': 5000, 'next': ['速写_确定'], 'on_error': [UNKNOWN],
-        'focus': {'Node.Action.Succeeded': f'[color:Dimgray]速写：题目「{X}」→「{T}」，连 {"、".join(th)}[/color]'}}
+            'post_delay': 800, 'max_hit': 1, 'next': ['速写_确定'], 'on_error': on_err}
+    last = {'desc': f'「{T}」：从第 1 个气泡拖到第 2、第 3 个，一笔连完{note_desc}'}
+    if final_reco:
+        last['recognition'] = final_reco
+    last.update({'action': {'type': 'Swipe', 'param': {'begin': L[0], 'end': [L[1], L[2]], 'duration': [600, 600], 'end_hold': 200}},
+                 'post_delay': 800, 'max_hit': 1, 'timeout': 5000, 'next': ['速写_确定'], 'on_error': on_err,
+                 'focus': {'Node.Action.Succeeded': focus_text}})
+    nodes[f'速写_连_{key}'] = last
+
+
+prompt_nodes = collections.OrderedDict()
+for p in prompts:
+    X, T = p['prompt'], p['title']
+    th = title2themes[T]
+    note = f'（{p["note"]}）' if p.get('note') else ''
+    start = {'desc': f'题目「{X}」= 图鉴「{T}」，连 {"、".join(th)}{note}',
+             'recognition': ocr(X, PROMPT_ROI), 'action': 'DoNothing', 'next': [], 'timeout': 3000, 'on_error': [UNKNOWN]}
+    prompt_nodes[f'速写_题_{X}'] = start
+    chain(X, T, start, '', ocr(X, PROMPT_ROI),
+          f'[color:Dimgray]速写：题目「{X}」→「{T}」，连 {"、".join(th)}[/color]', prompt_nodes, [UNKNOWN])
+
+# ---- 认不出题目时按图鉴猜（11-14）：截图后，看 30 张写真里哪一张的 3 个题材图标都在画面上，就按它连 ----
+# 题库里已有题目的写真不猜（题目文字认得就不会走到这里）；全用实机图标的写真排前面（wiki 图标误认风险大一点）
+known_titles = {p['title'] for p in prompts}
+GUESS_ERR = ['速写_未知_清线', '速写_未知_连线_1']
+guess_titles = [t for t in title2themes if t not in known_titles]
+guess_titles.sort(key=lambda t: sum(icons[x]['src'] != 'game' for x in title2themes[t]))
+guess_nodes = collections.OrderedDict()
+for T in guess_titles:
+    th = title2themes[T]
+    start = {'desc': f'猜题：3 个题材（{"、".join(th)}）的图标都在画面上 → 按图鉴「{T}」连（题目文字不在题库里；连对是 S，猜错最多 B）',
+             'recognition': {'type': 'And', 'param': {'all_of': [{'recognition': tm(x, [100, 90, 1100, 540])} for x in th]}},
+             'action': 'DoNothing', 'next': [], 'timeout': 1000}
+    guess_nodes[f'速写_猜_{T}'] = start
+    chain(f'猜_{T}', T, start, '（按图标猜的）', None,
+          f'[color:Deepskyblue]速写：题目不在题库里，按图标猜是「{T}」，连 {"、".join(th)}[/color]', guess_nodes, GUESS_ERR)
 
 # ---- 每张写真：结果页认标题 → 能力页 → 赠送 ----
 title_nodes = collections.OrderedDict()
@@ -152,7 +177,7 @@ title_nodes['速写_赠_默认'] = {
 # ---- 合进 sketch.json：删旧的生成节点，新节点放回原来的位置 ----
 d = json.load(open(P, encoding='utf-8'), object_pairs_hook=collections.OrderedDict)
 def is_prompt_node(k):
-    return k.startswith(('速写_题_', '速写_灵_', '速写_连_'))
+    return k.startswith(('速写_题_', '速写_灵_', '速写_连_', '速写_猜_'))
 def is_title_node(k):
     return k.startswith(('速写_赠_', '速写_能力_')) or (k.startswith('速写_结果_') and k[len('速写_结果_'):] in title2themes)
 out = collections.OrderedDict()
@@ -160,7 +185,7 @@ placed_p = placed_t = False
 for k, v in d.items():
     if is_prompt_node(k):
         if not placed_p:
-            out.update(prompt_nodes); placed_p = True
+            out.update(prompt_nodes); out.update(guess_nodes); placed_p = True
         continue
     if is_title_node(k):
         if not placed_t:
@@ -174,9 +199,11 @@ if not placed_p:   # 第一次生成：题目节点放在「出题」后面
     for k, v in out.items():
         o2[k] = v
         if k == '速写_出题':
-            o2.update(prompt_nodes)
+            o2.update(prompt_nodes); o2.update(guess_nodes)
     out = o2
 out['速写_出题']['next'] = [f'速写_题_{p["prompt"]}' for p in prompts] + [UNKNOWN]
+out[UNKNOWN]['next'] = [f'速写_猜_{t}' for t in guess_titles] + ['速写_未知_清线', '速写_未知_连线_1']
+out[UNKNOWN]['focus'] = {'Node.Action.Succeeded': '[color:Orange]速写：题目还不在题库里，已截图；按图标猜写真，猜不出就把所有气泡连起来（A 级）[/color]'}
 for n in ('速写_结果截图', '速写_未知_结果截图'):
     out[n]['next'] = [f'速写_结果_{t}' for t in title2themes] + ['速写_结果退出']
 
