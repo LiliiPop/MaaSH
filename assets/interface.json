@@ -469,9 +469,9 @@
         "tasks/Holiday.json",
         "tasks/DailyClaim.json",
         "tasks/WeeklyClaim.json",
+        "tasks/Sketch.json",
         "tasks/AfterRun.json",
-        "tasks/CloseGame.json",
-        "tasks/Sketch.json"
+        "tasks/CloseGame.json"
     ],
     "task": []
 }
