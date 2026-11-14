@@ -2158,46 +2158,24 @@
         "next": [
             "活动礼包_确认免费",
             "活动礼包_不是免费",
-            "活动礼包_关详情"
+            "活动礼包_关详情",
+            "活动礼包_关整页"
         ],
         "on_error": [
             "[Anchor]活动礼包扫描"
         ]
     },
     "活动礼包_关详情": {
-        "desc": "礼包详情（小窗「商品内容」或服装大页「立即获得」），按钮不是「免费」：点下方空白处关掉，不买。11-14 录屏：两种窗口下方 y≈690 都是窗外的列表",
+        "desc": "礼包详情小窗（「商品内容」），按钮不是「免费」：窗外上下有空白，点下方空白处关掉，不买（11-14 录屏：小窗下沿 y≈645，y≈690 是窗外的列表）",
         "recognition": {
-            "type": "Or",
+            "type": "OCR",
             "param": {
-                "any_of": [
-                    {
-                        "recognition": {
-                            "type": "OCR",
-                            "param": {
-                                "expected": "商品内容",
-                                "roi": [
-                                    470,
-                                    285,
-                                    150,
-                                    45
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "recognition": {
-                            "type": "OCR",
-                            "param": {
-                                "expected": "立即获得",
-                                "roi": [
-                                    590,
-                                    165,
-                                    200,
-                                    45
-                                ]
-                            }
-                        }
-                    }
+                "expected": "商品内容",
+                "roi": [
+                    470,
+                    285,
+                    150,
+                    45
                 ]
             }
         },
@@ -2223,6 +2201,59 @@
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]打开带红点的礼包看了一眼（消掉红点），不是免费，已关闭[/color]"
+        }
+    },
+    "活动礼包_关整页": {
+        "desc": "服装礼包是整页详情（「立即获得」「专属内容」，几乎铺满屏幕、没有可点的空白）：点左上角的返回键（笔尖图标，11-14 录屏三个服装页 0.99+，普通采购页的蝴蝶返回键只有 0.60）",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "立即获得",
+                                "roi": [
+                                    590,
+                                    165,
+                                    200,
+                                    45
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "TemplateMatch",
+                            "param": {
+                                "template": "giftbox/整页返回.png",
+                                "roi": [
+                                    0,
+                                    0,
+                                    200,
+                                    120
+                                ],
+                                "threshold": 0.85
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": "Click",
+        "max_hit": 12,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "next": [
+            "[Anchor]活动礼包扫描"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]打开带红点的服装礼包看了一眼（消掉红点），不是免费，已返回[/color]"
         }
     },
     "活动礼包_确认免费": {
