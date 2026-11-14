@@ -1280,6 +1280,7 @@
             "速写_题_歌剧剪影",
             "速写_题_怀旧的声音",
             "速写_题_人气歌星",
+            "速写_题_海上风帆",
             "速写_题_海边度假",
             "速写_题_架子鼓",
             "速写_题_天体观测",
@@ -10443,6 +10444,1532 @@
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]速写：题目「人气歌星」→「两栖明星」，连 音乐、口红、歌唱[/color]"
+        }
+    },
+    "速写_题_海上风帆": {
+        "desc": "题目「海上风帆」= 图鉴「海上风帆」，连 海浪、力量、海鸥",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "海上风帆",
+                "roi": [
+                    20,
+                    35,
+                    470,
+                    55
+                ]
+            }
+        },
+        "action": "DoNothing",
+        "next": [
+            "速写_灵_海上风帆_1"
+        ],
+        "timeout": 3000,
+        "on_error": [
+            "速写_未知题目_截图"
+        ]
+    },
+    "速写_灵_海上风帆_1": {
+        "desc": "题材「海浪」的气泡（图标 海浪）",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "sketch/灵感/海浪_60.png",
+                    "sketch/灵感/海浪_67.png",
+                    "sketch/灵感/海浪_75.png",
+                    "sketch/灵感/海浪_85.png",
+                    "sketch/灵感/海浪_92.png",
+                    "sketch/灵感/海浪_100.png",
+                    "sketch/灵感/海浪_108.png",
+                    "sketch/灵感/海浪_115.png",
+                    "sketch/灵感/海浪_125.png",
+                    "sketch/灵感/海浪_140.png",
+                    "sketch/灵感/海浪_150.png",
+                    "sketch/灵感/海浪_160.png"
+                ],
+                "roi": [
+                    100,
+                    90,
+                    1100,
+                    540
+                ],
+                "threshold": 0.65,
+                "green_mask": true,
+                "order_by": "Score"
+            }
+        },
+        "action": "DoNothing",
+        "timeout": 3000,
+        "next": [
+            "速写_灵_海上风帆_2"
+        ],
+        "on_error": [
+            "速写_未知题目_截图"
+        ]
+    },
+    "速写_灵_海上风帆_2": {
+        "desc": "题材「力量」的气泡（图标 力量）",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "sketch/灵感/力量_60.png",
+                    "sketch/灵感/力量_67.png",
+                    "sketch/灵感/力量_75.png",
+                    "sketch/灵感/力量_85.png",
+                    "sketch/灵感/力量_92.png",
+                    "sketch/灵感/力量_100.png",
+                    "sketch/灵感/力量_108.png",
+                    "sketch/灵感/力量_115.png",
+                    "sketch/灵感/力量_125.png",
+                    "sketch/灵感/力量_140.png",
+                    "sketch/灵感/力量_150.png",
+                    "sketch/灵感/力量_160.png"
+                ],
+                "roi": [
+                    100,
+                    90,
+                    1100,
+                    540
+                ],
+                "threshold": 0.65,
+                "green_mask": true,
+                "order_by": "Score"
+            }
+        },
+        "action": "DoNothing",
+        "timeout": 3000,
+        "next": [
+            "速写_灵_海上风帆_3"
+        ],
+        "on_error": [
+            "速写_未知题目_截图"
+        ]
+    },
+    "速写_灵_海上风帆_3": {
+        "desc": "题材「海鸥」的气泡（图标 海鸥）",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "sketch/灵感/海鸥_60.png",
+                    "sketch/灵感/海鸥_67.png",
+                    "sketch/灵感/海鸥_75.png",
+                    "sketch/灵感/海鸥_85.png",
+                    "sketch/灵感/海鸥_92.png",
+                    "sketch/灵感/海鸥_100.png",
+                    "sketch/灵感/海鸥_108.png",
+                    "sketch/灵感/海鸥_115.png",
+                    "sketch/灵感/海鸥_125.png",
+                    "sketch/灵感/海鸥_140.png",
+                    "sketch/灵感/海鸥_150.png",
+                    "sketch/灵感/海鸥_160.png"
+                ],
+                "roi": [
+                    100,
+                    90,
+                    1100,
+                    540
+                ],
+                "threshold": 0.65,
+                "green_mask": true,
+                "order_by": "Score"
+            }
+        },
+        "action": "DoNothing",
+        "timeout": 3000,
+        "next": [
+            "速写_连_海上风帆_中1",
+            "速写_连_海上风帆_中2",
+            "速写_连_海上风帆_中3",
+            "速写_连_海上风帆"
+        ],
+        "on_error": [
+            "速写_未知题目_截图"
+        ]
+    },
+    "速写_连_海上风帆_中1": {
+        "desc": "「力量」「海鸥」在对角位置（直线会穿过正中间的气泡）：改成先连「力量」→「海浪」→「海鸥」",
+        "recognition": {
+            "type": "Or",
+            "param": {
+                "any_of": [
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/力量_60.png",
+                                                    "sketch/灵感/力量_67.png",
+                                                    "sketch/灵感/力量_75.png",
+                                                    "sketch/灵感/力量_85.png",
+                                                    "sketch/灵感/力量_92.png",
+                                                    "sketch/灵感/力量_100.png",
+                                                    "sketch/灵感/力量_108.png",
+                                                    "sketch/灵感/力量_115.png",
+                                                    "sketch/灵感/力量_125.png",
+                                                    "sketch/灵感/力量_140.png",
+                                                    "sketch/灵感/力量_150.png",
+                                                    "sketch/灵感/力量_160.png"
+                                                ],
+                                                "roi": [
+                                                    419,
+                                                    90,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/海鸥_60.png",
+                                                    "sketch/灵感/海鸥_67.png",
+                                                    "sketch/灵感/海鸥_75.png",
+                                                    "sketch/灵感/海鸥_85.png",
+                                                    "sketch/灵感/海鸥_92.png",
+                                                    "sketch/灵感/海鸥_100.png",
+                                                    "sketch/灵感/海鸥_108.png",
+                                                    "sketch/灵感/海鸥_115.png",
+                                                    "sketch/灵感/海鸥_125.png",
+                                                    "sketch/灵感/海鸥_140.png",
+                                                    "sketch/灵感/海鸥_150.png",
+                                                    "sketch/灵感/海鸥_160.png"
+                                                ],
+                                                "roi": [
+                                                    822,
+                                                    408,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/力量_60.png",
+                                                    "sketch/灵感/力量_67.png",
+                                                    "sketch/灵感/力量_75.png",
+                                                    "sketch/灵感/力量_85.png",
+                                                    "sketch/灵感/力量_92.png",
+                                                    "sketch/灵感/力量_100.png",
+                                                    "sketch/灵感/力量_108.png",
+                                                    "sketch/灵感/力量_115.png",
+                                                    "sketch/灵感/力量_125.png",
+                                                    "sketch/灵感/力量_140.png",
+                                                    "sketch/灵感/力量_150.png",
+                                                    "sketch/灵感/力量_160.png"
+                                                ],
+                                                "roi": [
+                                                    822,
+                                                    408,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/海鸥_60.png",
+                                                    "sketch/灵感/海鸥_67.png",
+                                                    "sketch/灵感/海鸥_75.png",
+                                                    "sketch/灵感/海鸥_85.png",
+                                                    "sketch/灵感/海鸥_92.png",
+                                                    "sketch/灵感/海鸥_100.png",
+                                                    "sketch/灵感/海鸥_108.png",
+                                                    "sketch/灵感/海鸥_115.png",
+                                                    "sketch/灵感/海鸥_125.png",
+                                                    "sketch/灵感/海鸥_140.png",
+                                                    "sketch/灵感/海鸥_150.png",
+                                                    "sketch/灵感/海鸥_160.png"
+                                                ],
+                                                "roi": [
+                                                    419,
+                                                    90,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/力量_60.png",
+                                                    "sketch/灵感/力量_67.png",
+                                                    "sketch/灵感/力量_75.png",
+                                                    "sketch/灵感/力量_85.png",
+                                                    "sketch/灵感/力量_92.png",
+                                                    "sketch/灵感/力量_100.png",
+                                                    "sketch/灵感/力量_108.png",
+                                                    "sketch/灵感/力量_115.png",
+                                                    "sketch/灵感/力量_125.png",
+                                                    "sketch/灵感/力量_140.png",
+                                                    "sketch/灵感/力量_150.png",
+                                                    "sketch/灵感/力量_160.png"
+                                                ],
+                                                "roi": [
+                                                    461,
+                                                    468,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/海鸥_60.png",
+                                                    "sketch/灵感/海鸥_67.png",
+                                                    "sketch/灵感/海鸥_75.png",
+                                                    "sketch/灵感/海鸥_85.png",
+                                                    "sketch/灵感/海鸥_92.png",
+                                                    "sketch/灵感/海鸥_100.png",
+                                                    "sketch/灵感/海鸥_108.png",
+                                                    "sketch/灵感/海鸥_115.png",
+                                                    "sketch/灵感/海鸥_125.png",
+                                                    "sketch/灵感/海鸥_140.png",
+                                                    "sketch/灵感/海鸥_150.png",
+                                                    "sketch/灵感/海鸥_160.png"
+                                                ],
+                                                "roi": [
+                                                    770,
+                                                    105,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/力量_60.png",
+                                                    "sketch/灵感/力量_67.png",
+                                                    "sketch/灵感/力量_75.png",
+                                                    "sketch/灵感/力量_85.png",
+                                                    "sketch/灵感/力量_92.png",
+                                                    "sketch/灵感/力量_100.png",
+                                                    "sketch/灵感/力量_108.png",
+                                                    "sketch/灵感/力量_115.png",
+                                                    "sketch/灵感/力量_125.png",
+                                                    "sketch/灵感/力量_140.png",
+                                                    "sketch/灵感/力量_150.png",
+                                                    "sketch/灵感/力量_160.png"
+                                                ],
+                                                "roi": [
+                                                    770,
+                                                    105,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/海鸥_60.png",
+                                                    "sketch/灵感/海鸥_67.png",
+                                                    "sketch/灵感/海鸥_75.png",
+                                                    "sketch/灵感/海鸥_85.png",
+                                                    "sketch/灵感/海鸥_92.png",
+                                                    "sketch/灵感/海鸥_100.png",
+                                                    "sketch/灵感/海鸥_108.png",
+                                                    "sketch/灵感/海鸥_115.png",
+                                                    "sketch/灵感/海鸥_125.png",
+                                                    "sketch/灵感/海鸥_140.png",
+                                                    "sketch/灵感/海鸥_150.png",
+                                                    "sketch/灵感/海鸥_160.png"
+                                                ],
+                                                "roi": [
+                                                    461,
+                                                    468,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/力量_60.png",
+                                                    "sketch/灵感/力量_67.png",
+                                                    "sketch/灵感/力量_75.png",
+                                                    "sketch/灵感/力量_85.png",
+                                                    "sketch/灵感/力量_92.png",
+                                                    "sketch/灵感/力量_100.png",
+                                                    "sketch/灵感/力量_108.png",
+                                                    "sketch/灵感/力量_115.png",
+                                                    "sketch/灵感/力量_125.png",
+                                                    "sketch/灵感/力量_140.png",
+                                                    "sketch/灵感/力量_150.png",
+                                                    "sketch/灵感/力量_160.png"
+                                                ],
+                                                "roi": [
+                                                    270,
+                                                    265,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/海鸥_60.png",
+                                                    "sketch/灵感/海鸥_67.png",
+                                                    "sketch/灵感/海鸥_75.png",
+                                                    "sketch/灵感/海鸥_85.png",
+                                                    "sketch/灵感/海鸥_92.png",
+                                                    "sketch/灵感/海鸥_100.png",
+                                                    "sketch/灵感/海鸥_108.png",
+                                                    "sketch/灵感/海鸥_115.png",
+                                                    "sketch/灵感/海鸥_125.png",
+                                                    "sketch/灵感/海鸥_140.png",
+                                                    "sketch/灵感/海鸥_150.png",
+                                                    "sketch/灵感/海鸥_160.png"
+                                                ],
+                                                "roi": [
+                                                    937,
+                                                    230,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/力量_60.png",
+                                                    "sketch/灵感/力量_67.png",
+                                                    "sketch/灵感/力量_75.png",
+                                                    "sketch/灵感/力量_85.png",
+                                                    "sketch/灵感/力量_92.png",
+                                                    "sketch/灵感/力量_100.png",
+                                                    "sketch/灵感/力量_108.png",
+                                                    "sketch/灵感/力量_115.png",
+                                                    "sketch/灵感/力量_125.png",
+                                                    "sketch/灵感/力量_140.png",
+                                                    "sketch/灵感/力量_150.png",
+                                                    "sketch/灵感/力量_160.png"
+                                                ],
+                                                "roi": [
+                                                    937,
+                                                    230,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/海鸥_60.png",
+                                                    "sketch/灵感/海鸥_67.png",
+                                                    "sketch/灵感/海鸥_75.png",
+                                                    "sketch/灵感/海鸥_85.png",
+                                                    "sketch/灵感/海鸥_92.png",
+                                                    "sketch/灵感/海鸥_100.png",
+                                                    "sketch/灵感/海鸥_108.png",
+                                                    "sketch/灵感/海鸥_115.png",
+                                                    "sketch/灵感/海鸥_125.png",
+                                                    "sketch/灵感/海鸥_140.png",
+                                                    "sketch/灵感/海鸥_150.png",
+                                                    "sketch/灵感/海鸥_160.png"
+                                                ],
+                                                "roi": [
+                                                    270,
+                                                    265,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": "速写_灵_海上风帆_2",
+                "end": [
+                    "速写_灵_海上风帆_1",
+                    "速写_灵_海上风帆_3"
+                ],
+                "duration": [
+                    600,
+                    600
+                ],
+                "end_hold": 200
+            }
+        },
+        "post_delay": 800,
+        "max_hit": 1,
+        "next": [
+            "速写_确定"
+        ],
+        "on_error": [
+            "速写_未知题目_截图"
+        ]
+    },
+    "速写_连_海上风帆_中2": {
+        "desc": "「海浪」「海鸥」在对角位置（直线会穿过正中间的气泡）：改成先连「海浪」→「力量」→「海鸥」",
+        "recognition": {
+            "type": "Or",
+            "param": {
+                "any_of": [
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/海浪_60.png",
+                                                    "sketch/灵感/海浪_67.png",
+                                                    "sketch/灵感/海浪_75.png",
+                                                    "sketch/灵感/海浪_85.png",
+                                                    "sketch/灵感/海浪_92.png",
+                                                    "sketch/灵感/海浪_100.png",
+                                                    "sketch/灵感/海浪_108.png",
+                                                    "sketch/灵感/海浪_115.png",
+                                                    "sketch/灵感/海浪_125.png",
+                                                    "sketch/灵感/海浪_140.png",
+                                                    "sketch/灵感/海浪_150.png",
+                                                    "sketch/灵感/海浪_160.png"
+                                                ],
+                                                "roi": [
+                                                    419,
+                                                    90,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/海鸥_60.png",
+                                                    "sketch/灵感/海鸥_67.png",
+                                                    "sketch/灵感/海鸥_75.png",
+                                                    "sketch/灵感/海鸥_85.png",
+                                                    "sketch/灵感/海鸥_92.png",
+                                                    "sketch/灵感/海鸥_100.png",
+                                                    "sketch/灵感/海鸥_108.png",
+                                                    "sketch/灵感/海鸥_115.png",
+                                                    "sketch/灵感/海鸥_125.png",
+                                                    "sketch/灵感/海鸥_140.png",
+                                                    "sketch/灵感/海鸥_150.png",
+                                                    "sketch/灵感/海鸥_160.png"
+                                                ],
+                                                "roi": [
+                                                    822,
+                                                    408,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/海浪_60.png",
+                                                    "sketch/灵感/海浪_67.png",
+                                                    "sketch/灵感/海浪_75.png",
+                                                    "sketch/灵感/海浪_85.png",
+                                                    "sketch/灵感/海浪_92.png",
+                                                    "sketch/灵感/海浪_100.png",
+                                                    "sketch/灵感/海浪_108.png",
+                                                    "sketch/灵感/海浪_115.png",
+                                                    "sketch/灵感/海浪_125.png",
+                                                    "sketch/灵感/海浪_140.png",
+                                                    "sketch/灵感/海浪_150.png",
+                                                    "sketch/灵感/海浪_160.png"
+                                                ],
+                                                "roi": [
+                                                    822,
+                                                    408,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/海鸥_60.png",
+                                                    "sketch/灵感/海鸥_67.png",
+                                                    "sketch/灵感/海鸥_75.png",
+                                                    "sketch/灵感/海鸥_85.png",
+                                                    "sketch/灵感/海鸥_92.png",
+                                                    "sketch/灵感/海鸥_100.png",
+                                                    "sketch/灵感/海鸥_108.png",
+                                                    "sketch/灵感/海鸥_115.png",
+                                                    "sketch/灵感/海鸥_125.png",
+                                                    "sketch/灵感/海鸥_140.png",
+                                                    "sketch/灵感/海鸥_150.png",
+                                                    "sketch/灵感/海鸥_160.png"
+                                                ],
+                                                "roi": [
+                                                    419,
+                                                    90,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/海浪_60.png",
+                                                    "sketch/灵感/海浪_67.png",
+                                                    "sketch/灵感/海浪_75.png",
+                                                    "sketch/灵感/海浪_85.png",
+                                                    "sketch/灵感/海浪_92.png",
+                                                    "sketch/灵感/海浪_100.png",
+                                                    "sketch/灵感/海浪_108.png",
+                                                    "sketch/灵感/海浪_115.png",
+                                                    "sketch/灵感/海浪_125.png",
+                                                    "sketch/灵感/海浪_140.png",
+                                                    "sketch/灵感/海浪_150.png",
+                                                    "sketch/灵感/海浪_160.png"
+                                                ],
+                                                "roi": [
+                                                    461,
+                                                    468,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/海鸥_60.png",
+                                                    "sketch/灵感/海鸥_67.png",
+                                                    "sketch/灵感/海鸥_75.png",
+                                                    "sketch/灵感/海鸥_85.png",
+                                                    "sketch/灵感/海鸥_92.png",
+                                                    "sketch/灵感/海鸥_100.png",
+                                                    "sketch/灵感/海鸥_108.png",
+                                                    "sketch/灵感/海鸥_115.png",
+                                                    "sketch/灵感/海鸥_125.png",
+                                                    "sketch/灵感/海鸥_140.png",
+                                                    "sketch/灵感/海鸥_150.png",
+                                                    "sketch/灵感/海鸥_160.png"
+                                                ],
+                                                "roi": [
+                                                    770,
+                                                    105,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/海浪_60.png",
+                                                    "sketch/灵感/海浪_67.png",
+                                                    "sketch/灵感/海浪_75.png",
+                                                    "sketch/灵感/海浪_85.png",
+                                                    "sketch/灵感/海浪_92.png",
+                                                    "sketch/灵感/海浪_100.png",
+                                                    "sketch/灵感/海浪_108.png",
+                                                    "sketch/灵感/海浪_115.png",
+                                                    "sketch/灵感/海浪_125.png",
+                                                    "sketch/灵感/海浪_140.png",
+                                                    "sketch/灵感/海浪_150.png",
+                                                    "sketch/灵感/海浪_160.png"
+                                                ],
+                                                "roi": [
+                                                    770,
+                                                    105,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/海鸥_60.png",
+                                                    "sketch/灵感/海鸥_67.png",
+                                                    "sketch/灵感/海鸥_75.png",
+                                                    "sketch/灵感/海鸥_85.png",
+                                                    "sketch/灵感/海鸥_92.png",
+                                                    "sketch/灵感/海鸥_100.png",
+                                                    "sketch/灵感/海鸥_108.png",
+                                                    "sketch/灵感/海鸥_115.png",
+                                                    "sketch/灵感/海鸥_125.png",
+                                                    "sketch/灵感/海鸥_140.png",
+                                                    "sketch/灵感/海鸥_150.png",
+                                                    "sketch/灵感/海鸥_160.png"
+                                                ],
+                                                "roi": [
+                                                    461,
+                                                    468,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/海浪_60.png",
+                                                    "sketch/灵感/海浪_67.png",
+                                                    "sketch/灵感/海浪_75.png",
+                                                    "sketch/灵感/海浪_85.png",
+                                                    "sketch/灵感/海浪_92.png",
+                                                    "sketch/灵感/海浪_100.png",
+                                                    "sketch/灵感/海浪_108.png",
+                                                    "sketch/灵感/海浪_115.png",
+                                                    "sketch/灵感/海浪_125.png",
+                                                    "sketch/灵感/海浪_140.png",
+                                                    "sketch/灵感/海浪_150.png",
+                                                    "sketch/灵感/海浪_160.png"
+                                                ],
+                                                "roi": [
+                                                    270,
+                                                    265,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/海鸥_60.png",
+                                                    "sketch/灵感/海鸥_67.png",
+                                                    "sketch/灵感/海鸥_75.png",
+                                                    "sketch/灵感/海鸥_85.png",
+                                                    "sketch/灵感/海鸥_92.png",
+                                                    "sketch/灵感/海鸥_100.png",
+                                                    "sketch/灵感/海鸥_108.png",
+                                                    "sketch/灵感/海鸥_115.png",
+                                                    "sketch/灵感/海鸥_125.png",
+                                                    "sketch/灵感/海鸥_140.png",
+                                                    "sketch/灵感/海鸥_150.png",
+                                                    "sketch/灵感/海鸥_160.png"
+                                                ],
+                                                "roi": [
+                                                    937,
+                                                    230,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/海浪_60.png",
+                                                    "sketch/灵感/海浪_67.png",
+                                                    "sketch/灵感/海浪_75.png",
+                                                    "sketch/灵感/海浪_85.png",
+                                                    "sketch/灵感/海浪_92.png",
+                                                    "sketch/灵感/海浪_100.png",
+                                                    "sketch/灵感/海浪_108.png",
+                                                    "sketch/灵感/海浪_115.png",
+                                                    "sketch/灵感/海浪_125.png",
+                                                    "sketch/灵感/海浪_140.png",
+                                                    "sketch/灵感/海浪_150.png",
+                                                    "sketch/灵感/海浪_160.png"
+                                                ],
+                                                "roi": [
+                                                    937,
+                                                    230,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/海鸥_60.png",
+                                                    "sketch/灵感/海鸥_67.png",
+                                                    "sketch/灵感/海鸥_75.png",
+                                                    "sketch/灵感/海鸥_85.png",
+                                                    "sketch/灵感/海鸥_92.png",
+                                                    "sketch/灵感/海鸥_100.png",
+                                                    "sketch/灵感/海鸥_108.png",
+                                                    "sketch/灵感/海鸥_115.png",
+                                                    "sketch/灵感/海鸥_125.png",
+                                                    "sketch/灵感/海鸥_140.png",
+                                                    "sketch/灵感/海鸥_150.png",
+                                                    "sketch/灵感/海鸥_160.png"
+                                                ],
+                                                "roi": [
+                                                    270,
+                                                    265,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": "速写_灵_海上风帆_1",
+                "end": [
+                    "速写_灵_海上风帆_2",
+                    "速写_灵_海上风帆_3"
+                ],
+                "duration": [
+                    600,
+                    600
+                ],
+                "end_hold": 200
+            }
+        },
+        "post_delay": 800,
+        "max_hit": 1,
+        "next": [
+            "速写_确定"
+        ],
+        "on_error": [
+            "速写_未知题目_截图"
+        ]
+    },
+    "速写_连_海上风帆_中3": {
+        "desc": "「海浪」「力量」在对角位置（直线会穿过正中间的气泡）：改成先连「海浪」→「海鸥」→「力量」",
+        "recognition": {
+            "type": "Or",
+            "param": {
+                "any_of": [
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/海浪_60.png",
+                                                    "sketch/灵感/海浪_67.png",
+                                                    "sketch/灵感/海浪_75.png",
+                                                    "sketch/灵感/海浪_85.png",
+                                                    "sketch/灵感/海浪_92.png",
+                                                    "sketch/灵感/海浪_100.png",
+                                                    "sketch/灵感/海浪_108.png",
+                                                    "sketch/灵感/海浪_115.png",
+                                                    "sketch/灵感/海浪_125.png",
+                                                    "sketch/灵感/海浪_140.png",
+                                                    "sketch/灵感/海浪_150.png",
+                                                    "sketch/灵感/海浪_160.png"
+                                                ],
+                                                "roi": [
+                                                    419,
+                                                    90,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/力量_60.png",
+                                                    "sketch/灵感/力量_67.png",
+                                                    "sketch/灵感/力量_75.png",
+                                                    "sketch/灵感/力量_85.png",
+                                                    "sketch/灵感/力量_92.png",
+                                                    "sketch/灵感/力量_100.png",
+                                                    "sketch/灵感/力量_108.png",
+                                                    "sketch/灵感/力量_115.png",
+                                                    "sketch/灵感/力量_125.png",
+                                                    "sketch/灵感/力量_140.png",
+                                                    "sketch/灵感/力量_150.png",
+                                                    "sketch/灵感/力量_160.png"
+                                                ],
+                                                "roi": [
+                                                    822,
+                                                    408,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/海浪_60.png",
+                                                    "sketch/灵感/海浪_67.png",
+                                                    "sketch/灵感/海浪_75.png",
+                                                    "sketch/灵感/海浪_85.png",
+                                                    "sketch/灵感/海浪_92.png",
+                                                    "sketch/灵感/海浪_100.png",
+                                                    "sketch/灵感/海浪_108.png",
+                                                    "sketch/灵感/海浪_115.png",
+                                                    "sketch/灵感/海浪_125.png",
+                                                    "sketch/灵感/海浪_140.png",
+                                                    "sketch/灵感/海浪_150.png",
+                                                    "sketch/灵感/海浪_160.png"
+                                                ],
+                                                "roi": [
+                                                    822,
+                                                    408,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/力量_60.png",
+                                                    "sketch/灵感/力量_67.png",
+                                                    "sketch/灵感/力量_75.png",
+                                                    "sketch/灵感/力量_85.png",
+                                                    "sketch/灵感/力量_92.png",
+                                                    "sketch/灵感/力量_100.png",
+                                                    "sketch/灵感/力量_108.png",
+                                                    "sketch/灵感/力量_115.png",
+                                                    "sketch/灵感/力量_125.png",
+                                                    "sketch/灵感/力量_140.png",
+                                                    "sketch/灵感/力量_150.png",
+                                                    "sketch/灵感/力量_160.png"
+                                                ],
+                                                "roi": [
+                                                    419,
+                                                    90,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/海浪_60.png",
+                                                    "sketch/灵感/海浪_67.png",
+                                                    "sketch/灵感/海浪_75.png",
+                                                    "sketch/灵感/海浪_85.png",
+                                                    "sketch/灵感/海浪_92.png",
+                                                    "sketch/灵感/海浪_100.png",
+                                                    "sketch/灵感/海浪_108.png",
+                                                    "sketch/灵感/海浪_115.png",
+                                                    "sketch/灵感/海浪_125.png",
+                                                    "sketch/灵感/海浪_140.png",
+                                                    "sketch/灵感/海浪_150.png",
+                                                    "sketch/灵感/海浪_160.png"
+                                                ],
+                                                "roi": [
+                                                    461,
+                                                    468,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/力量_60.png",
+                                                    "sketch/灵感/力量_67.png",
+                                                    "sketch/灵感/力量_75.png",
+                                                    "sketch/灵感/力量_85.png",
+                                                    "sketch/灵感/力量_92.png",
+                                                    "sketch/灵感/力量_100.png",
+                                                    "sketch/灵感/力量_108.png",
+                                                    "sketch/灵感/力量_115.png",
+                                                    "sketch/灵感/力量_125.png",
+                                                    "sketch/灵感/力量_140.png",
+                                                    "sketch/灵感/力量_150.png",
+                                                    "sketch/灵感/力量_160.png"
+                                                ],
+                                                "roi": [
+                                                    770,
+                                                    105,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/海浪_60.png",
+                                                    "sketch/灵感/海浪_67.png",
+                                                    "sketch/灵感/海浪_75.png",
+                                                    "sketch/灵感/海浪_85.png",
+                                                    "sketch/灵感/海浪_92.png",
+                                                    "sketch/灵感/海浪_100.png",
+                                                    "sketch/灵感/海浪_108.png",
+                                                    "sketch/灵感/海浪_115.png",
+                                                    "sketch/灵感/海浪_125.png",
+                                                    "sketch/灵感/海浪_140.png",
+                                                    "sketch/灵感/海浪_150.png",
+                                                    "sketch/灵感/海浪_160.png"
+                                                ],
+                                                "roi": [
+                                                    770,
+                                                    105,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/力量_60.png",
+                                                    "sketch/灵感/力量_67.png",
+                                                    "sketch/灵感/力量_75.png",
+                                                    "sketch/灵感/力量_85.png",
+                                                    "sketch/灵感/力量_92.png",
+                                                    "sketch/灵感/力量_100.png",
+                                                    "sketch/灵感/力量_108.png",
+                                                    "sketch/灵感/力量_115.png",
+                                                    "sketch/灵感/力量_125.png",
+                                                    "sketch/灵感/力量_140.png",
+                                                    "sketch/灵感/力量_150.png",
+                                                    "sketch/灵感/力量_160.png"
+                                                ],
+                                                "roi": [
+                                                    461,
+                                                    468,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/海浪_60.png",
+                                                    "sketch/灵感/海浪_67.png",
+                                                    "sketch/灵感/海浪_75.png",
+                                                    "sketch/灵感/海浪_85.png",
+                                                    "sketch/灵感/海浪_92.png",
+                                                    "sketch/灵感/海浪_100.png",
+                                                    "sketch/灵感/海浪_108.png",
+                                                    "sketch/灵感/海浪_115.png",
+                                                    "sketch/灵感/海浪_125.png",
+                                                    "sketch/灵感/海浪_140.png",
+                                                    "sketch/灵感/海浪_150.png",
+                                                    "sketch/灵感/海浪_160.png"
+                                                ],
+                                                "roi": [
+                                                    270,
+                                                    265,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/力量_60.png",
+                                                    "sketch/灵感/力量_67.png",
+                                                    "sketch/灵感/力量_75.png",
+                                                    "sketch/灵感/力量_85.png",
+                                                    "sketch/灵感/力量_92.png",
+                                                    "sketch/灵感/力量_100.png",
+                                                    "sketch/灵感/力量_108.png",
+                                                    "sketch/灵感/力量_115.png",
+                                                    "sketch/灵感/力量_125.png",
+                                                    "sketch/灵感/力量_140.png",
+                                                    "sketch/灵感/力量_150.png",
+                                                    "sketch/灵感/力量_160.png"
+                                                ],
+                                                "roi": [
+                                                    937,
+                                                    230,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/海浪_60.png",
+                                                    "sketch/灵感/海浪_67.png",
+                                                    "sketch/灵感/海浪_75.png",
+                                                    "sketch/灵感/海浪_85.png",
+                                                    "sketch/灵感/海浪_92.png",
+                                                    "sketch/灵感/海浪_100.png",
+                                                    "sketch/灵感/海浪_108.png",
+                                                    "sketch/灵感/海浪_115.png",
+                                                    "sketch/灵感/海浪_125.png",
+                                                    "sketch/灵感/海浪_140.png",
+                                                    "sketch/灵感/海浪_150.png",
+                                                    "sketch/灵感/海浪_160.png"
+                                                ],
+                                                "roi": [
+                                                    937,
+                                                    230,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "TemplateMatch",
+                                            "param": {
+                                                "template": [
+                                                    "sketch/灵感/力量_60.png",
+                                                    "sketch/灵感/力量_67.png",
+                                                    "sketch/灵感/力量_75.png",
+                                                    "sketch/灵感/力量_85.png",
+                                                    "sketch/灵感/力量_92.png",
+                                                    "sketch/灵感/力量_100.png",
+                                                    "sketch/灵感/力量_108.png",
+                                                    "sketch/灵感/力量_115.png",
+                                                    "sketch/灵感/力量_125.png",
+                                                    "sketch/灵感/力量_140.png",
+                                                    "sketch/灵感/力量_150.png",
+                                                    "sketch/灵感/力量_160.png"
+                                                ],
+                                                "roi": [
+                                                    270,
+                                                    265,
+                                                    150,
+                                                    150
+                                                ],
+                                                "threshold": 0.65,
+                                                "green_mask": true,
+                                                "order_by": "Score"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": "速写_灵_海上风帆_1",
+                "end": [
+                    "速写_灵_海上风帆_3",
+                    "速写_灵_海上风帆_2"
+                ],
+                "duration": [
+                    600,
+                    600
+                ],
+                "end_hold": 200
+            }
+        },
+        "post_delay": 800,
+        "max_hit": 1,
+        "next": [
+            "速写_确定"
+        ],
+        "on_error": [
+            "速写_未知题目_截图"
+        ]
+    },
+    "速写_连_海上风帆": {
+        "desc": "「海上风帆」：从第 1 个气泡拖到第 2、第 3 个，一笔连完",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "海上风帆",
+                "roi": [
+                    20,
+                    35,
+                    470,
+                    55
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": "速写_灵_海上风帆_1",
+                "end": [
+                    "速写_灵_海上风帆_2",
+                    "速写_灵_海上风帆_3"
+                ],
+                "duration": [
+                    600,
+                    600
+                ],
+                "end_hold": 200
+            }
+        },
+        "post_delay": 800,
+        "max_hit": 1,
+        "timeout": 5000,
+        "next": [
+            "速写_确定"
+        ],
+        "on_error": [
+            "速写_未知题目_截图"
+        ],
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]速写：题目「海上风帆」→「海上风帆」，连 海浪、力量、海鸥[/color]"
         }
     },
     "速写_题_海边度假": {
