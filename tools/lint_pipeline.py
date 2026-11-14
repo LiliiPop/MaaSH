@@ -53,7 +53,7 @@ def walk(o, owner, known):
                         continue  # 锚点名由 anchor 字段动态指向，不是节点名
                     if strip(ref) not in known:
                         errors.append(f"{owner}：{key} 引用了不存在的节点 {strip(ref)}")
-            elif key in ("roi", "target") and isinstance(v, str) and v not in known:
+            elif key in ("roi", "target") and isinstance(v, str) and v not in known and v not in SUB_NAMES:
                 errors.append(f"{owner}：{key} 引用了不存在的节点 {v}")
             elif key == "template":
                 for t in v if isinstance(v, list) else [v]:
@@ -67,6 +67,18 @@ def walk(o, owner, known):
 
 
 known = set(nodes)
+# And 子识别的 sub_name：后面的子识别可以用 roi: sub_name 引用（MaaFW v5）
+SUB_NAMES = set()
+def _collect(o):
+    if isinstance(o, dict):
+        if isinstance(o.get("sub_name"), str):
+            SUB_NAMES.add(o["sub_name"])
+        for v in o.values():
+            _collect(v)
+    elif isinstance(o, list):
+        for x in o:
+            _collect(x)
+_collect(nodes)
 for k, v in nodes.items():
     walk(v, f"{where[k]}:{k}", known)
 
