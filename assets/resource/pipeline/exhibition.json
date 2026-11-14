@@ -1094,9 +1094,9 @@
         "recognition": {
             "type": "OCR",
             "param": {
-                "expected": "选择画展举办位置",
+                "expected": "画展举办位置",
                 "roi": [
-                    690,
+                    600,
                     560,
                     350,
                     60
@@ -1120,9 +1120,9 @@
                         "recognition": {
                             "type": "OCR",
                             "param": {
-                                "expected": "选择画展举办位置",
+                                "expected": "画展举办位置",
                                 "roi": [
-                                    690,
+                                    600,
                                     560,
                                     350,
                                     60
