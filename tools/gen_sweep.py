@@ -186,7 +186,7 @@ def build():
                 d[f"清体力_体力够_{b}_{m}_{c}"] = {
                     "desc": f"右上体力 ≥ {total}",
                     "recognition": ocr(f"^{ge_regex(total)}\\s*/", STAMINA_ROI),
-                    "anchor": {"快次数": f"清体力_快_{n}", "连次数": f"清体力_连_{n}"},
+                    "anchor": {"快次数": f"清体力_快_{n}", "连次数": f"清体力_连_{math.ceil(b / c)}"},  # 11-15：实际战斗没有双倍，号上没有所选的符改走实际战斗时按单倍算次数
                     "next": ["清体力_开弹窗"],
                     "focus": {"Node.Action.Succeeded": f"[color:Dimgray]体力够：刷 {n} 次，共消耗 {total}[/color]"},
                 }
