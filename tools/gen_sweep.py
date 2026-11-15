@@ -454,7 +454,7 @@ def build():
     }
     d["清体力_点助战空位"] = {
         "desc": "第二格是助战空位（盾牌）：点开助战列表",
-        "recognition": {"type": "TemplateMatch", "param": {"template": "sweep/助战空位.png", "roi": [250, 140, 185, 450], "threshold": 0.8}},
+        "recognition": {"type": "TemplateMatch", "param": {"template": "sweep/助战空位.png", "roi": [55, 140, 1170, 455], "threshold": 0.8}},
         "action": {"type": "Click"},
         "post_wait_freezes": PW, "max_hit": 3,
         "next": ["清体力_选助战"],
