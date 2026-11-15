@@ -721,6 +721,7 @@
         },
         "timeout": 10000,
         "next": [
+            "[JumpBack]剧场_切观影券",
             "剧场_社交行"
         ],
         "on_error": [
@@ -1543,6 +1544,64 @@
         ],
         "focus": {
             "Node.Action.Starting": "[color:Dimgray]剧场：不看视频，直接领观影券[/color]"
+        }
+    },
+    "剧场_切观影券": {
+        "desc": "11-15 beta.3 实机：社交页会记住上次的页签，停在「日常喝水」时找不到「点赞一次他人的视频」和观影券进度条，卡住报错。认到「日常喝水」页签内容就点左边「观影券」页签切回来",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "日常喝水",
+                                "roi": [
+                                    320,
+                                    195,
+                                    190,
+                                    65
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "打卡提醒|每日喝水总量|每日打卡次数",
+                                "roi": [
+                                    150,
+                                    250,
+                                    330,
+                                    180
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    170,
+                    208,
+                    130,
+                    45
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "max_hit": 3,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]社交页停在「日常喝水」，切回「观影券」[/color]"
         }
     }
 }
