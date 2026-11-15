@@ -7264,6 +7264,7 @@
         "next": [
             "清体力_战斗失败",
             "[JumpBack]清体力_改自动",
+            "[JumpBack]清体力_连战结束",
             "[JumpBack]清体力_战斗胜利",
             "[JumpBack]清体力_连战进行中",
             "[JumpBack]公共_获得奖励",
@@ -7312,6 +7313,41 @@
         "max_hit": 10,
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]战斗切到自动[/color]"
+        }
+    },
+    "清体力_连战结束": {
+        "desc": "11-15 beta.3 实机：实际连续战斗全部打完后弹「连战结束 / 本次连战已结束，连战次数：N次」窗口，点「确定」关掉，之后回到关卡页（清体力_回到关卡）",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "连战结束|连战已结束",
+                "roi": [
+                    440,
+                    180,
+                    400,
+                    130
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    560,
+                    495,
+                    165,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        },
+        "max_hit": 3,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Limegreen]连续战斗全部打完[/color]"
         }
     },
     "清体力_战斗胜利": {
