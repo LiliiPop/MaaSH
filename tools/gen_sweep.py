@@ -69,7 +69,7 @@ def ge_regex(x):
 
 
 def int_set(nums):
-    return "^(?:" + "|".join(str(n) for n in sorted(nums)) + ")$"
+    return "^0*(?:" + "|".join(str(n) for n in sorted(nums)) + ")$"  # 0*：减号边缘会被读成 0（11-15 实机读到「023」）
 
 
 def build():
@@ -367,7 +367,7 @@ def build():
         # 快速通关弹窗
         d[f"清体力_快_{n}"] = {"desc": f"把次数调到 {n}", "timeout": 5000, "on_error": ["公共_任务失败"], "next": [f"清体力_快_{n}_好"] + ([f"清体力_快_{n}_加"] if smaller else []) + [f"清体力_快_{n}_减", f"清体力_快_{n}_卡住"]}
         d[f"清体力_快_{n}_好"] = {
-            "recognition": ocr(f"^{n}$", QUICK_FIELD),
+            "recognition": ocr(f"^0*{n}$", QUICK_FIELD),
             "next": ["清体力_点快速过关"],
         }
         if smaller:
@@ -400,7 +400,7 @@ def build():
         }
         d[f"清体力_连_{n}_调"] = {"timeout": 5000, "on_error": ["公共_任务失败"], "next": [f"清体力_连_{n}_好"] + ([f"清体力_连_{n}_加"] if smaller else []) + [f"清体力_连_{n}_减", f"清体力_连_{n}_卡住"]}
         d[f"清体力_连_{n}_好"] = {
-            "recognition": ocr(f"^{n}$", CONT_FIELD),
+            "recognition": ocr(f"^0*{n}$", CONT_FIELD),
             "next": ["清体力_连战确定"],
         }
         if smaller:
