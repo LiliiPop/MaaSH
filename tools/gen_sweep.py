@@ -144,7 +144,9 @@ def build():
         "recognition": page_rec,
         "action": {"type": "Click", "param": {"target": [995, 290, 40, 28]}},
         "post_wait_freezes": PW,
+        "timeout": 4000,
         "next": ["清体力_难度确认"],
+        "on_error": ["清体力_难度未解锁", "清体力_难度认不出"],  # 11-15：核对不上的兜底要挂在这里，挂在「难度确认」上不起作用
     }
     d["清体力_难度确认"] = {
         "desc": "用「N体力」核对切到了所选难度（由选项改写）；对不上就当作未解锁",
