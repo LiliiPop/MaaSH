@@ -4,8 +4,10 @@ env:
   # 版本控制：
   # - 设置 VERSION 为空字符串时，下载 latest 版本
   # - 设置 VERSION 为具体版本号时（如 v1.2.3），下载指定版本
-  MAAFW_VERSION: ""
-  MFAA_VERSION: ""
+  # 11-14：固定成本地实机测过的组合（用户 MaaSH 的 MFA 2.16.2 + MaaFramework 5.14.3）。以前留空自动下最新，
+  # beta.2 打进了没测过的 MFA 2.16.4 + MaaFW 5.16.1。要升级先在本地实测，再改这里
+  MAAFW_VERSION: "v5.14.3"
+  MFAA_VERSION: "v2.16.2"
 
 on:
   push:
