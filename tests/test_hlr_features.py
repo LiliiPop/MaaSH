@@ -67,7 +67,7 @@ class FeatureIntegrationTests(unittest.TestCase):
         self.assertEqual(comment['Yes']['pipeline_override']['剧场_流程']['next'][0], '剧场_点作品')
         self.assertEqual(comment['Yes']['option'], ['评论内容'])
         option = definition['option']['领取观影券进度奖励']
-        self.assertEqual(option['cases'][0]['pipeline_override']['剧场_完成']['next'], ['剧场_领券_完成', '剧场_领券_没有可领'])
+        self.assertEqual(option['cases'][0]['pipeline_override']['剧场_完成']['next'], ['[JumpBack]剧场_切观影券', '剧场_领券_完成', '剧场_领券_没有可领'])  # 11-15：社交页停在「日常喝水」先切回观影券
         self.assertEqual(option['cases'][1]['pipeline_override']['剧场_完成']['next'], [])
         interface = load('assets/interface.json')
         self.assertNotIn('tasks/TheaterLike.json', interface['import'])

@@ -17,7 +17,6 @@
             "pipeline_override": {
                 "剧场_流程": {
                     "next": [
-                        "[JumpBack]剧场_切观影券",
                         "剧场_仅领券",
                         "[JumpBack]公共_获得奖励",
                         "[JumpBack]公共_跳过卡面",
