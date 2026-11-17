@@ -301,6 +301,7 @@
             "[JumpBack]公共_我知道了",
             "[JumpBack]公共_出行邀约下次",
             "[JumpBack]佳期_不退出",
+            "[JumpBack]佳期_前往进行中",
             "佳期_选计划",
             "佳期_计时中",
             "佳期_计划完成",
@@ -312,6 +313,57 @@
         ],
         "focus": {
             "Node.Action.Succeeded": "[color:Dimgray]佳期：开始一轮[/color]"
+        }
+    },
+    "佳期_前往进行中": {
+        "desc": "11-16 实机：上一次跑的时候中断了（管家那边内存不足崩了），佳期还在进行，再点佳期会弹「注意 / 与XX的佳期正在进行 / 是否前往」→ 点「确定」去接着等",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "佳期正在进行",
+                                "roi": [
+                                    330,
+                                    300,
+                                    620,
+                                    80
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^确\\s*定$",
+                                "roi": [
+                                    700,
+                                    440,
+                                    240,
+                                    60
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 5000,
+            "rate_limit": 200
+        },
+        "max_hit": 3,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]佳期上次没跑完、还在进行，前往接着等[/color]"
         }
     },
     "佳期_再点佳期": {
@@ -346,6 +398,7 @@
             "[JumpBack]公共_我知道了",
             "[JumpBack]公共_出行邀约下次",
             "[JumpBack]佳期_不退出",
+            "[JumpBack]佳期_前往进行中",
             "佳期_选计划",
             "佳期_计时中",
             "佳期_计划完成",
@@ -662,6 +715,7 @@
         "timeout": 20000,
         "next": [
             "[JumpBack]佳期_不退出",
+            "[JumpBack]佳期_前往进行中",
             "佳期_打开佳期",
             "佳期_点结束",
             "佳期_选计划",
@@ -725,6 +779,7 @@
         "timeout": 20000,
         "next": [
             "[JumpBack]佳期_不退出",
+            "[JumpBack]佳期_前往进行中",
             "佳期_打开佳期",
             "佳期_点结束",
             "佳期_选计划",

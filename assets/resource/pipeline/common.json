@@ -423,9 +423,55 @@
         }
     },
     "公共_断线重连": {
-        "desc": "待截图：网络异常 / 断线重连弹窗",
-        "enabled": false,
-        "max_hit": 5
+        "desc": "11-16 实机：启动时弹「网络提示 / 网络连接失败，请检查网络状态」（取消 / 确定）→ 点「确定」重试。最多 5 次",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "网络连接失败|网络异常|请检查网络",
+                                "roi": [
+                                    320,
+                                    250,
+                                    640,
+                                    120
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^确\\s*定$",
+                                "roi": [
+                                    690,
+                                    420,
+                                    260,
+                                    70
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "box_index": 1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "timeout": 5000,
+            "rate_limit": 200
+        },
+        "max_hit": 5,
+        "focus": {
+            "Node.Action.Succeeded": "[color:Orange]网络连接失败，点「确定」重试[/color]"
+        }
     },
     "公共_任务失败": {
         "desc": "超时或卡住时落到这里：记 Red 日志后结束当前任务，交给下一个任务继续；记 Red 日志后，先看画面上有没有「稍后再说」「晚点再说」「恭喜获得」「点击空白处继续」，有就点掉（方便重试或下一个任务），没有就结束",
@@ -1319,18 +1365,80 @@
             "type": "Or",
             "param": {
                 "any_of": [
-                    {"recognition": {"type": "OCR", "param": {"expected": "^(来自大白的馈赠|补签)$", "roi": [760, 145, 270, 60]}}},
-                    {"recognition": {"type": "And", "param": {"all_of": [
-                        {"recognition": {"type": "OCR", "param": {"expected": "^午间$", "roi": [770, 650, 100, 40]}}},
-                        {"recognition": {"type": "OCR", "param": {"expected": "^晚间$", "roi": [960, 650, 100, 40]}}}
-                    ]}}}
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "^(来自大白的馈赠|补签)$",
+                                "roi": [
+                                    760,
+                                    145,
+                                    270,
+                                    60
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "And",
+                            "param": {
+                                "all_of": [
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "^午间$",
+                                                "roi": [
+                                                    770,
+                                                    650,
+                                                    100,
+                                                    40
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "recognition": {
+                                            "type": "OCR",
+                                            "param": {
+                                                "expected": "^晚间$",
+                                                "roi": [
+                                                    960,
+                                                    650,
+                                                    100,
+                                                    40
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
                 ]
             }
         },
-        "action": {"type": "Click", "param": {"target": [380, 640, 40, 30]}},
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    380,
+                    640,
+                    40,
+                    30
+                ]
+            }
+        },
         "max_hit": 5,
-        "post_wait_freezes": {"time": 500, "timeout": 2000, "rate_limit": 200},
-        "focus": {"Node.Action.Succeeded": "[color:Dimgray]关掉大白（领体力）窗口[/color]"}
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 2000,
+            "rate_limit": 200
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]关掉大白（领体力）窗口[/color]"
+        }
     },
     "公共_我知道了": {
         "desc": "带「我知道了」按钮的提醒弹窗（例如「画灵心愿单提醒」，10-21 实跑盖住了主界面）：点「我知道了」关掉。不点弹窗里的「立即前往」",
