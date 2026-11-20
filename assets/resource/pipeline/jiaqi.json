@@ -16,6 +16,7 @@
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "[JumpBack]公共_出行邀约下次",
+            "[JumpBack]公共_剧情我愿意",
             "校园_主界面进校园",
             "校园_主界面进校园_默认",
             "[JumpBack]公共_返回主界面"
@@ -109,6 +110,7 @@
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "[JumpBack]公共_出行邀约下次",
+            "[JumpBack]公共_剧情我愿意",
             "[JumpBack]出行_去赴约",
             "佳期_打开头像栏"
         ],
@@ -155,6 +157,7 @@
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "[JumpBack]公共_出行邀约下次",
+            "[JumpBack]公共_剧情我愿意",
             "佳期_头像栏已展开"
         ],
         "on_error": [
@@ -300,6 +303,7 @@
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "[JumpBack]公共_出行邀约下次",
+            "[JumpBack]公共_剧情我愿意",
             "[JumpBack]佳期_不退出",
             "[JumpBack]佳期_前往进行中",
             "佳期_选计划",
@@ -397,6 +401,7 @@
             "[JumpBack]公共_不再提醒",
             "[JumpBack]公共_我知道了",
             "[JumpBack]公共_出行邀约下次",
+            "[JumpBack]公共_剧情我愿意",
             "[JumpBack]佳期_不退出",
             "[JumpBack]佳期_前往进行中",
             "佳期_选计划",

@@ -24,6 +24,7 @@
             "[JumpBack]公共_退出速写",
             "[JumpBack]公共_剧情快进",
             "[JumpBack]公共_出行邀约下次",
+            "[JumpBack]公共_剧情我愿意",
             "[JumpBack]公共_付费防呆",
             "[JumpBack]假日_高级计划提示",
             "[JumpBack]公共_获得奖励",
@@ -3567,6 +3568,33 @@
         },
         "focus": {
             "Node.Action.Starting": "[color:Dimgray]出行页弹出邀约，点「下次吧」[/color]"
+        }
+    },
+    "公共_剧情我愿意": {
+        "desc": "11-16 实机：进艾因的课后出行页（出行赠礼选了艾因）时触发一段剧情：信纸「……所以，你愿意吗？」，右侧两个选项「我愿意 / 是指什么？」，挡住了头像栏和赠礼。用户定：选「我愿意」",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^我愿意$",
+                "roi": [
+                    940,
+                    270,
+                    340,
+                    80
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 3,
+        "post_wait_freezes": {
+            "time": 800,
+            "timeout": 4000,
+            "rate_limit": 200
+        },
+        "focus": {
+            "Node.Action.Succeeded": "[color:Dimgray]剧情选项：选「我愿意」[/color]"
         }
     }
 }
