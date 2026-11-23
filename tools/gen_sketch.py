@@ -43,7 +43,7 @@ def ocr(expected, roi):
 def tm(theme, roi):
     ic = icons[theme]
     if ic['src'] == 'game':
-        tpl = [f'sketch/灵感/{ic["file"]}_{s}.png' for s in GAME_SCALES]
+        tpl = [f'sketch/灵感/{f}_{s}.png' for f in [ic["file"]] + ic.get("extra", []) for s in GAME_SCALES]
     else:
         tpl = [f'sketch/wiki/{ic["file"]}_{w}.png' for w in WIKI_WIDTHS]
     return {'type': 'TemplateMatch', 'param': {'template': tpl, 'roi': roi, 'threshold': TH[ic['src']], 'green_mask': True, 'order_by': 'Score'}}

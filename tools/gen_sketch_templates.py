@@ -42,12 +42,13 @@ os.makedirs(f'{OUT}/wiki', exist_ok=True)
 made = 0
 for theme, ic in icons.items():
     if ic['src'] == 'game':
-        src = cv2.imdecode(np.fromfile(f'{SRC}/game/{ic["file"]}.png', np.uint8), cv2.IMREAD_COLOR)
-        h, w = src.shape[:2]
-        for s in GAME_SCALES:
-            size = (max(1, round(w * s / 100)), max(1, round(h * s / 100)))
-            img = cv2.resize(src, size, interpolation=cv2.INTER_AREA if s < 100 else cv2.INTER_LINEAR)
-            made += write(f'{OUT}/灵感/{ic["file"]}_{s}.png', img)
+        for f in [ic["file"]] + ic.get("extra", []):  # extra：同一题材在不同气泡里画法略有差别时，多截几张（11-23 运动）
+            src = cv2.imdecode(np.fromfile(f'{SRC}/game/{f}.png', np.uint8), cv2.IMREAD_COLOR)
+            h, w = src.shape[:2]
+            for s in GAME_SCALES:
+                size = (max(1, round(w * s / 100)), max(1, round(h * s / 100)))
+                img = cv2.resize(src, size, interpolation=cv2.INTER_AREA if s < 100 else cv2.INTER_LINEAR)
+                made += write(f'{OUT}/灵感/{f}_{s}.png', img)
     else:
         lv = levels[wiki_names.index(ic['file'])]
         ys, xs = np.nonzero(lv)
