@@ -18,6 +18,8 @@
         "desc": "循环判断：到主界面就确认，否则逐个处理登录、公告、断线、加载",
         "timeout": 300000,
         "next": [
+            "[JumpBack]启动_网易开屏",
+            "[JumpBack]启动_登录页",
             "[JumpBack]公共_回归信件",
             "[JumpBack]公共_回归信",
             "[JumpBack]公共_回归选人",
@@ -29,6 +31,7 @@
             "启动_主界面初判",
             "[JumpBack]启动_切换账号",
             "[JumpBack]启动_关闭登录公告",
+            "[JumpBack]公共_断线重连",
             "[JumpBack]启动_点击登录",
             "[JumpBack]公共_关闭月度推荐",
             "[JumpBack]公共_关闭公告_边缘",
@@ -36,7 +39,6 @@
             "[JumpBack]公共_获得奖励",
             "[JumpBack]公共_跳过卡面",
             "[JumpBack]公共_点击空白继续",
-            "[JumpBack]公共_断线重连",
             "[JumpBack]公共_晚点再说",
             "[JumpBack]公共_生日弹窗等待",
             "[JumpBack]公共_稍后再说",
@@ -768,5 +770,163 @@
         "focus": {
             "Node.Action.Starting": "[color:Dimgray]关闭登录界面的学院公告[/color]"
         }
+    },
+    "启动_登录页": {
+        "desc": "11-23 性能：登录页（含加载资源时的开屏）左下角固定有「16+ CADPA 适龄提示」。认到它（模板，很便宜）就只看登录页会出现的几样（断线 / 学院公告 / 点击开始 / 切换账号 / 退出确认），不再把主界面那二十几个弹窗的文字识别都跑一遍。之前登录页每轮要做约 45 处文字识别（面积加起来是整屏的两倍），游戏启动那一两分钟一直这样转，是 MaaSH 启动阶段卡、吃内存的主要来源",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "common/登录页_适龄提示.png",
+                "roi": [
+                    0,
+                    440,
+                    220,
+                    280
+                ],
+                "threshold": 0.8
+            }
+        },
+        "next": [
+            "[JumpBack]公共_断线重连",
+            "[JumpBack]启动_登录页_公告",
+            "[JumpBack]启动_登录页_点开始",
+            "[JumpBack]启动_兜底点击",
+            "启动_登录页_等"
+        ]
+    },
+    "启动_登录页_等": {
+        "desc": "登录页上暂时没有要点的（还在加载）：等 1 秒再看",
+        "post_delay": 1000
+    },
+    "启动_登录页_公告": {
+        "desc": "登录页上的「学院公告」：已经由左下角适龄提示确认是登录页，只看公告标题（学院公告 / SHELTER）两小块，不用再去底部找防沉迷文字确认",
+        "recognition": {
+            "type": "Or",
+            "param": {
+                "any_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "学院公告",
+                                "roi": [
+                                    520,
+                                    80,
+                                    250,
+                                    90
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "SHELTER",
+                                "roi": [
+                                    540,
+                                    125,
+                                    210,
+                                    50
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    30,
+                    250,
+                    50,
+                    80
+                ]
+            }
+        },
+        "max_hit": 5,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 1500,
+            "rate_limit": 200
+        },
+        "focus": {
+            "Node.Action.Starting": "[color:Dimgray]关闭登录界面的学院公告[/color]"
+        }
+    },
+    "启动_登录页_点开始": {
+        "desc": "登录页加载完：右上「账号信息」按钮出现（模板），或底部「点击屏幕开始」（这行字是一闪一闪的，OCR 时有时无）→ 点底部进入游戏",
+        "recognition": {
+            "type": "Or",
+            "param": {
+                "any_of": [
+                    {
+                        "recognition": {
+                            "type": "TemplateMatch",
+                            "param": {
+                                "template": "common/登录页_账号信息.png",
+                                "roi": [
+                                    1100,
+                                    0,
+                                    180,
+                                    200
+                                ],
+                                "threshold": 0.85
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": "点击|屏幕开始",
+                                "roi": [
+                                    540,
+                                    550,
+                                    210,
+                                    55
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    600,
+                    560,
+                    90,
+                    30
+                ]
+            }
+        },
+        "max_hit": 5,
+        "post_wait_freezes": {
+            "time": 500,
+            "timeout": 3000,
+            "rate_limit": 200
+        }
+    },
+    "启动_网易开屏": {
+        "desc": "11-23：游戏启动时的「网易游戏」白底开屏。认到就等 1 秒再看，不跑后面那一长串文字识别——实测在这张开屏上，框架把二十几个节点的文字识别合并成一批时会卡住并一直涨内存（本机 8 GB 直接被杀掉；用户电脑上就是启动阶段 MFA 一下子多出 11 GB）",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "common/网易开屏.png",
+                "roi": [
+                    0,
+                    100,
+                    700,
+                    520
+                ],
+                "threshold": 0.8
+            }
+        },
+        "post_delay": 1000
     }
 }
